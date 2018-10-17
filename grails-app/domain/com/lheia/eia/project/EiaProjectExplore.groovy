@@ -90,6 +90,38 @@ class EiaProjectExplore {
      * 其他问题
      */
     String otherIssue
+    /**
+     * 删除标记
+     */
+    Boolean ifDel = false
+    /**
+     * 录入部门
+     */
+    String inputDept
+    /**
+     * 录入部门ID
+     */
+    Long inputDeptId
+    /**
+     * 录入部门Code
+     */
+    String inputDeptCode
+    /**
+     * 录入人
+     */
+    String inputUser
+    /**
+     * 录入人ID
+     */
+    Long inputUserId
+    /**
+     * 创建时间
+     */
+    Date dateCreated
+    /**
+     * 更新时间
+     */
+    Date lastUpdated
     static constraints = {
         projectName nullable:true
         buildProp nullable:true
@@ -112,6 +144,11 @@ class EiaProjectExplore {
         parkLayout nullable:true
         involveReserve nullable:true
         otherSense nullable:true
-        otherIssue nullable:true
+        inputDept nullable:true
+        inputDeptId nullable:true
+        inputDeptCode nullable:true
+        inputUserId nullable:true
+        dateCreated nullable:true
+        lastUpdated nullable:true
     }
 }
