@@ -17,6 +17,10 @@ class EiaProjectExploreService {
         def eiaProjectExploreList = EiaProjectExplore.createCriteria().list(max: limit, offset: page * limit) {
 
         }
+        def dataMap = [:]
+        dataMap.data = eiaProjectExploreList
+        dataMap.total = eiaProjectExploreList.totalCount
+        return dataMap
 
     }
 }
