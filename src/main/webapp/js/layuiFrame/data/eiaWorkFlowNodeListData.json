@@ -1,0 +1,32 @@
+{
+  "code": 0,
+  "count": 2,
+  "data": [{
+    "id":1,
+    "nodeCode": "node1",
+    "nodeNum": "1",
+    "nodesName": "流程节点1",
+    "nodeAuthType": "流程节点权限控制类型1",
+    "nodeAuthCode": "auth1",
+    "nodeIconName": "&#xe616;",
+    "nodeColor": "#FF3E96"
+  },{
+    "id":2,
+    "nodeCode": "node2",
+    "nodeNum": "2",
+    "nodesName": "流程节点2",
+    "nodeAuthType": "流程节点权限控制类型2",
+    "nodeAuthCode": "auth2",
+    "nodeIconName": "&#xe617;",
+    "nodeColor": "#E066FF"
+  },{
+    "id":3,
+    "nodeCode": "node3",
+    "nodeNum": "3",
+    "nodesName": "流程节点3",
+    "nodeAuthType": "流程节点权限控制类型3",
+    "nodeAuthCode": "auth3",
+    "nodeIconName": "&#xe618;",
+    "nodeColor": "#8B1A1A"
+  }]
+}

@@ -1,0 +1,100 @@
+.offerInfo.layui-form .layui-form-label{
+    width: 125px;
+}
+.offerInfo .layui-input-block{
+    margin-left: 160px;
+}
+.offerInfo .has-tag .layui-input-block{
+    margin-right: 60px;
+}
+.offerInfo .has-tag{position: relative;}
+.offerInfo .has-tag .tag-right{
+    position: absolute;
+    right: 0;
+    top:0;
+    width: 60px;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 0 10px;
+    text-align: center;
+}
+.offerInfo .has-tag .tag-right .tag-unit{
+    font-size: 14px;
+    color: #666;
+    line-height: 38px;
+}
+.offerInfo .has-tag .tag-right i{
+    font-size: 25px;
+    color: #666;
+    line-height: 38px;
+    cursor: pointer;
+}
+.offerInfo .has-tag .tag-right i:hover{
+    color: #5FB878;
+}
+
+/*金额特殊样式*/
+.moneyBlock{
+    position: relative;
+}
+.moneyBlock .layui-input-block{
+    margin-right: 120px;
+}
+.moneyBlock .action-block{
+    width: 120px;
+    position: absolute;
+    top:0;
+    right: 0;
+    line-height: 38px;
+    display: flex;
+    flex-flow: row nowrap;
+}
+.moneyBlock .action-block .inner-box{
+    flex: 0 0 45%;
+    text-align: center;
+}
+.moneyBlock .action-block .unit{
+    font-size: 14px;
+    color: #666;
+}
+.moneyBlock .action-block .action-box{
+    line-height: 40px;
+}
+.moneyBlock .action-block .action-box .fillMoneyBtn{
+    font-size: 24px;
+    color: #666;
+    cursor: pointer;
+    display: none;
+}
+.moneyBlock .action-block .action-box .fillMoneyBtn:hover{
+    color: #5FB878;
+}
+.moneyBlock .action-block .action-box .show-tips{
+    font-size: 18px;
+    cursor: pointer;
+    position: relative;
+    top:-2px;
+}
+
+/*填写金额页面*/
+.moneyFill .layui-form-item{position: relative;}
+.moneyFill.layui-form .layui-form-label{width: 130px;}
+.moneyFill .layui-input-block{
+    margin-left: 160px;
+    margin-right: 60px;
+}
+.moneyFill .tag-right{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 60px;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 0 10px;
+    text-align: center;
+}
+.moneyFill .tag-right .tag-unit{
+    font-size: 14px;
+    color: #666;
+    line-height: 38px;
+}

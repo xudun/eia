@@ -1,0 +1,63 @@
+.offerInfo.layui-form .layui-form-label{
+    width: 125px;
+}
+.offerInfo .layui-input-block{
+    margin-left: 160px;
+}
+.offerInfo .has-tag .layui-input-block{
+    margin-right: 60px;
+}
+.offerInfo .has-tag{position: relative;}
+.offerInfo .has-tag .tag-right{
+    position: absolute;
+    right: 0;
+    top:0;
+    width: 60px;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 0 10px;
+    text-align: center;
+}
+.offerInfo .has-tag .tag-right .tag-unit{
+    font-size: 14px;
+    color: #666;
+    line-height: 38px;
+}
+.offerInfo .has-tag .tag-right i{
+    font-size: 25px;
+    color: #666;
+    line-height: 38px;
+    cursor: pointer;
+}
+.offerInfo .has-tag .tag-right i:hover{
+    color: #5FB878;
+}
+
+
+/*合同下载页补充样式*/
+.contract-download .layui-layer-title{
+    background-color: #F8F8F8 !important;
+    height: 42px !important;
+    color: #333 !important;
+    line-height: 42px !important;
+}
+.con-download{
+    position: relative;
+}
+.con-download .layui-input-block{
+    margin-left: 26px;
+    padding-top: 20px;
+}
+.con-download .saveBtn{
+    position: absolute;
+    bottom: -55px;
+    right: 50%;
+    margin-right: -32px;
+    height: 32px;
+    line-height: 32px;
+}
+
+.download-block{
+    text-align: center;
+    margin-left: 0!important;
+}

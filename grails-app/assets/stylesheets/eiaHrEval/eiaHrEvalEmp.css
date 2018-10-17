@@ -1,0 +1,17 @@
+.title-right{
+    float: right;;
+}
+.title-right li{
+    float: left;
+    margin-left: 15px;
+    /*line-height: 38px;*/
+}
+.fixed-y {
+    /*float: left;*/
+    position:fixed;
+    top:52px;
+    /*left:0;*/
+    /*width:100%;*/
+    z-index:1;
+    background:#fff;
+}

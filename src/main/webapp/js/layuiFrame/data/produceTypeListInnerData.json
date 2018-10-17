@@ -1,0 +1,26 @@
+{
+  "code": 0,
+  "count": 2,
+  "data": [{
+    "id": 1,
+    "produceType": "节能环保",
+    "contractTotal": "17515.3843",
+    "signedContractAmount": "14648.8163",
+    "offeredAmount": "2866.568",
+    "unfold": true
+  },{
+    "id": 2,
+    "produceType": "环境影响评价",
+    "contractTotal": "1020",
+    "signedContractAmount": "828",
+    "offeredAmount": "192",
+    "unfold": false
+  },{
+    "id": 3,
+    "produceType": "竣工验收",
+    "contractTotal": "18535.3843",
+    "signedContractAmount": "15476.8163",
+    "offeredAmount": "3058.568",
+    "unfold": false
+  }]
+}

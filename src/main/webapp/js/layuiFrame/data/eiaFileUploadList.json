@@ -1,0 +1,30 @@
+{
+  "code": 0,
+  "count": 3,
+  "data": [
+    {
+      "id": 10,
+      "fileName": "原文件名1",
+      "inputUser": "上传人1",
+      "uploadDate": "上传时间1",
+      "fileSize": "大小1",
+      "status": "状态1"
+    },
+    {
+      "id": 11,
+      "fileName": "原文件名2",
+      "inputUser": "上传人2",
+      "uploadDate": "上传时间2",
+      "fileSize": "大小2",
+      "status": "状态2"
+    },
+    {
+      "id": 12,
+      "fileName": "原文件名3",
+      "inputUser": "上传人3",
+      "uploadDate": "上传时间3",
+      "fileSize": "大小3",
+      "status": "状态3"
+    }
+  ]
+}

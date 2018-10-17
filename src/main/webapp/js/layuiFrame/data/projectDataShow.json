@@ -1,0 +1,17 @@
+{
+  "projectName": "项目1",
+  "competentDep": "部门3",
+  "fileType": "一般环评报告表",
+
+  "taskId": 70,
+  "eiaClientId": 3,
+  "buildArea": "天津市和平区",
+  "projectMoney": 5.0000,
+  "groundwaterFee":1.0000,
+  "otherFee":1.0000,
+  "environmentalFee":1.0000,
+  "expertFee":1.0000,
+  "projectComfee":1.0000,
+  "natureConstructio": 1,
+  "eiaContractId": 2
+}

@@ -1,0 +1,22 @@
+{
+  "items": [
+    {
+      "staffName": "陈卓艺",
+      "teamSpirit":"9",
+      "leadership":"9",
+      "proAbility":"9"
+    },
+    {
+      "staffName": "陈炜",
+      "teamSpirit":"8",
+      "leadership":"8",
+      "proAbility":"8"
+    }
+  ],
+  "orgCode":"联合泰泽",
+  "orgName":"行政管理部",
+  "assessmentMonth":"2017年08月",
+  "leader":"李晨",
+  "showType": true,
+  "total": 2
+}

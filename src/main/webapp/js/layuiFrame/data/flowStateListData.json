@@ -1,0 +1,27 @@
+{
+  "code": 0,
+  "count": 3,
+  "data": [{
+    "id": 1,
+    "nodeName": "1创建",
+    "workFlowName": "流程1",
+    "inputUser": "李四",
+    "processName": "已提交",
+    "dateCreated": "2018-04-20 10:11:33"
+  },{
+    "id": 2,
+    "nodeName": "2直接上级审批",
+    "workFlowName": "流程1",
+    "inputUser": "张三",
+    "processName": "已提交",
+    "dateCreated": "2018-04-20 10:11:33"
+  },{
+    "id": 3,
+    "nodeName": "3归档",
+    "workFlowName": "流程1",
+    "inputUser": "李四",
+    "processName": "已查看",
+    "dateCreated": "2018-04-20 10:12:59"
+
+  }]
+}

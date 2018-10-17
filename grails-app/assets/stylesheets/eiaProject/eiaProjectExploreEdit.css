@@ -1,0 +1,19 @@
+.deleteBtn {
+    position: relative;
+    left: -28px;
+    top: -40px;
+    background-color: #425267;
+    color: #fff;
+    opacity: 0.8;
+    -moz-opacity: 0.8;
+    padding: 2px;
+}
+.deleteBtn:hover {
+    opacity: 1;
+}
+.layui-form .layui-form-label{
+    width: 220px;
+}
+.layui-input-block{
+    margin-left: 250px;
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "id": 0,
+    "btnName": "提交",
+    "btnIcon": "&#xe830;",
+    "btnColor": "#009688",
+    "actionUrl": "data/flowBtn1Result.json"
+  },
+  {
+    "id": 1,
+    "btnName": "按钮1",
+    "btnIcon": "&#xe8d9;",
+    "btnColor": "#5FB878",
+    "actionUrl": "data/flowBtn2Result.json"
+  },
+  {
+    "id": 2,
+    "btnName": "按钮2",
+    "btnIcon": "&#xe828;",
+    "btnColor": "#1E9FFF",
+    "actionUrl": "data/flowBtn2Result.json"
+  }
+]

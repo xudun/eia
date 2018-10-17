@@ -1,0 +1,10 @@
+{
+    "id":1,
+    "nodeCode": "node1",
+    "nodeNum": "1",
+    "nodesName": "流程节点1",
+    "nodeAuthType": "流程节点权限控制类型1",
+    "nodeAuthCode": "auth1",
+    "nodeIconName": "&#xe616;",
+    "nodeColor": "#FF3E96"
+}

@@ -1,0 +1,56 @@
+{
+  "items": [
+    {
+      "staffName": "陈卓艺",
+      "workingAttitude":"19",
+      "teamSpirit":"9",
+      "cultureCognition":"9"
+    },
+    {
+      "staffName": "陈炜",
+      "workingAttitude":"18",
+      "teamSpirit":"8",
+      "cultureCognition":"8"
+    },
+    {
+      "staffName": "王洋",
+      "workingAttitude":"17",
+      "teamSpirit":"7",
+      "cultureCognition":"7"
+    }
+  ,
+    {
+      "staffName": "王洋",
+      "workingAttitude":"17",
+      "teamSpirit":"7",
+      "cultureCognition":"7"
+    }
+  ,
+    {
+      "staffName": "王洋",
+      "workingAttitude":"17",
+      "teamSpirit":"7",
+      "cultureCognition":"7"
+    }
+  ,
+    {
+      "staffName": "王洋",
+      "workingAttitude":"17",
+      "teamSpirit":"7",
+      "cultureCognition":"7"
+    }
+  ,
+    {
+      "staffName": "王洋",
+      "workingAttitude":"17",
+      "teamSpirit":"7",
+      "cultureCognition":"7"
+    }
+  ],
+  "orgCode":"联合泰泽",
+  "orgName":"行政管理部",
+  "assessmentMonth":"2017年08月",
+  "leader":"李晨",
+  "showType": true,
+  "total": 7
+}

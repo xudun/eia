@@ -1,0 +1,16 @@
+{
+  "nodesTab":[
+    {
+      "nodesTabTitle": "项目信息1",
+      "nodesUrl": "eiaContractDetails.html"
+    },
+    {
+      "nodesTabTitle": "项目信息2",
+      "nodesUrl": "eiaContractDetails.html"
+    },
+    {
+      "nodesTabTitle": "项目信息3",
+      "nodesUrl": "eiaContractDetails.html"
+    }
+  ]
+}

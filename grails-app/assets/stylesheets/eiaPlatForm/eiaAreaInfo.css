@@ -1,0 +1,17 @@
+.area-info-form.layui-form .layui-form-label{
+    width: 160px;
+}
+.area-info-form .layui-input-block{
+    margin-left: 190px;
+}
+.area-info-form .file-p{
+    line-height: 20px;
+    margin-bottom: 5px;
+}
+.area-info-form .file-text{
+    color: #1E9FFF;
+    cursor: pointer;
+}
+.area-info-form  .file-text:hover{
+    text-decoration: underline;
+}

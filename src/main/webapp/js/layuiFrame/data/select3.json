@@ -1,0 +1,245 @@
+[{
+  "children": [{
+    "children": [],
+    "attributes": {
+      "staffCode": "luowenhui"
+    },
+    "id": 40,
+    "name": "罗文辉",
+    "orgId": 1,
+    "orgName": "联合赤道环境评价有限公司"
+  }, {
+    "children": [{
+      "children": [{
+        "children": [],
+        "attributes": {
+          "staffCode": "tianyan"
+        },
+        "id": 21,
+        "name": "田艳",
+        "orgId": 11,
+        "orgName": "联合泰泽合规部"
+      }, {
+        "children": [],
+        "attributes": {
+          "staffCode": "zhangnan"
+        },
+        "id": 1,
+        "name": "张楠",
+        "orgId": 11,
+        "orgName": "联合泰泽合规部"
+      }, {
+        "children": [],
+        "attributes": {
+          "staffCode": "luowenhui"
+        },
+        "id": 40,
+        "name": "罗文辉",
+        "orgId": 11,
+        "orgName": "联合泰泽合规部"
+      }],
+      "attributes": {
+        "orgCode": "联合泰泽_合规部"
+      },
+      "orgId": 11,
+      "name": "联合泰泽合规部"
+    }, {
+      "children": [],
+      "attributes": {
+        "staffCode": "luowenhui"
+      },
+      "id": 40,
+      "name": "罗文辉",
+      "orgId": 2,
+      "orgName": "天津市联合泰泽环境科技发展有限公司"
+    }, {
+      "children": [{
+        "children": [],
+        "attributes": {
+          "staffCode": "wangxin"
+        },
+        "id": 22,
+        "name": "王欣",
+        "orgId": 10,
+        "orgName": "联合泰泽业务三部"
+      }, {
+        "children": [],
+        "attributes": {
+          "staffCode": "zhuweina"
+        },
+        "id": 23,
+        "name": "朱威娜",
+        "orgId": 10,
+        "orgName": "联合泰泽业务三部"
+      }, {
+        "children": [],
+        "attributes": {
+          "staffCode": "liyeming"
+        },
+        "id": 24,
+        "name": "李冶明",
+        "orgId": 10,
+        "orgName": "联合泰泽业务三部"
+      }, {
+        "children": [],
+        "attributes": {
+          "staffCode": "zhuli"
+        },
+        "id": 25,
+        "name": "朱莉",
+        "orgId": 10,
+        "orgName": "联合泰泽业务三部"
+      }, {
+        "children": [],
+        "attributes": {
+          "staffCode": "zhuchunlan"
+        },
+        "id": 26,
+        "name": "朱春兰",
+        "orgId": 10,
+        "orgName": "联合泰泽业务三部"
+      }, {
+        "children": [],
+        "attributes": {
+          "staffCode": "hanbin"
+        },
+        "id": 27,
+        "name": "韩斌",
+        "orgId": 10,
+        "orgName": "联合泰泽业务三部"
+      }, {
+        "children": [],
+        "attributes": {
+          "staffCode": "liuwei"
+        },
+        "id": 28,
+        "name": "刘伟",
+        "orgId": 10,
+        "orgName": "联合泰泽业务三部"
+      }, {
+        "children": [],
+        "attributes": {
+          "staffCode": "zhuqiujun"
+        },
+        "id": 29,
+        "name": "朱秋军",
+        "orgId": 10,
+        "orgName": "联合泰泽业务三部"
+      }, {
+        "children": [],
+        "attributes": {
+          "staffCode": "liujintong"
+        },
+        "id": 30,
+        "name": "刘金同",
+        "orgId": 10,
+        "orgName": "联合泰泽业务三部"
+      }, {
+        "children": [],
+        "attributes": {
+          "staffCode": "chenhuimin"
+        },
+        "id": 31,
+        "name": "陈慧敏",
+        "orgId": 10,
+        "orgName": "联合泰泽业务三部"
+      }, {
+        "children": [],
+        "attributes": {
+          "staffCode": "jiaruichan"
+        },
+        "id": 32,
+        "name": "贾汭婵",
+        "orgId": 10,
+        "orgName": "联合泰泽业务三部"
+      }, {
+        "children": [],
+        "attributes": {
+          "staffCode": "changdingwei"
+        },
+        "id": 33,
+        "name": "常鼎伟",
+        "orgId": 10,
+        "orgName": "联合泰泽业务三部"
+      }, {
+        "children": [],
+        "attributes": {
+          "staffCode": "xiaoningwei"
+        },
+        "id": 34,
+        "name": "肖宁伟",
+        "orgId": 10,
+        "orgName": "联合泰泽业务三部"
+      }, {
+        "children": [],
+        "attributes": {
+          "staffCode": "wangjian"
+        },
+        "id": 35,
+        "name": "王健",
+        "orgId": 10,
+        "orgName": "联合泰泽业务三部"
+      }, {
+        "children": [],
+        "attributes": {
+          "staffCode": "gaomijun"
+        },
+        "id": 36,
+        "name": "高密军",
+        "orgId": 10,
+        "orgName": "联合泰泽业务三部"
+      }, {
+        "children": [],
+        "attributes": {
+          "staffCode": "renyemeng"
+        },
+        "id": 37,
+        "name": "任业萌",
+        "orgId": 10,
+        "orgName": "联合泰泽业务三部"
+      }, {
+        "children": [],
+        "attributes": {
+          "staffCode": "zhaonannan"
+        },
+        "id": 38,
+        "name": "赵南南",
+        "orgId": 10,
+        "orgName": "联合泰泽业务三部"
+      }, {
+        "children": [],
+        "attributes": {
+          "staffCode": "zhangxiuhua"
+        },
+        "id": 39,
+        "name": "张秀华",
+        "orgId": 10,
+        "orgName": "联合泰泽业务三部"
+      }, {
+        "children": [],
+        "attributes": {
+          "staffCode": "zhangnan"
+        },
+        "id": 1,
+        "name": "张楠",
+        "orgId": 10,
+        "orgName": "联合泰泽业务三部"
+      }],
+      "attributes": {
+        "orgCode": "联合泰泽_业务三部"
+      },
+      "orgId": 10,
+      "name": "联合泰泽业务三部"
+    }],
+    "attributes": {
+      "orgCode": "联合泰泽"
+    },
+    "orgId": 2,
+    "name": "天津市联合泰泽环境科技发展有限公司"
+  }],
+  "attributes": {
+    "orgCode": "联合赤道"
+  },
+  "orgId": 1,
+  "name": "联合赤道环境评价有限公司"
+}]

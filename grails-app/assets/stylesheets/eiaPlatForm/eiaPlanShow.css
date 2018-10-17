@@ -1,0 +1,37 @@
+.plan-show-form.layui-form .layui-form-label{
+    width: 160px;
+}
+.plan-show-form .layui-input-block{
+    margin-left: 190px;
+}
+.plan-show-form .img-box{
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+}
+.plan-show-form .img-box img{
+    width: 100%;
+    height: 200px;
+    cursor: pointer;
+}
+.plan-show-form  .action-txt{
+    color: #1E9FFF;
+    cursor: pointer;
+}
+.plan-show-form .show-block .action-txt{
+    padding: 9px 4px;
+    line-height: 36px;
+}
+.plan-show-form  .action-txt:hover{
+    text-decoration: underline;
+}
+.img-layer .layui-layer-title{
+    background-color: #F8F8F8 !important;
+    height: 42px !important;
+    color: #333 !important;
+    line-height: 42px !important;
+}
+.img-layer .layer-img-box{
+    width: 100%;
+    height: auto;
+}

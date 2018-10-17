@@ -1,0 +1,26 @@
+.query-more{
+    position: relative;
+}
+.query-more i{
+    display: block;
+    background-color: #1BB394;
+    left:49%;
+    width: 34px;
+    font-size: 18px;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 0 3px 3px;
+    -moz-border-radius: 0 0 3px 3px;
+    height: 5px;
+    position: absolute;
+    z-index: 100;
+}
+.query-more i:hover{
+    height: 18px;
+    line-height: 18px;
+}
+/*查询框宽度*/
+.layui-elem-quote .layui-input-inline{
+    width: 350px !important;
+}
+

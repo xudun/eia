@@ -1,0 +1,29 @@
+{
+  "code": 0,
+  "count": 2,
+  "data": [{
+    "id": 1,
+    "dept": "联合赤道-业务一部",
+    "contractTotal": "52.7",
+    "signedContractAmount": "52.7",
+    "offeredAmount": "0",
+    "projectTotal": "60.1",
+    "unfold": true
+  },{
+    "id": 2,
+    "dept": "联合赤道-业务二部",
+    "contractTotal": "18",
+    "signedContractAmount": "18",
+    "offeredAmount": "0",
+    "projectTotal": "0",
+    "unfold": true
+  },{
+    "id": 3,
+    "dept": "联合赤道-业务三部",
+    "contractTotal": "0",
+    "signedContractAmount": "0",
+    "offeredAmount": "0",
+    "projectTotal": "0",
+    "unfold": true
+  }]
+}

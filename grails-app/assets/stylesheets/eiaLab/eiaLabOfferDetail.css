@@ -1,0 +1,87 @@
+.layui-form .layui-form-label{
+    width: 140px;
+}
+.layui-input-block{
+    margin-left: 170px;
+}
+.input-search-button{
+    display: inline;
+    width: 90%;
+}
+.input-search-button-small{
+    display: inline;
+    width: 78%;
+}
+.layui-elem-quote{
+    padding: 8px 15px;
+}
+.layui-form-item .layui-form-checkbox[lay-skin=primary]{
+    margin-right: 5px;
+}
+#testDayNum{
+    width: 80px;
+    display: inline;
+}
+#testPeriod .layui-form-radio{
+    height: 38px;
+}
+#testPeriod {
+    margin-right: 10px;
+}
+#remainDealMemo{
+    width: 114px;
+    display: inline;
+}
+#remainDeal .layui-form-radio{
+    height: 38px;
+}
+#remainDeal {
+    margin-right: 10px;
+}
+.layui-form-label-width{
+    width: 154px !important;
+    padding: 9px 0px 9px 6px;
+}
+.layui-form-label-width-show{
+    width: 154px !important;
+    margin-left: -23px;
+}
+.cal-quote{
+    position: relative;
+    height: 38px;
+    line-height: 38px;
+}
+.cal-quote .total-txt{
+    border-radius: 19px;
+    font-weight: bold;
+    cursor: default;
+}
+.cal-quote .total-txt-show{
+    border-radius: 19px;
+    font-weight: bold;
+    cursor: default;
+}
+.cal-quote .total-txt-show.planSub{
+    position: relative;
+    top: -8px;
+}
+.cal-quote .total-txt-thin{
+    border-radius: 19px;
+    font-weight: bold;
+    cursor: default;
+}
+.disc-box{
+    position: absolute;
+    top:0;
+    right: 20px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+    box-sizing: border-box;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+.disc-item-box{
+    flex: 0 0 290px;
+    margin-right: 20px;
+}

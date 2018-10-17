@@ -1,0 +1,29 @@
+{
+  "code": 0,
+  "count": 2,
+  "data": [{
+    "id": 1,
+    "dept": "联合赤道-业务一部",
+    "contractTotal": "52.7",
+    "signedContractAmount": "52.7",
+    "offeredAmount": "0",
+    "projectTotal": "60.1",
+    "unfold": true
+  },{
+    "id": 2,
+    "dept": "陈超",
+    "contractTotal": "0",
+    "signedContractAmount": "0",
+    "offeredAmount": "0",
+    "projectTotal": "0",
+    "unfold": false
+  },{
+    "id": 3,
+    "dept": "祁洪刚",
+    "contractTotal": "0",
+    "signedContractAmount": "0",
+    "offeredAmount": "0",
+    "projectTotal": "0",
+    "unfold": false
+  }]
+}

@@ -1,0 +1,26 @@
+{
+  "a": "项目名称项目名称项目名称项目名称项目名称项目名称",
+  "b": "项目编号项目编号",
+  "c": "项目类型",
+  "d": "2018-09-09",
+  "e": "李四",
+  "f": "张三、李四",
+  "g": "项目选址项目选址项目选址项目选址项目选址项目选址项目选址项目选址",
+  "h": "是",
+  "j": "否",
+  "k": "踏勘记录选址（线）现状及周边情况踏勘记录选址（线）现状及周边情况踏勘记录选址（线）现状及周边情况踏勘记录选址（线）现状及周边情况踏勘记录选址（线）现状及周边情况踏勘记录选址（线）现状及周边情况踏勘记录选址（线）现状及周边情况踏勘记录选址（线）现状及周边情况",
+  "l": [{
+    "m": "/eia/static/js/layuiFrame/common/images/404.gif",
+    "n":"404.gif"
+  },{
+    "m": "/eia/static/js/layuiFrame/common/images/icon.png",
+    "n":"icon.png"
+  },{
+    "m": "/eia/static/js/layuiFrame/common/images/logo.png",
+    "n":"logo.png"
+  },{
+    "m": "/eia/static/js/layuiFrame/common/images/404.gif",
+    "n":"404.gif"
+  }],
+  "o":"/eia/static/js/layuiFrame/common/images/logo.png"
+}

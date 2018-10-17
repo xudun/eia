@@ -1,0 +1,49 @@
+.layui-form .layui-form-label{
+    width: 130px;
+}
+.layui-input-block{
+    margin-left: 160px;
+}
+.input-search-button{
+    display: inline;
+    width: 90%;
+}
+.input-search-button-small{
+    display: inline;
+    width: 78%;
+}
+.layui-elem-quote{
+    padding: 8px 15px;
+}
+.layui-form-item .layui-form-checkbox[lay-skin=primary]{
+    margin-right: 5px;
+}
+#testDayNum{
+    width: 80px;
+    display: inline;
+}
+#testPeriod .layui-form-radio{
+    height: 38px;
+}
+#testPeriod {
+    margin-right: 10px;
+}
+#remainDealMemo{
+    width: 114px;
+    display: inline;
+}
+#remainDeal .layui-form-radio{
+    height: 38px;
+}
+#remainDeal {
+    margin-right: 10px;
+}
+.layui-form-label-width{
+    width: 154px !important;
+    padding: 9px 0px 9px 6px;
+}
+.layui-form-label-width-show{
+    width: 154px !important;
+    margin-left: -23px;
+}
+

@@ -1,0 +1,49 @@
+/*检测计划计算器*/
+.subtotal-item .layui-form-label{
+    width: 75px;
+}
+.subtotal-item .layui-input-block{
+    margin-left: 110px;
+}
+.lab-plan-form.layui-form .layui-form-label{
+    width: 130px;
+}
+.lab-plan-form .layui-input-block{
+    margin-left: 160px;
+}
+.has-add-btn{
+    position: relative;
+}
+.has-add-btn .layui-input-block{
+    margin-right: 60px;
+}
+.has-add-btn .add-btn{
+    width: 60px;
+    height: 38px;
+    position: absolute;
+    top:0;
+    right: 0;
+    line-height: 38px;
+    text-align: center;
+}
+.has-add-btn .add-btn i:hover{
+    color: #5FB878;
+}
+.lab-plan-group-form.layui-form .layui-form-label{
+    width: 110px;
+}
+.lab-plan-group-form .layui-input-block{
+    margin-left: 140px;
+}
+
+.cal-quote{
+    position: relative;
+}
+.cal-quote .total-txt{
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    border-radius: 19px;
+    font-weight: bold;
+    cursor: default;
+}

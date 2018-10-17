@@ -1,0 +1,19 @@
+{
+  "inputDept": "部门一",
+  "inputUser": "张三",
+  "applyDate": "2015-12-01",
+  "yongyin": "联合赤道",
+  "contractNo": "111111",
+  "contractName": "合同一",
+  "contractType": "类型一",
+  "contractMoney": "12.0000",
+  "reportFees": "12.0000",
+  "enviroMonitoringFee": "12.0000",
+  "groundWater": "12.0000",
+  "expertFee": "12.0000",
+  "otherFee": "12.0000",
+  "userName": "李四",
+  "complianceUser": "王五",
+  "deptManager": "peter",
+  "topManager": "kate"
+}

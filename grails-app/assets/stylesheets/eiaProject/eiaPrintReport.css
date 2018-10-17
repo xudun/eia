@@ -1,0 +1,23 @@
+#printReport tr td{
+    padding: 5px;
+    border: 1px solid #383838;
+    vertical-align: top;
+}
+#reportLeft{
+    padding: 5px;
+    border-left: 1px solid #383838;
+    border-right: 1px solid #383838;
+    vertical-align: top;
+    float: left;
+    width: calc(50% - 11px);
+}
+#reportRight{
+    padding: 5px;
+    border-right: 1px solid #383838;
+    vertical-align: top;
+    float: right;
+    width: calc(50% - 12px);
+}
+.valign-middle{
+    vertical-align: middle !important;
+}

@@ -1,0 +1,18 @@
+[{
+  "id": 1,
+  "publisher": "张三",
+  "publisherDesp": "合规部",
+  "recipient": "李四",
+  "acceptedTime": "2018-04-20   10:12:59",
+  "result": "2直接上级审批 / 批准",
+  "opinion":"同意同意同意同意同意同意同意同意同意同意同意同意同意同意同意同意同意",
+  "signImg":"images/sign.jpg"
+}, {
+  "id": 2,
+  "publisher": "李四",
+  "publisherDesp": "",
+  "recipient": "张三",
+  "acceptedTime": "2018-04-20   10:11:33",
+  "result": "1创建 / 提交",
+  "opinion":"同意同意同意同意同意同意同意同意同意同意同意同意同意同意同意同意同意"
+}]

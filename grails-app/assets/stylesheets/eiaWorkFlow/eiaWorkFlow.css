@@ -1,0 +1,40 @@
+/*流程配置*/
+.flow-node-form.layui-form .layui-form-label{
+    width: 155px;
+}
+.flow-node-form .layui-input-block{
+    margin-left: 185px;
+}
+.has-sq{
+    position: relative;
+}
+.has-sq .layui-input-block{
+    margin-right: 60px;
+}
+.has-sq .sq-box{
+    position: absolute;
+    width: 60px;
+    height: 38px;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.has-sq .sq-box i{
+    font-size: 20px;
+}
+.check-block .check-value{
+    margin-right: 20px;
+}
+.check-block span,.check-block i{
+    vertical-align: middle;
+}
+.check-block i{
+    font-size: 20px;
+}
+.layui-table-cell i.table-cell-icon{
+    font-size: 20px;
+}

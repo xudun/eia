@@ -1,0 +1,10 @@
+.layui-copy{
+    width: 100%;
+}
+.layui-copy > thead > tr > th, .layui-copy > tbody > tr > td{
+    padding: 5px 10px;
+    border: 1px solid #e6e6e6;
+    vertical-align: middle;
+    text-align: center;
+    height: 28px;
+}

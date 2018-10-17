@@ -1,0 +1,24 @@
+.pro-name-item{
+    position: relative;
+}
+.pro-name-item .layui-input-block{
+    margin-right: 60px;
+}
+.pro-name-item .tip-block{
+    width: 60px;
+    height: 34px;
+    position: absolute;
+    top:0;
+    right: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pro-name-item .tip-block i{
+    font-size: 16px;
+    cursor: pointer;
+}
+.cert-num-item{
+    display: none;
+}

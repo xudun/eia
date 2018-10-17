@@ -1,0 +1,16 @@
+.sens-area-form.layui-form .layui-form-label{
+    width: 160px;
+}
+.sens-area-form .layui-input-block{
+    margin-left: 190px;
+}
+.sens-area-form .file-p{
+    line-height: 25px;
+}
+.sens-area-form .file-text{
+    color: #1E9FFF;
+    cursor: pointer;
+}
+.sens-area-form  .file-text:hover{
+    text-decoration: underline;
+}

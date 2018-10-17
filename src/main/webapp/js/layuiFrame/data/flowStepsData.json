@@ -1,0 +1,65 @@
+[
+  {
+    "id": 0,
+    "flowName": "现场勘查",
+    "flowIcon": "&#xe778;",
+    "nodeColor": "-webkit-linear-gradient(top,#30A1F5,#1E9FFF)",
+    "active": true
+  },
+  {
+    "id": 1,
+    "flowName": "监测方案",
+    "flowIcon": "&#xe926;",
+    "nodeColor": "-webkit-linear-gradient(top,#F86738,#FF5722)",
+    "active": true
+  },
+  {
+    "id": 2,
+    "flowName": "编制完成",
+    "flowIcon": "&#xe830;",
+    "nodeColor": "-webkit-linear-gradient(top,#CB5DEF,#9825D1)",
+    "active": true
+  },
+  {
+    "id": 3,
+    "flowName": "一审",
+    "flowIcon": "&#xe885;",
+    "nodeColor": "-webkit-linear-gradient(top,#23d4d4,#16d1b6)",
+    "active": true
+  },
+  {
+    "id": 4,
+    "flowName": "二审",
+    "flowIcon": "&#xe9bb;",
+    "nodeColor": "-webkit-linear-gradient(top,#FFC93B,#FFB800)",
+    "active": true
+  },
+  {
+    "id": 5,
+    "flowName": "三审",
+    "flowIcon": "&#xe984;",
+    "nodeColor": "-webkit-linear-gradient(top,#73D08D,#5FB878)",
+    "active": true
+  },
+  {
+    "id": 6,
+    "flowName": "技术评审会",
+    "flowIcon": "&#xe884;",
+    "nodeColor": "-webkit-linear-gradient(top,#26d0e0,#0bc)",
+    "active": false
+  },
+  {
+    "id": 7,
+    "flowName": "报批版上报",
+    "flowIcon": "&#xe8a3;",
+    "nodeColor": "-webkit-linear-gradient(top,#ff5b3c,#ff2b67)",
+    "active": false
+  },
+  {
+    "id": 8,
+    "flowName": "项目归档",
+    "flowIcon": "&#xe8b1;",
+    "nodeColor": "-webkit-linear-gradient(top,#c79081,#dfa579)",
+    "active": false
+  }
+]

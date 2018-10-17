@@ -1,0 +1,26 @@
+{
+  "code": 0,
+  "count": 2,
+  "data": [{
+    "id": 1,
+    "workFlowName": "流程1",
+    "nodeName": "节点1",
+    "approvalInfo": "审批信息1",
+    "approvalDeptPerson": "审批部门1 / 审批人1",
+    "approvalTime": "2018-12-01"
+  },{
+    "id": 2,
+    "workFlowName": "流程2",
+    "nodeName": "节点2",
+    "approvalInfo": "审批信息2",
+    "approvalDeptPerson": "审批部门2 / 审批人2",
+    "approvalTime": "2018-12-02"
+  },{
+    "id": 3,
+    "workFlowName": "流程3",
+    "nodeName": "节点3",
+    "approvalInfo": "审批信息3",
+    "approvalDeptPerson": "审批部门3 / 审批人3",
+    "approvalTime": "2018-12-03"
+  }]
+}

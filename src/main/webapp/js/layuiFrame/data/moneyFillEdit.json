@@ -1,0 +1,10 @@
+{
+  "projectComfee": "111.1111",
+  "environmentalFee": "222.2222",
+  "groundwaterFee": "333.3333",
+  "expertFee": "444.4444",
+  "otherFee": "555.5555",
+  "specialFee": "666.6666",
+  "detectFee": "777.7777",
+  "projectMoney": "888.8888"
+}

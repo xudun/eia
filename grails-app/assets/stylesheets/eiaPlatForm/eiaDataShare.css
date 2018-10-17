@@ -1,0 +1,240 @@
+.data-share-con .larry-search-input{
+    width: 600px;
+}
+
+.filter-box{
+    width: 100%;
+    min-height: 100px;
+    background: #fff;
+    padding: 15px 10px;
+    box-sizing: border-box;
+}
+.filter-box .filter-ul{
+    width: 100%;
+    height: auto;
+}
+.filter-box .filter-ul .filter-li{
+    width: 100%;
+    height: auto;
+    line-height: 27px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: flex-start;
+}
+.filter-box .filter-ul .filter-li .inner-box{
+    font-size: 14px;
+}
+.filter-box .filter-ul .filter-li .inner-box.lf{
+    flex: 0 0 100px;
+    font-weight: 700;
+}
+.filter-box .filter-ul .filter-li .inner-box.rg{
+    flex: 1 1 0;
+}
+.filter-box .filter-ul .filter-li .inner-box.rg.region-name-rg{
+    flex: 0 0 500px;
+    position: relative;
+}
+.filter-box .filter-ul .filter-li .inner-box .filter-item{
+    cursor: pointer;
+    width: 160px;
+    display: inline-block;
+    vertical-align: top;
+    /*margin-right: 35px;*/
+}
+.filter-box .filter-ul .filter-li .inner-box .filter-item:hover{
+    color: #ff4500;
+}
+.filter-box .filter-ul .filter-li .inner-box .filter-item:hover .layui-badge-rim{
+    border-color: #ff4500;
+    color: #ff4500;
+}
+.filter-box .filter-ul .filter-li .inner-box .filter-item.active{
+    color: #ff4500;
+}
+.filter-box .filter-ul .filter-li .inner-box .filter-item.active .layui-badge-rim{
+    border-color: #ff4500;
+    color: #ff4500;
+}
+.filter-box .filter-ul .filter-li .inner-box .layui-badge-rim{
+    margin-left: 5px;
+    color: #ff4500;
+}
+
+.show-box{
+    width: 100%;
+    height: auto;
+    min-height: 200px;
+}
+.show-box .show-ul{
+    width: 100%;
+    box-sizing: border-box;
+    border-top: 1px solid #f1f1f1;
+}
+.show-box .show-ul .show-li{
+    padding: 20px 30px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #f1f1f1;
+    display: flex;
+    justify-content: space-between;
+}
+.show-box .show-ul .show-li .sinner.lf{
+    flex: 1 1 0;
+}
+.show-box .show-ul .show-li .sinner.rg{
+    flex: 0 0 200px;
+    border-left: 2px dashed #eeeeee;
+    box-sizing: border-box;
+    padding-top: 20px;
+    text-align: center;
+}
+.show-box .show-ul .show-li .sinner .s-title{
+    font-size: 22px;
+    color: #394043;
+    line-height: 22px;
+    font-weight: 700;
+    cursor: pointer;
+}
+.show-box .show-ul .show-li .sinner .s-title:hover{
+    color: #1E9FFF;
+}
+.show-box .sinner .s-data-box{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 20px;
+    flex-flow: row wrap;
+}
+.show-box .sinner .s-data-box .s-d-item{
+    flex: 0 0 50%;
+    font-size: 14px;
+    color: #616669;
+    line-height: 16px;
+    margin-bottom: 10px;
+}
+.show-box .sinner .s-data-box .s-d-item .sd-p{
+    display: flex;
+    flex-flow: row nowrap;
+}
+.show-box .sinner .s-data-box .s-d-item .sd-head{
+    flex: 0 0 auto;
+    margin-left: 5px;
+    color: #393D49;
+}
+.show-box .sinner .s-data-box .s-d-item .sd-val{
+    flex: 1 1 0;
+}
+.show-box .sinner .s-data-box .s-d-item .sd-val .link-text{
+    color: #1E9FFF;
+}
+.show-box .sinner .s-data-box .s-d-item .sd-val .link-text:hover{
+    text-decoration: underline;
+}
+.show-box .sinner .s-files-box{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 10px;
+    flex-flow: row nowrap;
+}
+.show-box .sinner .s-files-box .s-f-inner.lf{
+    flex: 0 0 50px;
+    color: #393D49;
+    margin-left: 5px;
+}
+.show-box .sinner .s-files-box .s-f-inner.rg{
+    flex: 1 1 0;
+}
+.show-box .sinner .s-files-box .s-f-inner.rg a{
+    display: block;
+    line-height: 22px;
+    color: #1E9FFF;
+    cursor: pointer;
+}
+.sd-val .downFile a{
+    color: #1E9FFF;
+    cursor: pointer;
+}
+.show-box .sinner .s-files-box .s-f-inner.rg .moreFilesBtn{
+    cursor: pointer;
+}
+.show-box .sinner .s-files-box .s-f-inner.rg a:hover{
+    text-decoration: underline;
+}
+.show-box .show-ul .show-li .s-rg-p{
+    line-height: 30px;
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+.show-box .show-ul .show-li .s-rg-p i{
+    font-size: 22px;
+    position: relative;
+    margin-right: 5px;
+    top:3px;
+}
+.show-box .show-ul .show-li .s-rg-p i.download-icon{
+    font-size: 19px;
+    top:1px;
+}
+.show-box .show-ul .show-li .s-rg-p .s-num{
+    margin-left: 5px;
+    position: relative;
+    top: 1px;
+}
+.collectBtn{
+    margin-top: 25px;
+    line-height: 32px;
+}
+.collectBtn.singleBtn{
+    margin-top: 10px;
+}
+.collectBtn i{
+    font-size: 24px;
+    position: relative;
+    top: 3px;
+}
+.collectBtn.active{
+    background: #009688;
+    color: #fff;
+}
+.collectBtn.active i{
+    color: #fff;
+}
+.pagination{
+    text-align: right;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.data-share-form .file-p{
+    line-height: 25px;
+}
+.data-share-form .file-text{
+    color: #1E9FFF;
+    cursor: pointer;
+}
+.data-share-form  .file-text:hover{
+    text-decoration: underline;
+}
+.data-share-form.layui-form .layui-form-label{
+    width: 210px;
+}
+.data-share-form .check-block{
+    margin-left: 225px;
+}
+.layui-elem-quote .layui-input-inline{
+    width:auto !important;
+}
+/*空内容提示 begin*/
+.empty-note{
+    width: 100%;
+    height: 200px;
+    border: 1px solid #f1f1f1;
+    font-size: 20px;
+    text-align: center;
+    line-height: 200px;
+    color: #9F9F9F;
+    display: none;
+}
+/*空内容提示 end*/

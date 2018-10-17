@@ -1,0 +1,90 @@
+/*顶部固定不动通用*/
+.fixed-w{
+    width: calc(100% - 80px);
+}
+.fixed-bg{
+    background:#fff;
+}
+.fixed {
+    position: fixed;
+    top: 0;
+    z-index: 9999;
+    background-color: #fff;
+}
+/*顶部固定不动*/
+.fixed-y {
+    /*float: left;*/
+    position:fixed;
+    top:68px;
+    /*left:0;*/
+    /*width:100%;*/
+    z-index:1;
+    background:#fff;
+}
+/*左侧固定不动*/
+.fixed-x {
+    /*float: left;*/
+    position:fixed;
+    /*top:0;*/
+    left:0;
+    /*width:100%;*/
+    z-index:1;
+    background:#fff;
+}
+.eiaHrEvalTable th{
+    border: 1px solid #e6e6e6;
+    height: 25px;
+    text-align: center;
+}
+.eiaHrEvalTable td{
+    /*border-top: 1px solid;*/
+    border-bottom: 1px solid #e6e6e6;
+    border-right: 1px solid #e6e6e6;
+    text-align: center;
+}
+.eiaHrEvalTable input{
+    width: 80px;
+    height:103px;
+    /*height:100%;*/
+    padding: 0;
+    text-align: center;
+    border: 0px;
+}
+.eiaHrEvalTable input:disabled{
+    background-color: #fff;
+}
+.eiaHrEvalTable tr th span{
+    border:1px solid #e6e6e6;
+}
+#eiaHrEvalTable{
+    width: auto;
+}
+.eiaHrEvalTable tr th div{
+    display: inline;
+}
+#titleLeft{
+    z-index: 999;
+    position: relative;
+    background-color: #ffffff;
+}
+#rightTitle th{
+    border-left: 0px;
+}
+#perTable th{
+    border-left: 0px;
+}
+#perTable th input{
+    height: 24px;
+}
+.remarkButton{
+    width: 100%;
+    height: 24px;
+    background-color: #009688;
+    border: none;
+    color: #fff;
+}
+.ratingTableFoot td{
+    line-height: 30px;
+    font-weight: bold;
+    padding-left: 10px;
+}

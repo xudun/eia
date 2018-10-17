@@ -1,0 +1,23 @@
+.pub-pro-form.layui-form .layui-form-label{
+    width: 160px;
+}
+.pub-pro-form .layui-input-block{
+    margin-left: 190px;
+}
+.pub-pro-form .action-txt{
+    color: #1E9FFF;
+    cursor: pointer;
+    line-height: 20px;
+    margin-bottom: 5px;
+}
+.pub-pro-form .file-text{
+    color: #1E9FFF;
+    cursor: pointer;
+}
+.pub-pro-form .show-block .action-txt{
+    padding: 9px 4px;
+    line-height: 36px;
+}
+.pub-pro-form  .action-txt:hover{
+    text-decoration: underline;
+}

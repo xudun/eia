@@ -1,0 +1,13 @@
+[{
+  "id": 1,
+  "fileName":"404.gif",
+  "src": "/eia/static/js/layuiFrame/common/images/404.gif"
+}, {
+  "id": 2,
+  "fileName":"icon.png",
+  "src": "/eia/static/js/layuiFrame/common/images/icon.png"
+}, {
+  "id": 3,
+  "fileName":"logo.png",
+  "src": "/eia/static/js/layuiFrame/common/images/logo.png"
+}]

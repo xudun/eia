@@ -1,0 +1,38 @@
+{
+  "projectNo": "LH-TJ-1801-XZ-85-01",
+  "projectName": "天津东方金工表面涂层有限公司现状环境影响评估",
+  "projectMoney": 19.0800,
+  "buildArea": "天津市北辰区双街镇双源科技园龙汇路10号",
+  "coordEast": 	117.179489,
+  "fileType": "类型1",
+  "projectInvestMoney": 1252,
+  "natureConstructio": "新建（迁建）",
+  "projectCode": "aaa",
+  "industryType": "金属表面处理及热处理加工",
+  "environmentaType": "二十二 67 金属制品加工制造",
+  "projectMemo": "天津东方金工表面涂层有限公司始建于2007年，位于天津市北辰区双街镇双源科技园龙汇路10号，坐标为东经117.179489°，北纬39.223676°，租赁天津双源科技园开发有限公司的厂房和办公楼进行生产和办公，租赁面积为3060 m2，建筑面积为3060 m2。具体地理位置详见附图1。天津东方金工表面涂层有限公司主要从事汽车车身外覆盖件冲压模具、汽车及摩托车夹具、检具设计、制造、加工及销售。 公司注册资本1716万元人民币，企业现已投产运行，无相关环保手续。",
+  "productionEngineer": "机加工、镀膜",
+  "productFunction": "汽车车身外覆盖件冲压模具、汽车及摩托车夹具",
+  "ifIndPolicy": false,
+  "inputUser": "刘天真",
+  "projectLeader": "段君峰",
+  "contactName": "张三",
+  "contactPhone": "12312312312",
+  "approveDate": "2018-05-08",
+  "approveDept": "天津市北辰区行政审批局",
+  "approveNo": "津辰环备函【2018】391号",
+  "files": [
+    {
+      "fileName":"天津东方金工表面涂层有限公司现状环境影响评估报告_2018.05.03__最终版.pdf",
+      "fileUrl": "url1"
+    },
+    {
+      "fileName":"天津东方金工表面涂层有限公司现状环境影响评估报告_2018.05.03.docx",
+      "fileUrl": "url2"
+    },
+    {
+      "fileName":"文件文件文件3",
+      "fileUrl": "url3"
+    }
+  ]
+}

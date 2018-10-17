@@ -1,0 +1,34 @@
+{
+  "items": [
+    {
+      "id":"1",
+      "staffId": "11",
+      "staffName": "陈卓艺",
+      "workExecution":"19",
+      "performance":"19",
+      "jobSkill":"19",
+      "workingAttitude":"19",
+      "teamSpirit":"9",
+      "cultureCognition":"9",
+      "finalScore":"99"
+    },
+    {
+      "id":"2",
+      "staffId": "22",
+      "staffName": "陈炜",
+      "workExecution":"18",
+      "performance":"18",
+      "jobSkill":"18",
+      "workingAttitude":"18",
+      "teamSpirit":"8",
+      "cultureCognition":"8",
+      "finalScore":"88"
+    }
+  ],
+  "orgCode":"联合泰泽1",
+  "orgName":"行政管理部1",
+  "assessmentMonth":"2017年081月",
+  "leader":"李晨1",
+  "showType": true,
+  "total": 2
+}
