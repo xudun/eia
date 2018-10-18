@@ -330,18 +330,32 @@ layui.use(['jquery', 'layer', 'form','table'], function () {
                     }
                 });
                 break;
-            case 'highSelect':
-                var curState = $(this).attr('state');
-                switch (curState){
-                    case '0':
-                        $(this).attr('state','1');
-                        queryOpen();
-                        break;
-                    case '1':
-                        $(this).attr('state','0');
-                        queryClose();
-                        break;
-                }
+            case 'projectAdd':
+                pageUrl = '/eia/eiaProjectExplore/eiaProjectExploreCreate?pageType=0';
+                var index = layer.open({
+                    title: ' ',
+                    type: 2,
+                    shade: false,
+                    maxmin: true,
+                    skin: 'larry-green',
+                    area: ['100%', '100%'],
+                    content: pageUrl,
+                    success: function (layero, index) {
+                        var body = layer.getChildFrame('body', index);
+                    },
+                    end: function () {
+                        table.reload("eiaProjectList");
+                        $("#eiaProjectId").val("");
+                        $("#eiaTaskId").val("");
+                        $("#eiaLabOfferId").val("");
+                    },
+                    min: function () {
+
+                    },
+                    restore: function () {
+
+                    }
+                });
                 break;
         }
     });

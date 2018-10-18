@@ -492,6 +492,7 @@ class GeneConstants {
     static String DOMAIN_EIA_STAMP = "EiaStamp"
     static String DOMAIN_EIA_ENV_PROJECT = 'EiaEnvProject'
     static String DOMAIN_EIA_PUB_PROJECT = 'EiaPubProject'
+    static String DOMAIN_EIA_PROJECT_EXPLORE = 'EiaProjectExplore'
     static String DOMAIN_EIA_PLAN_SHOW = 'EiaPlanShow'
     static String DOMAIN_EIA_AREA_INFO = 'EiaAreaInfo'
     static String DOMAIN_EIA_SENS_AREA = 'EiaSensArea'

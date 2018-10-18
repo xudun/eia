@@ -7,7 +7,7 @@ class EiaProjectExplore {
      */
     String projectName
     /***
-     * 项目建设性质
+     * 项目建设性质（新建（迁建）	改扩建	技术改造 ）
      */
     String buildProp
     /**
@@ -19,13 +19,9 @@ class EiaProjectExplore {
      */
     String process
     /**
-     * 建设规模
-     */
-    String buildScale
-    /**
      * 地理位置
      */
-    String location
+    String buildArea
     /**
      * 是否立项
      */
@@ -35,7 +31,7 @@ class EiaProjectExplore {
      */
     String approvalType
     /**
-     * 立项说明
+     * 立项情况说明
      */
     String setInfo
     /**
@@ -63,14 +59,6 @@ class EiaProjectExplore {
      */
     String foreignDir
     /**
-     * 两高一资项目
-     */
-    Boolean ifLgyzxm
-    /**
-     * 情况说明
-     */
-    String lgyzxmInfo
-    /**
      * 卫生防护距离要求（满足，不满足，无要求）
      */
     String sanitaryDistance
@@ -79,6 +67,10 @@ class EiaProjectExplore {
      */
     String parkLayout
     /**
+     * 是否在园区（在，不在，不涉及）
+     */
+    String inPark
+    /**
      * 涉及保护区(生态红线（红线、黄线）、自然保护区、风景名胜区、南水北调、地下水源保护区、地表水源保护区、文物古迹、基本农田保护区、水土流失区、其他保护区、不涉及)
      */
     String involveReserve
@@ -86,6 +78,10 @@ class EiaProjectExplore {
      * 其他敏感目标(军事设施、机场、敏感企业（食品厂）、电力及通讯设备、铁路交通干道、河道洪泛区、其他、不涉及)
      */
     String otherSense
+    /**
+     * 地下水评价等级
+     */
+    String groundWater
     /**
      * 其他问题
      */
@@ -127,8 +123,7 @@ class EiaProjectExplore {
         buildProp nullable:true
         buildContent nullable:true
         process nullable:true
-        buildScale nullable:true
-        location nullable:true
+        buildArea nullable: true
         ifSet nullable:true
         approvalType nullable:true
         setInfo nullable:true
@@ -138,8 +133,8 @@ class EiaProjectExplore {
         hasTotal nullable:true
         industrialDir nullable:true
         foreignDir nullable:true
-        ifLgyzxm nullable:true
-        lgyzxmInfo nullable:true
+        otherIssue nullable:true
+        inPark nullable:true
         sanitaryDistance nullable:true
         parkLayout nullable:true
         involveReserve nullable:true

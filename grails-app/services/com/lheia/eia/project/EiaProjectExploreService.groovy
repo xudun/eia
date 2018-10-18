@@ -1,5 +1,7 @@
 package com.lheia.eia.project
 
+import com.lheia.eia.common.GeneConstants
+import com.lheia.eia.config.EiaDomainCode
 import grails.gorm.transactions.Transactional
 
 @Transactional
@@ -21,6 +23,13 @@ class EiaProjectExploreService {
         dataMap.data = eiaProjectExploreList
         dataMap.total = eiaProjectExploreList.totalCount
         return dataMap
+    }
 
+    /**
+     * 渲染checkbox和select
+     */
+    def getCheckboxAndSelectValue(){
+        def codeList = EiaDomainCode.findAllByParentCode(GeneConstants.DOMAIN_EIA_PROJECT_EXPLORE)
+        return codeList
     }
 }

@@ -36,7 +36,7 @@
 
         <div class="layui-row mt15">
             <div class="layui-col-xs6">
-                %{--                 <div class="layui-form-item">
+                %{--<div class="layui-form-item">
                                              <label class="layui-form-label"><span class="col-f00">*</span>任务名称</label>
 
                                                 <div class="layui-input-block">
@@ -206,7 +206,6 @@
 
         <input type="hidden" name="eiaTaskId" id="eiaTaskId" value="">
         <input type="hidden" name="staffId" id="staffId" value="${session.staff.staffId}">
-
     </form>
 </div>
 

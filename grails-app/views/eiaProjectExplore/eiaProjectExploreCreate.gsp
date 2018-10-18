@@ -3,13 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>项目信息</title>
-    %{--    <link rel="stylesheet" href="js/layuiFrame/common/frame/layui/css/layui.css">
-        <link rel="stylesheet" href="js/layuiFrame/common/css/gobal.css">
-        <link rel="stylesheet" href="stylesheets/common.css">
-        <link rel="stylesheet" href="pagecss/styles.css">--}%
     <meta name="layout" content="main"/>
-    <asset:javascript src="/eiaProject/eiaProjectCreate.js"/>
-    <asset:javascript src="/eiaProject/eiaProjectInputLib.js"/>
+    <asset:javascript src="/eiaProjectExplore/eiaProjectExploreCreate.js"/>
     <asset:stylesheet src="/eiaProject/eiaProjectCreate.css"/>
 </head>
 
@@ -23,189 +18,292 @@
         </fieldset>
     </div>
 
+
+
     <form class="layui-form proCreate">
         <blockquote class="layui-elem-quote larry-btn">
-            项目信息
+            内审信息
             <div class="layui-inline pl12">
                 <div class="layui-btn-group top-group">
-                    <button class="layui-btn saveBtn" lay-submit="" lay-filter="save"><i class="larry-icon">&#xe9d1;</i> 保存</button>
-                    %{--<button type="reset" class="layui-btn layui-btn-primary resetBtn"><i class="larry-icon">&#xe69a;</i> 重置</button>--}%
+                    <button class="layui-btn saveBtn" lay-submit="" lay-filter="save"><i
+                            class="larry-icon">&#xe9d1;</i> 保存</button>
+                    <button type="reset" class="layui-btn layui-btn-primary resetBtn"><i
+                            class="larry-icon">&#xe69a;</i> 重置</button>
                 </div>
             </div>
         </blockquote>
 
+        <fieldset class="layui-elem-field layui-field-title site-title">
+            <legend >
+                <a name="methodRender" class="pageTitle">项目基本情况</a>
+            </legend>
+        </fieldset>
+
         <div class="layui-row mt15">
             <div class="layui-col-xs6">
-                %{--                 <div class="layui-form-item">
-                                             <label class="layui-form-label"><span class="col-f00">*</span>任务名称</label>
-
-                                                <div class="layui-input-block">
-                                                    <select name="taskId" id="taskId" lay-filter="taskId" lay-verify="required" lay-search>
-                                                        <option value="">请选择</option>
-                                                    </select>
-                                                </div>
-                                            </div>--}%
-
                 <div class="layui-form-item">
                     <label class="layui-form-label"><span class="col-f00">*</span>项目名称</label>
-
                     <div class="layui-input-block">
                         <input type="text" id="projectName" name="projectName" class="layui-input" lay-verify="required"
                                value="">
                     </div>
                 </div>
 
-          %{--      <div class="layui-form-item">
-                    <label class="layui-form-label"><span class="col-f00">*</span>主管部门</label>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span class="col-f00">*</span>项目建设性质</label>
 
                     <div class="layui-input-block">
-                        <select name="competentDept" id="competentDept" lay-filter="competentDept" lay-verify="required" lay-search>
+                        <select name="buildProp" id="buildProp" lay-filter="buildProp" lay-verify="required" lay-search>
                             <option value="">请选择</option>
                         </select>
                     </div>
-                    <div class="layui-input-block">
-                        <input type="text" id="competentDepDrop" name="competentDepDrop" class="layui-input"
-                               lay-verify="required" readonly>
-                        <input type="hidden" id="competentDep" name="competentDep" value="">
-                    </div>
-                </div>--}%
+                </div>
+
+
 
                 <div class="layui-form-item">
-                    <label class="layui-form-label"><span class="col-f00">*</span>建设地点</label>
+                    <label class="layui-form-label"><span class="col-f00">*</span>是否立项</label>
 
                     <div class="layui-input-block">
-                        <input type="text" id="buildArea" name="buildArea" class="layui-input" lay-verify="required"
-                               value="">
+                        <select name="ifSet" id="ifSet" lay-filter="ifSet" lay-verify="required" lay-search>
+                            <option value="">请选择</option>
+                        </select>
                     </div>
                 </div>
 
                 <div class="layui-form-item">
-                    <label class="layui-form-label"><span class="col-f00">*</span>建设地点中心坐标E</label>
-
-                    <div class="layui-input-block ">
-                        <input type="text" id="coordEast" name="coordEast" class="layui-input readonly "
-                               value="" readonly>
-                    </div>
-                </div>
-
-                <div class="layui-form-item">
-                    <label class="layui-form-label"><span class="col-f00">*</span>建设地点线性坐标起点E</label>
+                    <label class="layui-form-label"><span class="col-f00">*</span>审批类型</label>
 
                     <div class="layui-input-block">
-                        <input type="text" id="coordStartEast" name="coordStartEast" class="layui-input readonly"
-                               value="" readonly>
-                    </div>
-                </div>
-
-                <div class="layui-form-item">
-                    <label class="layui-form-label"><span class="col-f00">*</span>建设地点线性坐标终点E</label>
-
-                    <div class="layui-input-block">
-                        <input type="text" id="coordEndEast" name="coordEndEast" class="layui-input readonly"
-                               value="" readonly>
+                        <select name="approvalType" id="approvalType" lay-filter="approvalType" lay-verify="required"
+                                lay-search>
+                            <option value="">请选择</option>
+                        </select>
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label"><span class="col-f00">*</span>项目负责人</label>
-                    <div class="layui-input-block">
-                        <select type="text" id="dutyUserList" name="dutyUserList" class="layui-input" lay-verify="required" lay-filter="dutyUserList"  value=""></select>
-                        <input type="hidden" id="dutyUserId" name="dutyUserId" class="layui-input" lay-verify="required" value="">
-                        <input type="hidden" id="dutyUser" name="dutyUser" class="layui-input" lay-verify="required" value="">
+                    <label class="layui-form-label"><span class="col-f00">*</span>改扩建企业存在问题</label>
+
+                    <div class="layui-input-block existProblemGroup">
+                        <input type="hidden" id="existProblemCode" name="existProblemCode" value=""
+                               lay-verify="required">
+                        <input type="hidden" id="existProblem" name="existProblem" value="">
                     </div>
                 </div>
             </div>
 
             <div class="layui-col-xs6">
-                %{--   <div class="layui-form-item">
-                       <label class="layui-form-label"><span class="col-f00">*</span>客户</label>
-
-                       <div class="layui-input-block">
-                           <select name="eiaClientId" id="eiaClientId" lay-verify="required" lay-search>
-                               <option value="">请选择</option>
-                           </select>
-                       </div>
-                   </div>--}%
-
                 <div class="layui-form-item">
-                    <label class="layui-form-label"><span class="col-f00">*</span>文件类型</label>
+                    <label class="layui-form-label"><span class="col-f00">*</span>建设内容规模</label>
 
                     <div class="layui-input-block">
-                        <input type="text" id="fileTypeDrop" name="fileTypeDrop" class="layui-input"
-                               lay-verify="required" readonly>
-                        <input type="hidden" id="fileType" name="fileType" lay-verify="required" value="">
-                    </div>
-                </div>
-
-                <div class="layui-form-item proMonBlock">
-                    <label class="layui-form-label"><span class="col-f00">*</span>项目金额</label>
-
-                    <div class="layui-input-block">
-                        <input type="number" id="projectMoney" name="projectMoney" class="layui-input readonly" readonly
-                               lay-verify="required">
-                    </div>
-
-                    <div class="action-block">
-                        <div class="inner-box unit-box">
-                            <span class="unit">万元</span>
-                        </div>
-
-                        <div class="inner-box action-box">
-                            <i class="larry-icon fillMoneyBtn">&#xe939;</i>
-                            <i class="larry-icon show-tips" id="tips">&#xe740;</i>
-                        </div>
+                        <input type="text" id="buildContent" name="buildContent" class="layui-input"
+                               lay-verify="required" value="">
                     </div>
                 </div>
 
                 <div class="layui-form-item">
-                    <label class="layui-form-label"><span class="col-f00">*</span>建设地点中心坐标N</label>
+                    <label class="layui-form-label"><span class="col-f00">*</span>工艺</label>
 
                     <div class="layui-input-block">
-                        <input type="text" id="coordNorth" name="coordNorth" class="layui-input readonly"
-                               value="" readonly>
+                        <input type="text" id="process" name="process" class="layui-input" lay-verify="required"
+                               value="">
                     </div>
                 </div>
 
                 <div class="layui-form-item">
-                    <label class="layui-form-label"><span class="col-f00">*</span>建设地点线性坐标起点N</label>
+                    <label class="layui-form-label"><span class="col-f00">*</span>地理位置</label>
 
-                    <div class="layui-input-block">
-                        <input type="text" id="coordStartNorth" name="coordStartNorth" class="layui-input readonly"
-                               value="" readonly>
+                    <div class="layui-input-block ">
+                        <input type="text" id="buildArea" name="buildArea" class="layui-input" value="">
                     </div>
                 </div>
 
                 <div class="layui-form-item">
-                    <label class="layui-form-label"><span class="col-f00">*</span>建设地点线性坐标终点N</label>
+                    <label class="layui-form-label"><span class="col-f00">*</span>立项情况说明</label>
 
                     <div class="layui-input-block">
-                        <input type="text" id="coordEndNorth" name="coordEndNorth" class="layui-input readonly"
-                               value="" readonly>
+                        <input type="text" id="setInfo" name="setInfo" class="layui-input" value="">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <fieldset class="layui-elem-field layui-field-title site-title">
+            <legend >
+                <a name="methodRender" class="pageTitle">污染物排放</a>
+            </legend>
+        </fieldset>
+
+        <div class="layui-row mt15">
+            <div class="layui-col-xs6">
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span class="col-f00">*</span>有无排水去向</label>
+
+                    <div class="layui-input-block">
+                        <select name="hasWaterWhere" id="hasWaterWhere" lay-filter="hasWaterWhere" lay-verify="required"
+                                lay-search>
+                            <option value="">请选择</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-xs6">
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span class="col-f00">*</span>有无总量</label>
+
+                    <div class="layui-input-block">
+                        <select name="hasTotal" id="hasTotal" lay-filter="hasTotal" lay-verify="required"
+                                lay-search>
+                            <option value="">请选择</option>
+                        </select>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="layui-row mt15 dynInputs">
-            <div class="layui-col-xs6"></div>
+        <fieldset class="layui-elem-field layui-field-title site-title">
+            <legend >
+                <a name="methodRender" class="pageTitle">产业政策</a>
+            </legend>
+        </fieldset>
 
-            <div class="layui-col-xs6"></div>
+        <div class="layui-row mt15">
+            <div class="layui-col-xs6">
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span class="col-f00">*</span>产业结构指导目录</label>
+                    <div class="layui-input-block">
+                        <select name="industrialDir" id="industrialDir" lay-filter="industrialDir" lay-verify="required"
+                                lay-search>
+                            <option value="">请选择</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-xs6">
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span class="col-f00">*</span>外商投资指导目录</label>
+                    <div class="layui-input-block">
+                        <select name="foreignDir" id="foreignDir" lay-filter="foreignDir" lay-verify="required"
+                                lay-search>
+                            <option value="">请选择</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <fieldset class="layui-elem-field layui-field-title site-title">
+            <legend >
+                <a name="methodRender" class="pageTitle">厂址选择</a>
+            </legend>
+        </fieldset>
+
+        <div class="layui-row mt15">
+            <div class="layui-col-xs6">
+                <div class="layui-form-item">
+                <label class="layui-form-label"><span class="col-f00">*</span>是否在园区</label>
+
+                <div class="layui-input-block">
+                    <select name="inPark" id="inPark" lay-filter="inPark" lay-verify="required"
+                            lay-search>
+                        <option value="">请选择</option>
+                    </select>
+                </div>
+            </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span class="col-f00">*</span>卫生防护距离</label>
+                    <div class="layui-input-block">
+                        <select name="sanitaryDistance" id="sanitaryDistance" lay-filter="sanitaryDistance" lay-verify="required"
+                                lay-search>
+                            <option value="">请选择</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span class="col-f00">*</span>涉及敏感区</label>
+
+                    <div class="layui-input-block checkboxGroup">
+                        <input type="hidden" id="involveReserveCode" name="involveReserveCode" value=""
+                               lay-verify="required">
+                        <input type="hidden" id="involveReserve" name="involveReserve" value="">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-xs6">
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span class="col-f00">*</span>园区产业定位布局要求</label>
+
+                    <div class="layui-input-block">
+                        <select name="parkLayout" id="parkLayout" lay-filter="parkLayout" lay-verify="required"
+                                lay-search>
+                            <option value="">请选择</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span class="col-f00">*</span>其他敏感目标</label>
+
+                    <div class="layui-input-block checkboxGroup">
+                        <input type="hidden" id="otherSenseCode" name="otherSenseCode" value=""
+                               lay-verify="required">
+                        <input type="hidden" id="otherSense" name="otherSense" value="">
+                    </div>
+                </div>
+            </div>
         </div>
 
 
-        <!--项目金额详情-->
-        <input type="hidden" name="projectComfee" id="projectComfee" value="">
-        <input type="hidden" name="groundwaterFee" id="groundwaterFee" value="">
-        <input type="hidden" name="otherFee" id="otherFee" value="">
-        <input type="hidden" name="environmentalFee" id="environmentalFee" value="">
-        <input type="hidden" name="expertFee" id="expertFee" value="">
-        <input type="hidden" name="specialFee" id="specialFee" value="">
-        <input type="hidden" name="detectFee" id="detectFee" value="">
-        <input type="hidden" name="preIssCertFee" id="preIssCertFee" value="">
-        <input type="hidden" name="preSurvCertFee" id="preSurvCertFee" value="">
-        <input type="hidden" name="certServeFee" id="certServeFee" value="">
 
-        <input type="hidden" name="eiaTaskId" id="eiaTaskId" value="">
-        <input type="hidden" name="staffId" id="staffId" value="${session.staff.staffId}">
+
+        <fieldset class="layui-elem-field layui-field-title site-title">
+            <legend >
+                <a name="methodRender" class="pageTitle">资质类别</a>
+            </legend>
+        </fieldset>
+
+        <div class="layui-row mt15">
+            <div class="layui-col-xs6">
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span class="col-f00">* </span>环境影响评价行业类别</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="taskLeaderDept" name="taskLeaderDept" class="layui-input" lay-verify="required" readonly>
+                        <input type="hidden" id="taskLeaderDeptId" name="taskLeaderDeptId" value="">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-xs6">
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span class="col-f00">*</span>地下水评价等级</label>
+                    <div class="layui-input-block">
+                        <select name="groundWater" id="groundWater" lay-filter="groundWater" lay-verify="required"
+                                lay-search>
+                            <option value="">请选择</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <fieldset class="layui-elem-field layui-field-title site-title">
+            <legend >
+                <a name="methodRender" class="pageTitle">其他</a>
+            </legend>
+        </fieldset>
+
+        <div class="layui-row mt15">
+            <div class="layui-col-xs12">
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span class="col-f00">*</span>其他问题</label>
+
+                    <div class="layui-input-block">
+                        <textarea name="otherIssue" id="otherIssue" placeholder="请输入内容" class="layui-textarea"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </form>
 </div>
