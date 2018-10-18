@@ -59,6 +59,7 @@ class HttpMesConstants {
     static String MSG_NO_MATCH_PROVE = '该文件无对应的资质证明！'
     static String MSG_NO_MATCH_COVER = '该文件无对应的封皮！'
     static String MSG_NOT_CHOOSE_PROJECT = '请选择项目并保存，再进行提交'
+    static String MSG_COMMIT_SELF ='此节点不能提交给录入人'
     /**
      * 客户判重
      */

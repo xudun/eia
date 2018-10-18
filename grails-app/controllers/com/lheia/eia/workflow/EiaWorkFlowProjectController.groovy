@@ -76,14 +76,16 @@ class EiaWorkFlowProjectController {
             /** 判断项目金额 */
             def eiaWorkFlowBusi = EiaWorkFlowBusi.findById(Long.valueOf(params.eiaWorkFlowBusiId))
             def eiaProjectId = eiaWorkFlowBusi?.tableNameId
-            def eiaEnvProject = EiaEnvProject.findByEiaProjectId(eiaProjectId)
-            def eiaEneProject = EiaEneProject.findByEiaProjectId(eiaProjectId)
-            def eiaGreenProject = EiaGreenProject.findByEiaProjectId(eiaProjectId)
-            if (!eiaEnvProject && !eiaEneProject && !eiaGreenProject) {
-                render([code: HttpMesConstants.CODE_FAIL, msg: HttpMesConstants.MSG_PROJECT_EXPLORE_IS_NULL] as JSON)
-                return
+            def eiaProject = EiaProject.findByIdAndIfDel(eiaProjectId, false)
+            if (eiaProject.projectTypeCode != 'GREEN') {
+                def eiaEnvProject = EiaEnvProject.findByEiaProjectId(eiaProjectId)
+                def eiaEneProject = EiaEneProject.findByEiaProjectId(eiaProjectId)
+                def eiaGreenProject = EiaGreenProject.findByEiaProjectId(eiaProjectId)
+                if (!eiaEnvProject && !eiaEneProject && !eiaGreenProject) {
+                    render([code: HttpMesConstants.CODE_FAIL, msg: HttpMesConstants.MSG_PROJECT_EXPLORE_IS_NULL] as JSON)
+                    return
+                }
             }
-
             def beforeNextNode = eiaWorkFlowProjectService.beforeNextNode(WorkFlowConstants.NODE_CODE_BZWC, params)
             if (beforeNextNode?.code == HttpMesConstants.CODE_FAIL) {
                 render(beforeNextNode as JSON)
@@ -146,6 +148,10 @@ class EiaWorkFlowProjectController {
                 render([code: HttpMesConstants.CODE_FAIL, msg: HttpMesConstants.MSG_PROJECT_MONEY_IS_NULL] as JSON)
                 return
             }
+            if (params.nodeUserName == eiaWorkFlowBusi.inputUser) {
+                render([code: HttpMesConstants.CODE_FAIL, msg: HttpMesConstants.MSG_COMMIT_SELF] as JSON)
+                return
+            }
             def beforeNextNode = eiaWorkFlowProjectService.beforeNextNode(WorkFlowConstants.NODE_CODE_YS, params)
             if (beforeNextNode?.code == HttpMesConstants.CODE_FAIL) {
                 render(beforeNextNode as JSON)
@@ -201,6 +207,10 @@ class EiaWorkFlowProjectController {
         if (processUrlParams != WorkFlowConstants.NODE_CODE_ES) {
             render([code: HttpMesConstants.CODE_FAIL, msg: HttpMesConstants.MSG_SAVE_FAIL] as JSON)
         } else {
+            if (params.nodeUserName == session.staff.staffName) {
+                render([code: HttpMesConstants.CODE_FAIL, msg: HttpMesConstants.MSG_COMMIT_SELF] as JSON)
+                return
+            }
             def beforeNextNode = eiaWorkFlowProjectService.beforeNextNode(WorkFlowConstants.NODE_CODE_ES, params)
             if (beforeNextNode?.code == HttpMesConstants.CODE_FAIL) {
                 render(beforeNextNode as JSON)
@@ -259,6 +269,10 @@ class EiaWorkFlowProjectController {
         if (processUrlParams != WorkFlowConstants.NODE_CODE_SS) {
             render([code: HttpMesConstants.CODE_FAIL, msg: HttpMesConstants.MSG_SAVE_FAIL] as JSON)
         } else {
+            if (params.nodeUserName == session.staff.staffName) {
+                render([code: HttpMesConstants.CODE_FAIL, msg: HttpMesConstants.MSG_COMMIT_SELF] as JSON)
+                return
+            }
             def beforeNextNode = eiaWorkFlowProjectService.beforeNextNode(WorkFlowConstants.NODE_CODE_SS, params)
             if (beforeNextNode?.code == HttpMesConstants.CODE_FAIL) {
                 render(beforeNextNode as JSON)

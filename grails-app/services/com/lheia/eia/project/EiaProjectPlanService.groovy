@@ -888,6 +888,9 @@ class EiaProjectPlanService {
         busi.authName = params.nodeUserName
         busi.authCode = params.nodeUser
         def proItem = EiaProjectPlanItem.findByIdAndIfDel(params.long('proPlanItemId'), false)
+        proItem.nodeUserName = params.nodeUserName
+        proItem.nodeDeptId = params.long('nodeUserId')
+        proItem.save(flush:true,failOnError:true)
         busi.nodesName = proItem.nodesName
         busi.nodesCode = proItem.nodesCode
         if (proItem.nodesCode in ['LSBZ', 'LS', 'JSPSH', 'BPBSB', 'XMGD', 'SSBZ']) {

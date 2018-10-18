@@ -30,7 +30,7 @@ class EiaWorkFlowStampService {
         def workFlowConfigMap = JsonHandler.jsonToMap(workFlowConfig.workFlowJson)
         def startNode = workFlowConfigMap.workFlowNode[workFlowConfigMap.workFlowNodeDic[startNodeCode]]
         eiaWorkFlowBusi.eiaWorkFlowId = workFlowConfigMap.eiaWorkFlowId
-        eiaWorkFlowBusi.workFlowTitle = DateTransTools.getFormatDateS(eiaStamp.appTime) + eiaStamp.applicant
+        eiaWorkFlowBusi.workFlowTitle = session.staff.orgName + session.staff.staffName+'的申请'
         eiaWorkFlowBusi.workFlowJson = workFlowConfig.workFlowJson
         eiaWorkFlowBusi.workFlowCode = workFlowConfigMap.workFlowCode
         eiaWorkFlowBusi.workFlowName = workFlowConfigMap.workFlowName
