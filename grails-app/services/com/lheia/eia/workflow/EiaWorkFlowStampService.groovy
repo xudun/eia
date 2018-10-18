@@ -30,7 +30,7 @@ class EiaWorkFlowStampService {
         def workFlowConfigMap = JsonHandler.jsonToMap(workFlowConfig.workFlowJson)
         def startNode = workFlowConfigMap.workFlowNode[workFlowConfigMap.workFlowNodeDic[startNodeCode]]
         eiaWorkFlowBusi.eiaWorkFlowId = workFlowConfigMap.eiaWorkFlowId
-        eiaWorkFlowBusi.workFlowTitle = session.staff.orgName + session.staff.staffName+'的申请'
+        eiaWorkFlowBusi.workFlowTitle = (session.staff.orgName.contains('联合泰泽') ? session.staff.orgName.replace('联合泰泽','') : session.staff.orgName) + session.staff.staffName + '的申请'
         eiaWorkFlowBusi.workFlowJson = workFlowConfig.workFlowJson
         eiaWorkFlowBusi.workFlowCode = workFlowConfigMap.workFlowCode
         eiaWorkFlowBusi.workFlowName = workFlowConfigMap.workFlowName
@@ -78,7 +78,7 @@ class EiaWorkFlowStampService {
             eiaWorkFlowBusi.save(flush: true, failOnError: true)
             eiaWorkFlowBusiLog.eiaWorkFlowBusiId = eiaWorkFlowBusi.id
             eiaWorkFlowBusiLog.save(flush: true, failOnError: true)
-        }else{
+        } else {
             eiaWorkFlowBusi.save(flush: true, failOnError: true)
         }
 
