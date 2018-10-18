@@ -60,9 +60,11 @@ class EiaIncomeOutService {
             /**
              * 如果是财务确认开票
              */
-            if(params.accountState){
+            if(params.accountState.equals("1")){
                     eq("accountState",GeneConstants.INVOICE_ACCOUNT_STATE_SUB)
-                }else {
+            }else if(params.accountState.equals("2")){
+                    eq("accountState",GeneConstants.INVOICE_CONFIRM_YES)
+            }else {
                     or{
                         eq("accountState",GeneConstants.INVOICE_ACCOUNT_STATE_NEW)
                         eq("accountState",GeneConstants.INVOICE_BACK)
@@ -84,7 +86,9 @@ class EiaIncomeOutService {
                 map.costTypes =  it?.costTypes?:""
                 def noteIncomeMoneySum = EiaIncomeOut.findAllByIfDelAndContractIdAndCostTypes(false,it.contractId,GeneConstants.INVOICE_TYPE_INCOME)*.noteIncomeMoney.sum()?:0
                 SimpleDateFormat formaDate = new SimpleDateFormat("yyyy-MM-dd");
-                map.noteIncomeDate = formaDate.format(it.noteIncomeDate)
+                if(it.noteIncomeDate){
+                    map.noteIncomeDate = formaDate.format(it.noteIncomeDate)
+                }
                 map.accountState =  it?.accountState?:""
                 map.noteIncomeMoney =  it?.noteIncomeMoney?:""
                 map.inputUser =  it?.inputUser?:""

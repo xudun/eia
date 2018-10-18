@@ -284,6 +284,18 @@ class EiaInvoiceController {
         }
     }
     /**
+     * 财务人员出账信息数目（已确认）
+     * @return
+     */
+    def eiaInvoiceOutCissAlrNum(){
+        def eiaInvoice = eiaInvoiceService.eiaInvoiceOutCissAlrNum(session)
+        if (eiaInvoice) {
+            render([code: HttpMesConstants.CODE_OK, msg: HttpMesConstants.MSG_DEL_OK, data: eiaInvoice] as JSON)
+        } else {
+            render([code: HttpMesConstants.CODE_FAIL, msg: HttpMesConstants.MSG_DEL_FAIL] as JSON)
+        }
+    }
+    /**
      * 根据合同信息查看对应的信息
      */
     def eiaInvoiceList(){

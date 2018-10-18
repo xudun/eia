@@ -37,6 +37,13 @@ layui.use(['jquery', 'layer', 'table', 'element'], function(){
             document.getElementById('czyj').innerText=0;
         }
     });
+    $.post("../eiaInvoice/eiaInvoiceOutCissAlrNum", {}, function (data) {
+        if (data.code == 0) {
+            document.getElementById('czqry').innerText=data.data
+        }else{
+            document.getElementById('czqry').innerText=0;
+        }
+    });
     //参数
     var tabAction = function(tabType){
         var thExpect = [[
@@ -78,6 +85,19 @@ layui.use(['jquery', 'layer', 'table', 'element'], function(){
                 {field:'inputDept',width:'15%', title: '录入部门',align: "center"},
                 {field:'inputUser',width:'15%', title: '录入人',align: "center"},
                 {fixed: 'right', title: '操作',width:'15%',align: "center", toolbar: '#invoiceOutTool',align: "center"}
+            ]],
+            thExpectInoutY = [[
+                {fixed: 'left', title: '序号',width:'6%',align: "center",templet: "#indexTable"},
+                {field:'contractNo',width:'15%', title: '合同编号',align: "center"},
+                {field:'contractName',width:'25%', title: '合同名称',align: "center"},
+                {field:'contractMoney',width:'15%', title: '合同金额(万元)',align: "center"},
+                {field:'incomeMoney',width:'15%', title: '实际收款情况(万元)',align: "center"},
+                {field:'accountState',width:'15%', title: '当前状态',align: "center"},
+                {field:'costTypes',width:'15%', title: '费用类型',align: "center"},
+                {field:'noteIncomeDate',width:'15%', title: '出账时间',align: "center"},
+                {field:'noteIncomeMoney',width:'15%', title: '出账金额(万元)',align: "center"},
+                {field:'inputDept',width:'15%', title: '录入部门',align: "center"},
+                {field:'inputUser',width:'15%', title: '录入人',align: "center"},
             ]],
             thInvoice = [[
                 {fixed: 'left', title: '序号',width:'6%',align: "center",templet: "#indexTable"},
@@ -128,6 +148,10 @@ layui.use(['jquery', 'layer', 'table', 'element'], function(){
             url = "/eia/eiaInvoice/eiaInvoiceAlreadyFinQuery"
             cols = thAlreadyInvoice;
         }else if(tabType==4){
+            tableList = "eiaOutAlreadyList"
+            url = "/eia/eiaIncomeOut/eiaInvoiceOutFinQuery?accountState=2"
+            cols = thExpectInoutY;
+        }else if(tabType==5){
             tableList = "eiaExpectList"
             url = "/eia/eiaAccountExpect/eiaExpectQuery"
             cols = thExpect;
@@ -788,6 +812,14 @@ layui.use(['jquery', 'layer', 'table', 'element'], function(){
         revAlreadySelect: function () {    //合同查询
             var contractName = $("#contractNameA").val();
             table.reload('eiaInvoiceAlreadyList', {
+                where: {
+                    contractName: contractName
+                }
+            });
+        },
+        outSelect: function () {    //合同查询
+            var contractName = $("#contractNameKy").val();
+            table.reload('eiaOutAlreadyList', {
                 where: {
                     contractName: contractName
                 }

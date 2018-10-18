@@ -233,4 +233,9 @@ class FuncConstants {
      * 财务预收预付款费
      */
     static String EIA_TJFX_CWTJFX_CWYJ = 'EIA_TJFX_CWTJFX_CWYJ'
+    /**
+     * 开票出账确认
+     */
+    static String EIA_CWGL_CWRYZWGL_KPCZQR = 'EIA_CWGL_CWRYZWGL_KPCZQR'
+
 }

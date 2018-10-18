@@ -656,7 +656,7 @@ class EiaInvoiceService {
         return  revenueNum
     }
     /**
-     * 财务人员出账信息数目
+     * 财务人员出账信息数目（未确认）
      */
     def eiaInvoiceOutCissNum(session){
         def revenueNum = EiaIncomeOut.countByIfDelAndAccountStateAndInvoiceType(false,GeneConstants.INVOICE_ACCOUNT_STATE_SUB,GeneConstants.INVOICE_TYPE_OUT)
@@ -678,6 +678,33 @@ class EiaInvoiceService {
              */
             else if (session?.staff?.funcCode?.contains(FuncConstants.EIA_CWGL_YWRYZWGL_VIEWSELF)) {
                 revenueNum = EiaIncomeOut.countByIfDelAndAccountStateAndInvoiceTypeAndInputUserId(false,GeneConstants.INVOICE_ACCOUNT_STATE_SUB,GeneConstants.INVOICE_TYPE_OUT,Long.valueOf(session.staff.staffId))
+            }
+        }
+        return  revenueNum
+    }
+    /**
+     * 财务人员出账信息数目（已确认）
+     */
+    def eiaInvoiceOutCissAlrNum(session){
+        def revenueNum = EiaIncomeOut.countByIfDelAndAccountStateAndInvoiceType(false,GeneConstants.INVOICE_CONFIRM_YES,GeneConstants.INVOICE_TYPE_OUT)
+        if (!session?.staff?.funcCode?.contains(FuncConstants.EIA_CWGL_CWRYZWGL_VIEWALL)) {
+            /**
+             * 财务查看本部门财务数据
+             */
+            if (session?.staff?.funcCode?.contains(FuncConstants.EIA_CWGL_CWRYZWGL_VIEWDEPT)) {
+                revenueNum = EiaIncomeOut.countByIfDelAndAccountStateAndInvoiceTypeAndInputDeptCodeLike(false,GeneConstants.INVOICE_CONFIRM_YES,GeneConstants.INVOICE_TYPE_OUT,"%"+ session.staff.orgCode +"%")
+            }
+            /**
+             * 业务查看本部门财务数据
+             */
+            else if (session?.staff?.funcCode?.contains(FuncConstants.EIA_CWGL_YWRYZWGL_VIEWDEPT)) {
+                revenueNum = EiaIncomeOut.countByIfDelAndAccountStateAndInvoiceTypeAndInputDeptCodeLike(false,GeneConstants.INVOICE_CONFIRM_YES,GeneConstants.INVOICE_TYPE_OUT,"%"+ session.staff.orgCode +"%")
+            }
+            /**
+             * 查看本人客户数据
+             */
+            else if (session?.staff?.funcCode?.contains(FuncConstants.EIA_CWGL_YWRYZWGL_VIEWSELF)) {
+                revenueNum = EiaIncomeOut.countByIfDelAndAccountStateAndInvoiceTypeAndInputUserId(false,GeneConstants.INVOICE_CONFIRM_YES,GeneConstants.INVOICE_TYPE_OUT,Long.valueOf(session.staff.staffId))
             }
         }
         return  revenueNum

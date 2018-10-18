@@ -29,7 +29,8 @@
             <li class="layui-this">财务信息</li>
             <li>开票未确认<span class="layui-badge" id="kpqr"></span></li>
             <li>出账未确认<span class="layui-badge" id="czqr"></span></li>
-            <li>开票已确认<span class="layui-badge" id="czyqr"></span></li>
+            <li>开票已确认 <span class="layui-badge" id="czyqr"></span></li>
+            <li>出账已确认<span class="layui-badge" id="czqry"></span></li>
             <g:if test="${isExcpet}">
                 <li>预计未确认<span class="layui-badge" id="czyj"></span></li>
             </g:if>
@@ -121,6 +122,27 @@
                 <!--列表-->
                 <div class="layui-col-lg12 layui-col-md12 layui-col-sm12 layui-col-xs12">
                     <table id="eiaInvoiceAlreadyList" lay-filter="eiaInvoiceAlreadyList"></table>
+                </div>
+            </div>
+            <!--出账已确信息-->
+            <div class="layui-tab-item">
+                <!--查询及添加框-->
+                <blockquote class="layui-elem-quote larry-btn">
+                    <g:if test="${session.staff.funcCode.contains(FuncConstants.EIA_HGGL_HTCX_QUERY)}">
+                        <div class="layui-inline">
+                            <div class="layui-input-inline">
+                                <input type="text" name="contractName" value="" id="contractNameKy" placeholder="合同名称、合同编号、录入部门、录入人" class="layui-input larry-search-input">
+                            </div>
+                            <div class="layui-btn-group top-group">
+                                <a class="layui-btn search_btn pl12" data-type="outSelect"><i class="larry-icon">&#xe939;</i> 查询</a>
+                            </div>
+                        </div>
+                    </g:if>
+                </blockquote>
+
+                <!--列表-->
+                <div class="layui-col-lg12 layui-col-md12 layui-col-sm12 layui-col-xs12">
+                    <table id="eiaOutAlreadyList" lay-filter="eiaOutAlreadyList"></table>
                 </div>
             </div>
             <!--预计财务信息-->
