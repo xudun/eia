@@ -7,20 +7,12 @@ layui.use(['jquery', 'layer', 'form','table'], function () {
         form = layui.form,
         table = layui.table;
 
-    var viewType = getParamFromUrl(document.location.href, "viewType");
-    if (!viewType) {
-        viewType = "";
-    }
-    var idStrList = getParamFromUrl(document.location.href, "idStrList");
-    if (!idStrList) {
-        idStrList = "";
-    }
 
     //渲染表格
     table.render({
         id: 'eiaProjectList',
         elem: '#eiaProjectList',
-        url: '/eia/eiaProject/getEiaProjectDataList?viewType=' + viewType + "&idStrList=" + idStrList,
+        url: '/eia/eiaProjectExplore/eiaProjectExploreQueryPage',
         toolbar: '#tableTopTmp',
         defaultToolbar:['filter', 'print', 'exports'],
         cols: [[
