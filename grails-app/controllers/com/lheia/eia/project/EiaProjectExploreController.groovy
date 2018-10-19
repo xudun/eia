@@ -27,6 +27,10 @@ class EiaProjectExploreController {
         }
     }
 
+    /***
+     * 保存
+     * @return
+     */
     def eiaProjectExploreSave(){
         def dataMap =  eiaProjectExploreService.eiaProjectExploreSave(params,session)
         if (dataMap) {
