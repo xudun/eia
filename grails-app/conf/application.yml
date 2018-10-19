@@ -12,7 +12,7 @@ info:
     app:
         name: 'eia'
         version: '0.1'
-        grailsVersion: '3.3.6'
+        grailsVersion: '3.3.8'
 spring:
     main:
         banner-mode: "off"
