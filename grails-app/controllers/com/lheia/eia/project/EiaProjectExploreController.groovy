@@ -26,7 +26,14 @@ class EiaProjectExploreController {
             render([code: HttpMesConstants.CODE_FAIL, msg: HttpMesConstants.MSG_DATA_NULL] as JSON)
         }
     }
-
+    def getEiaProjectExploreDataMap(){
+        def dataMap =  eiaProjectExploreService.getEiaProjectExploreDataMap(params)
+        if (dataMap) {
+            render([code: HttpMesConstants.CODE_OK,  data: dataMap] as JSON)
+        } else {
+            render([code: HttpMesConstants.CODE_FAIL, msg: HttpMesConstants.MSG_DATA_NULL] as JSON)
+        }
+    }
     /***
      * 保存
      * @return

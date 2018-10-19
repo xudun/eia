@@ -52,14 +52,7 @@ layui.use(['jquery', 'layer', 'form','table'], function () {
     //监听工具条
     table.on('tool(eiaProjectList)', function (obj) {
         var data = obj.data;
-        var eiaProjectId = data.id;
-        var gisProjectId = data.gisProjectId;
-        $('#eiaProjectId').val(eiaProjectId);
-        $('#tableNameId').val(eiaProjectId);
-        $('#eiaTaskId').val(data.eiaTaskId);
-        $('#gisProjectId').val(data.gisProjectId);
-        $('#eiaLabOfferId').val(data.eiaLabOfferId);
-        $('#proPlanId').val(data.proPlanId);
+        var eiaProjectExploreId = data.id
        if (obj.event === 'projectDel') {    //删除
             layer.confirm('确定要删除该项目吗?', {icon: 3}, function (index) {
                 var loadingIndex = layer.load(1, {time: 10*1000,shade: 0.1});
@@ -115,7 +108,7 @@ layui.use(['jquery', 'layer', 'form','table'], function () {
             });
         }
         else if (obj.event == 'projectEdit') {
-            pageUrl = '/eia/eiaProject/eiaProjectCreate?eiaProjectId=' + eiaProjectId + '&pageType=1';
+            pageUrl = '/eia/eiaProjectExplore/eiaProjectExploreCreate?eiaProjectExploreId=' + eiaProjectExploreId + '&pageType=edit';
 
             var index = layer.open({
                 title: ' ',
@@ -126,17 +119,9 @@ layui.use(['jquery', 'layer', 'form','table'], function () {
                 area: ['100%', '100%'],
                 content: pageUrl,
                 success: function (layero, index) {
-                    /*        var body = layer.getChildFrame('body', index);
-                    body.find('#eiaProjectId').val(data.eiaProjectId);
-                $('#eiaTaskId').val(data.eiaTaskId);
-                    body.find('#eiaTaskId').val(data.eiaProjectId);*/
                 },
                 end: function () {
                     table.reload('eiaProjectList');
-                    $('#eiaProjectId').val("");
-                    $('#tableNameId').val("");
-                    $('#eiaTaskId').val("");
-                    $('#eiaLabOfferId').val("");
                 },
                 min: function () {
 

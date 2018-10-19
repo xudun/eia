@@ -92,6 +92,7 @@ class EiaProjectExplore {
      */
     String otherSense
     String otherSenseCode
+    String otherSenseInfo
     /**
      * 地下水评价等级
      */
@@ -180,5 +181,6 @@ class EiaProjectExplore {
         environmentaTypeCode nullable:true
         environmentaTypeDesc nullable:true
         exploreNo nullable:true
+        otherSenseInfo nullable:true
     }
 }

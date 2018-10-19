@@ -34,6 +34,13 @@ class EiaProjectExploreService {
     }
 
     /***
+     * 获取内审单数据
+     */
+    def getEiaProjectExploreDataMap(params){
+        Long eiaProjectExploreId = params.long("eiaProjectExploreId")
+        return EiaProjectExplore.findByIdAndIfDel(eiaProjectExploreId,false)
+    }
+    /***
      * 保存数据
      */
     def eiaProjectExploreSave(params,session){
