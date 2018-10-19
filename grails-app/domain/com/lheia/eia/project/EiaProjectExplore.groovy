@@ -39,6 +39,10 @@ class EiaProjectExplore {
      */
     String existProblem
     /**
+     * 改扩建企业是否存在问题编码
+     */
+    String existProblemCode
+    /**
      * 有无排水去向（有、无、不排水）
      */
     String hasWaterWhere
@@ -74,10 +78,12 @@ class EiaProjectExplore {
      * 涉及保护区(生态红线（红线、黄线）、自然保护区、风景名胜区、南水北调、地下水源保护区、地表水源保护区、文物古迹、基本农田保护区、水土流失区、其他保护区、不涉及)
      */
     String involveReserve
+    String involveReserveCode
     /**
      * 其他敏感目标(军事设施、机场、敏感企业（食品厂）、电力及通讯设备、铁路交通干道、河道洪泛区、其他、不涉及)
      */
     String otherSense
+    String otherSenseCode
     /**
      * 地下水评价等级
      */
@@ -128,17 +134,21 @@ class EiaProjectExplore {
         approvalType nullable:true
         setInfo nullable:true
         existProblem nullable:true
+        existProblemCode nullable:true
         hasWaterWhere nullable:true
         hasEnvironmentCap nullable:true
         hasTotal nullable:true
         industrialDir nullable:true
         foreignDir nullable:true
         otherIssue nullable:true
+        otherIssue nullable:true
         inPark nullable:true
         sanitaryDistance nullable:true
         parkLayout nullable:true
         involveReserve nullable:true
+        involveReserveCode nullable:true
         otherSense nullable:true
+        otherSenseCode nullable:true
         inputDept nullable:true
         inputDeptId nullable:true
         inputDeptCode nullable:true
