@@ -48,3 +48,4 @@ function getParamByUrl(url){
     }
     return param;
 }
+var params = getParamByUrl(location.href)
