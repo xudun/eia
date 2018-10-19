@@ -28,9 +28,9 @@ class EiaProjectExploreController {
     }
 
     def eiaProjectExploreSave(){
-        def dataMap =  eiaProjectExploreService.eiaProjectExploreQueryPage(params,session)
+        def dataMap =  eiaProjectExploreService.eiaProjectExploreSave(params,session)
         if (dataMap) {
-            render([code: HttpMesConstants.CODE_OK, count: dataMap.total, data: dataMap.data] as JSON)
+            render([code: HttpMesConstants.CODE_OK,  data: dataMap] as JSON)
         } else {
             render([code: HttpMesConstants.CODE_FAIL, msg: HttpMesConstants.MSG_DATA_NULL] as JSON)
         }

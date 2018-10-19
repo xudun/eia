@@ -44,7 +44,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label"><span class="col-f00">*</span>项目名称</label>
                     <div class="layui-input-block">
-                        <input type="text" id="projectName" name="projectName" class="layui-input" lay-verify="required"
+                        <input type="text" id="projectName" name="projectName" class="layui-input" ly-verify="required"
                                value="">
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                     <label class="layui-form-label"><span class="col-f00">*</span>项目建设性质</label>
 
                     <div class="layui-input-block">
-                        <select name="buildProp" id="buildProp" lay-filter="buildProp" lay-verify="required" lay-search>
+                        <select name="buildProp" id="buildProp" lay-filter="buildProp" ly-verify="required" lay-search>
                             <option value="">请选择</option>
                         </select>
                     </div>
@@ -65,31 +65,30 @@
                     <label class="layui-form-label"><span class="col-f00">*</span>是否立项</label>
 
                     <div class="layui-input-block">
-                        <select name="ifSet" id="ifSet" lay-filter="ifSet" lay-verify="required" lay-search>
+                        <select name="ifSet" id="ifSet" lay-filter="ifSet" ly-verify="required" lay-search>
                             <option value="">请选择</option>
                         </select>
                     </div>
                 </div>
 
-                <div class="layui-form-item">
-                    <label class="layui-form-label"><span class="col-f00">*</span>审批类型</label>
 
-                    <div class="layui-input-block">
-                        <select name="approvalType" id="approvalType" lay-filter="approvalType" lay-verify="required"
-                                lay-search>
-                            <option value="">请选择</option>
-                        </select>
-                    </div>
-                </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label"><span class="col-f00">*</span>改扩建企业存在问题</label>
 
                     <div class="layui-input-block existProblemGroup">
                         <input type="hidden" id="existProblemCode" name="existProblemCode" value=""
-                               lay-verify="required">
+                               ly-verify="required">
                         <input type="hidden" id="existProblem" name="existProblem" value="">
                     </div>
                 </div>
+
+                <div class="layui-form-item display-none" id="existProblemQT">
+                    <label class="layui-form-label"><span class="col-f00">*</span>改扩建企业存在问题说明</label>
+                    <div class="layui-input-block">
+                        <textarea name="existProblemInfo" id="existProblemInfo" placeholder="请输入内容" class="layui-textarea"></textarea>
+                    </div>
+                </div>
+
             </div>
 
             <div class="layui-col-xs6">
@@ -98,7 +97,7 @@
 
                     <div class="layui-input-block">
                         <input type="text" id="buildContent" name="buildContent" class="layui-input"
-                               lay-verify="required" value="">
+                               ly-verify="required" value="">
                     </div>
                 </div>
 
@@ -106,7 +105,7 @@
                     <label class="layui-form-label"><span class="col-f00">*</span>工艺</label>
 
                     <div class="layui-input-block">
-                        <input type="text" id="process" name="process" class="layui-input" lay-verify="required"
+                        <input type="text" id="process" name="process" class="layui-input" ly-verify="required"
                                value="">
                     </div>
                 </div>
@@ -119,11 +118,20 @@
                     </div>
                 </div>
 
-                <div class="layui-form-item">
-                    <label class="layui-form-label"><span class="col-f00">*</span>立项情况说明</label>
+                <div class="layui-form-item display-none" id="ifSetYES">
+                    <label class="layui-form-label"><span class="col-f00">*</span>审批类型</label>
 
                     <div class="layui-input-block">
-                        <input type="text" id="setInfo" name="setInfo" class="layui-input" value="">
+                        <select name="approvalType" id="approvalType" lay-filter="approvalType" ly-verify="required"
+                                lay-search>
+                            <option value="">请选择</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item display-none" id="ifSetNO">
+                    <label class="layui-form-label"><span class="col-f00">*</span>立项情况说明</label>
+                    <div class="layui-input-block">
+                        <textarea name="setInfo" id="setInfo" placeholder="请输入内容" class="layui-textarea"></textarea>
                     </div>
                 </div>
 
@@ -142,7 +150,7 @@
                     <label class="layui-form-label"><span class="col-f00">*</span>有无排水去向</label>
 
                     <div class="layui-input-block">
-                        <select name="hasWaterWhere" id="hasWaterWhere" lay-filter="hasWaterWhere" lay-verify="required"
+                        <select name="hasWaterWhere" id="hasWaterWhere" lay-filter="hasWaterWhere" ly-verify="required"
                                 lay-search>
                             <option value="">请选择</option>
                         </select>
@@ -154,7 +162,7 @@
                     <label class="layui-form-label"><span class="col-f00">*</span>有无总量</label>
 
                     <div class="layui-input-block">
-                        <select name="hasTotal" id="hasTotal" lay-filter="hasTotal" lay-verify="required"
+                        <select name="hasTotal" id="hasTotal" lay-filter="hasTotal" ly-verify="required"
                                 lay-search>
                             <option value="">请选择</option>
                         </select>
@@ -174,7 +182,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label"><span class="col-f00">*</span>产业结构指导目录</label>
                     <div class="layui-input-block">
-                        <select name="industrialDir" id="industrialDir" lay-filter="industrialDir" lay-verify="required"
+                        <select name="industrialDir" id="industrialDir" lay-filter="industrialDir" ly-verify="required"
                                 lay-search>
                             <option value="">请选择</option>
                         </select>
@@ -185,7 +193,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label"><span class="col-f00">*</span>外商投资指导目录</label>
                     <div class="layui-input-block">
-                        <select name="foreignDir" id="foreignDir" lay-filter="foreignDir" lay-verify="required"
+                        <select name="foreignDir" id="foreignDir" lay-filter="foreignDir" ly-verify="required"
                                 lay-search>
                             <option value="">请选择</option>
                         </select>
@@ -206,7 +214,7 @@
                 <label class="layui-form-label"><span class="col-f00">*</span>是否在园区</label>
 
                 <div class="layui-input-block">
-                    <select name="inPark" id="inPark" lay-filter="inPark" lay-verify="required"
+                    <select name="inPark" id="inPark" lay-filter="inPark" ly-verify="required"
                             lay-search>
                         <option value="">请选择</option>
                     </select>
@@ -215,7 +223,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label"><span class="col-f00">*</span>卫生防护距离</label>
                     <div class="layui-input-block">
-                        <select name="sanitaryDistance" id="sanitaryDistance" lay-filter="sanitaryDistance" lay-verify="required"
+                        <select name="sanitaryDistance" id="sanitaryDistance" lay-filter="sanitaryDistance" ly-verify="required"
                                 lay-search>
                             <option value="">请选择</option>
                         </select>
@@ -227,7 +235,7 @@
 
                     <div class="layui-input-block checkboxGroup">
                         <input type="hidden" id="involveReserveCode" name="involveReserveCode" value=""
-                               lay-verify="required">
+                               ly-verify="required">
                         <input type="hidden" id="involveReserve" name="involveReserve" value="">
                     </div>
                 </div>
@@ -237,7 +245,7 @@
                     <label class="layui-form-label"><span class="col-f00">*</span>园区产业定位布局要求</label>
 
                     <div class="layui-input-block">
-                        <select name="parkLayout" id="parkLayout" lay-filter="parkLayout" lay-verify="required"
+                        <select name="parkLayout" id="parkLayout" lay-filter="parkLayout" ly-verify="required"
                                 lay-search>
                             <option value="">请选择</option>
                         </select>
@@ -248,8 +256,14 @@
 
                     <div class="layui-input-block checkboxGroup">
                         <input type="hidden" id="otherSenseCode" name="otherSenseCode" value=""
-                               lay-verify="required">
+                               ly-verify="required">
                         <input type="hidden" id="otherSense" name="otherSense" value="">
+                    </div>
+                </div>
+                <div class="layui-form-item display-none" id="otherSenseQT">
+                    <label class="layui-form-label"><span class="col-f00">*</span>其他敏感目标说明</label>
+                    <div class="layui-input-block">
+                        <textarea name="otherSenseInfo" id="otherSenseInfo" placeholder="请输入内容" class="layui-textarea"></textarea>
                     </div>
                 </div>
             </div>
@@ -269,8 +283,8 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label"><span class="col-f00">* </span>环境影响评价行业类别</label>
                     <div class="layui-input-block">
-                        <input type="text" id="taskLeaderDept" name="taskLeaderDept" class="layui-input" lay-verify="required" readonly>
-                        <input type="hidden" id="taskLeaderDeptId" name="taskLeaderDeptId" value="">
+                        <input type="text" id="environmentaTypeDrop" name="environmentaTypeDrop" class="layui-input" ly-verify="required" readonly>
+                        <input type="hidden" id="environmentaType" name="environmentaType" value="">
                     </div>
                 </div>
             </div>
@@ -278,7 +292,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label"><span class="col-f00">*</span>地下水评价等级</label>
                     <div class="layui-input-block">
-                        <select name="groundWater" id="groundWater" lay-filter="groundWater" lay-verify="required"
+                        <select name="groundWater" id="groundWater" lay-filter="groundWater" ly-verify="required"
                                 lay-search>
                             <option value="">请选择</option>
                         </select>

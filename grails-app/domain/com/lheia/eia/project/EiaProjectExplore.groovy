@@ -7,6 +7,10 @@ class EiaProjectExplore {
      */
     String projectName
     /***
+     * 内审单编号
+     */
+    String exploreNo
+    /***
      * 项目建设性质（新建（迁建）	改扩建	技术改造 ）
      */
     String buildProp
@@ -42,6 +46,10 @@ class EiaProjectExplore {
      * 改扩建企业是否存在问题编码
      */
     String existProblemCode
+    /**
+     * 改扩建企业是否存在问题 其他情況説明
+     */
+    String existProblemInfo
     /**
      * 有无排水去向（有、无、不排水）
      */
@@ -88,6 +96,18 @@ class EiaProjectExplore {
      * 地下水评价等级
      */
     String groundWater
+    /**
+     * 环境影响评价行业类别全称
+     */
+    String environmentaType
+    /**
+     * 环境影响评价行业类别Code
+     */
+    String environmentaTypeCode
+    /**
+     * 环境影响评价行业类别
+     */
+    String environmentaTypeDesc
     /**
      * 其他问题
      */
@@ -155,5 +175,10 @@ class EiaProjectExplore {
         inputUserId nullable:true
         dateCreated nullable:true
         lastUpdated nullable:true
+        existProblemInfo nullable:true
+        environmentaType nullable:true
+        environmentaTypeCode nullable:true
+        environmentaTypeDesc nullable:true
+        exploreNo nullable:true
     }
 }
