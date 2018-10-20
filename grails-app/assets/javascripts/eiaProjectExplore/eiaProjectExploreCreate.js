@@ -60,14 +60,14 @@ layui.use(['jquery', 'layer', 'form', 'element'], function () {
     form.on('select(ifSet)', function (data) {
         if (data.value == "YES") {
             $("#ifSetNO").addClass("display-none");
-            $("#ifSetNO").find("input").removeAttr("lay-verify")
+            $("#ifSetNO").find("textarea").removeAttr("lay-verify")
             $("#ifSetYES").removeClass("display-none");
-            $("#ifSetYES").find("input").attr("lay-verify", 'required')
+            $("#ifSetYES").find("select").attr("lay-verify", 'required')
         } else if (data.value == "NO") {
             $("#ifSetYES").addClass("display-none");
-            $("#ifSetYES").find("input").removeAttr("lay-verify");
+            $("#ifSetYES").find("select").removeAttr("lay-verify");
             $("#ifSetNO").removeClass("display-none");
-            $("#ifSetNO").find("input").attr("lay-verify", 'required')
+            $("#ifSetNO").find("textarea").attr("lay-verify", 'required')
         }
         form.render('select')
     });
@@ -123,6 +123,19 @@ layui.use(['jquery', 'layer', 'form', 'element'], function () {
                     $("#environmentaTypeDrop").val(data[key])
                 }
                 $("#" + key).val(data[key])
+                if(key == "ifSet")
+                if (data[key] == "YES") {
+                    $("#ifSetNO").addClass("display-none");
+                    $("#ifSetNO").find("textarea").removeAttr("lay-verify")
+                    $("#ifSetYES").removeClass("display-none");
+                    $("#ifSetYES").find("select").attr("lay-verify", 'required')
+                } else if (data[key] == "NO") {
+                    $("#ifSetYES").addClass("display-none");
+                    $("#ifSetYES").find("select").removeAttr("lay-verify");
+                    $("#ifSetNO").removeClass("display-none");
+                    $("#ifSetNO").find("textarea").attr("lay-verify", 'required')
+                }
+                form.render('select')
             }
             form.render('select')
         })

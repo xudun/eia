@@ -17,7 +17,7 @@ class EiaProjectExploreService {
             limit = params.int('limit')
         }
         def eiaProjectExploreList = EiaProjectExplore.createCriteria().list(max: limit, offset: page * limit) {
-
+            eq("ifDel",false)
         }
         def dataMap = [:]
         dataMap.data = eiaProjectExploreList
@@ -34,13 +34,13 @@ class EiaProjectExploreService {
     }
 
     /**
-     * 合同提交
+     * 外审提交
      * @param eiaContractId
      */
-    def eiaProjectExploreSub(eiaContractId) {
-        def eiaContract = EiaProjectExplore.findByIdAndIfDel(eiaContractId, false)
-        eiaContract.ifSub = true
-        eiaContract.save(flush: true, failOnError: true)
+    def eiaProjectExploreSub(eiaProjectExploreId) {
+        def eiaProjectExplore = EiaProjectExplore.findByIdAndIfDel(eiaContractId, false)
+        eiaProjectExplore.ifSub = true
+        eiaProjectExplore.save(flush: true, failOnError: true)
     }
 
     /***
@@ -84,7 +84,7 @@ class EiaProjectExploreService {
         def eiaProjectExplore
         if(params.eiaProjectExploreId){
             Long eiaProjectExploreId = Long.valueOf(params.eiaProjectExploreId)
-            eiaProjectExplore = EiaProjectExplore.findByIdAndIfDel(eiaProjectExploreId)
+            eiaProjectExplore = EiaProjectExplore.findByIdAndIfDel(eiaProjectExploreId,false)
         }else{
             eiaProjectExplore = new EiaProjectExplore()
             eiaProjectExplore.inputDept = session.staff.orgName

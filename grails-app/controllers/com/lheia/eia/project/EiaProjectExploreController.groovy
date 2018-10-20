@@ -44,7 +44,8 @@ class EiaProjectExploreController {
             render([code: HttpMesConstants.CODE_FAIL, msg: HttpMesConstants.MSG_DATA_NULL] as JSON)
         }
     }
-    /*****/
+
+    /**删除***/
     def eiaProjectExploreDel(){
         def dataMap =  eiaProjectExploreService.eiaProjectExploreDel(params)
         if (dataMap) {

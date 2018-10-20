@@ -266,7 +266,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label"><span class="col-f00">* </span>环境影响评价行业类别</label>
                     <div class="layui-input-block">
-                        <input type="text" id="environmentaTypeDrop" name="environmentaTypeDrop" class="layui-input" lay-verify="required" readonly>
+                        <input type="text" id="environmentaTypeDrop" name="environmentaTypeDrop" class="layui-input" lay-verify="required" value="" readonly>
                         <input type="hidden" id="environmentaType" name="environmentaType" value="">
                     </div>
                 </div>
