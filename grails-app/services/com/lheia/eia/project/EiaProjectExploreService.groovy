@@ -33,12 +33,49 @@ class EiaProjectExploreService {
         return codeList
     }
 
+    /**
+     * 合同提交
+     * @param eiaContractId
+     */
+    def eiaProjectExploreSub(eiaContractId) {
+        def eiaContract = EiaProjectExplore.findByIdAndIfDel(eiaContractId, false)
+        eiaContract.ifSub = true
+        eiaContract.save(flush: true, failOnError: true)
+    }
+
     /***
      * 获取内审单数据
      */
     def getEiaProjectExploreDataMap(params){
         Long eiaProjectExploreId = params.long("eiaProjectExploreId")
         return EiaProjectExplore.findByIdAndIfDel(eiaProjectExploreId,false)
+    }
+    /***
+     * 获取内审单数据
+     */
+    def eiaProjectExploreDel(params){
+        Long eiaProjectExploreId = params.long("eiaProjectExploreId")
+        def eiaProjectExplore  = EiaProjectExplore.findByIdAndIfDel(eiaProjectExploreId,false)
+        eiaProjectExplore.ifDel = true
+        eiaProjectExplore.save(flush: true, failOnError: true)
+    }
+
+    /***
+     * 获取内审单数据
+     */
+    def getEiaProjectExploreDataMapDomainCode(params){
+        Long eiaProjectExploreId = params.long("eiaProjectExploreId")
+        def eiaProjectExplore  = EiaProjectExplore.findByIdAndIfDel(eiaProjectExploreId,false)
+        def resMap = [:]
+        resMap.putAll(eiaProjectExplore.properties)
+        /**替换select编码***/
+        eiaProjectExplore.properties.each{
+            def eiaDomainCode =  EiaDomainCode.findByParentCodeAndDomainAndCodeAndCodeRemark(GeneConstants.DOMAIN_EIA_PROJECT_EXPLORE,it.key,it.value,"select")
+            if(eiaDomainCode){
+                resMap[it.key] =eiaDomainCode.codeDesc
+            }
+        }
+        return resMap
     }
     /***
      * 保存数据

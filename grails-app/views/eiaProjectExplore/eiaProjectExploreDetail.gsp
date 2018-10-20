@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>项目信息</title>
     <meta name="layout" content="main"/>
-    <asset:javascript src="/eiaProjectExplore/eiaProjectExploreCreate.js"/>
+    <asset:javascript src="/eiaProjectExplore/eiaProjectExploreDetail.js"/>
     <asset:stylesheet src="/eiaProject/eiaProjectCreate.css"/>
     <style>
     .proCreateExp.layui-form .layui-form-label{width: 155px;}

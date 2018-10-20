@@ -118,6 +118,10 @@ class EiaProjectExplore {
      */
     Boolean ifDel = false
     /**
+     * 是否提交
+     */
+    Boolean ifSub = false
+    /**
      * 录入部门
      */
     String inputDept
@@ -182,5 +186,6 @@ class EiaProjectExplore {
         environmentaTypeDesc nullable:true
         exploreNo nullable:true
         otherSenseInfo nullable:true
+        ifSub nullable:true
     }
 }

@@ -54,9 +54,9 @@ layui.use(['jquery', 'layer', 'form','table'], function () {
         var data = obj.data;
         var eiaProjectExploreId = data.id
        if (obj.event === 'projectDel') {    //删除
-            layer.confirm('确定要删除该项目吗?', {icon: 3}, function (index) {
+            layer.confirm('确定要删除该内审单吗?', {icon: 3}, function (index) {
                 var loadingIndex = layer.load(1, {time: 10*1000,shade: 0.1});
-                $.post("../eiaProject/eiaProjectDel", {eiaProjectId: data.id}, function (data) {
+                $.post("../eiaProjectExplore/eiaProjectExploreDel", {eiaProjectExploreId: data.id}, function (data) {
                     if (data.code == 0) {
                         layer.msg('删除成功！', {icon: 1, time: 1500,shade: 0.1}, function () {
                             obj.del();
@@ -79,9 +79,7 @@ layui.use(['jquery', 'layer', 'form','table'], function () {
 
         }
         else if (obj.event === 'projectDetail') {    //查看
-            pageUrl = '/eia/eiaProject/eiaProjectDetail?eiaProjectId=' + eiaProjectId;
-            $("#eiaProjectId").val(data.id);
-            $("#tableNameId").val(data.id);
+            pageUrl = '/eia/eiaProjectExplore/eiaProjectExploreDetail?eiaProjectExploreId=' + eiaProjectExploreId;
             var index = layer.open({
                 title: ' ',
                 type: 2,
@@ -96,8 +94,6 @@ layui.use(['jquery', 'layer', 'form','table'], function () {
                 },
                 end: function () {
                     table.reload("eiaProjectList");
-                    $('#eiaClientId').val("");
-                    $('#eiaTaskId').val("");
                 },
                 min: function () {
                     $(".layui-layer-title").text("查看客户");
