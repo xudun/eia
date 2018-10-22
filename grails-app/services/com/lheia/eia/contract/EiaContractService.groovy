@@ -37,11 +37,31 @@ class EiaContractService {
      * @return
      */
     def eiaContractQueryPage(params, session) {
+        println("params = " + params)
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd")
         int page
         int limit
         if (params.page && params.limit) {
             page = params.int('page') - 1
             limit = params.int('limit')
+        }
+        /** 合同是否归档 */
+        def ifArc = params.ifArc
+        def arcContractIds
+        if (ifArc) {
+            def eiaWorkFlowBusiList = EiaWorkFlowBusi.createCriteria().list() {
+                eq('tableName', 'EiaContract')
+                if (ifArc == '是') {
+                    eq('workFlowState', WorkFlowConstants.WORKFLOW_END)
+                } else if (ifArc == '否') {
+                    ne('workFlowState', WorkFlowConstants.WORKFLOW_END)
+                }
+                eq('inputUserId', Long.valueOf(session.staff.staffId))
+                eq('ifDel', false)
+            }
+            if (eiaWorkFlowBusiList) {
+                arcContractIds = eiaWorkFlowBusiList.tableNameId
+            }
         }
         def eiaContractList = EiaContract.createCriteria().list(max: limit, offset: page * limit) {
             def contractName = params.contractName
@@ -60,6 +80,54 @@ class EiaContractService {
                         like("taskAssignUser", "%" + session.staff.staffName+"_"+session.staff.staffId + "%")
                     }
                 }
+            }
+            /** 合同受托方 */
+            def contractTrust = params.contractTrust
+            if (contractTrust) {
+                eq("contractTrust", contractTrust)
+            }
+            /** 客户（甲方）名称 */
+            def clientName = params.clientName
+            if (clientName) {
+                or {
+                    like("eiaClientName", "%" + clientName + "%")
+                    like("ownerClientName", "%" + clientName + "%")
+                }
+            }
+            /** 合同类型 */
+            def contractType = params.contractType
+            if (contractType) {
+                like("contractType", "%" + contractType + "%")
+            }
+            /** 合同是否归档 */
+            if (arcContractIds) {
+                'in'("id", arcContractIds)
+            }
+            /** 签订日期 */
+            def startDate = params.startDate
+            def endDate = params.endDate
+            if (startDate) {
+                ge('contractDate', sdf.parse(startDate))
+            }
+            if (endDate) {
+                le('contractDate', sdf.parse(endDate))
+            }
+            /** 合同额 */
+            def conStartMoney = params.conStartMoney
+            if (conStartMoney) {
+                ge("contractMoney", new BigDecimal(conStartMoney))
+            }
+            def conEndMoney = params.conEndMoney
+            if (conEndMoney) {
+                le("contractMoney", new BigDecimal(conEndMoney))
+            }
+            /** 是否有中介合同（如果既有客户信息也有甲方信息，视为有中介合同） */
+            def ifAgency = params.ifAgency
+            if (ifAgency == '是') {
+                isNotNull("eiaClientName")
+                isNotNull("ownerClientName")
+            } else if (ifAgency == '否') {
+                isNull("ownerClientName")
             }
             /**
              * 查看全部的客户数据
@@ -655,7 +723,7 @@ class EiaContractService {
      * 根据不同的文件类型获取要填写的金额名称
      */
     def getContractMoneyList(params) {
-          String contractTypeCode = params.contractTypeCode
+        String contractTypeCode = params.contractTypeCode
         if (contractTypeCode) {
             def parentCode = EiaDomainCode.findByDomainAndCode(GeneConstants.CONTRACT_TYPE, contractTypeCode)?.parentCode
             if (contractTypeCode.indexOf("ZH") == -1 && contractTypeCode.indexOf("QT") == -1) {
