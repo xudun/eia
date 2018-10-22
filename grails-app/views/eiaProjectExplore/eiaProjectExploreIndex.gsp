@@ -29,16 +29,22 @@
 </div>
 <script type="text/html" id="mlTool">
 <div class="layui-btn-group">
-    <a class="layui-btn layui-btn-normal layui-btn-sm" lay-event="projectGisShow" title="显示地理信息"><i class="larry-icon">&#xe9b3;</i></a>
-    <a class="layui-btn layui-btn-normal layui-btn-sm" lay-event="projectDetail" title="查看"><i class="larry-icon">&#xe896;</i></a>
+    <a class="layui-btn layui-btn-normal layui-btn-sm" lay-event="projectGisShow" title="显示地理信息"><i
+            class="larry-icon">&#xe9b3;</i></a>
+    <a class="layui-btn layui-btn-normal layui-btn-sm" lay-event="projectDetail" title="查看"><i
+            class="larry-icon">&#xe896;</i></a>
     {{# if(!d.ifSub){}}
-        {{# if(d.inputUserId== ${session.staff.staffId}){}}
-            <a class="layui-btn layui-btn-normal layui-btn-sm" lay-event="projectExploreSub" title="提交流程"><i class="larry-icon">&#xe88f;</i></a>
-            <a class="layui-btn layui-btn-normal layui-btn-sm" lay-event="projectEdit" title="编辑"><i class="larry-icon">&#xe646;</i></a>
-            <a class="layui-btn layui-btn-normal layui-btn-sm" lay-event="projectDel" title="删除"><i class="larry-icon">&#xe8d0;</i></a>
-        {{# }}}
+    {{# if(d.inputUserId== ${session.staff.staffId}){}}
+    <a class="layui-btn layui-btn-normal layui-btn-sm" lay-event="projectExploreSub" title="提交流程"><i
+            class="larry-icon">&#xe88f;</i></a>
+    <a class="layui-btn layui-btn-normal layui-btn-sm" lay-event="projectEdit" title="编辑"><i
+            class="larry-icon">&#xe646;</i></a>
+    <a class="layui-btn layui-btn-normal layui-btn-sm" lay-event="projectDel" title="删除"><i
+            class="larry-icon">&#xe8d0;</i></a>
+    {{# }}}
     {{# }else{ }}
-            <a class="layui-btn layui-btn-normal layui-btn-sm" lay-event="projectExploreFlow" title="查看流程"><i class="larry-icon">&#xea21;</i></a>
+    <a class="layui-btn layui-btn-normal layui-btn-sm" lay-event="projectExploreFlow" title="查看流程"><i
+            class="larry-icon">&#xea21;</i></a>
     {{# }}}
 </div>
 </script>
@@ -49,11 +55,15 @@
 <div class="table-top">
     <div class="layui-inline">
         <div class="layui-input-inline">
-            <input type="text" name="projectName" value="" id="projectName" placeholder="内审单编号、项目名称、录入部门、录入人" class="layui-input larry-search-input w400">
+            <input type="text" name="projectName" value="" id="projectName" placeholder="内审单编号、项目名称、录入部门、录入人"
+                   class="layui-input larry-search-input w400">
         </div>
+
         <div class="layui-btn-group top-group">
             <a class="layui-btn search_btn pl12" lay-event="getSelect"><i class="larry-icon">&#xe939;</i> 查询</a>
-            <a class="layui-btn layui-bg-pale pl12" lay-event="projectAdd"><i class="larry-icon">&#xe987;</i> 新增</a>
+            <g:if test="${session.staff.funcCode.contains(FuncConstants.EIA_XMGL_NBCS_ADDSELF)}">
+                <a class="layui-btn layui-bg-pale pl12" lay-event="projectAdd"><i class="larry-icon">&#xe987;</i> 新增</a>
+            </g:if>
         </div>
     </div>
 </div>
