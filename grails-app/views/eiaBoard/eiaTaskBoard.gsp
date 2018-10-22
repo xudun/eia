@@ -105,6 +105,7 @@
             <li tab-name="EiaProject">项目待办<span class="layui-badge" id="eiaProjectNums"></span></li>
             <li tab-name="EiaCert">资质待办<span class="layui-badge" id="eiaCertNums"></span></li>
             <li tab-name="EiaStamp">印章待办<span class="layui-badge" id="eiaStampNums"></span></li>
+            <li tab-name="EiaProjectExplore">内审单待办<span class="layui-badge" id="eiaProjectExploreNums"></span></li>
             <li tab-name="workFlowComBusi">已办事项<span class="layui-badge" id="workFlowComBusiNums"></span></li>
 
             %{-- <li>消息提醒</li>--}%
@@ -143,12 +144,23 @@
                     <input type="hidden" id="proWorkFlowCertTitle" value="">
                 </div>
             </div>
+
+
             <!--印章待办事项-->
             <div class="layui-tab-item">
                 <!--列表-->
                 <div class="layui-col-lg12 layui-col-md12 layui-col-sm12 layui-col-xs12">
                     <table id="eiaStampList" lay-filter="eiaStampList"></table>
                     <input type="hidden" id="proWorkFlowStampTitle" value="">
+                </div>
+            </div>
+
+            <!--内审单待办事项-->
+            <div class="layui-tab-item">
+                <!--列表-->
+                <div class="layui-col-lg12 layui-col-md12 layui-col-sm12 layui-col-xs12">
+                    <table id="eiaProjectExploreList" lay-filter="eiaProjectExploreList"></table>
+                    <input type="hidden" id="eiaProjectExploreWorkFlowTitle" value="">
                 </div>
             </div>
 
@@ -285,7 +297,20 @@
             class="larry-icon">&#xe939;</i> 查询</a>
 </div>
 </script>
+%{--内审单页查询框--}%
+<script type="text/html" id="tableTopTmp6">
+<div class="layui-inline">
+    <div class="layui-input-inline">
+        <input type="text" name="workFlowName" value="" id="workFlowProjectExploreTitle"
+               placeholder="审批标题、创建人" class="layui-input larry-search-input">
+    </div>
+</div>
 
+<div class="layui-btn-group top-group">
+    <a class="layui-btn search_btn pl12" lay-event="getSelectWorkProjectFlow" data-type="getSelectWorkProjectFlow"><i
+            class="larry-icon">&#xe939;</i> 查询</a>
+</div>
+</script>
 %{--资质页查询框--}%
 <script type="text/html" id="tableTopTmp4">
 <div class="layui-inline">

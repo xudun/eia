@@ -9,7 +9,7 @@ class EiaWorkFlowProjectExploreController {
      * @return
      */
     def nextWorkFlowNode() {
-       def resMap = eiaWorkFlowProjectExploreService.nextWorkFlowNodeCertEnd(Long.valueOf(params.eiaWorkFlowBusiId), params.processUrlParams
+       def resMap = eiaWorkFlowProjectExploreService.nextWorkFlowNodeEnd(Long.valueOf(params.eiaWorkFlowBusiId), params.processUrlParams
                 , params.opinion, params.processCode, params.approvalDate,Long.valueOf(params.version), session)
         render(resMap as JSON)
     }

@@ -100,7 +100,11 @@ layui.use(['jquery', 'layer', 'form', 'element'], function () {
                 var key = $(elem).data("domain");
                 var valueNode = $(elem).data("name");
                 if(data[key]){
-                    elem.checked = data[key].indexOf(valueNode)
+                    console.log(data[key])
+                    console.log(valueNode)
+                    reqData[key] = data[key].split(",")
+                    reqData[key+"Code"] = data[key+"Code"].split(",")
+                    elem.checked = (data[key+"Code"].indexOf(valueNode) >= 0)
                 }
 
                 /***其他input框显示隐藏***/

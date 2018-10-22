@@ -168,6 +168,37 @@ layui.use(['jquery', 'layer', 'table', 'element', 'laydate'], function () {
             }
         });
     };
+    var renderWorkFlowProjectExploreList = function (tabName) {
+        table.render({
+            id: 'eiaProjectExploreList',
+            elem: '#eiaProjectExploreList',
+            url: '/eia/eiaBoard/getEiaWorkFlowBusiDataList?tabName=' + tabName,
+            toolbar: '#tableTopTmp6',
+            defaultToolbar:['filter', 'print', 'exports'],
+            cols: [[{fixed: 'left', title: '序号', width: '6%', align: "center", templet: "#indexTable"},
+                {field: 'workFlowTitle', width: '25%', title: '审批标题', align: "center"},
+                {field: 'workFlowName', width: '25%', title: '流程名称', align: "center"},
+                {field: 'nodesName', width: '15%', title: '当前节点名称', align: "center"},
+                {field: 'inputUser', width: '15%', title: '创建人', align: "center"},
+                {field: 'dateCreated', width: '14%', title: '创建日期', align: "center"},
+                {
+                    fixed: 'right',
+                    title: '操作',
+                    width: '10%',
+                    align: "center",
+                    toolbar: '#eiaWorkFlowListTool',
+                    align: "center"
+                }
+            ]],
+            page: true,
+            even: true,
+            limit: 10,
+            done: function (res, curr, count) {
+                $("#eiaProjectExploreNums").html(res.count);
+                $('#workFlowProjectTitle').val($('#proWorkFlowProjectTitle').val());
+            }
+        });
+    };
     /* var renderdepAndStaffList = function () {
          table.render({
              id: 'depAndStaffList',
@@ -527,6 +558,50 @@ layui.use(['jquery', 'layer', 'table', 'element', 'laydate'], function () {
 
         }
     });
+
+    table.on('tool(eiaProjectExploreList)', function (obj) {
+        var data = obj.data;
+        if (obj.event === 'eiaEdit') {
+            ajaxBox("/eia/eiaWorkFlowBusi/checkWorkFlow", {
+                tableNameId: data.tableNameId,
+                tableName: data.tableName
+            }, function (res) {
+                if (res.code == 0) {
+                    pageUrl = '/eia/eiaWorkFlow/eiaWorkFlowTrans';
+                    $('#tableNameId').val(data.tableNameId);
+                    $('#tableName').val(data.tableName);
+                    if (data.tableName == "EiaProject") {
+                        pageUrl = '/eia/eiaWorkFlow/eiaWorkFlowProject'
+                    }
+                    var index = layer.open({
+                        title: ' ',
+                        type: 2,
+                        shade: false,
+                        maxmin: true,
+                        skin: 'larry-green',
+                        area: ['100%', '100%'],
+                        content: pageUrl,
+                        success: function (layero, index) {
+                        },
+                        end: function () {
+                            $('#tableNameId').val("");
+                            $('#tableName').val("");
+                        },
+                        min: function () {
+                            $(".layui-layer-title").text(data.workFlowName);
+                        },
+                        restore: function () {
+                            $(".layui-layer-title").text(" ");
+                        }
+                    });
+                } else {
+                    layer.msg(res.msg, {time: 1500, icon: 2, shade: 0.1});
+                }
+            });
+
+        }
+    });
+
     table.on('tool(eiaStampList)', function (obj) {
         var data = obj.data;
         if (obj.event === 'eiaEdit') {
@@ -661,6 +736,9 @@ layui.use(['jquery', 'layer', 'table', 'element', 'laydate'], function () {
                 break;
             case "EiaLabOffer":
                 renderWorkFlowLabOfferList(tabName);
+                break;
+            case "EiaProjectExplore":
+                renderWorkFlowProjectExploreList(tabName);
                 break;
             case "workFlowComBusi":
                 renderWorkFlowComList();
@@ -878,6 +956,12 @@ layui.use(['jquery', 'layer', 'table', 'element', 'laydate'], function () {
     ajaxBox('/eia/eiaBoard/getEiaWorkFlowBusiDataList?tabName=EiaProject', null, function (res) {
         if (res.code === 0) {
             $("#eiaProjectNums").html(res.count)
+        }
+    });
+    /****内审单事项***/
+    ajaxBox('/eia/eiaBoard/getEiaWorkFlowBusiDataList?tabName=EiaProjectExplore', null, function (res) {
+        if (res.code === 0) {
+            $("#eiaProjectExploreNums").html(res.count)
         }
     });
     /****资质待办***/
