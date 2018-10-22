@@ -105,7 +105,6 @@ layui.use(['jquery', 'layer', 'form','table'], function () {
         }
         else if (obj.event == 'projectEdit') {
             pageUrl = '/eia/eiaProjectExplore/eiaProjectExploreCreate?eiaProjectExploreId=' + eiaProjectExploreId + '&pageType=edit';
-
             var index = layer.open({
                 title: ' ',
                 type: 2,
@@ -217,25 +216,21 @@ layui.use(['jquery', 'layer', 'form','table'], function () {
                }
            });
        }
-       else if (obj.event === 'certDownload') {
-           var loadingIndex = layer.load(1, {time: 10*1000,shade: 0.1});
-           $.ajax({
-               url: "/eia/eiaContract/matchProve?eiaProjectId=" + eiaProjectId,
-               type: "POST",
-               data: {},
-               dataType: "json",
-               success: function (data) {
-                   if (data.code == 0) {
-                       window.location.href = "../eiaContract/exportProCert?eiaProjectId=" + eiaProjectId;
-                       layer.msg('正在导出...', {icon: 16, shade: 0.01}, function () {
-                           var index = parent.layer.getFrameIndex(window.name);
-                           parent.layer.close(index);
-                       })
+       else if (obj.event === 'projectExploreSub') {
+           layer.confirm('确定要提交该内审单吗?', {icon: 3}, function (index) {
+               var eiaCertId = data.id;
+               var loadingIndex = layer.load(1, {time: 10 * 1000, shade: 0.1});
+               $.post("../eiaProjectExplore/eiaProjectExploreSub", {eiaProjectExploreId: eiaProjectExploreId}, function (result) {
+                   if (result.code == 0) {
+                       table.reload('eiaProjectList');
+                       layer.msg("内审单提交成功！", {icon: 1, time: 1500, shade: 0.1})
                    } else {
-                       layer.msg(data.msg, {icon: 2, time: 1000,shade: 0.1});
+                       layer.msg(result.msg, {icon: 2, time: 1500, shade: 0.1})
                    }
                    layer.close(loadingIndex);
-               }
+               });
+           }, function (index) {
+               //取消
            });
        }
        else if (obj.event === 'projectCoverDown') {     //封皮下载
@@ -256,6 +251,40 @@ layui.use(['jquery', 'layer', 'form','table'], function () {
                        layer.msg(res.msg, {icon: 2, time: 1000,shade: 0.1});
                    }
                    layer.close(loadingIndex);
+               }
+           });
+       }else if(obj.event === 'projectExploreFlow'){
+           ajaxBox("/eia/eiaWorkFlowBusi/checkWorkFlow", {
+               tableNameId: data.id,
+               tableName: "EiaProjectExplore"
+           }, function (res) {
+               if (res.code == 0) {
+                   pageUrl = '/eia/eiaWorkFlow/eiaWorkFlowTrans';
+                   $('#tableNameId').val(data.id);
+                   $('#tableName').val("EiaProjectExplore");
+                   var index = layer.open({
+                       title: ' ',
+                       type: 2,
+                       shade: false,
+                       maxmin: true,
+                       skin: 'larry-green',
+                       area: ['100%', '100%'],
+                       content: pageUrl,
+                       success: function (layero, index) {
+                       },
+                       end: function () {
+                           $('#tableNameId').val("");
+                           $('#tableName').val("");
+                       },
+                       min: function () {
+                           $(".layui-layer-title").text("内审审批流程流程");
+                       },
+                       restore: function () {
+                           $(".layui-layer-title").text(" ");
+                       }
+                   });
+               }else{
+                   layer.msg(res.msg,{time: 1500,shade: 0.1});
                }
            });
        }

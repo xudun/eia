@@ -32,11 +32,13 @@
     <a class="layui-btn layui-btn-normal layui-btn-sm" lay-event="projectDetail" title="查看"><i class="larry-icon">&#xe896;</i></a>
     {{# if(!d.ifSub){}}
         {{# if(d.inputUserId== ${session.staff.staffId}){}}
+            <a class="layui-btn layui-btn-normal layui-btn-sm" lay-event="projectExploreSub" title="提交流程"><i class="larry-icon">&#xe88f;</i></a>
             <a class="layui-btn layui-btn-normal layui-btn-sm" lay-event="projectEdit" title="编辑"><i class="larry-icon">&#xe646;</i></a>
             <a class="layui-btn layui-btn-normal layui-btn-sm" lay-event="projectDel" title="删除"><i class="larry-icon">&#xe8d0;</i></a>
         {{# }}}
+    {{# }else{ }}
+            <a class="layui-btn layui-btn-normal layui-btn-sm" lay-event="projectExploreFlow" title="查看流程"><i class="larry-icon">&#xea21;</i></a>
     {{# }}}
-    <a class="layui-btn layui-btn-normal layui-btn-sm" lay-event="projectFlow" title="查看流程"><i class="larry-icon">&#xea21;</i></a>
 </div>
 </script>
 <script type="text/html" id="indexTable">

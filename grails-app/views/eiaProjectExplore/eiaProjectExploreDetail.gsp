@@ -7,8 +7,8 @@
     <asset:javascript src="/eiaProjectExplore/eiaProjectExploreDetail.js"/>
     <asset:stylesheet src="/eiaProject/eiaProjectCreate.css"/>
     <style>
-    .proCreateExp.layui-form .layui-form-label{width: 155px;}
-    .proCreateExp .layui-input-block{margin-left: 185px;}
+    .proCreateExp.layui-form .layui-form-label{width: 165px;}
+    .proCreateExp .layui-input-block{margin-left: 195px;line-height: 38px;}
     </style>
 </head>
 

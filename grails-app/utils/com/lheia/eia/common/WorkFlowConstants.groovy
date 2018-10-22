@@ -21,6 +21,14 @@ class WorkFlowConstants {
      * 无用户信息提示
      */
     static String MSG_NO_STAFF_INFO = "session中无用户信息"
+    /***
+     *内审流程
+     */
+    static String PROJECT_EXPLORE_WORKFLOW = "PROJECT_EXPLORE_WORKFLOW"
+    /**
+     * 内审流程开始节点
+     */
+    static String PROJECT_EXPLORE_WORKFLOW_START_NODE = "CJNSD"
     /**
      * 总经理审批合同工作流
      */

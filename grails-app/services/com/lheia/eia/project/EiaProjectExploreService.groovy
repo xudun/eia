@@ -38,7 +38,7 @@ class EiaProjectExploreService {
      * @param eiaContractId
      */
     def eiaProjectExploreSub(eiaProjectExploreId) {
-        def eiaProjectExplore = EiaProjectExplore.findByIdAndIfDel(eiaContractId, false)
+        def eiaProjectExplore = EiaProjectExplore.findByIdAndIfDel(eiaProjectExploreId, false)
         eiaProjectExplore.ifSub = true
         eiaProjectExplore.save(flush: true, failOnError: true)
     }
