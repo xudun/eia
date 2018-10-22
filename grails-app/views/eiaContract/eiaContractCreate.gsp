@@ -80,7 +80,7 @@
                 <div class="layui-form-item has-tag">
                     <label class="layui-form-label"><span class="col-f00">* </span>客户名称</label>
                     <div class="layui-input-block">
-                        <input type="text" id="eiaClientName" name="eiaClientName" class="layui-input readonly" lay-verify="required" value="" readonly>
+                        <input type="text" id="eiaClientName" name="eiaClientName" class="layui-input readonly" lay-verify="required" value="" placeholder="填实际付款单位" readonly>
                     </div>
                     <div class="tag-right"><i class="larry-icon selectUserBtn">&#xe85b;</i></div>
                 </div>
@@ -93,7 +93,7 @@
                 <div class="layui-form-item has-tag">
                     <label class="layui-form-label">甲方名称</label>
                     <div class="layui-input-block">
-                        <input type="text" id="ownerClientName" name="ownerClientName" class="layui-input readonly" readonly value="">
+                        <input type="text" id="ownerClientName" name="ownerClientName" class="layui-input readonly" readonly value="" placeholder="如果客户名称和甲方名称相同，可不填">
                     </div>
                     <div class="tag-right"><i class="larry-icon selectOwnerBtn">&#xe85b;</i></div>
                 </div>
