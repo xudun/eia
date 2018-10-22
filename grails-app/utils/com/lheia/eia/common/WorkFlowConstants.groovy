@@ -164,6 +164,10 @@ class WorkFlowConstants {
      */
     static String STAMP_WORK_FLOW_NOBUSS = 'STAMP_WORK_FLOW_NOBUSS'
     /**
+     * 分公司用章申请流程
+     */
+    static String STAMP_WORK_FLOW_BRANCH ='STAMP_WORK_FLOW_BRANCH'
+    /**
      * 节点 部门审核
      */
     static String STAMP_WORK_FLOW_NODE_BMSH = 'BMSH'

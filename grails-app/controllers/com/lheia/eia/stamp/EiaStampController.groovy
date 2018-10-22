@@ -77,6 +77,9 @@ class EiaStampController {
             } else if (eiaStamp.ifBussUse == false) {
                 workFlowCode = WorkFlowConstants.STAMP_WORK_FLOW_NOBUSS
             }
+            if(eiaStamp.stampCompany.contains('分公司')){
+                workFlowCode = WorkFlowConstants.STAMP_WORK_FLOW_BRANCH
+            }
             def eiaWorkFlowBusi = eiaWorkFlowStampService.startStampWorkFlow(workFlowCode, GeneConstants.DOMAIN_EIA_STAMP, eiaStamp.id, startNodeCode, session)
             if (eiaWorkFlowBusi) {
                 render([code: HttpMesConstants.CODE_OK, data: eiaStamp] as JSON)
