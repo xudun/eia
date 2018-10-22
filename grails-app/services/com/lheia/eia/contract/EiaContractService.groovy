@@ -56,13 +56,36 @@ class EiaContractService {
                 } else if (ifArc == '否') {
                     ne('workFlowState', WorkFlowConstants.WORKFLOW_END)
                 }
-                eq('inputUserId', Long.valueOf(session.staff.staffId))
+                /**
+                 * 查看全部的客户数据
+                 */
+                if (!session?.staff?.funcCode?.contains(FuncConstants.EIA_YWCX_HTCX_VIEWALL)) {
+                    /**
+                     * 查看本部门客户数据
+                     */
+                    if (session?.staff?.funcCode?.contains(FuncConstants.EIA_YWCX_HTCX_VIEWDEPT)) {
+                        like ("inputDeptCode", "%"+ session.staff.orgCode +"%")
+                    }
+                    /**
+                     * 查看本人客户数据
+                     */
+                    else if (session?.staff?.funcCode?.contains(FuncConstants.EIA_YWCX_HTCX_VIEWSELF)) {
+                        /**
+                         * 如果是暂存的话，不关联合同，所以自己只能看到自己的合同
+                         */
+                        or{
+                            eq("inputUserId", Long.valueOf(session.staff.staffId))
+                        }
+
+                    }
+                }
                 eq('ifDel', false)
             }
             if (eiaWorkFlowBusiList) {
                 arcContractIds = eiaWorkFlowBusiList.tableNameId
             }
         }
+        println("arcContractIds = " + arcContractIds)
         def eiaContractList = EiaContract.createCriteria().list(max: limit, offset: page * limit) {
             def contractName = params.contractName
             if (contractName && !"合同名称,合同编号,录入部门,录入人".equals(contractName)) {
@@ -71,14 +94,6 @@ class EiaContractService {
                     like("inputDept", "%" + contractName + "%")
                     like("inputUser", "%" + contractName + "%")
                     like("contractNo", "%" + contractName + "%")
-                }
-            }else{
-                if(params.eiaClientId || params.eiaTaskId || params.eiaProjectId){
-                }else {
-                    or{
-                        eq("inputUserId", Long.valueOf(session.staff.staffId))
-                        like("taskAssignUser", "%" + session.staff.staffName+"_"+session.staff.staffId + "%")
-                    }
                 }
             }
             /** 合同受托方 */
