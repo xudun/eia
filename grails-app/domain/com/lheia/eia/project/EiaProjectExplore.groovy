@@ -149,17 +149,13 @@ class EiaProjectExplore {
      * 更新时间
      */
     Date lastUpdated
-    /**
-     * gis项目id
-     */
-    long gisGeoProjectId
+
     /**
      *流程是否结束
      */
-    boolean ifEnd
+    Boolean ifEnd = false
     static constraints = {
         projectName nullable:true
-        gisGeoProjectId nullable:true
         ifEnd nullable:true
         buildProp nullable:true
         buildContent nullable:true

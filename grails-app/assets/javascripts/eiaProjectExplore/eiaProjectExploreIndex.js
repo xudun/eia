@@ -126,31 +126,29 @@ layui.use(['jquery', 'layer', 'form','table'], function () {
                 }
             });
         } else if (obj.event == 'projectGisShow') {
-            pageUrl = '/eia/eiaProject/eiaGisGeoProject?eiaProjectId=' + eiaProjectId;
-            var index = layer.open({
-                title: ' ',
-                type: 2,
-                shade: false,
-                maxmin: true,
-                skin: 'larry-green',
-                area: ['100%', '100%'],
-                content: pageUrl,
-                success: function (data) {
-                },
-                end: function () {
-                    table.reload('eiaProjectList');
-                    $('#eiaProjectId').val("");
-                    $('#tableNameId').val("");
-                    $('#eiaTaskId').val("");
-                    $('#eiaLabOfferId').val("");
-                },
-                min: function () {
-
-                },
-                restore: function () {
-
-                }
-            });
+           var pageUrl = EXPLORE_DRAW_PATH+'?eiaProjectExploreId='+data.id;
+           var index = layer.open({
+               title:' ',
+               type: 2,
+               shade: false,
+               maxmin: true,
+               skin: 'larry-green',
+               area: ['100%', '100%'],
+               content: pageUrl,
+               success:function (layero, index) {
+                   var body = layer.getChildFrame('body', index);
+               },
+               end: function () {
+                   table.reload('eiaAreaInfoList');
+                   $('#eiaPubProjectId').val('');
+               },
+               min: function () {
+                   $(".layui-layer-title").text("GIS绘图");
+               },
+               restore: function () {
+                   $(".layui-layer-title").text(" ");
+               }
+           });
         }
         else if (obj.event === 'projectFlow') {//流程
            actionUrl = '/eia/eiaProjectPlan/checkProjectFlow?eiaProjectId='+eiaProjectId;

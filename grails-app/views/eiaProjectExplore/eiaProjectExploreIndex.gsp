@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <title>项目列表</title>
     <meta name="layout" content="main"/>
+    <script type="text/javascript">
+        var EXPLORE_DRAW_PATH = "${com.lheia.eia.common.HttpUrlConstants.EXPLORE_DRAW_PATH}"
+    </script>
     <asset:javascript src="/eiaProjectExplore/eiaProjectExploreIndex.js"/>
     <asset:stylesheet src="/eiaProjectExplore/eiaProjectExploreIndex.css"/>
 </head>
@@ -26,9 +29,7 @@
 </div>
 <script type="text/html" id="mlTool">
 <div class="layui-btn-group">
-    {{# if(d.gisProjectId){}}
-        <a class="layui-btn layui-btn-normal layui-btn-sm" lay-event="projectGisShow" title="显示地理信息"><i class="larry-icon">&#xea6b;</i></a>
-    {{# }}}
+    <a class="layui-btn layui-btn-normal layui-btn-sm" lay-event="projectGisShow" title="显示地理信息"><i class="larry-icon">&#xe9b3;</i></a>
     <a class="layui-btn layui-btn-normal layui-btn-sm" lay-event="projectDetail" title="查看"><i class="larry-icon">&#xe896;</i></a>
     {{# if(!d.ifSub){}}
         {{# if(d.inputUserId== ${session.staff.staffId}){}}
@@ -48,7 +49,7 @@
 <div class="table-top">
     <div class="layui-inline">
         <div class="layui-input-inline">
-            <input type="text" name="projectName" value="" id="projectName" placeholder="项目名称、录入部门、录入人" class="layui-input larry-search-input w400">
+            <input type="text" name="projectName" value="" id="projectName" placeholder="内审单编号、项目名称、录入部门、录入人" class="layui-input larry-search-input w400">
         </div>
         <div class="layui-btn-group top-group">
             <a class="layui-btn search_btn pl12" lay-event="getSelect"><i class="larry-icon">&#xe939;</i> 查询</a>

@@ -1,5 +1,6 @@
 package com.lheia.eia.project
 
+import com.lheia.eia.common.FuncConstants
 import com.lheia.eia.common.GeneConstants
 import com.lheia.eia.config.EiaDomainCode
 import grails.gorm.transactions.Transactional
@@ -17,6 +18,32 @@ class EiaProjectExploreService {
             limit = params.int('limit')
         }
         def eiaProjectExploreList = EiaProjectExplore.createCriteria().list(max: limit, offset: page * limit) {
+            def projectName = params.projectName
+            if (projectName && !"项目名称、项目编号、项目负责人、录入部门、录入人".equals(projectName)) {
+                or {
+                    like("projectName", "%" + projectName + "%")
+                    like("inputDept", "%" + projectName + "%")
+                    like("inputUser", "%" + projectName + "%")
+                    like("exploreNo", "%" + projectName + "%")
+                }
+            }
+            /**
+             * 查看全部的客户数据
+             */
+            if (!session?.staff?.funcCode?.contains(FuncConstants.EIA_YWCX_XMCX_VIEWALL)) {
+                /**
+                 * 查看本部门客户数据
+                 */
+                if (session?.staff?.funcCode?.contains(FuncConstants.EIA_YWCX_HTCX_VIEWDEPT)) {
+                    like("inputDeptCode", "%" + session.staff.orgCode + "%")
+                }
+                /**
+                 * 查看本人客户数据
+                 */
+                else if (session?.staff?.funcCode?.contains(FuncConstants.EIA_YWCX_HTCX_VIEWSELF)) {
+                    eq("inputUserId", Long.valueOf(session.staff.staffId))
+                }
+            }
             eq("ifDel",false)
         }
         def dataMap = [:]

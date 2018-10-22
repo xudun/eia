@@ -191,6 +191,7 @@ class HttpUrlConstants {
      * gis绘图跳转路径
      */
      static String GIS_DRAW_PATH = Holders.getConfig().getProperty('webroots.forwardPath.gis')+'gisGeoPub/gisGeoPubIndex'
+     static String EXPLORE_DRAW_PATH = Holders.getConfig().getProperty('webroots.forwardPath.gis')
 
     /**
      * 根据orgId获取父节点(用于财务预计信息统计)
