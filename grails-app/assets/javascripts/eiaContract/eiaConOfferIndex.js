@@ -1,9 +1,63 @@
-layui.use(['jquery', 'layer', 'table', 'element', 'form'], function () {
+layui.use(['jquery', 'layer', 'table', 'element', 'form', 'laydate'], function () {
     var $ = layui.jquery,
         layer = layui.layer,
         table = layui.table,
         element = layui.element,
+        laydate = layui.laydate,
         form = layui.form;
+
+    var filterData = {};
+
+    //恢复上次查询数据显示
+    var regainQueryShow = function () {
+        var advancedState = $('#advancedState').val();
+        var queryData = JSON.parse($('#queryData').val());
+        console.log(queryData);
+        if(advancedState == '1'){ //高级查询
+            //打开高级查询面板
+            $('.filter-box').attr('state','1').css('display','block');
+            $('#advancedState').val(1);
+            //赋值
+            for(var name in queryData){
+                switch (name){
+                    case 'contractTrust':
+                    case 'ifAgency':
+                    case 'ifArc':
+                        var dataVal = queryData[name];
+                        if(dataVal){
+                            $("."+name+"Filter .filter-item:contains('"+dataVal+"')").addClass('active');
+                        }
+                        break;
+                    case 'startDate':
+                    case 'endDate':
+                        laydate.render({
+                            elem: '#'+name,
+                            value: queryData[name]
+                        });
+                        break;
+                    case 'contractType':
+                        //下拉树 合同类型
+                        $("#contractType").dropDownForZ({
+                            url:'/eia/eiaDomainCode/getTree?domain=' + "CONTRACT_TYPE",
+                            width:'99%',
+                            height:'350px',
+                            disableParent: true,
+                            selecedSuccess:function(data){}
+                        });
+                        $("#contractType").val(queryData[name]);
+                        break;
+                    default:
+                        $('#'+name).val(queryData[name]);
+                        break;
+
+                }
+            }
+
+        }else{//普通查询
+            $('#contractName').val(queryData.contractName);
+        }
+    };
+
     // Tab切换
     element.on('tab(contractOfferTab)', function (data) {
         console.log(data);
@@ -42,8 +96,6 @@ layui.use(['jquery', 'layer', 'table', 'element', 'form'], function () {
             url = tabType == 1 ? "/eia/eiaContract/getEiaOfferDataList" : "/eia/eiaContract/getEiaContractDataList",
             cols = tabType == 1 ? thOffer : thContract,
             toolbar= tabType == 1 ? '#tableTopTmp2':'#tableTopTmp';
-
-
         //渲染表格
         table.render({
             id: tableList,
@@ -54,7 +106,12 @@ layui.use(['jquery', 'layer', 'table', 'element', 'form'], function () {
             defaultToolbar:['filter', 'print', 'exports'],
             page: true,
             even: true,
-            limit: 10
+            limit: 10,
+            done: function () {
+                if (tabType == "0"){
+                    regainQueryShow();
+                }
+            }
         });
 
     };
@@ -362,92 +419,40 @@ layui.use(['jquery', 'layer', 'table', 'element', 'form'], function () {
         }
     });
 
-    //查询、新增按钮（报价、合同）
-    $('.larry-btn a.layui-btn').click(function () {
-        var type = $(this).data('type');
-        active[type] ? active[type].call(this) : '';
-    });
-    var active = {
-        offerSelect: function () {    //查询
-            var offerName = $("#offerName").val();
-            table.reload('eiaOfferList', {
-                where: {
-                    offerName: offerName
-                }
-            });
-        },
-        offerAdd: function () {    //报价新增
-            pageUrl = '/eia/eiaContract/eiaOfferCreate?pageType=0';
-            var index = layer.open({
-                title: ' ',
-                type: 2,
-                shade: false,
-                maxmin: true,
-                skin: 'larry-green',
-                area: ['100%', '100%'],
-                content: pageUrl,
-                success: function (layero, index) {
-                    var body = layer.getChildFrame('body', index);
-                },
-                end: function () {
+    //获取查询数据以及暂存查询数据
+    var getQueryData = function () {
+        filterData.contractName = $('#contractName').val();
+        filterData.clientName = $('#clientName').val();
+        filterData.contractType = $('#contractType').val();
+        filterData.conStartMoney = $('#conStartMoney').val();
+        filterData.conEndMoney = $('#conEndMoney').val();
+        filterData.startDate = $('#startDate').val();
+        filterData.endDate = $('#endDate').val();
 
-                },
-                min: function () {
-                    $(".layui-layer-title").text("新增报价");
-                },
-                restore: function () {
-                    $(".layui-layer-title").text(" ");
-                }
-            });
-        },
-        contractSelect: function () {    //合同查询
-            var contractName = $("#contractName").val();
-            table.reload('eiaContractList', {
-                where: {
-                    contractName: contractName
-                }
-            });
-        },
-        contractAdd: function () {    //合同新增
-            pageUrl = '/eia/eiaContract/eiaContractCreate?pageType=0';
-            var index = layer.open({
-                title: ' ',
-                type: 2,
-                shade: false,
-                maxmin: true,
-                skin: 'larry-green',
-                area: ['100%', '100%'],
-                content: pageUrl,
-                success: function (layero, index) {
-                    var body = layer.getChildFrame('body', index);
-                },
-                end: function () {
+        $('.filter-ul .filter-li').each(function (index, elem) {
+            var curFilter = $(elem).attr('filterName');
+            var curVal = $(elem).find('.filter-item.active span').text();
+            filterData[curFilter] = curVal;
 
-                },
-                min: function () {
-                    $(".layui-layer-title").text("新增合同");
-                },
-                restore: function () {
-                    $(".layui-layer-title").text(" ");
-                }
-            });
-        }
-    }
+        });
+        var advancedStata = $('.filter-box').attr('state');
+        $('#queryData').val(JSON.stringify(filterData));
+        $('#advancedState').val(advancedStata);
 
+
+    };
     //监听头部工具栏事件
     //监听事件
     table.on('toolbar(eiaContractList)', function(obj){
         switch(obj.event){
             case 'contractSelect':
-                var contractName = $("#contractName").val();
+                getQueryData();
                 table.reload('eiaContractList', {
-                    where: {
-                        contractName: contractName
-                    }
+                    where: filterData
                 });
                 break;
             case 'contractAdd':
-                pageUrl = '/eia/eiaContract/eiaContractCreate?pageType=0';
+                var pageUrl = '/eia/eiaContract/eiaContractCreate?pageType=0';
                 var index = layer.open({
                     title: ' ',
                     type: 2,
@@ -470,7 +475,55 @@ layui.use(['jquery', 'layer', 'table', 'element', 'form'], function () {
                     }
                 });
                 break;
-        };
+            case 'highSelect':
+                var curSate = $('.filter-box').attr('state');
+                switch (curSate){
+                    case '0': //打开
+                        $('.filter-box').attr('state','1').css('display','block');
+                        $('#advancedState').val(1);
+                        laydate.render({
+                            elem: '#startDate'
+                        });
+
+                        laydate.render({
+                            elem: '#endDate'
+                        });
+                        //下拉树 合同类型
+                        $("#contractType").dropDownForZ({
+                            url:'/eia/eiaDomainCode/getTree?domain=' + "CONTRACT_TYPE",
+                            width:'99%',
+                            height:'350px',
+                            disableParent: true,
+                            selecedSuccess:function(data){}
+                        });
+                        break;
+                        break;
+                    case '1': //关闭
+                        $('.filter-box').attr('state','0').css('display','none');
+                        $('.filter-box input').val('');
+                        $('.filter-ul .filter-item').removeClass('active');
+                        getQueryData();
+                        break;
+                }
+                break;
+            case 'filterItem': //筛选项
+                if($(this).hasClass('active')){
+                    $(this).removeClass('active');
+                }else{
+                    $(this).addClass('active').siblings().removeClass('active');
+                }
+                getQueryData();
+                table.reload('eiaContractList', {
+                    where: filterData
+                });
+                break;
+            case 'clearQuery':
+                $('#contractName,.filter-box input').val('');
+                $('.filter-ul .filter-item').removeClass('active');
+                getQueryData();
+
+                break;
+        }
     });
 
     table.on('toolbar(eiaOfferList)', function(obj){
@@ -484,7 +537,7 @@ layui.use(['jquery', 'layer', 'table', 'element', 'form'], function () {
                 });
                 break;
             case 'offerAdd':
-                pageUrl = '/eia/eiaContract/eiaOfferCreate?pageType=0';
+                var pageUrl = '/eia/eiaContract/eiaOfferCreate?pageType=0';
                 var index = layer.open({
                     title: ' ',
                     type: 2,
@@ -507,7 +560,7 @@ layui.use(['jquery', 'layer', 'table', 'element', 'form'], function () {
                     }
                 });
                 break;
-        };
+        }
     });
 
 
@@ -531,3 +584,13 @@ layui.use(['jquery', 'layer', 'table', 'element', 'form'], function () {
         $('#contractDownload').val(cDValue);
     });
 });
+function queryOpen() {
+    $("#advanced-query").removeClass("display-none");
+    $("#open").addClass("display-none");
+    $("#close").removeClass("display-none");
+}
+function queryClose() {
+    $("#advanced-query").addClass("display-none");
+    $("#open").removeClass("display-none");
+    $("#close").addClass("display-none");
+}
