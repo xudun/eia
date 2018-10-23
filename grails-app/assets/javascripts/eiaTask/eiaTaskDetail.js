@@ -9,6 +9,7 @@ layui.use(['jquery', 'table'], function(){
         data:{},
         dataType: "json",
         success: function (data) {
+            $('#taskNo').text(data.data.taskNo);
             $('#taskName').text(data.data.taskName);
             $('#taskLeaderDept').text(data.data.taskLeaderDept);
             $('#busiType').text(data.data.busiType);
