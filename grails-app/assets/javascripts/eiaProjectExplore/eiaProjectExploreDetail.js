@@ -52,7 +52,7 @@ layui.use(['jquery', 'layer', 'form', 'element'], function () {
 
                 if(key == "otherSense" || key == "existProblem"){
                     var eleId = key + "QT"
-                    if (data[key+"Code"].indexOf("QT")) {
+                    if (data[key+"Code"].indexOf("QT")>=0) {
                         $("#" + eleId).removeClass("display-none");
                     } else {
                         $("#" + eleId).addClass("display-none");

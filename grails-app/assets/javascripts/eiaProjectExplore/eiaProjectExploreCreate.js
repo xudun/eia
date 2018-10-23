@@ -53,7 +53,6 @@ layui.use(['jquery', 'layer', 'form', 'element'], function () {
                 $("#" + eleId).find("input").removeAttr("lay-verify")
             }
         }
-
     });
 
     /***是否立项监听**/
@@ -95,6 +94,9 @@ layui.use(['jquery', 'layer', 'form', 'element'], function () {
         $("#eiaProjectExploreId").val(params.eiaProjectExploreId)
         $.post("../eiaProjectExplore/getEiaProjectExploreDataMap", {eiaProjectExploreId: params.eiaProjectExploreId}, function (data) {
             var data = data.data;
+            if(data.buildArea){
+                $("#buildArea").parent().parent().removeClass("display-none")
+            }
             /***checkbox渲染***/
             $("input[type=checkbox]").each(function (index,elem) {
                 var key = $(elem).data("domain");

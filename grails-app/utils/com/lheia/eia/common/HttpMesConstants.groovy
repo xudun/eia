@@ -50,6 +50,7 @@ class HttpMesConstants {
     static String MSG_EIA_LAB_OFFER_PROJECT_REPEAT = '该项目已生成监测方案，请重新选择项目'
     static String MSG_EIA_LAB_OFFER__NEED_FINISH = '请检查监测方案是否填写完成'
     static String MSG_FCONF_NULL = '无工作流模板，请先配置'
+    static String MSG_GIS_NULL = '未关联GIS项目无法提交'
     static String MSG_FCONF_NODE_NULL = '无节点，请添加'
     static String MSG_CERT_FLOW_REPEAT = "该流程已创建，请提交重复资质申请流程！"
     static String MSG_FLOW_HALT_OK = '流程节点终止成功'

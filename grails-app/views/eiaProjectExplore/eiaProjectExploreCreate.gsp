@@ -97,8 +97,8 @@
                     </div>
                 </div>
 
-                <div class="layui-form-item">
-                    <label class="layui-form-label"><span class="col-f00">*</span>地理位置</label>
+                <div class="layui-form-item display-none">
+                    <label class="layui-form-label"><span class="col-f00"></span>地理位置</label>
 
                     <div class="layui-input-block ">
                         <input type="text" id="buildArea" name="buildArea" class="layui-input" value="">

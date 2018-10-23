@@ -154,6 +154,10 @@ class EiaProjectExplore {
      *流程是否结束
      */
     Boolean ifEnd = false
+    /**
+     * gis项目id
+     */
+    Long gisGeoProjectId
     static constraints = {
         projectName nullable:true
         ifEnd nullable:true
@@ -193,5 +197,6 @@ class EiaProjectExplore {
         exploreNo nullable:true
         otherSenseInfo nullable:true
         ifSub nullable:true
+        gisGeoProjectId nullable:true
     }
 }

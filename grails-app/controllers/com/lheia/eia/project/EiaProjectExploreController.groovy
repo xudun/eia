@@ -20,6 +20,10 @@ class EiaProjectExploreController {
      * 详情页
      */
     def eiaProjectExploreDetail(){}
+    /***
+     * 打印页
+     */
+    def eiaProjectExplorePrint(){}
 
     def eiaProjectExploreQueryPage(){
         def dataMap =  eiaProjectExploreService.eiaProjectExploreQueryPage(params,session)
@@ -83,16 +87,22 @@ class EiaProjectExploreController {
     }
 
     /***
-     * 提交合同并开启工作流
+     * 提交内审单并开启工作流
      * @return
      */
     def eiaProjectExploreSub() {
+        eiaWorkFlowProjectExploreService.getWorkFlowCode(session)
         long eiaProjectExploreId = Long.valueOf(params.eiaProjectExploreId)
         def eiaProjectExplore = EiaProjectExplore.findByIdAndIfDel(eiaProjectExploreId,false)
+        if(!eiaProjectExplore.gisGeoProjectId){
+            render([code: HttpMesConstants.CODE_FAIL,msg:HttpMesConstants.MSG_GIS_NULL] as JSON)
+            return
+        }
         if(eiaProjectExplore.ifSub){
             render([code: HttpMesConstants.CODE_FAIL,msg:HttpMesConstants.MSG_FCONF_NULL] as JSON)
         }else{
-                def eiaWorkFlowBusi = eiaWorkFlowProjectExploreService.startProjectExploreWorkFlow(WorkFlowConstants.PROJECT_EXPLORE_WORKFLOW, GeneConstants.DOMAIN_EIA_PROJECT_EXPLORE, eiaProjectExploreId, WorkFlowConstants.PROJECT_EXPLORE_WORKFLOW_START_NODE,session)
+            def workFlowCode = eiaWorkFlowProjectExploreService.getWorkFlowCode(session)
+                def eiaWorkFlowBusi = eiaWorkFlowProjectExploreService.startProjectExploreWorkFlow(workFlowCode, GeneConstants.DOMAIN_EIA_PROJECT_EXPLORE, eiaProjectExploreId, WorkFlowConstants.PROJECT_EXPLORE_WORKFLOW_START_NODE,session)
                 if(eiaWorkFlowBusi){
                     eiaProjectExplore = eiaProjectExploreService.eiaProjectExploreSub(eiaProjectExploreId)
                     if (eiaProjectExplore && eiaWorkFlowBusi) {

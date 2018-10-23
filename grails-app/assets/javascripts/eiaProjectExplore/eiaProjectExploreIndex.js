@@ -127,6 +127,9 @@ layui.use(['jquery', 'layer', 'form','table'], function () {
             });
         } else if (obj.event == 'projectGisShow') {
            var pageUrl = EXPLORE_DRAW_PATH+'?eiaProjectExploreId='+data.id;
+           if(data.gisGeoProjectId){
+               pageUrl = pageUrl+"&gisGeoProjectId="+data.gisGeoProjectId
+           }
            var index = layer.open({
                title:' ',
                type: 2,

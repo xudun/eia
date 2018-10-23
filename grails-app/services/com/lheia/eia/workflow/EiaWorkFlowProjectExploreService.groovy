@@ -14,6 +14,21 @@ class EiaWorkFlowProjectExploreService {
     def eiaWorkFlowWeaverService
     def eiaWorkFlowService
 
+    /***
+     * 根据用户部门编码获取工作流编码
+     */
+    def getWorkFlowCode(session){
+        String orgCode = session.staff.orgCode
+        def workFlowCode = WorkFlowConstants.PROJECT_EXPLORE_WORKFLOW
+        if(orgCode){
+            WorkFlowConstants.PROJECT_EXPLORE_WORKFLOW_MAP.each{
+                if(orgCode.contains(it.key)){
+                    workFlowCode = it.value
+                }
+            }
+        }
+        return workFlowCode
+    }
     /**
      * 开启内审工作流
      * @param eiaWorkFlowConfigId
