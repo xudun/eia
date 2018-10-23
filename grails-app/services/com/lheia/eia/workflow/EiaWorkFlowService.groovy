@@ -331,6 +331,12 @@ class EiaWorkFlowService {
                     eiaStamp.ifSub = false
                     eiaStamp.save(flush: true,failOnError: true)
                 }
+            }else if(tableName == GeneConstants.DOMAIN_EIA_PROJECT_EXPLORE){
+                def eiaProjectExplore = EiaProjectExplore.findByIdAndIfDel(tableNameId,false)
+                if(eiaProjectExplore){
+                    eiaProjectExplore.ifSub = false
+                    eiaProjectExplore.save(flush: true,failOnError: true)
+                }
             }
             return [code:HttpMesConstants.CODE_OK,msg:HttpMesConstants.MSG_FLOW_HALT_OK]
         } else {

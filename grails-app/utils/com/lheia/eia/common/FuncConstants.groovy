@@ -180,6 +180,10 @@ class FuncConstants {
      */
     static String EIA_GXPT_GXCX_UPLOAD = 'EIA_GXPT_GXCX_UPLOAD'
     /**
+     * 新增内审单权限
+     */
+    static String EIA_XMGL_NBCS_ADDSELF = 'EIA_XMGL_NBCS_ADDSELF'
+    /**
      * 财务权限（全部）
      */
     static String EIA_CWGL_CWRYZWGL_VIEWALL = 'EIA_CWGL_CWRYZWGL_VIEWALL'

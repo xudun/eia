@@ -69,8 +69,9 @@ layui.use(['jquery', 'layer', 'table', 'element', 'form', 'laydate'], function (
     var tabAction = function (tabType) {
         var thContract = [[
                 {fixed: 'left', title: '序号', width: '6%', align: "center", templet: "#indexTable"},
-                {field: 'contractNo', width: '15%', title: '合同编号', align: "center"},
+                {field: 'contractNo', width: '12%', title: '合同编号', align: "center"},
                 {field: 'contractName', width: '25%', title: '合同名称', align: "center"},
+                {field: 'eiaClientName', width: '15%', title: '客户名称', align: "center"},
                 {field: 'contractType', width: '15%', title: '合同类型', align: "center"},
                 {field: 'contractMoney', width: '15%', title: '合同金额（万元）', align: "center"},
                 {field: 'profitMargin', width: '10%', title: '利润率', align: "center"},

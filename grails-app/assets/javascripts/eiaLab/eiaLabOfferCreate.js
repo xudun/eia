@@ -8,6 +8,16 @@ layui.use(['layer', 'form', 'table'], function () {
     var eiaLabOfferId = parent.$("#eiaLabOfferId").val();
     var sampleType = "采样";
 
+    //设置select指定项选中
+    var selectOptionByVal = function ($select, val) {
+        var opt_arr = $('option',$($select));
+        for(var i=0; i<opt_arr.length; i++){
+            if($(opt_arr[i]).val() == val){
+                $(opt_arr[i]).prop("selected",true);
+                break;
+            }
+        }
+    };
     /**
      * 文件上传
      */
@@ -119,7 +129,10 @@ layui.use(['layer', 'form', 'table'], function () {
                 $('#editTitle').tmpl().appendTo('#title');
                 $("#projectName").val(result.data.projectName);
                 $("#projectAddr").val(result.data.projectAddr);
-                $("#wtClientName").val(result.data.wtClientName);
+                $("#wtClientId").val(result.data.wtClientId);
+                // $("#wtClientName").val(result.data.wtClientName);
+                console.log(result.data.wtClientName);
+                selectOptionByVal($("#wtClientName"),result.data.wtClientName);
                 $("#wtClientContact").val(result.data.wtClientContact);
                 $("#sjClientName").val(result.data.sjClientName);
                 $("#sjClientContact").val(result.data.sjClientContact);
@@ -160,7 +173,7 @@ layui.use(['layer', 'form', 'table'], function () {
                 $('.quitBtn').removeClass("display-none");
                 $('.fileAddBtn').removeClass("display-none");
                 $('.noticeTag').addClass("display-none");
-                form.render('checkbox');
+
             } else {
                 $('#addTitle').tmpl().appendTo('#title');
                 $("#ifYxTest").attr("checked", "checked");
@@ -168,10 +181,12 @@ layui.use(['layer', 'form', 'table'], function () {
                 $("#projectAddr").removeAttr("lay-verify", "required");
                 $("#testCompany").removeAttr("lay-verify", "required");
                 $('.noticeTag').removeClass("display-none");
-                form.render('checkbox');
+
             }
+            form.render();
             $("#wtClientId").val(result.wtClientId);
         }
+
     });
 
     /**
@@ -293,8 +308,6 @@ layui.use(['layer', 'form', 'table'], function () {
      * 选择委托单位联系人
      */
     $("#wtContactSelect").click(function () {
-        var wtClientId = $("#wtClientId").val();
-        $("#clientId").val(wtClientId);
         var pageUrl = "../eiaLabOffer/eiaLabContactList";
         var winWidth = document.documentElement.clientWidth;
         var area = ['85%', '80%'];
@@ -588,6 +601,21 @@ layui.use(['layer', 'form', 'table'], function () {
             async: true,
             success: function (result) {
                 $('#projectAddr').val(result.data.buildArea);
+            }
+        });
+    });
+    /**
+     * 委托方监听事件
+     */
+    form.on('select(wtClientNameSelect)', function (data) {
+        $.ajax({
+            url: "../eiaLabOffer/getWtClientId",
+            type:"POST",
+            data:{"wtClientName":data.value},
+            dataType: "json",
+            async: true,
+            success: function (result) {
+                $('#wtClientId').val(result.wtClientId);
             }
         });
     });

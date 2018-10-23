@@ -86,6 +86,7 @@ class EiaLabOfferController {
 //        } else {
             def sjClientId = params.sjClientId
             def wtClientId = params.wtClientId
+            println("wtClientId = " + wtClientId)
             /** 保存受检客户联系人 */
             def contactData = [:]
             contactData.contactName = params.sjClientContact
@@ -143,18 +144,6 @@ class EiaLabOfferController {
         }
     }
     /**
-     * 保存测试信息
-     * @return
-     */
-    def eiaLabOfferTestInfoSave() {
-        def eiaLabOffer = eiaLabOfferService.eiaLabOfferTestInfoSave(params)
-        if (eiaLabOffer) {
-            render([code: HttpMesConstants.CODE_OK, msg: HttpMesConstants.MSG_SAVE_OK, data: eiaLabOffer] as JSON)
-        } else {
-            render([code: HttpMesConstants.CODE_FAIL, msg: HttpMesConstants.MSG_SAVE_FAIL] as JSON)
-        }
-    }
-    /**
      * 删除检测方案信息
      */
     def eiaLabOfferDel() {
@@ -169,14 +158,18 @@ class EiaLabOfferController {
      */
     def getEiaLabOfferDataMap() {
         def eiaLabOffer = eiaLabOfferService.getEiaLabOfferDataMap(params.long('eiaLabOfferId'))
-        /** 委托方默认是联合泰泽 */
+        /** 未选择委托方时，委托方默认是联合泰泽 */
         def wtClientId
-        def param = [:]
-        param.busClientId = GeneConstants.TAIZE_BUS_CLIENT_ID_IN_LAB
-        def labClientJson = HttpConnectTools.getResponseJson(HttpUrlConstants.LAB_CLIENT_INFO, param)
-        if (labClientJson) {
-            def labJson = JsonHandler.jsonToMap(labClientJson).data
-            wtClientId = labJson.id
+        if (!params.eiaLabOfferId) {
+            def param = [:]
+            param.busClientId = GeneConstants.TAIZE_BUS_CLIENT_ID_IN_LAB
+            def labClientJson = HttpConnectTools.getResponseJson(HttpUrlConstants.LAB_CLIENT_INFO, param)
+            if (labClientJson) {
+                def labJson = JsonHandler.jsonToMap(labClientJson).data
+                wtClientId = labJson.id
+            }
+        } else {
+            wtClientId = eiaLabOffer?.wtClientId
         }
         /** 预估检测计划小计费用 */
         def maxSampleFee = eiaLabOfferPlanService.getMaxSampleFee(params)
@@ -219,6 +212,31 @@ class EiaLabOfferController {
         def project = eiaProjectService.getProjectAddr(params.long('eiaProjectId'))
         if (project) {
             render([code: HttpMesConstants.CODE_OK, data: project] as JSON)
+        } else {
+            render([code: HttpMesConstants.CODE_FAIL, msg: HttpMesConstants.MSG_DATA_NULL] as JSON)
+        }
+    }
+    /**
+     * 监测方案获取委托方在lab系统中的id
+     */
+    def getWtClientId() {
+        def busClientId
+        String wtClientName = params.wtClientName
+        if (wtClientName.indexOf(GeneConstants.CONTRACT_TRUST_LHTZ) != -1) {
+            busClientId = GeneConstants.TAIZE_BUS_CLIENT_ID_IN_LAB
+        } else if (wtClientName.indexOf(GeneConstants.CONTRACT_TRUST_LHCD) != -1) {
+            busClientId = GeneConstants.CHIDAO_BUS_CLIENT_ID_IN_LAB
+        }
+        def wtClientId
+        def param = [:]
+        param.busClientId = busClientId
+        def labClientJson = HttpConnectTools.getResponseJson(HttpUrlConstants.LAB_CLIENT_INFO, param)
+        if (labClientJson) {
+            def labJson = JsonHandler.jsonToMap(labClientJson).data
+            wtClientId = labJson.id
+        }
+        if (wtClientId) {
+            render([code: HttpMesConstants.CODE_OK, wtClientId: wtClientId] as JSON)
         } else {
             render([code: HttpMesConstants.CODE_FAIL, msg: HttpMesConstants.MSG_DATA_NULL] as JSON)
         }
