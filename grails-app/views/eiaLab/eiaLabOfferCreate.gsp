@@ -36,8 +36,12 @@
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label"><span class="col-f00">* </span>委托（单位）名称</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="wtClientName" id="wtClientName" class="layui-input readonly" readonly lay-verify="required" value="联合泰泽环境科技发展有限公司">
+                    <div class="layui-input-block layui-form">
+                        <select id="wtClientName" name="wtClientName" lay-filter="wtClientNameSelect" lay-verify="required" lay-search="">
+                            <option value="联合泰泽环境科技发展有限公司">联合泰泽环境科技发展有限公司</option>
+                            <option value="联合赤道环境评价有限公司">联合赤道环境评价有限公司</option>
+                        </select>
+                        %{--<input type="text" name="wtClientName" id="wtClientName" class="layui-input readonly" readonly lay-verify="required" value="联合泰泽环境科技发展有限公司">--}%
                     </div>
                 </div>
                 <div class="layui-form-item">

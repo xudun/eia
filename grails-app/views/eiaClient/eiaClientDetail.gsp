@@ -58,7 +58,10 @@
         <div class="layui-col-lg12 layui-col-md12 layui-col-sm12 layui-col-xs12">
             <table id="eiaInvoiceList" lay-filter="eiaInvoiceList"></table>
         </div>
-
+        <!--任务信息列表-->
+        <div class="layui-col-lg12 layui-col-md12 layui-col-sm12 layui-col-xs12">
+            <table id="eiaTaskList" lay-filter="eiaTaskList"></table>
+        </div>
         <!--列表-->
         <div class="layui-col-lg12 layui-col-md12 layui-col-sm12 layui-col-xs12">
             <table id="eiaOfferList" lay-filter="eiaOfferList"></table>
@@ -102,6 +105,11 @@
     <a class="layui-btn layui-btn-normal layui-btn-sm" lay-event="eiaCheck" title="查看"><i class="larry-icon">&#xe939;</i></a>
 </div>
 </script>
+<script type="text/html" id="taskTool">
+<div class="layui-btn-group">
+    <a class="layui-btn layui-btn-normal layui-btn-sm" lay-event="eiaCheck" title="查看"><i class="larry-icon">&#xe939;</i></a>
+</div>
+</script>
 <script type="text/html" id="indexTable">
 <span>{{d.LAY_TABLE_INDEX + 1}}</span>
 </script>
@@ -111,7 +119,9 @@
 <script type="text/html" id="tableTopTmp2">
 财务开户信息
 </script>
-
+<script type="text/html" id="tableTopTmp6">
+任务信息
+</script>
 <script type="text/html" id="tableTopTmp4">
 报价信息
 </script>
@@ -125,5 +135,7 @@
 </script>
 <input type="hidden" id="tableNameId" value=""/>
 <input type="hidden" id="eiaProjectId" value=""/>
+<input type="hidden" id="taskId" value=""/>
+
 </body>
 </html>

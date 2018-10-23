@@ -41,8 +41,8 @@ layui.use(['jquery', 'form', 'element', 'laydate', "upload"], function () {
             $('#dutyUser').val(data.dutyUser);
             $('#dutyUserId').val(data.dutyUserId);
             var staffId = $('#staffId').val();
-            if (staffId != data.inputUserId) {
-                $('.saveBtn').addClass("display-none");
+            if (staffId == data.inputUserId) {
+                $('.saveBtn').removeClass("display-none");
             }
 
             if ($('#eiaEnvProjectId').val()) {

@@ -1,5 +1,6 @@
 package com.lheia.eia.task
 
+import com.lheia.eia.client.EiaClient
 import com.lheia.eia.common.FuncConstants
 import com.lheia.eia.common.GeneConstants
 import com.lheia.eia.contract.EiaContract
@@ -65,6 +66,22 @@ class EiaTaskService {
                         eq("inputUserId", Long.valueOf(session.staff.staffId))
                         like("taskAssignUser", "%" + session.staff.staffName+"_"+session.staff.staffId + "%")
                     }
+                }
+            }
+            /**
+             * 查询企业对应的任务
+             */
+            if(params.eiaClientId){
+                def eiaClient = EiaClient.findByIfDelAndId(false,params.long("eiaClientId"))
+                if(eiaClient?.id){
+                    def eiaContract = EiaContract.findAllByEiaClientIdAndIfDel(eiaClient?.id,false)
+                    if(eiaContract){
+                        'in'("id", eiaContract?.taskId)
+                    }else {
+                        eq("id",Long.valueOf(-1))
+                    }
+                }else {
+                    eq("id",Long.valueOf(-1))
                 }
             }
             eq("ifDel", false)

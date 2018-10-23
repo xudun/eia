@@ -151,7 +151,9 @@ class EiaLabOfferService {
         def labClientReportJson = HttpConnectTools.getResponseJson(HttpUrlConstants.LAB_CLIENT_REPORT_INFO, param)
         if (labClientReportJson) {
             def reportJson = JsonHandler.jsonToMap(labClientReportJson).data
-            eiaLabOffer.properties = reportJson
+            if (reportJson) {
+                eiaLabOffer.properties = reportJson
+            }
         }
         /**
          * 合同信息
@@ -159,10 +161,12 @@ class EiaLabOfferService {
         def labClientContractInfoJson = HttpConnectTools.getResponseJson(HttpUrlConstants.LAB_CLIENT_CONTRACT_INFO, param)
         if (labClientContractInfoJson) {
             def contractInfoJson = JsonHandler.jsonToMap(labClientContractInfoJson).data
-            eiaLabOffer.properties = contractInfoJson
-            eiaLabOffer.contractDiscount = new BigDecimal(100)
-            eiaLabOffer.defReportTemp = contractInfoJson.reportTemp
-            eiaLabOffer.labClientContractInfoId = contractInfoJson.id
+            if (contractInfoJson) {
+                eiaLabOffer.properties = contractInfoJson
+                eiaLabOffer.contractDiscount = new BigDecimal(100)
+                eiaLabOffer.defReportTemp = contractInfoJson.reportTemp
+                eiaLabOffer.labClientContractInfoId = contractInfoJson.id
+            }
         }
         /**
          * 财务信息
@@ -170,8 +174,10 @@ class EiaLabOfferService {
         def labClientFinanceInfoJson = HttpConnectTools.getResponseJson(HttpUrlConstants.LAB_CLIENT_FINANCE_INFO, param)
         if (labClientFinanceInfoJson) {
             def financeInfoJson = JsonHandler.jsonToMap(labClientFinanceInfoJson).data
-            eiaLabOffer.properties = financeInfoJson
-            eiaLabOffer.labClientFinanceInfoId = financeInfoJson.id
+            if (financeInfoJson) {
+                eiaLabOffer.properties = financeInfoJson
+                eiaLabOffer.labClientFinanceInfoId = financeInfoJson.id
+            }
         }
         if (eiaLabOffer.save(flush: true, failOnError: true)) {
             eiaLabOffer.offerState = GeneConstants.OFFER_COMPLETE

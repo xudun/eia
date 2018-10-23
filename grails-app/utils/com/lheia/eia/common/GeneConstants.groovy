@@ -463,9 +463,13 @@ class GeneConstants {
      */
     static String FEE_TYPE = 'FEE_TYPE'
     /**
-     * lab系统中联合泰泽的Id
+     * lab系统中联合泰泽的busClientId
      */
     static String TAIZE_BUS_CLIENT_ID_IN_LAB = "-1"
+    /**
+     * lab系统中联合赤道的busClientId
+     */
+    static String CHIDAO_BUS_CLIENT_ID_IN_LAB = "-2"
     /**
      * 分配角色 项目编写人
      */

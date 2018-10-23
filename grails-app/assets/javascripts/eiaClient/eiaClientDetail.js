@@ -15,6 +15,26 @@ layui.use(['jquery', 'table'], function(){
                 $('#clientPostCode').html(data.data.clientPostCode);
                 $('#clientCorporate').html(data.data.clientCorporate);
                 $('#clientFax').html(data.data.clientFax);
+                table.render({
+                    id: 'eiaTaskList',
+                    elem: '#eiaTaskList',
+                    url:"../eiaTask/getEiaTaskDataList?eiaClientId="+eiaClientId,
+                    toolbar: '#tableTopTmp6',
+                    defaultToolbar:['filter', 'print', 'exports'],
+                    cols: [[
+                        {fixed: 'left', type: 'numbers', title: '序号', width: '6%', align: "center"},
+                        {field:'taskNo',width:'15%', title: '任务单号',align: "center"},
+                        {field:'taskName',width:'20%', title: '任务名称',align: "center"},
+                        {field:'busiType',width:'15%', title: '业务类型',align: "center"},
+                        {field:'inputDept',width:'10%', title: '录入部门',align: "center"},
+                        {field:'inputUser',width:'10%', title: '录入人',align: "center"},
+                        {field:'taskState',width:'10%', title: '任务状态',align: "center"},
+                        {fixed: 'right', title: '操作',width:'15%',align: "center", toolbar: '#taskTool',align: "center"}
+                    ]],
+                    page: true,
+                    even: true,
+                    limit: 10
+                });
             }
         });
 
@@ -225,6 +245,35 @@ layui.use(['jquery', 'table'], function(){
                 });
             }
         });
-
+        table.on('tool(eiaTaskList)', function (obj) {
+            var data = obj.data;
+            if (obj.event === 'eiaCheck') {    //编辑
+                var pageUrl = '../eiaTask/eiaTaskDetail?taskId='+data.id;
+                var index = layer.open({
+                    title:' ',
+                    type: 2,
+                    shade: false,
+                    maxmin: true,
+                    skin: 'larry-green',
+                    area: ['100%', '100%'],
+                    content: pageUrl,
+                    success:function (layero, index) {
+                        var body = layer.getChildFrame('body', index);
+                        body.find('#taskId').text(data.id);
+                        $('#taskId').val(data.id);
+                    },
+                    end: function () {
+                        table.reload('getEiaTaskDataList');
+                        $('#taskNo').val("");
+                    },
+                    min: function () {
+                        $(".layui-layer-title").text("查看任务");
+                    },
+                    restore: function () {
+                        $(".layui-layer-title").text(" ");
+                    }
+                });
+            }
+        });
     });
 });

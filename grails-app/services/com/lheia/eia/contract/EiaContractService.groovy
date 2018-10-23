@@ -37,7 +37,6 @@ class EiaContractService {
      * @return
      */
     def eiaContractQueryPage(params, session) {
-        println("params = " + params)
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd")
         int page
         int limit
@@ -85,7 +84,6 @@ class EiaContractService {
                 arcContractIds = eiaWorkFlowBusiList.tableNameId
             }
         }
-        println("arcContractIds = " + arcContractIds)
         def eiaContractList = EiaContract.createCriteria().list(max: limit, offset: page * limit) {
             def contractName = params.contractName
             if (contractName && !"合同名称,合同编号,录入部门,录入人".equals(contractName)) {
@@ -94,6 +92,17 @@ class EiaContractService {
                     like("inputDept", "%" + contractName + "%")
                     like("inputUser", "%" + contractName + "%")
                     like("contractNo", "%" + contractName + "%")
+                }
+            } else {
+                if (params.eiaClientId || params.eiaTaskId || params.eiaProjectId) {
+                }else {
+                    if (params.contractTrust || params.clientName || params.contractType || params.ifArc || params.startDate || params.endDate || params.conStartMoney || params.conEndMoney || params.ifAgency) {
+                    } else {
+                        or{
+                            eq("inputUserId", Long.valueOf(session.staff.staffId))
+                            like("taskAssignUser", "%" + session.staff.staffName+"_"+session.staff.staffId + "%")
+                        }
+                    }
                 }
             }
             /** 合同受托方 */
@@ -115,8 +124,12 @@ class EiaContractService {
                 like("contractType", "%" + contractType + "%")
             }
             /** 合同是否归档 */
-            if (arcContractIds) {
-                'in'("id", arcContractIds)
+            if (ifArc) {
+                if (arcContractIds) {
+                    'in'("id", arcContractIds)
+                } else {
+                    eq("id", Long.valueOf(-1))
+                }
             }
             /** 签订日期 */
             def startDate = params.startDate
@@ -136,11 +149,12 @@ class EiaContractService {
             if (conEndMoney) {
                 le("contractMoney", new BigDecimal(conEndMoney))
             }
-            /** 是否有中介合同（如果既有客户信息也有甲方信息，视为有中介合同） */
+            /** 是否有中介合同（如果既有客户信息也有甲方信息且两者不是同一单位，视为有中介合同） */
             def ifAgency = params.ifAgency
             if (ifAgency == '是') {
                 isNotNull("eiaClientName")
                 isNotNull("ownerClientName")
+                neProperty("eiaClientName", "ownerClientName")
             } else if (ifAgency == '否') {
                 isNull("ownerClientName")
             }
@@ -208,6 +222,7 @@ class EiaContractService {
             map.id = it.id
             map.contractName = it.contractName
             map.contractNo = it.contractNo
+            map.eiaClientName = it.eiaClientName
             map.contractType = it.contractType
             map.taskName = it.taskName
             map.taskNo = it.taskNo
