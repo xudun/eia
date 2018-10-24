@@ -29,8 +29,6 @@
 </div>
 <script type="text/html" id="mlTool">
 <div class="layui-btn-group">
-    <a class="layui-btn layui-btn-normal layui-btn-sm" lay-event="projectGisShow" title="显示地理信息"><i
-            class="larry-icon">&#xe9b3;</i></a>
     <a class="layui-btn layui-btn-normal layui-btn-sm" lay-event="projectDetail" title="查看"><i
             class="larry-icon">&#xe896;</i></a>
     {{# if(!d.ifSub){}}

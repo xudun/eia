@@ -125,35 +125,7 @@ layui.use(['jquery', 'layer', 'form','table'], function () {
 
                 }
             });
-        } else if (obj.event == 'projectGisShow') {
-           var pageUrl = EXPLORE_DRAW_PATH+'?eiaProjectExploreId='+data.id;
-           if(data.gisGeoProjectId){
-               pageUrl = pageUrl+"&gisGeoProjectId="+data.gisGeoProjectId
-           }
-           var index = layer.open({
-               title:' ',
-               type: 2,
-               shade: false,
-               maxmin: true,
-               skin: 'larry-green',
-               area: ['100%', '100%'],
-               content: pageUrl,
-               success:function (layero, index) {
-                   var body = layer.getChildFrame('body', index);
-               },
-               end: function () {
-                   table.reload('eiaAreaInfoList');
-                   $('#eiaPubProjectId').val('');
-               },
-               min: function () {
-                   $(".layui-layer-title").text("GIS绘图");
-               },
-               restore: function () {
-                   $(".layui-layer-title").text(" ");
-               }
-           });
-        }
-        else if (obj.event === 'projectFlow') {//流程
+        } else if (obj.event === 'projectFlow') {//流程
            actionUrl = '/eia/eiaProjectPlan/checkProjectFlow?eiaProjectId='+eiaProjectId;
            $.post(actionUrl, data.field, function (data) {
                if (data.code == 0) {
