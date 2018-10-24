@@ -39,7 +39,7 @@
             </td>
         </tr>
         <tr>
-            <td width="15%">开户行</td>
+            <td width="15%">开户行户名</td>
             <td width="35%">
                 ${eiaInvoice?.bankName}
             </td>
@@ -84,7 +84,7 @@
             </td>
         </tr>
         <tr>
-            <td width="15%">备注</td>
+            <td width="15%">发票备注</td>
             <td colspan="3" width="35%">
                 ${eiaInvoice?.memo}
             </td>
