@@ -120,6 +120,9 @@ body{
 .pb15{
 	padding-bottom:15px !important;
 }
+.pb68{
+	padding-bottom:68px !important;
+}
 .margin0{
 	margin: 0 auto;
 }
@@ -398,4 +401,19 @@ table .layui-badge-rim{
 }
 .layui-elem-quote .layui-form .layui-input-inline{
 	width:auto !important;
+}
+
+/*按钮栏固定底部*/
+.fixed-footer{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	z-index: 100;
+	border-left: 0;
+	text-align: center;
+	box-sizing: border-box;
+}
+.fixed-footer .layui-btn-group .layui-btn-primary{
+	border-left: 1px solid #C9C9C9;
 }

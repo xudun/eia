@@ -5,9 +5,8 @@
     <meta name="layout" content="main"/>
     <asset:stylesheet src="/eiaProject/eiaPrintReport.css"/>
 </head>
-<body>
-<blockquote class="layui-elem-quote larry-btn">
-    打印责任运行卡
+<body class="pb68">
+<blockquote class="layui-elem-quote larry-btn fixed-footer">
     <div class="layui-inline pl12">
         <div class="layui-btn-group top-group">
             <a class="layui-btn search_btn pl12" onclick="printReport()"><i class="larry-icon">&#xe89a;</i> 打印</a>

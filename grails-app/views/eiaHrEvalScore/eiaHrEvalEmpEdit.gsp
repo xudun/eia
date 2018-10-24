@@ -7,7 +7,7 @@
     <asset:stylesheet src="/eiaHrEval/eiaHrEval.css"/>
 </head>
 
-<body>
+<body class="pb68">
 <div class="layui-fluid larry-wrapper">
     <div class="fixed fixed-w">
         <div class="layer-title">
@@ -17,20 +17,22 @@
                 </legend>
             </fieldset>
         </div>
-        <blockquote class="layui-elem-quote larry-btn">
-            员工月度考核表
+
+        <ul class="title-right">
+            <li>所属部门：<span id="orgCode"></span><span id="orgName"></span></li>
+            <li>考核月份：<span id="assessmentMonth"></span></li>
+            <li>直属领导：<span id="leader"></span></li>
+        </ul>
+
+        <blockquote class="layui-elem-quote larry-btn fixed-footer">
             <div class="layui-inline pl12">
                 <div class="layui-btn-group top-group">
-                    <a class="layui-btn" data-type="save"><i class="larry-icon">&#xe9d1;</i> 保存</a>
-                    <a type="reset" class="layui-btn layui-btn-primary" onclick="clearForm()"><i class="larry-icon">&#xe69a;</i> 重置</a>
+                    <a class="layui-btn pl12" data-type="save"><i class="larry-icon">&#xe9d1;</i> 保存</a>
+                    <a type="reset" class="layui-btn layui-btn-primary pl12" onclick="clearForm()"><i class="larry-icon">&#xe69a;</i> 重置</a>
                 </div>
             </div>
-            <ul class="title-right">
-                <li>所属部门：<span id="orgCode"></span><span id="orgName"></span></li>
-                <li>考核月份：<span id="assessmentMonth"></span></li>
-                <li>直属领导：<span id="leader"></span></li>
-            </ul>
         </blockquote>
+
     </div>
     <div id="eiaHrEvalTable" class="mt116 font12">
         <div class="float-left" id="titleLeft">

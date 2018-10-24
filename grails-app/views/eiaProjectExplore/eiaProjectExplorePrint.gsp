@@ -17,7 +17,7 @@
     </style>
 </head>
 
-<body>
+<body class="pb68">
 <div id="print" class="layui-fluid larry-wrapper pt15">
     <div class="layer-title">
         <fieldset class="layui-elem-field layui-field-title site-title">
@@ -26,13 +26,15 @@
             </legend>
         </fieldset>
     </div>
-    <blockquote class="layui-elem-quote larry-btn mb15">
+
+    <blockquote class="layui-elem-quote larry-btn fixed-footer">
         <div class="layui-inline pl12">
             <div class="layui-btn-group top-group">
-                <a class="layui-btn" data-type="print"><i class="larry-icon">&#xe850;</i> 打印</a>
+                <a class="layui-btn pl12" data-type="print"><i class="larry-icon">&#xe89a;</i> 打印</a>
             </div>
         </div>
     </blockquote>
+
 </div>
 <div class="margin0 w710">
     <h1 class="font20 margin0 mb10 a" style="text-align: center"></h1>

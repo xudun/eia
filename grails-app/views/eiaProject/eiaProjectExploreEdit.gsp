@@ -14,7 +14,7 @@
     <asset:stylesheet src="/eiaProject/eiaProjectExploreEdit.css"/>
 </head>
 
-<body>
+<body class="pb68">
 <div class="layer-title">
     <fieldset class="layui-elem-field layui-field-title site-title">
         <legend id="title">
@@ -25,12 +25,11 @@
 
 <div class="layui-fluid larry-wrapper pt0">
     <form class="layui-form proCreate">
-        <blockquote class="layui-elem-quote larry-btn">
-            现场踏勘信息
+
+        <blockquote class="layui-elem-quote larry-btn fixed-footer">
             <div class="layui-inline pl12">
                 <div class="layui-btn-group top-group">
-                    <button class="layui-btn saveBtn" lay-submit="" lay-filter="save"><i class="larry-icon">&#xe9d1;</i> 保存
-                    </button>
+                    <button class="layui-btn saveBtn pl12" lay-submit="" lay-filter="save"><i class="larry-icon">&#xe9d1;</i> 保存</button>
                 </div>
             </div>
         </blockquote>

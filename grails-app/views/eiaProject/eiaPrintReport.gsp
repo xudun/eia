@@ -5,7 +5,7 @@
     <meta name="layout" content="main"/>
     <asset:stylesheet src="/eiaProject/eiaPrintReport.css"/>
 </head>
-<body>
+<body class="pb68">
 <blockquote class="layui-elem-quote larry-btn">
     <g:if test = "${reportType == 'YS'}">
         <span>一审意见</span>
@@ -16,12 +16,17 @@
     <g:elseif test = "${reportType == 'SS'}">
         <span>三审意见</span>
     </g:elseif>
+
+</blockquote>
+
+<blockquote class="layui-elem-quote larry-btn fixed-footer">
     <div class="layui-inline pl12">
         <div class="layui-btn-group top-group">
             <a class="layui-btn search_btn pl12" onclick="printReport()"><i class="larry-icon">&#xe89a;</i> 打印</a>
         </div>
     </div>
 </blockquote>
+
 <div id="dvData" class="margin0 w760">
     <g:if test = "${reportType == 'YS'}">
         <h1 class="font20 margin0 w300">环境影响报告书（表）审查单</h1>

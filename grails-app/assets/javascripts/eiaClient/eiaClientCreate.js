@@ -248,33 +248,7 @@ layui.use(['jquery', 'layer', 'table', 'form'], function(){
                 }
             });
         });*/
-        //新增财务账号按钮
-        $('.addInvoiceBtn').click(function () {
-            pageUrl = '../eiaClientConfig/eiaCliConfigCreate?pageType=0';
-            var index = layer.open({
-                title:' ',
-                type: 2,
-                shade: false,
-                maxmin: true,
-                skin: 'larry-green',
-                area: ['100%', '100%'],
-                content: pageUrl,
-                success:function () {
-                    var body = layer.getChildFrame('body', index);
-                },
-                end: function () {
-                    var eiaClientId = $('#eiaClientId').val();
-                    table.reload("eiaInvoiceList", {
-                        url: "/eia/eiaClientConfig/invoiceSelectQueryPage?eiaClientId="+eiaClientId+"&invoiceType=1"});
-                },
-                min: function () {
-                    $(".layui-layer-title").text("");
-                },
-                restore: function () {
-                    $(".layui-layer-title").text(" ");
-                }
-            });
-        });
+
         //监听头部工具栏事件
         //监听事件
         table.on('toolbar(contactsList)', function(obj){
@@ -364,6 +338,7 @@ layui.use(['jquery', 'layer', 'table', 'form'], function(){
             $.post(actionUrl, data.field, function (data) {
                 if (data.code == 0) {
                     layer.msg('保存成功', {icon: 1, time: 1000,shade: 0.1}, function () {
+                        pageType = 1;
                         $("#eiaClientId").val(data.data.id)
                         var eiaClientId = $("#eiaClientId").val();
                         if(eiaClientId || pageType==1){

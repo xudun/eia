@@ -6,7 +6,7 @@
     <asset:javascript src="/eiaContract/eiaContractCreate.js"/>
 </head>
 
-<body>
+<body class="pb68">
 <div class="layui-fluid larry-wrapper pt0">
     <div class="layer-title">
         <fieldset class="layui-elem-field layui-field-title site-title">
@@ -19,18 +19,19 @@
     <form class="layui-form offerInfo">
         <input type="hidden" id="eiaClientId" name="eiaClientId" value="${eiaContract?.eiaClientId}">
         <input type="hidden" id="ownerClientId" name="ownerClientId" value="${eiaContract?.ownerClientId}">
-        <blockquote class="layui-elem-quote larry-btn">
-            合同信息
+
+        <blockquote class="layui-elem-quote larry-btn fixed-footer">
             <div class="layui-inline pl12">
                 <div class="layui-btn-group top-group">
                     <g:if test="${session.staff.funcCode.contains(FuncConstants.EIA_HGGL_HTCJ_ADDSELF)}">
-                        <a class="layui-btn tempStoreBtn saveBtn"><i class="larry-icon">&#xe8a2;</i> 暂存</a>
-                        <button class="layui-btn saveBtn" lay-submit="" lay-filter="save"><i class="larry-icon">&#xe9d1;</i> 保存</button>
-                        <button type="reset" class="layui-btn layui-btn-primary resetBtn"><i class="larry-icon">&#xe69a;</i> 重置</button>
+                        <a class="layui-btn tempStoreBtn saveBtn pl12"><i class="larry-icon">&#xe8a2;</i> 暂存</a>
+                        <button class="layui-btn saveBtn pl12" lay-submit="" lay-filter="save"><i class="larry-icon">&#xe9d1;</i> 保存</button>
+                        <button type="reset" class="layui-btn layui-btn-primary resetBtn pl12"><i class="larry-icon">&#xe69a;</i> 重置</button>
                     </g:if>
                 </div>
             </div>
         </blockquote>
+
         <div class="layui-row mt15">
             <div class="layui-col-xs6">
                 <div class="layui-form-item">

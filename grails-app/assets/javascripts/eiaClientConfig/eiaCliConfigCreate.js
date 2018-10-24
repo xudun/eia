@@ -9,7 +9,7 @@ layui.use(['jquery', 'form'], function(){
         var pageType = getParamFromUrl(document.location.href,"pageType");
         //设置页面名称
         var $pageTitle = $('.pageTitle');
-        pageType == 0 ? $pageTitle.html('新增客户') : $pageTitle.html('编辑客户');
+        pageType == 0 ? $pageTitle.html('新增财务开户信息') : $pageTitle.html('编辑财务开户信息');
         var eiaClientConfigId = parent.$('#eiaClientConfigId').val();
         if(pageType==0){
             eiaClientConfigId =''

@@ -10,10 +10,14 @@
 <div class="layui-fluid larry-wrapper">
     <blockquote class="layui-elem-quote larry-btn">
         员工月度考核表（助理）
+    </blockquote>
+
+    <blockquote class="layui-elem-quote larry-btn fixed-footer">
         <div class="layui-inline pl12">
             <a class="layui-btn search_btn pl12" data-type="printReport"><i class="larry-icon">&#xe850;</i> 打印</a>
         </div>
     </blockquote>
+
     <div class="font12">
         <table class="eiaHrEvalTable mt40 w872">
             <tr>

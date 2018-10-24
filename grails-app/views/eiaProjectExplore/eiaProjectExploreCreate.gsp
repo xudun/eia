@@ -12,21 +12,20 @@
     </style>
 </head>
 
-<body>
+<body class="pb68">
 <div class="layui-fluid larry-wrapper pt0">
     <form class="layui-form proCreateExp">
         <input type="hidden" id="eiaProjectExploreId" name="eiaProjectExploreId" value="">
-        <blockquote class="layui-elem-quote larry-btn">
-            内审信息
+
+        <blockquote class="layui-elem-quote larry-btn fixed-footer">
             <div class="layui-inline pl12">
                 <div class="layui-btn-group top-group">
-                    <button class="layui-btn saveBtn" lay-submit="" lay-filter="save"><i
-                            class="larry-icon">&#xe9d1;</i> 保存</button>
-                    <button type="reset" class="layui-btn layui-btn-primary resetBtn"><i
-                            class="larry-icon">&#xe69a;</i> 重置</button>
+                    <button class="layui-btn saveBtn pl12" lay-submit="" lay-filter="save"><i class="larry-icon">&#xe9d1;</i> 保存</button>
+                    <button type="reset" class="layui-btn layui-btn-primary resetBtn pl12"><i class="larry-icon">&#xe69a;</i> 重置</button>
                 </div>
             </div>
         </blockquote>
+
         <fieldset class="layui-elem-field layui-field-title site-title">
             <legend >
                 <a name="methodRender" class="pageTitle">项目基本情况</a>

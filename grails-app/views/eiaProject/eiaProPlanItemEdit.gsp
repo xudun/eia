@@ -17,16 +17,18 @@
         .layui-input-block{margin-left: 145px;}
     </style>
 </head>
-
-<body>
+<body class="pb68">
 <div class="layui-fluid larry-wrapper pt0">
     <form class="layui-form proCreate">
         <blockquote class="layui-elem-quote larry-btn">
             <span class="showTitle"></span>
+        </blockquote>
+
+        <blockquote class="layui-elem-quote larry-btn fixed-footer">
             <div class="layui-inline pl12">
                 <div class="layui-btn-group top-group">
-                    <button class="layui-btn" lay-submit="" lay-filter="save"><i class="larry-icon">&#xe9d1;</i> 保存</button>
-                    <button type="reset" class="layui-btn layui-btn-primary resetBtn"><i class="larry-icon">&#xe69a;</i> 重置</button>
+                    <button class="layui-btn pl12" lay-submit="" lay-filter="save"><i class="larry-icon">&#xe9d1;</i> 保存</button>
+                    <button type="reset" class="layui-btn layui-btn-primary resetBtn pl12"><i class="larry-icon">&#xe69a;</i> 重置</button>
                 </div>
             </div>
         </blockquote>
