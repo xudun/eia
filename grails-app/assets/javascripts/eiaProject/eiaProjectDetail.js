@@ -8,6 +8,9 @@ layui.use(['jquery', 'form', 'element','table'], function(){
 
     var eiaProjectId = parent.$('#eiaProjectId').val();
     var eiaTaskId = parent.$('#eiaTaskId').val();
+    if(!eiaProjectId){
+        eiaProjectId = params.eiaProjectId
+    }
     //渲染固定数据
     $.ajax({
         url: "/eia/eiaProject/getEiaProjectDataMap?eiaProjectId=" + eiaProjectId,
