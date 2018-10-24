@@ -128,7 +128,7 @@ class EiaProjectExploreService {
             eiaProjectExplore.environmentaTypeDesc = environment.codeDesc
         }
         eiaProjectExplore.save(flush: true, failOnError: true)
-        eiaProjectExplore.exploreNo = "E"+eiaProjectExplore.id
+        eiaProjectExplore.exploreNo = "E-"+eiaProjectExplore.id
         eiaProjectExplore.save(flush: true, failOnError: true)
     }
 }

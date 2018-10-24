@@ -25,8 +25,7 @@
 <script type="text/html" id="eiaProjectListTool">
 <div class="layui-btn-group">
 
-    <a class="layui-btn layui-btn-normal layui-btn-sm" lay-event="eiaCheck" title="查看"><i
-            class="larry-icon">&#xe896;</i></a>
+    <a class="layui-btn layui-btn-normal layui-btn-sm" lay-event="eiaCheck" title="查看"><i class="larry-icon">&#xe896;</i></a>
     {{#  if(d.ifSub){ }}
         <a class="layui-btn layui-btn-normal layui-btn-sm" lay-event="certFlow" title="处理流程"><i
             class="larry-icon">&#xea21;</i></a>
