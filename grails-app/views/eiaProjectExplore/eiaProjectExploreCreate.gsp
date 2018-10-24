@@ -93,7 +93,7 @@
 
                     <div class="layui-input-block">
                         <input type="text" id="process" name="process" class="layui-input" lay-verify="required"
-                               value="">
+                             placeholder="(三到五个关键字,用逗号隔开)"  value="">
                     </div>
                 </div>
 
