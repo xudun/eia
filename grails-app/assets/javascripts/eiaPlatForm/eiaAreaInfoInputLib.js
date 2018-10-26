@@ -284,9 +284,9 @@ var inputs = {
                 "                        <select name='planType' id='planType' lay-filter='planType'>" +
                 "                       <option value=''></option>" +
                 "                       <option value='一类声功能区划'>一类声功能区划</option>" +
-                "                       <option value='一类声功能区划'>二类声功能区划</option>" +
-                "                       <option value='一类声功能区划'>三类声功能区划</option>" +
-                "                       <option value='一类声功能区划'>四类声功能区划</option>" +
+                "                       <option value='二类声功能区划'>二类声功能区划</option>" +
+                "                       <option value='三类声功能区划'>三类声功能区划</option>" +
+                "                       <option value='四类声功能区划'>四类声功能区划</option>" +
                 "                       </select>" +
                 "                    </div>" +
                 "                </div>";
