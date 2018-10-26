@@ -6,7 +6,7 @@
     <asset:stylesheet src="/eiaLab/eiaLabOfferCreate.css"/>
     <asset:javascript src="/eiaLab/eiaLabOfferPlanBatchDiscDetail.js"/>
 </head>
-<body>
+<body class="pb68">
 <div class="layui-fluid larry-wrapper pt0">
     <div class="layer-title">
         <fieldset class="layui-elem-field layui-field-title site-title">
@@ -16,14 +16,15 @@
         </fieldset>
     </div>
     <form class="layui-form">
-        <blockquote class="layui-elem-quote">
-            确认折扣
+
+        <blockquote class="layui-elem-quote larry-btn fixed-footer">
             <div class="layui-inline pl12">
                 <div class="layui-btn-group top-group">
-                    <button class="layui-btn" lay-submit lay-filter="save"><i class="larry-icon">&#xe9d1;</i> 保存</button>
+                    <button class="layui-btn pl12" lay-submit lay-filter="save"><i class="larry-icon">&#xe9d1;</i> 保存</button>
                 </div>
             </div>
         </blockquote>
+
         <div class="layui-row mt15">
             <div class="layui-col-xs6">
                 <div class="layui-form-item">

@@ -2,33 +2,34 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <title>客户列表</title>
+    <title>新增财务开户信息</title>
     <meta name="layout" content="main"/>
     <asset:javascript src="/eiaClientConfig/eiaCliConfigCreate.js"/>
 </head>
 
 <body>
 
-<body>
+<body class="pb68">
 <div class="layui-fluid larry-wrapper pt0">
     <div class="layer-title">
         <fieldset class="layui-elem-field layui-field-title site-title">
             <legend id="title">
-                <a name="methodRender" class="pageTitle">财务开户信息</a>
+                <a name="methodRender" class="pageTitle">新增财务开户信息</a>
             </legend>
         </fieldset>
     </div>
 
     <form class="layui-form">
-        <blockquote class="layui-elem-quote larry-btn">
-            财务开户信息
+
+        <blockquote class="layui-elem-quote larry-btn fixed-footer">
             <div class="layui-inline pl12">
                 <div class="layui-btn-group top-group">
-                    <button class="layui-btn" lay-submit="" lay-filter="save"><i class="larry-icon">&#xe9d1;</i> 保存</button>
-                    <button type="button" class="layui-btn layui-btn-primary resetBtn"><i class="larry-icon">&#xe69a;</i> 重置</button>
+                    <button class="layui-btn pl12" lay-submit="" lay-filter="save"><i class="larry-icon">&#xe9d1;</i> 保存</button>
+                    <button type="button" class="layui-btn layui-btn-primary resetBtn pl12"><i class="larry-icon">&#xe69a;</i> 重置</button>
                 </div>
             </div>
         </blockquote>
+
         <div class="layui-row mt15">
             <div class="layui-col-xs6">
                 <div class="layui-form-item">
@@ -58,7 +59,7 @@
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">开户行</label>
+                    <label class="layui-form-label">开户行户名</label>
                     <div class="layui-input-block">
                         <input type="text" id="bankName" name="bankName" class="layui-input"  value="">
                     </div>

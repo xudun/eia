@@ -7,7 +7,7 @@
     <asset:javascript src="/eiaLab/eiaLabOfferPlanCreate.js"/>
 </head>
 
-<body>
+<body class="pb68">
 <div class="layui-fluid larry-wrapper pt0">
     <div class="layer-title">
         <fieldset class="layui-elem-field layui-field-title site-title">
@@ -109,12 +109,15 @@
         </div>
         <input type="hidden" id="eiaLabOfferId" name="eiaLabOfferId">
         <input type="hidden" id="eiaLabOfferPlanId" name="eiaLabOfferPlanId">
-        <div class="layui-form-item">
-            <div class="layui-input-block">
-                <button class="layui-btn" lay-submit lay-filter="save">保存</button>
-                <i id="reset" class="layui-btn layui-btn-primary">重置</i>
+
+        <blockquote class="layui-elem-quote larry-btn fixed-footer">
+            <div class="layui-inline pl12">
+                <div class="layui-btn-group top-group">
+                    <button class="layui-btn pl12" lay-submit lay-filter="save">保存</button>
+                    <i id="reset" class="layui-btn layui-btn-primary pl12">重置</i>
+                </div>
             </div>
-        </div>
+        </blockquote>
     </form>
 </div>
 <script id="addTitle" type="text/x-jquery-tmpl">

@@ -10,7 +10,7 @@
         }
     </style>
 </head>
-<body>
+<body class="pb68">
 <div class="layui-fluid larry-wrapper pt15">
     <div class="layer-title">
         <fieldset class="layui-elem-field layui-field-title site-title">
@@ -20,15 +20,16 @@
         </fieldset>
     </div>
     <form class="layui-form">
-        <blockquote class="layui-elem-quote larry-btn mb15">
+
+        <blockquote class="layui-elem-quote larry-btn fixed-footer">
             <div class="layui-inline pl12">
                 <div class="layui-btn-group top-group">
-                    <a class="layui-btn" lay-submit="" id="save" data-type="save"><i class="larry-icon">&#xe9d1;</i> 保存</a>
-                    <a class="layui-btn display-none" data-type="print" id="print"><i class="larry-icon">&#xe850;</i> 打印</a>
-                    %{--<button type="reset" class="layui-btn layui-btn-primary resetBtn"><i class="larry-icon">&#xe69a;</i> 重置</button>--}%
+                    <a class="layui-btn pl12" lay-submit="" id="save" data-type="save"><i class="larry-icon">&#xe9d1;</i> 保存</a>
+                    <a class="layui-btn display-none pl12" data-type="print" id="print"><i class="larry-icon">&#xe850;</i> 打印</a>
                 </div>
             </div>
         </blockquote>
+
         <div class="layui-form-item">
             <label class="layui-form-label">用印名称</label>
             <div class="layui-input-block">

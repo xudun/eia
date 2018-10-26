@@ -11,7 +11,7 @@
     </style>
 </head>
 
-<body>
+<body class="pb68">
 <div class="layui-fluid larry-wrapper pt0">
     <div class="layer-title">
         <fieldset class="layui-elem-field layui-field-title site-title">
@@ -24,15 +24,16 @@
     <form class="layui-form offerInfo">
         <input type="hidden" id="clientConfigId" name="clientConfigId" value="">
         <input type="hidden" id="contractId" name="contractId" value="">
-        <blockquote class="layui-elem-quote larry-btn">
-            开票信息
+
+        <blockquote class="layui-elem-quote larry-btn fixed-footer">
             <div class="layui-inline pl12">
                 <div class="layui-btn-group top-group">
-                    <button class="layui-btn" lay-submit="" lay-filter="save"><i class="larry-icon">&#xe9d1;</i> 保存</button>
-                    <button type="reset" class="layui-btn layui-btn-primary resetBtn"><i class="larry-icon">&#xe69a;</i> 重置</button>
+                    <button class="layui-btn pl12" lay-submit="" lay-filter="save"><i class="larry-icon">&#xe9d1;</i> 保存</button>
+                    <button type="reset" class="layui-btn layui-btn-primary resetBtn pl12"><i class="larry-icon">&#xe69a;</i> 重置</button>
                 </div>
             </div>
         </blockquote>
+
         <div align="center">
             <div class="layui-form-item mt15">
                 <font class="font-title">联合赤道环境评价有限公司发票申请单

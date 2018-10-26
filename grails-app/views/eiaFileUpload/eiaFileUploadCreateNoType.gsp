@@ -6,7 +6,7 @@
     <asset:javascript src="/eiaFileUpload/eiaFileUploadCreateNoType.js"/>
 </head>
 
-<body>
+<body class="pb68">
 <div class="shade display-none"></div>
 <div class="layui-fluid larry-wrapper pt0">
     <div class="layer-title">
@@ -17,15 +17,16 @@
         </fieldset>
     </div>
     <form class="layui-form">
-        <blockquote class="layui-elem-quote larry-btn">
-            文件上传
+
+        <blockquote class="layui-elem-quote larry-btn fixed-footer">
             <div class="layui-inline pl12">
                 <div class="layui-btn-group top-group">
-                    <button class="layui-btn" id="save" lay-submit="" lay-filter="save"><i class="larry-icon">&#xe9d1;</i> 保存</button>
-                    <button type="reset" class="layui-btn layui-btn-primary resetBtn"><i class="larry-icon">&#xe69a;</i> 重置</button>
+                    <button class="layui-btn pl12" id="save" lay-submit="" lay-filter="save"><i class="larry-icon">&#xe9d1;</i> 保存</button>
+                    <button type="reset" class="layui-btn layui-btn-primary resetBtn pl12"><i class="larry-icon">&#xe69a;</i> 重置</button>
                 </div>
             </div>
         </blockquote>
+
        %{-- <div class="layui-form-item mt15">
             <label class="layui-form-label"><span class="col-f00">* </span>文件类型</label>
             <div class="layui-input-block" >
