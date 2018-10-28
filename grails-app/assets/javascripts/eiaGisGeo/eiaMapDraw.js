@@ -131,11 +131,11 @@ layui.use(['form', 'layer','table','element'], function () {
         geocoder.getAddress(lnglatXY, function (status, result) {
             if (status === 'complete' && result.info === 'OK') {
                 if (result.regeocode) {
-                  //  if(!parent.$("#buildArea").val()){
-                        parent.$("#buildArea").val(result.regeocode.formattedAddress);
+                    //  if(!parent.$("#buildArea").val()){
+                    parent.$("#buildArea").val(result.regeocode.formattedAddress);
                     var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
                     parent.layer.close(index);
-                //    }
+                    //    }
                 }
             }
         });

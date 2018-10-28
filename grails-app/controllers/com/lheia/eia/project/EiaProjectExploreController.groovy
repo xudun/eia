@@ -24,6 +24,11 @@ class EiaProjectExploreController {
      * 打印页
      */
     def eiaProjectExplorePrint(){}
+    /**
+     * 地图显示页
+     * @return
+     */
+    def eiaMapDetail(){}
 
     def eiaProjectExploreQueryPage(){
         def dataMap =  eiaProjectExploreService.eiaProjectExploreQueryPage(params,session)

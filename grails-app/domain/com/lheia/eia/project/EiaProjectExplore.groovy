@@ -162,6 +162,13 @@ class EiaProjectExplore {
      * 项目id
      */
     Long eiaProjectId
+    /**
+     * 空间对象
+     */
+    String geoJson
+    static mapping = {
+        geoJson column: "geo_json", sqlType: "TEXT"
+    }
     static constraints = {
         projectName nullable:true
         ifEnd nullable:true
@@ -203,5 +210,6 @@ class EiaProjectExplore {
         gisGeoProjectId nullable:true
         eiaProjectId nullable:true
         eiaTaskId nullable:true
+        geoJson nullable:true
     }
 }

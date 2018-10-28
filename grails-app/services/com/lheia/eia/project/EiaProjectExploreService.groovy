@@ -150,15 +150,6 @@ class EiaProjectExploreService {
 
         eiaProjectExplore.save(flush: true, failOnError: true)
         eiaProjectExplore.exploreNo = "E-"+eiaProjectExplore.id
-        /**内审单**/
-        if(params.geoJson){
-            def param = [:]
-            param.putAll(eiaProjectExplore.properties)
-            param.geoJson = params.geoJson
-            param.eiaProjectExplore = eiaProjectExplore.id
-            param.geoName = eiaProjectExplore.buildArea
-            HttpConnectTools.getResponseJson(HttpUrlConstants.GIS_GEO_PROJECT_EXPLORE_SAVE,param)
-        }
         eiaProjectExplore.save(flush: true, failOnError: true)
     }
 }
