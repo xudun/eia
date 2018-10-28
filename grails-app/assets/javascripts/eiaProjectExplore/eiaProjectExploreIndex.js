@@ -7,6 +7,7 @@ layui.use(['jquery', 'layer', 'form','table'], function () {
         form = layui.form,
         table = layui.table;
 
+    var ifAdd = getParamFromUrl(document.location.href, "ifAdd");
 
     //渲染表格
     table.render({
@@ -26,7 +27,12 @@ layui.use(['jquery', 'layer', 'form','table'], function () {
         ]],
         page: true,
         even: true,
-        limit: 10
+        limit: 10,
+        done: function () {
+            if(ifAdd == '1'){
+                $('.addBtn').trigger('click');
+            }
+        }
     });
     //高级查询
     form.on('submit(query)', function () {

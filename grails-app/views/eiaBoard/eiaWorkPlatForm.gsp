@@ -40,9 +40,9 @@
                                         </a>
                                     </li>
                                     <li class="layui-col-xs2">
-                                        <a larry-tab="iframe" data-name="EIA_HGGL_HTCJ_ADD"  data-url='${HttpUrlConstants.EIA_FORWARD_JUMP}eiaClient/eiaClientIndex?ifAdd=1' data-id="larry-56" data-group="0" data-icon="larry-follow" data-font="larry-icon">
-                                            <i class="larry-icon">&#xe72c;</i>
-                                            <cite>客户创建</cite>
+                                        <a larry-tab="iframe" data-name="EIA_HGGL_HTCJ_ADD"  data-url='${HttpUrlConstants.EIA_FORWARD_JUMP}eiaProjectExplore/eiaProjectExploreIndex?ifAdd=1' data-id="larry-85" data-group="0" data-icon="larry-xiangmuguanli" data-font="larry-icon">
+                                            <i class="larry-icon">&#xe981;</i>
+                                            <cite>项目初审创建</cite>
                                         </a>
                                     </li>
                                     <li class="layui-col-xs2">
