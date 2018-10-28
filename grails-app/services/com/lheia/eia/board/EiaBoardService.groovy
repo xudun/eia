@@ -159,7 +159,7 @@ class EiaBoardService {
      * @param endDate
      * @return
      */
-    def getParentContractTotal(nodeCode, startDate, endDate, inputDept) {
+    def getParentContractTotal(session,nodeCode, startDate, endDate, inputDept) {
         def resMap = [:]
         resMap.putAll(nodeCode.properties)
         def childCodeList = EiaDomainCode.findAllByParentCodeAndDomain(resMap.code, GeneConstants.CONTRACT_TYPE).code
@@ -178,6 +178,29 @@ class EiaBoardService {
                 if (inputDept) {
                     like("inputDept", "%" + inputDept + "%")
                 }
+                /**
+                 * 查看全部的客户数据
+                 */
+                if (!session?.staff?.funcCode?.contains(FuncConstants.EIA_YWCX_HTCX_VIEWALL)) {
+                    /**
+                     * 查看本部门客户数据
+                     */
+                    if (session?.staff?.funcCode?.contains(FuncConstants.EIA_YWCX_HTCX_VIEWDEPT)) {
+                        like ("inputDeptCode", "%"+ session.staff.orgCode +"%")
+                    }
+                    /**
+                     * 查看本人客户数据
+                     */
+                    else if (session?.staff?.funcCode?.contains(FuncConstants.EIA_YWCX_HTCX_VIEWSELF)) {
+                        /**
+                         * 如果是暂存的话，不关联合同，所以自己只能看到自己的合同
+                         */
+                        or{
+                            eq("inputUserId", Long.valueOf(session.staff.staffId))
+                        }
+
+                    }
+                }
                 'in'("contractTypeCode", childCodeList)
                 isNotNull("contractMoney")
             }.contractMoney.sum()
@@ -192,6 +215,29 @@ class EiaBoardService {
                 }
                 if (inputDept) {
                     like("inputDept", "%" + inputDept + "%")
+                }
+                /**
+                 * 查看全部的客户数据
+                 */
+                if (!session?.staff?.funcCode?.contains(FuncConstants.EIA_YWCX_HTCX_VIEWALL)) {
+                    /**
+                     * 查看本部门客户数据
+                     */
+                    if (session?.staff?.funcCode?.contains(FuncConstants.EIA_YWCX_HTCX_VIEWDEPT)) {
+                        like ("inputDeptCode", "%"+ session.staff.orgCode +"%")
+                    }
+                    /**
+                     * 查看本人客户数据
+                     */
+                    else if (session?.staff?.funcCode?.contains(FuncConstants.EIA_YWCX_HTCX_VIEWSELF)) {
+                        /**
+                         * 如果是暂存的话，不关联合同，所以自己只能看到自己的合同
+                         */
+                        or{
+                            eq("inputUserId", Long.valueOf(session.staff.staffId))
+                        }
+
+                    }
                 }
                 eq("offerState", GeneConstants.CONTRACT_STATE_NOT_SIGNED)
                 'in'("contractTypeCode", childCodeList)
@@ -210,7 +256,7 @@ class EiaBoardService {
      * @param endDate
      * @return
      */
-    def getChildContractTotal(nodeCode, startDate, endDate, inputDept) {
+    def getChildContractTotal(session,nodeCode, startDate, endDate, inputDept) {
         def resMap = [:]
         resMap.putAll(nodeCode.properties)
         def signMoney = EiaContract.createCriteria().list() {
@@ -227,6 +273,29 @@ class EiaBoardService {
                 like("inputDept", "%" + inputDept + "%")
             }
             eq("contractTypeCode", nodeCode.code)
+            /**
+             * 查看全部的客户数据
+             */
+            if (!session?.staff?.funcCode?.contains(FuncConstants.EIA_YWCX_HTCX_VIEWALL)) {
+                /**
+                 * 查看本部门客户数据
+                 */
+                if (session?.staff?.funcCode?.contains(FuncConstants.EIA_YWCX_HTCX_VIEWDEPT)) {
+                    like ("inputDeptCode", "%"+ session.staff.orgCode +"%")
+                }
+                /**
+                 * 查看本人客户数据
+                 */
+                else if (session?.staff?.funcCode?.contains(FuncConstants.EIA_YWCX_HTCX_VIEWSELF)) {
+                    /**
+                     * 如果是暂存的话，不关联合同，所以自己只能看到自己的合同
+                     */
+                    or{
+                        eq("inputUserId", Long.valueOf(session.staff.staffId))
+                    }
+
+                }
+            }
             isNotNull("contractMoney")
         }.contractMoney.sum()
         resMap.signMoney = signMoney ? signMoney : BigDecimal.valueOf(0)
@@ -245,6 +314,29 @@ class EiaBoardService {
             eq("offerState", GeneConstants.CONTRACT_STATE_NOT_SIGNED)
             eq("contractTypeCode", nodeCode.code)
             isNotNull("offerMoney")
+            /**
+             * 查看全部的客户数据
+             */
+            if (!session?.staff?.funcCode?.contains(FuncConstants.EIA_YWCX_HTCX_VIEWALL)) {
+                /**
+                 * 查看本部门客户数据
+                 */
+                if (session?.staff?.funcCode?.contains(FuncConstants.EIA_YWCX_HTCX_VIEWDEPT)) {
+                    like ("inputDeptCode", "%"+ session.staff.orgCode +"%")
+                }
+                /**
+                 * 查看本人客户数据
+                 */
+                else if (session?.staff?.funcCode?.contains(FuncConstants.EIA_YWCX_HTCX_VIEWSELF)) {
+                    /**
+                     * 如果是暂存的话，不关联合同，所以自己只能看到自己的合同
+                     */
+                    or{
+                        eq("inputUserId", Long.valueOf(session.staff.staffId))
+                    }
+
+                }
+            }
         }.offerMoney.sum()
         resMap.offerMoney = offerMoney ? offerMoney : BigDecimal.valueOf(0)
         resMap.contractMoney = resMap.offerMoney + resMap.signMoney
@@ -257,7 +349,7 @@ class EiaBoardService {
      * @param params
      * @return
      */
-    def getBusiTypeTotalMoney(params) {
+    def getBusiTypeTotalMoney(session,params) {
         /**
          * 当前年份
          */
@@ -290,7 +382,7 @@ class EiaBoardService {
             totalNode.signMoney = BigDecimal.valueOf(0)
             resList << totalNode
             nodeList.each {
-                def node = getParentContractTotal(it, startDate, endDate, inputDept)
+                def node = getParentContractTotal(session,it, startDate, endDate, inputDept)
                 totalNode.offerMoney += node.offerMoney
                 totalNode.contractMoney += node.contractMoney
                 totalNode.signMoney += node.signMoney
@@ -299,11 +391,11 @@ class EiaBoardService {
         } else if (status == "open") {
             def code = params.code
             def parentNode = EiaDomainCode.findByCodeAndDomain(code, GeneConstants.CONTRACT_TYPE)
-            parentNode = getParentContractTotal(parentNode, startDate, endDate, inputDept)
+            parentNode = getParentContractTotal(session,parentNode, startDate, endDate, inputDept)
             resList << parentNode
             def nodeList = EiaDomainCode.findAllByParentCodeAndDomain(code, GeneConstants.CONTRACT_TYPE)
             nodeList.each {
-                def node = getChildContractTotal(it, startDate, endDate, inputDept)
+                def node = getChildContractTotal(session,it, startDate, endDate, inputDept)
                 resList << node
             }
         }
