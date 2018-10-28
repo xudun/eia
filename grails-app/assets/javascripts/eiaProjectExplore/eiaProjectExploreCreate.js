@@ -87,6 +87,24 @@ layui.use(['jquery', 'layer', 'form', 'element'], function () {
         }
     });
 
+    /**文件类型***/
+    //下拉树 文件类型
+    $("#fileTypeDrop").dropDownForZ({
+        url: '/eia/eiaProject/getFileTree',
+        width: '99%',
+        height: '350px',
+        disableParent: true,
+        selecedSuccess: function (data) {  //选中回调
+            if (!data.isParent) {
+                var temp = {
+                    id: data.id,
+                    name: data.name
+                };
+                $("#fileType").val(JSON.stringify(temp));
+            }
+        }
+    });
+
     /****
      * 编辑时渲染数据项
      */
@@ -124,6 +142,10 @@ layui.use(['jquery', 'layer', 'form', 'element'], function () {
                 if (key == "environmentaType") {
                     $("#environmentaTypeDrop").val(data[key])
                 }
+                if (key == "fileType") {
+                    $("#fileTypeDrop").val(data[key])
+                }
+
                 $("#" + key).val(data[key])
                 if(key == "ifSet")
                 if (data[key] == "YES") {

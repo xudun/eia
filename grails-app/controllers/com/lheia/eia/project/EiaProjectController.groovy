@@ -344,6 +344,56 @@ class EiaProjectController {
         }
         render(treeList as JSON)
     }
+
+    /**
+     * 获取全部文件类型
+     */
+    /**
+     * 根据taskId获取相应的文件类型树
+     */
+    def getFileTree() {
+        def fileTypeList = EiaDomainCode.findAllByDomain(GeneConstants.PROJECT_FILE_TYPE)
+        def codes = eiaDomainCodeService.getCodes(GeneConstants.PROJECT_FILE_TYPE)
+        def codeList = []
+        /*  fileTypeList.each { it ->
+              codes.each { code ->
+                  if (code.code.indexOf(it.code) != -1)
+                      codeList << code
+              }
+          }*/
+        codeList.addAll(fileTypeList)
+        def seclevelList = EiaDomainCode.findAllByDomainAndParentCodeInListAndCodeLevel('PROJECT_FILE_TYPE', fileTypeList.code, 2)
+        codeList.addAll(seclevelList)
+        def thirdLevelList = EiaDomainCode.findAllByDomainAndParentCodeInListAndCodeLevel('PROJECT_FILE_TYPE', seclevelList.code, 3)
+        codeList.addAll(thirdLevelList)
+        def nodesMap = [:]
+        def treeList = []
+        def createNode = { code ->
+            def node = nodesMap[code]
+            if (!node) {
+                node = [:]
+                node.children = []
+                node.attributes = [:]
+                nodesMap[code] = node
+            }
+            return node
+        }
+        codeList.each {
+            def node = createNode(it.code)
+            node.code = it.code
+            node.name = it.codeDesc
+            node.id = it.id
+            node.attributes.levels = it.codeLevel
+            node.attributes.mark = it.codeRemark
+            if (it.parentCode) {
+                def pNode = createNode(it.parentCode)
+                pNode.children << node
+            } else {
+                treeList << node
+            }
+        }
+        render(treeList as JSON)
+    }
     /**
      * 删除项目
      */

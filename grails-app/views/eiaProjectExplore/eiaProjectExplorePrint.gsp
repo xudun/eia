@@ -108,11 +108,15 @@
         </tr>
 
         <tr>
-            <td width="10%" rowspan="1" class="tag">资质类别</td>
-            <td width="17%">环境影响评价行业类别</td>
-            <td width="28%" id="environmentaType"></td>
+            <td width="10%" rowspan="2" class="tag">资质类别</td>
+            <td width="17%">文件类型</td>
+            <td width="28%" id="fileType"></td>
             <td width="17%">地下水评价等级</td>
             <td width="28%" id="groundWater"></td>
+        </tr>
+        <tr>
+            <td width="17%">环境影响评价行业类别</td>
+            <td width="73%" colspan="4" id="environmentaType"></td>
         </tr>
         <tr>
             <td width="10%" rowspan="1" class="tag">其他</td>

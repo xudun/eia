@@ -231,5 +231,9 @@ class EiaProjectExplore {
         eiaProjectId nullable:true
         eiaTaskId nullable:true
         geoJson nullable:true
+        fileType nullable:true
+        fileTypeCode nullable:true
+        fileTypeChild nullable:true
+        fileTypeChildCode nullable:true
     }
 }

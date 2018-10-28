@@ -192,17 +192,23 @@
         <div class="layui-row mt15">
             <div class="layui-col-xs6">
                 <div class="layui-form-item">
-                    <label class="layui-form-label"><span class="col-f00">* </span>环境影响评价行业类别</label>
-                    <div class="layui-input-block" id="environmentaType">
-                    </div>
+                <label class="layui-form-label"><span class="col-f00">*</span>文件类型</label>
+                <div class="layui-input-block"  id="fileType">
                 </div>
-            </div>
-            <div class="layui-col-xs6">
+                </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label"><span class="col-f00">*</span>地下水评价等级</label>
                     <div class="layui-input-block" id="groundWater">
                     </div>
                 </div>
+            </div>
+            <div class="layui-col-xs6">
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span class="col-f00">* </span>环境影响评价行业类别</label>
+                    <div class="layui-input-block" id="environmentaType">
+                    </div>
+                </div>
+
             </div>
         </div>
 
