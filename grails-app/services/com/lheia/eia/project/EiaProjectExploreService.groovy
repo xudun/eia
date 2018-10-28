@@ -2,10 +2,12 @@ package com.lheia.eia.project
 
 import com.lheia.eia.common.FuncConstants
 import com.lheia.eia.common.GeneConstants
+import com.lheia.eia.common.HttpMesConstants
 import com.lheia.eia.common.HttpUrlConstants
 import com.lheia.eia.common.WorkFlowConstants
 import com.lheia.eia.config.EiaDomainCode
 import com.lheia.eia.tools.HttpConnectTools
+import com.lheia.eia.tools.JsonHandler
 import com.lheia.eia.workflow.EiaWorkFlowBusiLog
 import grails.gorm.transactions.Transactional
 
@@ -83,12 +85,13 @@ class EiaProjectExploreService {
         return EiaProjectExplore.findByIdAndIfDel(eiaProjectExploreId,false)
     }
     /***
-     * 获取内审单数据
+     * 删除内审单数据
      */
     def eiaProjectExploreDel(params){
         Long eiaProjectExploreId = params.long("eiaProjectExploreId")
         def eiaProjectExplore  = EiaProjectExplore.findByIdAndIfDel(eiaProjectExploreId,false)
         eiaProjectExplore.ifDel = true
+        def resMap = JsonHandler.jsonToMap(HttpConnectTools.getResponseJson(HttpUrlConstants.GIS_GEO_PROJECT_EXPLORE_DEL, [eiaProjectExploreId: eiaProjectExploreId]))
         eiaProjectExplore.save(flush: true, failOnError: true)
     }
 

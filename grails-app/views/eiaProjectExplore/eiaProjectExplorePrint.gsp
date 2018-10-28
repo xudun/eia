@@ -17,8 +17,8 @@
     </style>
 </head>
 
-<body class="pb68">
-<div id="print" class="layui-fluid larry-wrapper pt15">
+<body>
+<div id="print" class="layui-fluid larry-wrapper pt15 pb68">
     <div class="layer-title">
         <fieldset class="layui-elem-field layui-field-title site-title">
             <legend id="title">

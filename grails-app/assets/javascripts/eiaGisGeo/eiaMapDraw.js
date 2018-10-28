@@ -72,9 +72,7 @@ layui.use(['form', 'layer','table','element'], function () {
                 parent.$("#coordEast").val(geoJSON.toGeoJSON()[0].geometry.coordinates[0])
                 parent.$("#coordNorth").val(geoJSON.toGeoJSON()[0].geometry.coordinates[1])
                 parent.$("#geoJson").val(JSON.stringify(geoJSON.toGeoJSON()[0].geometry))
-                var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
                 regeocoder(coor2LLObj(geoJSON.toGeoJSON()[0].geometry.coordinates))
-                parent.layer.close(index);
             });
         },
         line: function () {
@@ -89,9 +87,7 @@ layui.use(['form', 'layer','table','element'], function () {
                 parent.$("#coordEndNorth").val(coordArr[coordArr.length-1][1])
                 console.log(JSON.stringify(geoJSON.toGeoJSON()[0]))
                 parent.$("#geoJson").val(JSON.stringify(geoJSON.toGeoJSON()[0].geometry))
-                var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
                 regeocoder(coor2LLObj(geoJSON.toGeoJSON()[0].geometry.coordinates[0]))
-                parent.layer.close(index);
             });
         },
         polygon: function () {
@@ -106,9 +102,8 @@ layui.use(['form', 'layer','table','element'], function () {
                 parent.$("#coordEast").val(lLObj2Coor(lnglatXY)[0])
                 parent.$("#coordNorth").val(lLObj2Coor(lnglatXY)[1])
                 parent.$("#geoJson").val(JSON.stringify(geoJSON.toGeoJSON()[0].geometry))
-                var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
                 regeocoder(lnglatXY)
-                parent.layer.close(index);
+
             });
         },
         //退出全屏
@@ -138,6 +133,8 @@ layui.use(['form', 'layer','table','element'], function () {
                 if (result.regeocode) {
                   //  if(!parent.$("#buildArea").val()){
                         parent.$("#buildArea").val(result.regeocode.formattedAddress);
+                    var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+                    parent.layer.close(index);
                 //    }
                 }
             }
