@@ -166,10 +166,30 @@ class EiaProjectExplore {
      * 空间对象
      */
     String geoJson
+    /**
+     * 文件父类型名称
+     */
+    String fileType
+    /**
+     * 文件父类型编码
+     */
+    String fileTypeCode
+    /**
+     * 文件子类型名称
+     */
+    String fileTypeChild
+    /**
+     * 文件子类型编码
+     */
+    String fileTypeChildCode
     static mapping = {
         geoJson column: "geo_json", sqlType: "TEXT"
     }
     static constraints = {
+        fileType nullable: true
+        fileTypeCode nullable: true
+        fileTypeChild nullable: true
+        fileTypeChildCode nullable: true
         projectName nullable:true
         ifEnd nullable:true
         buildProp nullable:true

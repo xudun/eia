@@ -12,7 +12,7 @@ info:
     app:
         name: 'eia'
         version: '0.1'
-        grailsVersion: '3.3.6'
+        grailsVersion: '3.3.8'
 spring:
     main:
         banner-mode: "off"
@@ -100,8 +100,8 @@ dataSource:
     pooled: true
     jmxExport: true
     driverClassName: com.mysql.jdbc.Driver
-    username: lh_eia_eia
-    password: Eia@lheia_20180309
+    username: root
+    password: root
     #username: root
     #password: root
 environments:
@@ -140,32 +140,32 @@ environments:
 ---
 webroots:
     #cookie域名
-    cookieDomain: 172.16.4.30
+    cookieDomain: lheia.lhcis.com
     #cookie路径
     cookiePath: /
     #session失效周期
     sessionTimeOut: 1800
     #上传下载文件路径
-    filePath: /usr/local/tomcat/tomcat8.0_8380/webapps/eiaUploadFiles/
+    filePath: /usr/local/software/mysql/upload/eiaUploadFiles/
     #显示上传图片路径
-    eiaFileUrlPath: http://172.16.4.30/eiaUploadFiles/
-    authFileUrlPath: http://172.16.4.30/authUploadFiles/
+    eiaFileUrlPath: http://lheia.lhcis.com/eiaUploadFiles/
+    authFileUrlPath: http://lheia.lhcis.com/authUploadFiles/
     #临时文件路径
     tempFilePath: /usr/local/tomcat/tomcat8.0_8380/temp/
     #原系统文件路径
-    oldFilePath: /usr/local/tomcat/tomcat8.0_8380/webapps/uploadFileLheia/
+    oldFilePath: /usr/local/software/mysql/upload/uploadFileLheia/
     #freemark模板路径
     exportContractFtlPath: /usr/local/tomcat/tomcat8.0_8380/webapps/eia/WEB-INF/classes/exportContract/
     #接口调用路径
     contextPath:
-        api: http://172.16.4.30:8580/api/
+        api: http://172.16.5.30:8580/api/
     #流程接口调用路径,如注释则不发送流程消息至rtx
-        wfapi: http://172.16.4.30:8580/api/
+        wfapi: http://172.16.5.30:8580/api/
     #会话跳转路径
     forwardPath:
-        auth: http://172.16.4.30:8680/auth/
-        gis: http://172.16.4.30:8280/gis/
-        eia: http://172.16.4.30:8380/eia/
+        auth: http://lheia.lhcis.com/auth/
+        gis: http://lheia.lhcis.com/gis/
+        eia: http://lheia.lhcis.com/eia/
     #HttpClient设置请求参数周期
     httpClientParams:
         #响应超时时间，超过此时间不再读取响应
