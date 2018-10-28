@@ -99,7 +99,7 @@ class EiaWorkFlowProjectExploreService {
                 def param = [:]
                 param.putAll(eiaProjectExplore.properties)
                 param.geoJson = eiaProjectExplore.geoJson
-                param.eiaProjectExplore = eiaProjectExplore.id
+                param.eiaProjectExploreId = eiaProjectExplore.id
                 param.geoName = eiaProjectExplore.buildArea
                 HttpConnectTools.getResponseJson(HttpUrlConstants.GIS_GEO_PROJECT_EXPLORE_SAVE,param)
             }
