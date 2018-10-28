@@ -100,7 +100,7 @@ dataSource:
     pooled: true
     jmxExport: true
     driverClassName: com.mysql.jdbc.Driver
-    username: root
+    username: lh_eia_eia
     password: root
     #username: root
     #password: root
