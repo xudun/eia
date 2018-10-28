@@ -67,7 +67,6 @@
 <div class="layui-btn-group top-group">
     <a class="layui-btn search_btn pl12" lay-event="projectSelect"><i class="larry-icon">&#xe939;</i> 查询</a>
     <a class="layui-btn pl12" lay-event="advancedQuery"><i class="larry-icon">&#xe939;</i> 高级查询</a>
-    <a class="layui-btn layui-bg-pale pl12" lay-event="projectAdd"><i class="larry-icon">&#xe987;</i> 新增</a>
 </div>
 <!--筛选栏-->
 <div class="filter-box mt15" state="0">
