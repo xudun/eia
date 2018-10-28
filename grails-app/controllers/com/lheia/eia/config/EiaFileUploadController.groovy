@@ -13,17 +13,21 @@ class EiaFileUploadController {
     def eiaFileUploadIndex() {
         def eiaProjectPlanItem
         def eiaProjectPlan = EiaProjectPlan.findByIfDelAndEiaProjectId(false,params.long("eiaProjectId"))
+        def itemMap = [:]
         if(eiaProjectPlan){
-            eiaProjectPlanItem = EiaProjectPlanItem.findAllByIfDelAndEiaProjectPlanId(false,eiaProjectPlan?.id)?.nodesCode
+            eiaProjectPlanItem = EiaProjectPlanItem.findAllByIfDelAndEiaProjectPlanId(false,eiaProjectPlan?.id)
+            eiaProjectPlanItem.each {
+                itemMap.put(it.nodesCode,it.nodesName)
+            }
         }
         if(params.ifModi=="1"){//不能删除
             if (params.fileUploadType) {
-                [fileUploadType: params.fileUploadType, ifModi:false,eiaProjectPlanItem:eiaProjectPlanItem]
+                [fileUploadType: params.fileUploadType, ifModi:false,itemMap:itemMap]
             } else {
-                [ifModi:false,eiaProjectPlanItem:eiaProjectPlanItem]
+                [ifModi:false,itemMap:itemMap]
             }
         } else {
-            [ifModi:true,eiaProjectPlanItem:eiaProjectPlanItem]
+            [ifModi:true,itemMap:itemMap]
         }
     }
     /**
