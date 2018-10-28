@@ -187,6 +187,7 @@ class HttpUrlConstants {
      * 审批公示项目提交获取gis信息
      */
     static String GIS_GEO_PUB_QUERY = Holders.getConfig().getProperty('webroots.contextPath.api')+'gis/gisGeoPubQuery'
+    static String GIS_GEO_PROJECT_EXPLORE_SAVE = Holders.getConfig().getProperty('webroots.contextPath.api')+'gis/gisGeoProjectExploreSave'
     /**
      * gis绘图跳转路径
      */

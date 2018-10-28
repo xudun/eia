@@ -94,10 +94,6 @@ class EiaProjectExploreController {
         eiaWorkFlowProjectExploreService.getWorkFlowCode(session)
         long eiaProjectExploreId = Long.valueOf(params.eiaProjectExploreId)
         def eiaProjectExplore = EiaProjectExplore.findByIdAndIfDel(eiaProjectExploreId,false)
-        if(!eiaProjectExplore.gisGeoProjectId){
-            render([code: HttpMesConstants.CODE_FAIL,msg:HttpMesConstants.MSG_GIS_NULL] as JSON)
-            return
-        }
         if(eiaProjectExplore.ifSub){
             render([code: HttpMesConstants.CODE_FAIL,msg:HttpMesConstants.MSG_FCONF_NULL] as JSON)
         }else{

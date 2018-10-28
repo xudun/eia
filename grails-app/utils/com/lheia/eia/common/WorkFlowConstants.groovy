@@ -30,6 +30,26 @@ class WorkFlowConstants {
     static String PROJECT_EXPLORE_WORKFLOW_HNFGS      = "PROJECT_EXPLORE_WORKFLOW_HNFGS"
     static String PROJECT_EXPLORE_WORKFLOW_SDFGS      = "PROJECT_EXPLORE_WORKFLOW_SDFGS"
     static String PROJECT_EXPLORE_WORKFLOW_YNFGS      = "PROJECT_EXPLORE_WORKFLOW_YNFGS"
+    /***
+     * 内审节点:助理审批
+     */
+    static String NODE_CODE_ZLSP      = "ZLSP"
+    static String NODE_NAME_ZLSP      = "助理审批"
+    /***
+     * 内审节点:部门经理审批
+     */
+    static String NODE_CODE_BMJLSP      = "BMJLSP"
+    static String NODE_NAME_BMJLSP      = "部门经理审批"
+    /***
+     * 内审节点:分公司负责人审批
+     */
+    static String NODE_CODE_FGSFZRSP      = "FGSFZRSP"
+    static String NODE_NAME_FGSFZRSP      = "分公司负责人审批"
+    /***
+     * 内审节点:分公司董事长审批
+     */
+    static String NODE_CODE_FGSDSZSP      = "FGSDSZSP"
+    static String NODE_NAME_FGSDSZSP      = "分公司董事长审批"
     /**
      * 内审流程开始节点
      */

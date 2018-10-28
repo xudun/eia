@@ -34,6 +34,18 @@ class FuncConstants {
      */
     static String EIA_YWCX_XMCX_VIEWSELF = 'EIA_YWCX_XMCX_VIEWSELF'
     /**
+     * 查看全部内审单数据
+     */
+    static String EIA_XMGL_NBCS_VIEWALL = 'EIA_XMGL_NBCS_VIEWALL'
+    /**
+     * 查看部门内审单数据
+     */
+    static String EIA_XMGL_NBCS_VIEWDEPT = 'EIA_XMGL_NBCS_VIEWDEPT'
+    /**
+     * 查看本人内审单数据
+     */
+    static String EIA_XMGL_NBCS_VIEWSELF = 'EIA_XMGL_NBCS_VIEWSELF'
+    /**
      * 客户新增权限
      */
     static String EIA_YWCX_KHCX_ADD = 'EIA_YWCX_KHCX_ADD'

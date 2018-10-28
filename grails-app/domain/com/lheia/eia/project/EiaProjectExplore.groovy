@@ -55,10 +55,6 @@ class EiaProjectExplore {
      */
     String hasWaterWhere
     /**
-     * 有无环境容量(有、无、不确定)
-     */
-    String hasEnvironmentCap
-    /**
      * 有无总量(有、无、不确定)
      */
     String hasTotal
@@ -158,6 +154,14 @@ class EiaProjectExplore {
      * gis项目id
      */
     Long gisGeoProjectId
+    /**
+     * 任务id
+     */
+    Long eiaTaskId
+    /**
+     * 项目id
+     */
+    Long eiaProjectId
     static constraints = {
         projectName nullable:true
         ifEnd nullable:true
@@ -171,7 +175,6 @@ class EiaProjectExplore {
         existProblem nullable:true
         existProblemCode nullable:true
         hasWaterWhere nullable:true
-        hasEnvironmentCap nullable:true
         hasTotal nullable:true
         industrialDir nullable:true
         foreignDir nullable:true
@@ -198,5 +201,7 @@ class EiaProjectExplore {
         otherSenseInfo nullable:true
         ifSub nullable:true
         gisGeoProjectId nullable:true
+        eiaProjectId nullable:true
+        eiaTaskId nullable:true
     }
 }

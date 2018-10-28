@@ -6,14 +6,14 @@
     <meta name="layout" content="main"/>
     <asset:javascript src="/eiaProjectExplore/eiaProjectExploreCreate.js"/>
     <asset:stylesheet src="/eiaProject/eiaProjectCreate.css"/>
+    <asset:stylesheet src="/eiaProject/eiaProjectExploreCreate.css"/>
     <style>
-        .proCreateExp.layui-form .layui-form-label{width: 155px;}
-        .proCreateExp .layui-input-block{margin-left: 185px;}
+
     </style>
 </head>
 
-<body class="pb68">
-<div class="layui-fluid larry-wrapper pt0">
+<body>
+<div class="layui-fluid larry-wrapper pt0 pb68">
     <form class="layui-form proCreateExp">
         <input type="hidden" id="eiaProjectExploreId" name="eiaProjectExploreId" value="">
 
@@ -96,11 +96,18 @@
                     </div>
                 </div>
 
-                <div class="layui-form-item display-none">
+                <div class="layui-form-item proMonBlock">
                     <label class="layui-form-label"><span class="col-f00"></span>地理位置</label>
 
                     <div class="layui-input-block ">
                         <input type="text" id="buildArea" name="buildArea" class="layui-input" value="">
+                        <input type="hidden" id="geoJson" name="geoJson" class="layui-input" value="">
+                    </div>
+
+                    <div class="action-block">
+                        <div class="inner-box action-box">
+                            <i class="larry-icon mapDrawBtn">&#xe9b3;</i>
+                        </div>
                     </div>
                 </div>
 
@@ -295,7 +302,7 @@
                     <label class="layui-form-label"><span class="col-f00">*</span>其他问题</label>
 
                     <div class="layui-input-block">
-                        <textarea name="otherIssue" id="otherIssue" placeholder="请输入内容" class="layui-textarea"></textarea>
+                        <textarea name="otherIssue" id="otherIssue" placeholder="例如:有没有投诉问题等" class="layui-textarea"></textarea>
                     </div>
                 </div>
             </div>

@@ -383,6 +383,12 @@ class EiaProjectService {
             def projectType = eiaProject.projectType
             eiaProject.ifDel = true
             if (eiaProject.save(flush: true, failOnError: true)) {
+                /***恢复内审单**/
+                def eiaProjectExplore = EiaProjectExplore.findByEiaProjectIdAndIfDel(eiaProject.id,false)
+                eiaProjectExplore.eiaProjectId = 0
+                eiaProjectExplore.eiaTaskId = 0
+                eiaProjectExplore.gisGeoProjectId = 0
+                eiaProjectExplore.save(flush: true, failOnError: true)
                 def projectContent
                 if (projectType == '环保咨询') {
                     def eiaEnvProject = EiaEnvProject.findByEiaProjectIdAndIfDel(params.long('eiaProjectId'), false)
@@ -425,7 +431,6 @@ class EiaProjectService {
                             return true
                         } else {
                             return false
-
                         }
                     } else {
                         return false

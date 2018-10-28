@@ -66,6 +66,7 @@
                 <dl class="layui-nav-child">
                     <dd><a id="Point" class="layui-btn" data-type="point">点</a></dd>
                     <dd><a id="line" class="layui-btn" data-type="line">线</a></dd>
+                    <dd><a id="Polygon" class="layui-btn" data-type="polygon">面</a></dd>
                 </dl>
             </li>
             <button id="confirm" class="layui-btn layui-btn-primary layui-btn-sm ml15 font12" style="display: none;">

@@ -122,9 +122,9 @@
         <tr>
             <td width="10%" rowspan="1" class="tag">签字</td>
             <td width="17%">助理</td>
-            <td width="28%" id="1"></td>
+            <td width="28%" id="zlnodei"></td>
             <td width="17%">部门经理</td>
-            <td width="28%" id="2"></td>
+            <td width="28%" id="jlnodei"></td>
         </tr>
     </table>
 

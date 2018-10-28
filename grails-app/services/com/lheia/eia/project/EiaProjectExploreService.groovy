@@ -2,11 +2,16 @@ package com.lheia.eia.project
 
 import com.lheia.eia.common.FuncConstants
 import com.lheia.eia.common.GeneConstants
+import com.lheia.eia.common.HttpUrlConstants
+import com.lheia.eia.common.WorkFlowConstants
 import com.lheia.eia.config.EiaDomainCode
+import com.lheia.eia.tools.HttpConnectTools
+import com.lheia.eia.workflow.EiaWorkFlowBusiLog
 import grails.gorm.transactions.Transactional
 
 @Transactional
 class EiaProjectExploreService {
+    def eiaProjectService
     /**
      * 查询分页
      */
@@ -30,17 +35,17 @@ class EiaProjectExploreService {
             /**
              * 查看全部的客户数据
              */
-            if (!session?.staff?.funcCode?.contains(FuncConstants.EIA_YWCX_XMCX_VIEWALL)) {
+            if (!session?.staff?.funcCode?.contains(FuncConstants.EIA_XMGL_NBCS_VIEWALL)) {
                 /**
                  * 查看本部门客户数据
                  */
-                if (session?.staff?.funcCode?.contains(FuncConstants.EIA_YWCX_HTCX_VIEWDEPT)) {
+                if (session?.staff?.funcCode?.contains(FuncConstants.EIA_XMGL_NBCS_VIEWDEPT)) {
                     like("inputDeptCode", "%" + session.staff.orgCode + "%")
                 }
                 /**
                  * 查看本人客户数据
                  */
-                else if (session?.staff?.funcCode?.contains(FuncConstants.EIA_YWCX_HTCX_VIEWSELF)) {
+                else if (session?.staff?.funcCode?.contains(FuncConstants.EIA_XMGL_NBCS_VIEWSELF)) {
                     eq("inputUserId", Long.valueOf(session.staff.staffId))
                 }
             }
@@ -102,6 +107,15 @@ class EiaProjectExploreService {
                 resMap[it.key] =eiaDomainCode.codeDesc
             }
         }
+        def zlNodeLog = EiaWorkFlowBusiLog.findByTableNameAndTableNameIdAndNodesCodeInList(GeneConstants.DOMAIN_EIA_PROJECT_EXPLORE,eiaProjectExploreId,[WorkFlowConstants.NODE_CODE_ZLSP,WorkFlowConstants.NODE_CODE_FGSFZRSP])
+        if(zlNodeLog){
+            resMap.zlnodeimg = eiaProjectService.getReport(zlNodeLog.updateUserId)
+        }
+
+        def jlNodeLog = EiaWorkFlowBusiLog.findByTableNameAndTableNameIdAndNodesCodeInList(GeneConstants.DOMAIN_EIA_PROJECT_EXPLORE,eiaProjectExploreId,[WorkFlowConstants.NODE_CODE_BMJLSP,WorkFlowConstants.NODE_CODE_FGSDSZSP])
+        if(jlNodeLog){
+            resMap.jlnodeimg = eiaProjectService.getReport(jlNodeLog.updateUserId)
+        }
         return resMap
     }
     /***
@@ -114,6 +128,9 @@ class EiaProjectExploreService {
             eiaProjectExplore = EiaProjectExplore.findByIdAndIfDel(eiaProjectExploreId,false)
         }else{
             eiaProjectExplore = new EiaProjectExplore()
+            eiaProjectExplore.eiaTaskId = 0
+            eiaProjectExplore.eiaProjectId = 0
+            eiaProjectExplore.gisGeoProjectId = 0
             eiaProjectExplore.inputDept = session.staff.orgName
             eiaProjectExplore.inputDeptCode = session.staff.orgCode
             eiaProjectExplore.inputDeptId = Long.parseLong(session.staff.orgId)
@@ -127,8 +144,18 @@ class EiaProjectExploreService {
             eiaProjectExplore.environmentaTypeCode = environment.code
             eiaProjectExplore.environmentaTypeDesc = environment.codeDesc
         }
+
         eiaProjectExplore.save(flush: true, failOnError: true)
         eiaProjectExplore.exploreNo = "E-"+eiaProjectExplore.id
+        /**内审单**/
+        if(params.geoJson){
+            def param = [:]
+            param.putAll(eiaProjectExplore.properties)
+            param.geoJson = params.geoJson
+            param.eiaProjectExplore = eiaProjectExplore.id
+            param.geoName = eiaProjectExplore.buildArea
+            HttpConnectTools.getResponseJson(HttpUrlConstants.GIS_GEO_PROJECT_EXPLORE_SAVE,param)
+        }
         eiaProjectExplore.save(flush: true, failOnError: true)
     }
 }
