@@ -9,7 +9,7 @@ class EiaBoardController {
     def eiaConOfferBacklog() {}
     def eiaLabOfferBacklog() {}
     def eiaProjectBacklog() {}
-    def eiaCertBackLog() {}
+    def eiaCertBacklog() {}
     def eiaStampBacklog() {}
     def eiaProjectExpBacklog() {}
     def eiaWorkFlowBusiDone() {}

@@ -127,7 +127,7 @@
                                         </a>
                                     </li>
                                     <li class="layui-col-xs3">
-                                        <a larry-tab="iframe" ifjump="true"  data-url='${HttpUrlConstants.EIA_FORWARD_JUMP}eiaBoard/eiaCertBackLog' data-id="larry-null" data-group="0" data-icon="larry-wendang1" data-font="larry-icon">
+                                        <a larry-tab="iframe" ifjump="true"  data-url='${HttpUrlConstants.EIA_FORWARD_JUMP}eiaBoard/eiaCertBacklog' data-id="larry-null" data-group="0" data-icon="larry-wendang1" data-font="larry-icon">
                                             <i class="larry-icon">&#xe8e0;<em><span id="eiaCertNums"></span></em></i>
                                             <cite class="un-nums">资质报告</cite>
                                         </a>
@@ -356,9 +356,6 @@
     <g:if test="${session.staff.funcCode.contains(FuncConstants.EIA_HGGL_HTCX_QUERY)}">
         <a class="layui-btn search_btn pl12" lay-event="contractSelect"><i class="larry-icon">&#xe939;</i> 查询</a>
         <a class="layui-btn pl12" lay-event="highSelect" state="0"><i class="larry-icon">&#xe939;</i> 高级查询</a>
-    </g:if>
-    <g:if test="${session.staff.funcCode.contains(FuncConstants.EIA_HGGL_HTCJ_ADDSELF)}">
-        <a class="layui-btn layui-bg-pale pl12" lay-event="contractAdd" data-type="contractAdd"><i class="larry-icon">&#xe987;</i> 新增</a>
     </g:if>
 </div>
 <!--筛选栏-->
