@@ -6,6 +6,9 @@ layui.use(['jquery', 'layer', 'table', 'element', 'form', 'laydate'], function (
         laydate = layui.laydate,
         form = layui.form;
 
+    var tabName = getParamFromUrl(document.location.href, "tabName");
+    var ifOfferAdd = getParamFromUrl(document.location.href, "ifOfferAdd");
+    var ifContractAdd = getParamFromUrl(document.location.href, "ifContractAdd");
     var filterData = {};
 
     //恢复上次查询数据显示
@@ -111,12 +114,23 @@ layui.use(['jquery', 'layer', 'table', 'element', 'form', 'laydate'], function (
             done: function () {
                 if (tabType == "0"){
                     regainQueryShow();
+                    if(ifContractAdd == '1'){
+                        $('.contractAddBtn').trigger('click');
+                    }
+                }else{
+                    if(ifOfferAdd == '1'){
+                        $('.offerAddBtn').trigger('click');
+                    }
                 }
             }
         });
 
     };
     tabAction(0);
+
+    if(tabName == 'offerTab'){
+        element.tabChange('contractOfferTab', tabName);
+    }
 
     //监听报价表格工具条
     table.on('tool(eiaOfferList)', function (obj) {
@@ -463,7 +477,7 @@ layui.use(['jquery', 'layer', 'table', 'element', 'form', 'laydate'], function (
                     area: ['100%', '100%'],
                     content: pageUrl,
                     success: function (layero, index) {
-                        var body = layer.getChildFrame('body', index);
+                        ifContractAdd = 0;
                     },
                     end: function () {
 
@@ -548,7 +562,7 @@ layui.use(['jquery', 'layer', 'table', 'element', 'form', 'laydate'], function (
                     area: ['100%', '100%'],
                     content: pageUrl,
                     success: function (layero, index) {
-                        var body = layer.getChildFrame('body', index);
+                        ifOfferAdd = 0;
                     },
                     end: function () {
 

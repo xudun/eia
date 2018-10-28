@@ -13,8 +13,8 @@
 <div class="layui-fluid larry-wrapper pt0">
     <div class="layui-tab layui-tab-brief" lay-filter="contractOfferTab">
         <ul class="layui-tab-title">
-            <li class="layui-this">合同信息</li>
-            <li>报价信息</li>
+            <li class="layui-this" lay-id="contractTab" >合同信息</li>
+            <li lay-id="offerTab">报价信息</li>
         </ul>
         <div class="layui-tab-content pt0" style="height: 100px;">
             <!--合同信息-->
@@ -121,7 +121,7 @@
             <a class="layui-btn search_btn pl12" lay-event="highSelect" state="0"><i class="larry-icon">&#xe939;</i> 高级查询</a>
         </g:if>
         <g:if test="${session.staff.funcCode.contains(FuncConstants.EIA_HGGL_HTCJ_ADDSELF)}">
-            <a class="layui-btn layui-bg-pale pl12" lay-event="contractAdd" data-type="contractAdd"><i class="larry-icon">&#xe987;</i> 新增</a>
+            <a class="layui-btn layui-bg-pale pl12 contractAddBtn" lay-event="contractAdd" data-type="contractAdd"><i class="larry-icon">&#xe987;</i> 新增</a>
         </g:if>
     </div>
     <!--筛选栏-->
@@ -247,7 +247,7 @@
     <div class="layui-btn-group top-group">
         <a class="layui-btn search_btn pl12 " lay-event="offerSelect" data-type="offerSelect" ><i class="larry-icon">&#xe939;</i> 查询</a>
         <g:if test="${session.staff.funcCode.contains(FuncConstants.EIA_HGGL_HTCJ_ADDSELF)}">
-            <a class="layui-btn layui-bg-pale pl12" lay-event="offerAdd" data-type="offerAdd"><i class="larry-icon">&#xe987;</i> 新增</a>
+            <a class="layui-btn layui-bg-pale pl12 offerAddBtn" lay-event="offerAdd" data-type="offerAdd"><i class="larry-icon">&#xe987;</i> 新增</a>
         </g:if>
     </div>
 </blockquote>

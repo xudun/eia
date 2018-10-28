@@ -17,6 +17,7 @@ class HttpUrlConstants {
     /** 超时 **/
     public static String LOGIN_FORWARD_JUMP = Holders.getConfig().getProperty('webroots.forwardPath.auth') + "login_forward_jump"
     public static String ACCID_FORWARD_JUMP = Holders.getConfig().getProperty('webroots.forwardPath.auth') + "accid_forward_jump"
+    public static String EIA_FORWARD_JUMP = Holders.getConfig().getProperty('webroots.forwardPath.eia')
     /**
      * httpclient参数设置
      */

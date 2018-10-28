@@ -1,0 +1,260 @@
+body{
+    background: #F1F2F7;
+}
+.larryms-shortcut{
+    min-height: 210px;
+    padding: 15px;
+}
+.larryms-shortcut li{
+    text-align: center;
+    cursor: pointer;
+    transition: all 1s;
+    position: relative;
+    top: 0px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    padding-top: 5px;
+    background: #fff;
+    transition: all 0.3s linear;
+}
+.larryms-shortcut li:hover{
+    box-shadow: 0px 15px 40px rgba(0,0,0,.15);
+    top: -3px;
+    border-radius: 5px;
+    transform: scale(1.12,1.12);
+    z-index: 1000;
+}
+.larryms-shortcut li i{
+    display: inline-block;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 23px;
+    background-color: #F8F8F8;
+    color: #333;
+    transition: all .3s;
+    -webkit-transition: all .3s;
+}
+
+.larryms-shortcut li i em{
+    color: #ff5722;
+    font-size: 22px;
+}
+.larryms-shortcut li cite {
+    display: block;
+    color: #666;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 13px;
+    line-height: 25px;
+    font-style: normal;
+}
+.larryms-shortcut li cite.un-nums{
+    color: #5FB878;
+}
+
+.larryms-shortcut li:hover i{
+    background: #d8d8d8;
+    color: #000;
+}
+.larryms-shortcut li:hover cite{
+    color: #000;
+}
+.layui-table-body{
+    background: #fff;
+}
+.layui-card-header i{
+    margin-right: 5px;
+    position: relative;
+    top: 0px;
+}
+.larryms-shortcut li i em{
+    font-size: 14px;
+    margin-left: 5px;
+}
+
+/*高级查询*/
+.filter-box .mr57{
+    margin-right: 57px!important;
+}
+.filter-box{
+    width: 100%;
+    min-height: 100px;
+    background: #fff;
+    padding: 15px 10px;
+    box-sizing: border-box;
+    display: none;
+    position: relative;
+    /*display: block;*/
+    border: 1px solid #f2f2f2;
+    border-left: 5px solid #f2f2f2;
+}
+.filter-box .filter-form{
+    width: 100%;
+}
+.filter-box .filter-form .layui-form-item{
+    margin-bottom: 10px;
+    margin-right: 30px;
+    display: flex;
+    flex-flow: row nowrap;
+}
+.filter-box .filter-form .layui-form-label{
+    flex: 0 0 150px;
+    text-align: left;
+    padding-left: 0px;
+    padding-right: 20px;
+    font-weight: 700;
+    color: #000;
+    width: auto;
+}
+.filter-box.filter-box-pro .filter-form .layui-form-label{
+    flex: 0 0 80px;
+}
+.filter-box .filter-form .layui-input-block{
+    flex: 1 1 0;
+    margin-left: 0;
+}
+.filter-box .filter-form .range-box{
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+}
+.filter-box .filter-form .range-box .rb-input{
+    flex: 1 1 0;
+    margin: 0;
+}
+.filter-box .filter-form .range-box .rb-text{
+    flex: 0 0 auto;
+    margin: 0 10px;
+    font-size: 14px;
+    line-height: 38px;
+}
+.filter-box .filter-ul{
+    width: 100%;
+    height: auto;
+}
+.filter-box .filter-ul .filter-li{
+    width: 100%;
+    height: auto;
+    line-height: 27px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: flex-start;
+}
+.filter-box .filter-ul .filter-li .inner-box{
+    font-size: 14px;
+}
+.filter-box .filter-ul .filter-li .inner-box.lf{
+    flex: 0 0 150px;
+    font-weight: 700;
+}
+.filter-box.filter-box-pro .filter-ul .filter-li .inner-box.lf{
+    flex: 0 0 80px;
+}
+.filter-box .filter-ul .filter-li .inner-box.rg{
+    flex: 1 1 0;
+}
+.filter-box .filter-ul .filter-li .inner-box.rg.region-name-rg{
+    flex: 0 0 500px;
+    position: relative;
+}
+.filter-box .filter-ul .filter-li .inner-box.keyword-query{
+    flex: 0 0 200px;
+    position: relative;
+}
+.filter-box .filter-ul .filter-li .inner-box.keyword-query i{
+    font-size: 20px;
+}
+.filter-box .filter-ul .filter-li .inner-box .filter-item{
+    cursor: pointer;
+    /*min-width: 160px;*/
+    display: inline-block;
+    margin-right: 15px;
+    vertical-align: top;
+    /*margin-right: 35px;*/
+}
+.filter-box .filter-ul .filter-li .inner-box .filter-item .fi-box{
+    position: relative;
+    height: 30px;
+    line-height: 28px;
+    margin-right: 10px;
+    padding-right: 30px;
+    border: 1px solid #d2d2d2;
+    cursor: pointer;
+    font-size: 0;
+    border-radius: 2px;
+    -webkit-transition: .1s linear;
+    transition: .1s linear;
+    box-sizing: border-box;
+}
+.filter-box .filter-ul .filter-li .inner-box .filter-item.active .fi-box{
+    border: 1px solid #5FB878;
+}
+.filter-box .filter-ul .filter-li .inner-box .filter-item .fi-box span{
+    padding: 0 10px;
+    height: 100%;
+    font-size: 14px;
+    background-color: #d2d2d2;
+    color: #fff;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: inline-block;
+}
+.filter-box .filter-ul .filter-li .inner-box .filter-item .fi-box:hover span{
+    background-color: #c2c2c2;
+}
+.filter-box .filter-ul .filter-li .inner-box .filter-item.active .fi-box span{
+    background-color: #5FB878;
+}
+.filter-box .filter-ul .filter-li .inner-box .filter-item .fi-box i{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+}
+.filter-box .filter-ul .filter-li .inner-box .filter-item .fi-box:hover i{
+    color: #c2c2c2;
+}
+.filter-box .filter-ul .filter-li .inner-box .filter-item.active .fi-box i{
+    color: #5FB878;
+}
+.filter-box .filter-ul .filter-li .inner-box .filter-item:hover{
+    color: #5FB878;
+}
+.filter-box .filter-ul .filter-li .inner-box .filter-item:hover .layui-badge-rim{
+    border-color: #5FB878;
+    color: #5FB878;
+}
+.filter-box .filter-ul .filter-li .inner-box .filter-item.active{
+    color: #5FB878;
+}
+.filter-box .filter-ul .filter-li .inner-box .filter-item.active .layui-badge-rim{
+    border-color: #5FB878;
+    color: #5FB878;
+}
+.filter-box .filter-ul .filter-li .inner-box .layui-badge-rim{
+    margin-left: 5px;
+}
+.filter-box .filter-btn{
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+}
+.filter-box .filter-btn a{
+    margin: 0 5px;
+}
+.layui-card-body .layui-table-view{
+    margin: 0 auto;
+}
+.larryms-shortcut li cite em{
+    margin-left: 5px;
+    color: #ff5722;
+}

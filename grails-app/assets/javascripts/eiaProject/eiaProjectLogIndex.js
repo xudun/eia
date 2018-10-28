@@ -4,6 +4,8 @@ layui.use(['jquery', 'layer','form', 'table'], function () {
         form = layui.form,
         table = layui.table;
 
+    var ifAdd = getParamFromUrl(document.location.href, "ifAdd");
+
     //渲染表格
     table.render({
         id: 'eiaProjectLogList',
@@ -25,7 +27,12 @@ layui.use(['jquery', 'layer','form', 'table'], function () {
         ]],
         page: true,
         even: true,
-        limit: 10
+        limit: 10,
+        done:function () {
+            if(ifAdd == '1'){
+                $('.addBtn').trigger('click');
+            }
+        }
     });
     //高级查询
     form.on('submit(query)', function () {
@@ -115,6 +122,9 @@ layui.use(['jquery', 'layer','form', 'table'], function () {
                     skin: 'larry-green',
                     area: ['100%', '100%'],
                     content: pageUrl,
+                    success: function () {
+                        ifAdd = 0;
+                    },
                     end:function(){
                     },
                     min:function(){

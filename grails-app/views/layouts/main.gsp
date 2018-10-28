@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <script type="text/javascript">
         var request_url_root = '${request.contextPath}';
+        var auth_forword_jump = '${grails.util.Holders.getConfig().getProperty('webroots.forwardPath.auth')}';
         var request_url_login_forward = '${com.lheia.eia.common.HttpUrlConstants.LOGIN_FORWARD_JUMP}';
         var request_url_accid_forward = '${com.lheia.eia.common.HttpUrlConstants.ACCID_FORWARD_JUMP}';
     </script>

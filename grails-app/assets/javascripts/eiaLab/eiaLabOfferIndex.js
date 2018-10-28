@@ -6,6 +6,8 @@ layui.use(['jquery', 'form', 'layer', 'table', 'element', 'laydate'], function (
         element = layui.element,
         laydate = layui.laydate;
 
+    var ifAdd = getParamFromUrl(document.location.href, "ifAdd");
+
     var eiaProjectId = getParamFromUrl(document.location.href, "eiaProjectId");
     if (!eiaProjectId) {
         eiaProjectId = "";
@@ -65,7 +67,12 @@ layui.use(['jquery', 'form', 'layer', 'table', 'element', 'laydate'], function (
         ],
         page: true,
         even: true,
-        limit: 10
+        limit: 10,
+        done:function () {
+            if(ifAdd == '1'){
+                $('.addBtn').trigger('click');
+            }
+        }
     });
     //高级查询数据项
     function eiaLabOfferGetKey() {
@@ -352,6 +359,9 @@ layui.use(['jquery', 'form', 'layer', 'table', 'element', 'laydate'], function (
                     skin: 'larry-green',
                     area: ['100%', '100%'],
                     content: pageUrl,
+                    success: function () {
+                        ifAdd = 0;
+                    },
                     end: function () {
                         table.reload('eiaLabOfferList');
                         $("#eiaLabOfferId").val("");

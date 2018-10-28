@@ -3,6 +3,8 @@ layui.use(['jquery', 'layer', 'table'], function () {
         layer = layui.layer,
         table = layui.table;
 
+    var ifAdd = getParamFromUrl(document.location.href, "ifAdd");
+
     //渲染表格
     table.render({
         id: 'eiaContractLogList',
@@ -25,7 +27,12 @@ layui.use(['jquery', 'layer', 'table'], function () {
         ]],
         page: true,
         even: true,
-        limit: 10
+        limit: 10,
+        done:function () {
+            if(ifAdd == '1'){
+                $('.addBtn').trigger('click');
+            }
+        }
     });
 
     //监听工具条
@@ -142,6 +149,9 @@ layui.use(['jquery', 'layer', 'table'], function () {
                     skin: 'larry-green',
                     area: ['100%', '100%'],
                     content: pageUrl,
+                    success: function () {
+                        ifAdd = 0;
+                    },
                     end:function(){
                     },
                     min:function(){

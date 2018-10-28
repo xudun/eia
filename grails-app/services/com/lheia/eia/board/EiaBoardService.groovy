@@ -1351,4 +1351,29 @@ class EiaBoardService {
         parentNode.otherFeeSum = otherFeeSum ?: 0
         return parentNode
     }
+    /**
+     * 判断当前人员是否有工作台按钮权限
+     */
+    def checkStaffClickBtn(params, session) {
+        def funcCode = session?.staff?.funcCode
+        def nameArr = params.nameArr
+        def nameList = nameArr.split(",").toList()
+        def map = [:]
+        if (nameList) {
+            nameList.each {
+                /** funcCode包含的权限与页面按钮相比较，有该权限，则按钮可以点击 */
+                if (funcCode.indexOf(it) != -1) {
+                    map.put(it, true)
+                } else {
+                    /** 报价新增的权限与合同新增权限相同，所以单独判断 */
+                    if (it == "EIA_HGGL_BJCJ_ADD" && funcCode.indexOf("EIA_HGGL_HTCJ_ADD") != -1) {
+                        map.put(it, true)
+                    } else {
+                        map.put(it, false)
+                    }
+                }
+            }
+        }
+        return map
+    }
 }
