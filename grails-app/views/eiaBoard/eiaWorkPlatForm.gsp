@@ -40,9 +40,9 @@
                                         </a>
                                     </li>
                                     <li class="layui-col-xs2">
-                                        <a larry-tab="iframe" data-name="EIA_HGGL_HTCJ_ADD"  data-url='${HttpUrlConstants.EIA_FORWARD_JUMP}eiaClient/eiaClientIndex?ifAdd=1' data-id="larry-56" data-group="0" data-icon="larry-follow" data-font="larry-icon">
-                                            <i class="larry-icon">&#xe72c;</i>
-                                            <cite>客户创建</cite>
+                                        <a larry-tab="iframe" data-name="EIA_HGGL_HTCJ_ADD"  data-url='${HttpUrlConstants.EIA_FORWARD_JUMP}eiaProjectExplore/eiaProjectExploreIndex?ifAdd=1' data-id="larry-85" data-group="0" data-icon="larry-xiangmuguanli" data-font="larry-icon">
+                                            <i class="larry-icon">&#xe981;</i>
+                                            <cite>项目初审创建</cite>
                                         </a>
                                     </li>
                                     <li class="layui-col-xs2">
@@ -102,12 +102,12 @@
                             <div class="layui-card-header"><i class="larry-icon">&#xe8ac;</i>待办事项</div>
                             <div class="layui-card-body larryms-shortcut">
                                 <ul class="layui-row layui-col-space10 shortcut-group">
-                                    %{--<li class="layui-col-xs3">--}%
-                                        %{--<a larry-tab="iframe" ifjump="true" data-url='${HttpUrlConstants.EIA_FORWARD_JUMP}eiaBoard/eiaProjectExpBacklog' data-id="larry-32" data-group="0" data-icon="larry-74wodedingdan" data-font="larry-icon">--}%
-                                            %{--<i class="larry-icon">&#xe869;<em><span id="eiaProjectExploreNums"></span></em></i>--}%
-                                            %{--<cite class="un-nums">项目初审</cite>--}%
-                                        %{--</a>--}%
-                                    %{--</li>--}%
+                                    <li class="layui-col-xs3">
+                                        <a larry-tab="iframe" ifjump="true" data-url='${HttpUrlConstants.EIA_FORWARD_JUMP}eiaBoard/eiaProjectExpBacklog' data-id="larry-32" data-group="0" data-icon="larry-74wodedingdan" data-font="larry-icon">
+                                            <i class="larry-icon">&#xe869;<em><span id="eiaProjectExploreNums"></span></em></i>
+                                            <cite class="un-nums">项目初审</cite>
+                                        </a>
+                                    </li>
                                     <li class="layui-col-xs3">
                                         <a larry-tab="iframe" ifjump="true" data-url='${HttpUrlConstants.EIA_FORWARD_JUMP}eiaBoard/eiaConOfferBacklog' data-id="larry-32" data-group="0" data-icon="larry-wendang3" data-font="larry-icon">
                                             <i class="larry-icon">&#xe8d3;<em><span id="eiaContractNums"></span></em></i>
