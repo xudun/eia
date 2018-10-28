@@ -102,12 +102,12 @@
                             <div class="layui-card-header"><i class="larry-icon">&#xe8ac;</i>待办事项</div>
                             <div class="layui-card-body larryms-shortcut">
                                 <ul class="layui-row layui-col-space10 shortcut-group">
-                                    <li class="layui-col-xs3">
-                                        <a larry-tab="iframe" ifjump="true" data-url='${HttpUrlConstants.EIA_FORWARD_JUMP}eiaBoard/eiaProjectExpBacklog' data-id="larry-32" data-group="0" data-icon="larry-74wodedingdan" data-font="larry-icon">
-                                            <i class="larry-icon">&#xe869;<em><span id="eiaProjectExploreNums"></span></em></i>
-                                            <cite class="un-nums">项目初审</cite>
-                                        </a>
-                                    </li>
+                                    %{--<li class="layui-col-xs3">--}%
+                                        %{--<a larry-tab="iframe" ifjump="true" data-url='${HttpUrlConstants.EIA_FORWARD_JUMP}eiaBoard/eiaProjectExpBacklog' data-id="larry-32" data-group="0" data-icon="larry-74wodedingdan" data-font="larry-icon">--}%
+                                            %{--<i class="larry-icon">&#xe869;<em><span id="eiaProjectExploreNums"></span></em></i>--}%
+                                            %{--<cite class="un-nums">项目初审</cite>--}%
+                                        %{--</a>--}%
+                                    %{--</li>--}%
                                     <li class="layui-col-xs3">
                                         <a larry-tab="iframe" ifjump="true" data-url='${HttpUrlConstants.EIA_FORWARD_JUMP}eiaBoard/eiaConOfferBacklog' data-id="larry-32" data-group="0" data-icon="larry-wendang3" data-font="larry-icon">
                                             <i class="larry-icon">&#xe8d3;<em><span id="eiaContractNums"></span></em></i>
