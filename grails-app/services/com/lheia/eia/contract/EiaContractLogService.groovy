@@ -228,14 +228,20 @@ class EiaContractLogService {
                     dataMap = this.combNeedMap(properties, GeneConstants.CON_LOG_CD_MONEY_LIST)
                 } else if (contractTypeCode == "EPC_ST") {
                     dataMap = this.combNeedMap(properties, GeneConstants.CON_LOG_ST_MONEY_LIST)
+                } else if (contractTypeCode == "ESE_JN") {
+                    dataMap = this.combNeedMap(properties, GeneConstants.CON_LOG_JN_MONEY_LIST)
+                } else if (contractTypeCode == "ESE_QJ") {
+                    dataMap = this.combNeedMap(properties, GeneConstants.CON_LOG_QJ_MONEY_LIST)
                 }
-            } else if (parentCode == "ESE") {
+            }
+         /*   else if (parentCode == "ESE") {
                 if (contractTypeCode == "ESE_JN") {
                     dataMap = this.combNeedMap(properties, GeneConstants.CON_LOG_JN_MONEY_LIST)
                 } else if (contractTypeCode == "ESE_QJ") {
                     dataMap = this.combNeedMap(properties, GeneConstants.CON_LOG_QJ_MONEY_LIST)
                 }
-            } else if (parentCode == "GREEN") {
+            } */
+            else if (parentCode == "GREEN") {
                 if (contractTypeCode == "GREEN_LZ") {
                     dataMap = this.combNeedMap(properties, GeneConstants.CON_LOG_LZ_MONEY_LIST)
                 } else if (contractTypeCode == "GREEN_LQ") {
@@ -323,8 +329,8 @@ class EiaContractLogService {
     /**
      * 合同终止删除
      */
-    def eiaContractLogDel(contractId){
-        def eiaContractLog = EiaContractLog.findByIfDelAndId(false,contractId)
+    def eiaContractLogDel(contractId) {
+        def eiaContractLog = EiaContractLog.findByIfDelAndId(false, contractId)
         eiaContractLog.ifDel = true
         eiaContractLog.save(flush: true, failOnError: true)
     }

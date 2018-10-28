@@ -103,43 +103,43 @@
                             <div class="layui-card-body larryms-shortcut">
                                 <ul class="layui-row layui-col-space10 shortcut-group">
                                     <li class="layui-col-xs3">
-                                        <a larry-tab="iframe" ifjump="true" data-url='${HttpUrlConstants.EIA_FORWARD_JUMP}eiaBoard/eiaProjectExpBacklog' data-id="larry-null" data-group="0" data-icon="larry-74wodedingdan" data-font="larry-icon">
+                                        <a larry-tab="iframe" ifjump="true" data-url='${HttpUrlConstants.EIA_FORWARD_JUMP}eiaBoard/eiaProjectExpBacklog' data-id="larry-32" data-group="0" data-icon="larry-74wodedingdan" data-font="larry-icon">
                                             <i class="larry-icon">&#xe869;<em><span id="eiaProjectExploreNums"></span></em></i>
                                             <cite class="un-nums">项目初审</cite>
                                         </a>
                                     </li>
                                     <li class="layui-col-xs3">
-                                        <a larry-tab="iframe" ifjump="true" data-url='${HttpUrlConstants.EIA_FORWARD_JUMP}eiaBoard/eiaConOfferBacklog' data-id="larry-null" data-group="0" data-icon="larry-wendang3" data-font="larry-icon">
+                                        <a larry-tab="iframe" ifjump="true" data-url='${HttpUrlConstants.EIA_FORWARD_JUMP}eiaBoard/eiaConOfferBacklog' data-id="larry-32" data-group="0" data-icon="larry-wendang3" data-font="larry-icon">
                                             <i class="larry-icon">&#xe8d3;<em><span id="eiaContractNums"></span></em></i>
                                             <cite class="un-nums">合同报价</cite>
                                         </a>
                                     </li>
                                     <li class="layui-col-xs3">
-                                        <a larry-tab="iframe" ifjump="true"  data-url='${HttpUrlConstants.EIA_FORWARD_JUMP}eiaBoard/eiaLabOfferBacklog' data-id="larry-null" data-group="0" data-icon="larry-tubiaozhexiantu" data-font="larry-icon">
+                                        <a larry-tab="iframe" ifjump="true"  data-url='${HttpUrlConstants.EIA_FORWARD_JUMP}eiaBoard/eiaLabOfferBacklog' data-id="larry-32" data-group="0" data-icon="larry-tubiaozhexiantu" data-font="larry-icon">
                                             <i class="larry-icon">&#xe63a;<em><span id="eiaLabOfferNums"></span></em></i>
                                             <cite class="un-nums">监测方案</cite>
                                         </a>
                                     </li>
                                     <li class="layui-col-xs3">
-                                        <a larry-tab="iframe" ifjump="true"  data-url='${HttpUrlConstants.EIA_FORWARD_JUMP}eiaBoard/eiaProjectBacklog' data-id="larry-null" data-group="0" data-icon="larry-qizhi" data-font="larry-icon">
+                                        <a larry-tab="iframe" ifjump="true"  data-url='${HttpUrlConstants.EIA_FORWARD_JUMP}eiaBoard/eiaProjectBacklog' data-id="larry-32" data-group="0" data-icon="larry-qizhi" data-font="larry-icon">
                                             <i class="larry-icon">&#xe886;<em><span id="eiaProjectNums"></span></em></i>
                                             <cite class="un-nums">项目审核</cite>
                                         </a>
                                     </li>
                                     <li class="layui-col-xs3">
-                                        <a larry-tab="iframe" ifjump="true"  data-url='${HttpUrlConstants.EIA_FORWARD_JUMP}eiaBoard/eiaCertBacklog' data-id="larry-null" data-group="0" data-icon="larry-wendang1" data-font="larry-icon">
+                                        <a larry-tab="iframe" ifjump="true"  data-url='${HttpUrlConstants.EIA_FORWARD_JUMP}eiaBoard/eiaCertBacklog' data-id="larry-32" data-group="0" data-icon="larry-wendang1" data-font="larry-icon">
                                             <i class="larry-icon">&#xe8e0;<em><span id="eiaCertNums"></span></em></i>
                                             <cite class="un-nums">资质报告</cite>
                                         </a>
                                     </li>
                                     <li class="layui-col-xs3">
-                                        <a larry-tab="iframe" ifjump="true"  data-url='${HttpUrlConstants.EIA_FORWARD_JUMP}eiaBoard/eiaStampBacklog' data-id="larry-null" data-group="0" data-icon="larry-msnui-reg" data-font="larry-icon">
+                                        <a larry-tab="iframe" ifjump="true"  data-url='${HttpUrlConstants.EIA_FORWARD_JUMP}eiaBoard/eiaStampBacklog' data-id="larry-32" data-group="0" data-icon="larry-msnui-reg" data-font="larry-icon">
                                             <i class="larry-icon">&#xea04;<em><span id="eiaStampNums"></span></em></i>
                                             <cite class="un-nums">印章申请</cite>
                                         </a>
                                     </li>
                                     <li class="layui-col-xs3">
-                                        <a larry-tab="iframe" ifjump="true"  data-url='${HttpUrlConstants.EIA_FORWARD_JUMP}eiaBoard/eiaWorkFlowBusiDone' data-id="larry-null" data-group="0" data-icon="larry-gouSolid" data-font="larry-icon">
+                                        <a larry-tab="iframe" ifjump="true"  data-url='${HttpUrlConstants.EIA_FORWARD_JUMP}eiaBoard/eiaWorkFlowBusiDone' data-id="larry-32" data-group="0" data-icon="larry-gouSolid" data-font="larry-icon">
                                             <i class="larry-icon">&#xe9e1;<em><span id="workFlowComBusiNums"></span></em></i>
                                             <cite class="un-nums">过往事项</cite>
                                         </a>

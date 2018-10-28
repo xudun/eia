@@ -790,14 +790,20 @@ class EiaContractService {
                         return GeneConstants.CON_CD_MONEY_LIST
                     } else if (contractTypeCode == "EPC_ST") {
                         return GeneConstants.CON_ST_MONEY_LIST
+                    } else if (contractTypeCode == "ESE_JN") {
+                        return GeneConstants.CON_JN_MONEY_LIST
+                    } else if (contractTypeCode == "ESE_QJ") {
+                        return GeneConstants.CON_QJ_MONEY_LIST
                     }
-                } else if (parentCode == "ESE") {
+                }
+              /*  else if (parentCode == "ESE") {
                     if (contractTypeCode == "ESE_JN") {
                         return GeneConstants.CON_JN_MONEY_LIST
                     } else if (contractTypeCode == "ESE_QJ") {
                         return GeneConstants.CON_QJ_MONEY_LIST
                     }
-                } else if (parentCode == "GREEN") {
+                }*/
+                else if (parentCode == "GREEN") {
                     if (contractTypeCode == "GREEN_LZ") {
                         return GeneConstants.CON_LZ_MONEY_LIST
                     } else if (contractTypeCode == "GREEN_LQ") {
