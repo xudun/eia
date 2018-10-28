@@ -57,7 +57,20 @@ class EiaWorkFlowStampService {
         eiaWorkFlowBusi.tableName = tableName
         eiaWorkFlowBusi.workFlowState = WorkFlowConstants.WORKFLOW_START
         eiaWorkFlowBusi.tableNameId = tableNameId
+        eiaWorkFlowBusi.save(flush: true, failOnError: true)
 
+        def busiFirstLog = new EiaWorkFlowBusiLog()
+        busiFirstLog.properties = eiaWorkFlowBusi.properties
+        busiFirstLog.eiaWorkFlowBusiId = eiaWorkFlowBusi.id
+        busiFirstLog.opinion = '无'
+        busiFirstLog.approvalDate = new Date()
+        busiFirstLog.inputUserSign = session.staff.staffSignImage
+        busiFirstLog.updateUser = session.staff.staffName
+        busiFirstLog.updateUserId = Long.parseLong(session.staff.staffId)
+        busiFirstLog.processCode = 'BMSH_SUBMIT'
+        busiFirstLog.processName = '提交至部门审核'
+        busiFirstLog.eiaWorkFlowBusiId = eiaWorkFlowBusi.id
+        busiFirstLog.save(flush:true,failOnError:true)
         if (session.staff.orgName == '联合泰泽行政部' && eiaWorkFlowCode == 'STAMP_WORK_FLOW_NOBUSS') {
             def eiaWorkFlowBusiLog = new EiaWorkFlowBusiLog()
             eiaWorkFlowBusiLog.properties = eiaWorkFlowBusi.properties
@@ -67,8 +80,8 @@ class EiaWorkFlowStampService {
             eiaWorkFlowBusiLog.inputUserSign = GeneConstants.AUTH_FILE_URL_PATH + GeneConstants.AdminManagerSign
             eiaWorkFlowBusiLog.updateUser = GeneConstants.AdminManagerName
             eiaWorkFlowBusiLog.updateUserId = Long.parseLong(GeneConstants.AdminManagerId)
-            eiaWorkFlowBusiLog.processCode == 'BMSH_SUBMIT'
-            eiaWorkFlowBusiLog.processName == '提交至行政经理审核'
+            eiaWorkFlowBusiLog.processCode = 'BMSH_SUBMIT'
+            eiaWorkFlowBusiLog.processName = '提交至行政经理审核'
             eiaWorkFlowBusi.nodesCode = WorkFlowConstants.STAMP_NODE_CODE_XZJLSH
             eiaWorkFlowBusi.nodesName = WorkFlowConstants.STAMP_NODE_NAME_XZJLSH
             eiaWorkFlowBusi.processName = '提交至总经理审核'

@@ -98,7 +98,7 @@ class EiaProjectService {
             /** 当页面传值有idStrList时，表示由项目统计分析调用该页面和方法，只能查询该id范围内的项目 */
             if (params.idStrList) {
                 def idList = []
-                def idStrList = params.idStrList.split(",")toList()
+                def idStrList = params.idStrList.split(",") toList()
                 idStrList.each {
                     idList.add(Long.parseLong(it))
                 }
@@ -725,6 +725,8 @@ class EiaProjectService {
             return GeneConstants.XZ_MONEY_LIST
         } else if (projectType == 'EPC_PF') {
             return GeneConstants.PF_MONEY_LIST
+        } else if (projectType == 'EPC_PW') {
+            return GeneConstants.PW_MONEY_LIST
         } else if (projectType == 'EPC_ST') {
             return GeneConstants.ST_MONEY_LIST
         } else if (projectType == 'EPC_CD') {
@@ -774,6 +776,8 @@ class EiaProjectService {
             dataMap = eiaEnvProjectService.combNeedMap(eiaProject?.properties, GeneConstants.XZ_MONEY_LIST)
         } else if (projectType == 'EPC_PF') {
             dataMap = eiaEnvProjectService.combNeedMap(eiaProject?.properties, GeneConstants.PF_MONEY_LIST)
+        } else if (projectType == 'EPC_PW') {
+            dataMap = eiaEnvProjectService.combNeedMap(eiaProject?.properties, GeneConstants.PW_MONEY_LIST)
         } else if (projectType == 'EPC_ST') {
             dataMap = eiaEnvProjectService.combNeedMap(eiaProject?.properties, GeneConstants.ST_MONEY_LIST)
         } else if (projectType == 'EPC_CD') {

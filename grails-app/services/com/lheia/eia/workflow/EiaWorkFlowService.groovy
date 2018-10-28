@@ -299,42 +299,49 @@ class EiaWorkFlowService {
                 def eiaContract = EiaContract.findById(tableNameId)
                 if(eiaContract){
                     eiaContract.ifSub = false
+                    eiaWorkFlowWeaverService.sendOverWorkFlowMsg(eiaWorkFlowBusi,currNodeName,currAuthCode,currAuthType,session)
                     eiaContract.save(flush: true, failOnError: true)
                 }
             } else if(tableName == GeneConstants.DOMAIN_EIA_CERT){
                def eiaCert = EiaCert.findById(tableNameId)
                 if(eiaCert){
                     eiaCert.ifSub =false
+                    eiaWorkFlowWeaverService.sendOverWorkFlowMsg(eiaWorkFlowBusi,currNodeName,currAuthCode,currAuthType,session)
                     eiaCert.save(flush: true, failOnError: true)
                 }
             }else if(tableName == GeneConstants.DOMAIN_EIA_CONTRACT_LOG){
                 def eiaContractLog = EiaContractLog.findByIdAndIfDel(tableNameId,false)
                 if(eiaContractLog){
                     eiaContractLog.ifSub = false
+                    eiaWorkFlowWeaverService.sendOverWorkFlowMsg(eiaWorkFlowBusi,currNodeName,currAuthCode,currAuthType,session)
                     eiaContractLog.save(flush: true, failOnError: true)
                 }
             } else if (tableName == GeneConstants.DOMAIN_EIA_OFFER) {
                 def eiaOffer = EiaOffer.findByIdAndIfDel(tableNameId, false)
                 if (eiaOffer) {
                     eiaOffer.ifSub = GeneConstants.OFFER_ORIGINAL_STATE
+                    eiaWorkFlowWeaverService.sendOverWorkFlowMsg(eiaWorkFlowBusi,currNodeName,currAuthCode,currAuthType,session)
                     eiaOffer.save(flush: true, failOnError: true)
                 }
             }  else if (tableName == GeneConstants.DOMAIN_EIA_LAB_OFFER) {
                 def eiaLabOffer = EiaLabOffer.findByIdAndIfDel(tableNameId, false)
                 if (eiaLabOffer) {
                     eiaLabOffer.pushState = GeneConstants.TAIZE_CREATE_INNER_OFFER
+                    eiaWorkFlowWeaverService.sendOverWorkFlowMsg(eiaWorkFlowBusi,currNodeName,currAuthCode,currAuthType,session)
                     eiaLabOffer.save(flush: true, failOnError: true)
                 }
             }else if(tableName == GeneConstants.DOMAIN_EIA_STAMP){
                 def eiaStamp = EiaStamp.findByIdAndIfDel(tableNameId,false)
                 if(eiaStamp){
                     eiaStamp.ifSub = false
+                    eiaWorkFlowWeaverService.sendOverWorkFlowMsg(eiaWorkFlowBusi,currNodeName,currAuthCode,currAuthType,session)
                     eiaStamp.save(flush: true,failOnError: true)
                 }
             }else if(tableName == GeneConstants.DOMAIN_EIA_PROJECT_EXPLORE){
                 def eiaProjectExplore = EiaProjectExplore.findByIdAndIfDel(tableNameId,false)
                 if(eiaProjectExplore){
                     eiaProjectExplore.ifSub = false
+                    eiaWorkFlowWeaverService.sendOverWorkFlowMsg(eiaWorkFlowBusi,currNodeName,currAuthCode,currAuthType,session)
                     eiaProjectExplore.save(flush: true,failOnError: true)
                 }
             }

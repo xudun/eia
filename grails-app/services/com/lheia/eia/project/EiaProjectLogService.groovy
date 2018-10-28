@@ -65,6 +65,8 @@ class EiaProjectLogService {
             dataMap = this.combNeedMap(eiaEnvLog.properties, GeneConstants.XZPROPLOGLIST)
         } else if (fileTypeCodeEd == "EPC_PF") {
             dataMap = this.combNeedMap(eiaEnvLog.properties, GeneConstants.PFPROPLOGLIST)
+        } else if (fileTypeCodeEd == "EPC_PW") {
+            dataMap = this.combNeedMap(eiaEnvLog.properties, GeneConstants.PWPROPLOGLIST)
         } else if (fileTypeCodeEd == "EPC_CD") {
             dataMap = this.combNeedMap(eiaEnvLog.properties, GeneConstants.CDPROPLOGLIST)
         } else if (fileTypeCodeEd == "EPC_ST") {
@@ -133,18 +135,18 @@ class EiaProjectLogService {
                  * 查看本部门客户数据
                  */
                 if (session?.staff?.funcCode?.contains(FuncConstants.EIA_YWCX_HTCX_VIEWDEPT)) {
-                    like("inputDeptCode", "%"+ session.staff.orgCode +"%")
+                    like("inputDeptCode", "%" + session.staff.orgCode + "%")
                 }
                 /**
                  * 查看本人客户数据
                  */
                 else if (session?.staff?.funcCode?.contains(FuncConstants.EIA_YWCX_HTCX_VIEWSELF)) {
-                    eq ("inputUserId", Long.valueOf(session.staff.staffId))
+                    eq("inputUserId", Long.valueOf(session.staff.staffId))
                 }
             }
 
             if (projectName && !"项目名称、项目编号、项目负责人、录入部门、录入人".equals(projectName)) {
-                or{
+                or {
                     like("projectNameEd", "%" + projectName + "%")
                     like("projectNo", "%" + projectName + "%")
                     like("inputDept", "%" + projectName + "%")
@@ -152,12 +154,12 @@ class EiaProjectLogService {
                     like("dutyUserEd", "%" + projectName + "%")
                 }
             }
-            def fileType =params["key[fileType]"]
-            if(fileType){
+            def fileType = params["key[fileType]"]
+            if (fileType) {
                 like("fileTypeChildEd", "%" + fileType + "%")
             }
-            def buildArea =params["key[buildArea]"]
-            if(buildArea){
+            def buildArea = params["key[buildArea]"]
+            if (buildArea) {
                 like("buildAreaEd", "%" + buildArea + "%")
             }
             eq("ifDel", false)
@@ -415,11 +417,13 @@ class EiaProjectLogService {
             dataMap = this.combNeedMap(eiaProjectLog?.properties, GeneConstants.PRO_LOG_XZ_MONEY_LIST)
         } else if (projectType == 'EPC_PF') {
             dataMap = this.combNeedMap(eiaProjectLog?.properties, GeneConstants.PRO_LOG_PF_MONEY_LIST)
+        } else if (projectType == 'EPC_PW') {
+            dataMap = this.combNeedMap(eiaProjectLog?.properties, GeneConstants.PRO_LOG_PW_MONEY_LIST)
         } else if (projectType == 'EPC_ST') {
             dataMap = this.combNeedMap(eiaProjectLog?.properties, GeneConstants.PRO_LOG_ST_MONEY_LIST)
         } else if (projectType == 'EPC_CD') {
             dataMap = this.combNeedMap(eiaProjectLog?.properties, GeneConstants.PRO_LOG_CD_MONEY_LIST)
         }
-        return  dataMap
+        return dataMap
     }
 }
