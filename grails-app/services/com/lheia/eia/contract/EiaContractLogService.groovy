@@ -232,6 +232,8 @@ class EiaContractLogService {
                     dataMap = this.combNeedMap(properties, GeneConstants.CON_LOG_JN_MONEY_LIST)
                 } else if (contractTypeCode == "ESE_QJ") {
                     dataMap = this.combNeedMap(properties, GeneConstants.CON_LOG_QJ_MONEY_LIST)
+                } else if (contractTypeCode == "EPC_SJ") {
+                    dataMap = this.combNeedMap(properties, GeneConstants.CON_LOG_SJ_MONEY_LIST)
                 }
             }
          /*   else if (parentCode == "ESE") {

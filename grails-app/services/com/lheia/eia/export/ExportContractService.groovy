@@ -36,7 +36,7 @@ class ExportContractService {
     def matchWrongType(Long contractId) {
         def contract = EiaContract.findById(contractId)
         def contractTypeCode = contract.contractTypeCode
-        def wrongCodeTotal = "EPC_JL,EPC_HH,EPC_GJ,EPC_CD,EPC_ZH,EPC_QT,ESE_QJ,ESE_ZH,ESE_QT,GREEN_SC,GREEN_ZR,GREEN_TH,GREEN_FP,GREEN_ZH,GREEN_QT"
+        def wrongCodeTotal = "EPC_JL,EPC_HH,EPC_GJ,EPC_CD,EPC_ZH,EPC_QT,EPC_SJ,ESE_QJ,ESE_ZH,ESE_QT,GREEN_SC,GREEN_ZR,GREEN_TH,GREEN_FP,GREEN_ZH,GREEN_QT"
         def wrongCode = wrongCodeTotal.split(",")
         def result = "pass"
         for (int i = 0; i < wrongCode.size(); i++) {
