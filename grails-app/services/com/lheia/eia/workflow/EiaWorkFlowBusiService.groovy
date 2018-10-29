@@ -281,7 +281,6 @@ class EiaWorkFlowBusiService {
      * @return
      */
     def getEiaWorkFlowBusiDataList(params, session) {
-        println("params = " + params)
         def staffId = session.staff.staffId
         int page
         int limit

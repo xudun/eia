@@ -10,6 +10,17 @@ layui.use(['jquery', 'layer', 'form','table', 'laydate'], function () {
 
     var filterData = {};
 
+    //设置select指定项选中
+    var selectOptionByVal = function ($select, val) {
+        var opt_arr = $('option', $($select));
+        for (var i = 0; i < opt_arr.length; i++) {
+            if ($(opt_arr[i]).val() == val) {
+                $(opt_arr[i]).prop("selected", true);
+                break;
+            }
+        }
+    };
+
     //恢复上次查询数据显示
     var regainQueryShow = function () {
         var advancedState = $('#advancedState').val();
@@ -44,6 +55,10 @@ layui.use(['jquery', 'layer', 'form','table', 'laydate'], function () {
                             selecedSuccess:function(data){}
                         });
                         $("#fileTypeChild").val(queryData[name]);
+                        break;
+                    case 'nodesName':
+                        selectOptionByVal($('#nodesName'),queryData[name]);
+                        form.render('select');
                         break;
                     default:
                         $('#'+name).val(queryData[name]);
@@ -138,7 +153,6 @@ layui.use(['jquery', 'layer', 'form','table', 'laydate'], function () {
                     body.find('').val(data.eiaClientId);
                 },
                 end: function () {
-                    table.reload("eiaProjectList");
                     $('#eiaClientId').val("");
                     $('#eiaTaskId').val("");
                 },
@@ -327,6 +341,7 @@ layui.use(['jquery', 'layer', 'form','table', 'laydate'], function () {
         filterData.seaReviewNo = $('#seaReviewNo').val();
         filterData.arcStartDate = $('#arcStartDate').val();
         filterData.arcEndDate = $('#arcEndDate').val();
+        filterData.nodesName = $('#nodesName').val();
 
         $('.filter-ul .filter-li').each(function (index, elem) {
             var curFilter = $(elem).attr('filterName');

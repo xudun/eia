@@ -269,41 +269,6 @@ layui.use(['jquery', 'layer', 'form','table'], function () {
        }
     });
 
-    //查询、新增按钮
-    $('.larry-btn a.layui-btn').click(function () {
-        var type = $(this).data('type');
-        active[type] ? active[type].call(this) : '';
-    });
-    var active = {
-        projectAdd: function () {    //新增
-            pageUrl = '/eia/eiaProject/eiaProjectCreate?pageType=0';
-            var index = layer.open({
-                title: ' ',
-                type: 2,
-                shade: false,
-                maxmin: true,
-                skin: 'larry-green',
-                area: ['100%', '100%'],
-                content: pageUrl,
-                success: function (layero, index) {
-                    var body = layer.getChildFrame('body', index);
-                },
-                end: function () {
-                    table.reload("eiaProjectList");
-                    $("#eiaProjectId").val("");
-                    $("#eiaTaskId").val("");
-                    $("#eiaLabOfferId").val("");
-                },
-                min: function () {
-
-                },
-                restore: function () {
-
-                }
-            });
-        }
-    }
-
     //监听头部工具栏事件
     //监听事件
     table.on('toolbar(eiaProjectList)', function(obj){
@@ -327,7 +292,7 @@ layui.use(['jquery', 'layer', 'form','table'], function () {
                     area: ['100%', '100%'],
                     content: pageUrl,
                     success: function (layero, index) {
-                        var body = layer.getChildFrame('body', index);
+                        ifAdd = 0;
                     },
                     end: function () {
                         table.reload("eiaProjectList");

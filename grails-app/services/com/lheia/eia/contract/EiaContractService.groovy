@@ -56,17 +56,17 @@ class EiaContractService {
                     ne('workFlowState', WorkFlowConstants.WORKFLOW_END)
                 }
                 /**
-                 * 查看全部的客户数据
+                 * 查看全部的合同数据
                  */
                 if (!session?.staff?.funcCode?.contains(FuncConstants.EIA_YWCX_HTCX_VIEWALL)) {
                     /**
-                     * 查看本部门客户数据
+                     * 查看本部门合同数据
                      */
                     if (session?.staff?.funcCode?.contains(FuncConstants.EIA_YWCX_HTCX_VIEWDEPT)) {
                         like ("inputDeptCode", "%"+ session.staff.orgCode +"%")
                     }
                     /**
-                     * 查看本人客户数据
+                     * 查看本人合同数据
                      */
                     else if (session?.staff?.funcCode?.contains(FuncConstants.EIA_YWCX_HTCX_VIEWSELF)) {
                         /**

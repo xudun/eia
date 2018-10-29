@@ -99,6 +99,37 @@
                         </div>
                     </div>
                 </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span class="col-f00"></span>项目进度</label>
+                    <div class="layui-input-block">
+                        <select name="nodesCode" id="nodesName" lay-filter="nodesName" lay-verify="required" lay-search>
+                            <option value="">请选择</option>
+                            <option value="现场勘查">现场勘查</option>
+                            <option value="编写报告">编写报告</option>
+                            <option value="一审">一审</option>
+                            <option value="一审编制">一审编制</option>
+                            <option value="二审">二审</option>
+                            <option value="二审编制">二审编制</option>
+                            <option value="三审">三审</option>
+                            <option value="三审编制">三审编制</option>
+                            <option value="轮审">轮审</option>
+                            <option value="轮审编制">轮审编制</option>
+                            <option value="函审/上会">函审/上会</option>
+                            <option value="报批版上报">报批版上报</option>
+                            <option value="项目归档">项目归档</option>
+                            <option value="现场访谈">现场访谈</option>
+                            <option value="内部审查">内部审查</option>
+                            <option value="内部审查编制">内部审查编制</option>
+                            <option value="审核">审核</option>
+                            <option value="审核编制">审核编制</option>
+                            <option value="现场踏勘">现场踏勘</option>
+                            <option value="月报周报">月报周报</option>
+                            <option value="报告总结">报告总结</option>
+                            <option value="监理结束">监理结束</option>
+                            <option value="编制/监测">编制/监测</option>
+                        </select>
+                    </div>
+                </div>
             </div>
             <div class="layui-col-xs6">
                 <div class="layui-form-item">
@@ -127,29 +158,32 @@
                         </div>
                     </div>
                 </div>
+                <div class="layui-form-item">
+                    <ul class="filter-ul">
+                        <li class="filter-li" filterName="ifArc">
+                            <div class="inner-box lf">是否归档</div>
+                            <div class="inner-box rg filter-inner ifArcFilter">
+                                <div class="filter-item mr57" lay-event="filterItem">
+                                    <div class="fi-box">
+                                        <span>是</span>
+                                        <i class="larry-icon">&#xe830;</i>
+                                    </div>
+
+                                </div>
+                                <div class="filter-item" lay-event="filterItem">
+                                    <div class="fi-box">
+                                        <span>否</span>
+                                        <i class="larry-icon">&#xe830;</i>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-    <ul class="filter-ul">
-        <li class="filter-li" filterName="ifArc">
-            <div class="inner-box lf">是否归档</div>
-            <div class="inner-box rg filter-inner ifArcFilter">
-                <div class="filter-item mr57" lay-event="filterItem">
-                    <div class="fi-box">
-                        <span>是</span>
-                        <i class="larry-icon">&#xe830;</i>
-                    </div>
 
-                </div>
-                <div class="filter-item" lay-event="filterItem">
-                    <div class="fi-box">
-                        <span>否</span>
-                        <i class="larry-icon">&#xe830;</i>
-                    </div>
-                </div>
-            </div>
-        </li>
-    </ul>
     <div class="filter-btn">
         <div class="layui-btn-group top-group">
             <a class="layui-btn search_btn pl12" lay-event="projectSelect" data-type="projectSelect"><i class="larry-icon">&#xe939;</i> 查询</a>
