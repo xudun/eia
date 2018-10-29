@@ -125,7 +125,6 @@ layui.use(['jquery', 'layer', 'form', 'element'], function () {
              });*/
         //下拉树 文件类型
         $("#fileTypeDrop").dropDownForZ({
-            //   url:'data/fileTypeTree.json',
             url: '/eia/eiaProject/getFileTreeByTaskId?eiaTaskId=' + eiaTaskId + '&eiaProjectId=' + eiaProjectId,
             width: '99%',
             height: '350px',

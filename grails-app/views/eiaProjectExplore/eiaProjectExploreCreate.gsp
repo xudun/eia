@@ -270,6 +270,14 @@
         <div class="layui-row mt15">
             <div class="layui-col-xs6">
                 <div class="layui-form-item">
+                    <label class="layui-form-label"><span class="col-f00">*</span>文件类型</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="fileTypeDrop" name="fileTypeDrop" class="layui-input"
+                               lay-verify="required" readonly>
+                        <input type="hidden" id="fileType" name="fileType" lay-verify="required" value="">
+                    </div>
+                </div>
+                <div class="layui-form-item">
                     <label class="layui-form-label"><span class="col-f00">* </span>环境影响评价行业类别</label>
                     <div class="layui-input-block">
                         <input type="text" id="environmentaTypeDrop" name="environmentaTypeDrop" class="layui-input" lay-verify="required" value="" readonly>
