@@ -96,6 +96,25 @@
                     </div>
                 </div>
 
+
+
+                <div class="layui-form-item display-none" id="ifSetYES">
+                    <label class="layui-form-label"><span class="col-f00">*</span>立项审批类型</label>
+
+                    <div class="layui-input-block">
+                        <select name="approvalType" id="approvalType" lay-filter="approvalType" lay-verify="required"
+                                lay-search>
+                            <option value="">请选择</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="layui-form-item display-none" id="ifSetNO">
+                    <label class="layui-form-label"><span class="col-f00">*</span>立项情况说明</label>
+                    <div class="layui-input-block">
+                        <textarea name="setInfo" id="setInfo" placeholder="请输入内容" class="layui-textarea"></textarea>
+                    </div>
+                </div>
                 <div class="layui-form-item proMonBlock">
                     <label class="layui-form-label"><span class="col-f00"></span>地理位置</label>
 
@@ -108,23 +127,6 @@
                         <div class="inner-box action-box">
                             <i class="larry-icon mapDrawBtn">&#xe9b3;</i>
                         </div>
-                    </div>
-                </div>
-
-                <div class="layui-form-item display-none" id="ifSetYES">
-                    <label class="layui-form-label"><span class="col-f00">*</span>审批类型</label>
-
-                    <div class="layui-input-block">
-                        <select name="approvalType" id="approvalType" lay-filter="approvalType" lay-verify="required"
-                                lay-search>
-                            <option value="">请选择</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="layui-form-item display-none" id="ifSetNO">
-                    <label class="layui-form-label"><span class="col-f00">*</span>立项情况说明</label>
-                    <div class="layui-input-block">
-                        <textarea name="setInfo" id="setInfo" placeholder="请输入内容" class="layui-textarea"></textarea>
                     </div>
                 </div>
 
