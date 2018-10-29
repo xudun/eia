@@ -40,6 +40,14 @@ class EiaTaskService {
                     like("inputUser", "%" + taskName + "%")
                     like("taskNo", "%" + taskName + "%")
                 }
+            } else {
+                if (params.taskName || params.eiaClientId) {
+                } else {
+                    or{
+                        eq("inputUserId", Long.valueOf(session.staff.staffId))
+                        like("taskAssignUser", "%" + session.staff.staffName+"_"+session.staff.staffId + "%")
+                    }
+                }
             }
             def taskState = params.taskState
             if (taskState && !"请选择任务状态".equals(taskState)) {
