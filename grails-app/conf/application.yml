@@ -101,7 +101,7 @@ dataSource:
     jmxExport: true
     driverClassName: com.mysql.jdbc.Driver
     username: lh_eia_eia
-    password: root
+    password: Lheia_eia@lhcis2018
     #username: root
     #password: root
 environments:

@@ -21,9 +21,9 @@ class EiaWorkFlowProjectExploreService {
      */
     def getWorkFlowCode(session){
         String orgCode = session.staff.orgCode
-        def workFlowCode = WorkFlowConstants.PROJECT_EXPLORE_WORKFLOW
+        def workFlowCode = WorkFlowConstants.PROJECT_EXPLORE_WORK_FLOW
         if(orgCode){
-            WorkFlowConstants.PROJECT_EXPLORE_WORKFLOW_MAP.each{
+            WorkFlowConstants.PROJECT_EXPLORE_WORK_FLOW_MAP.each{
                 if(orgCode.contains(it.key)){
                     workFlowCode = it.value
                 }
