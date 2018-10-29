@@ -37,17 +37,17 @@ class EiaProjectExploreService {
             /**
              * 查看全部的客户数据
              */
-            if (!session?.staff?.funcCode?.contains(FuncConstants.EIA_XMGL_NBCS_VIEWALL)) {
+            if (!session?.staff?.funcCode?.contains(FuncConstants.EIA_XMGL_XMCS_VIEWALL)) {
                 /**
                  * 查看本部门客户数据
                  */
-                if (session?.staff?.funcCode?.contains(FuncConstants.EIA_XMGL_NBCS_VIEWDEPT)) {
+                if (session?.staff?.funcCode?.contains(FuncConstants.EIA_XMGL_XMCS_VIEWDEPT)) {
                     like("inputDeptCode", "%" + session.staff.orgCode + "%")
                 }
                 /**
                  * 查看本人客户数据
                  */
-                else if (session?.staff?.funcCode?.contains(FuncConstants.EIA_XMGL_NBCS_VIEWSELF)) {
+                else if (session?.staff?.funcCode?.contains(FuncConstants.EIA_XMGL_XMCS_VIEWSELF)) {
                     eq("inputUserId", Long.valueOf(session.staff.staffId))
                 }
             }
