@@ -104,6 +104,13 @@
 <a class="">{{d.ssNum}}</a>
 {{#  } }}
 </script>
+<script type="text/html" id="nsProjTp">
+{{#  if(d.ifStaff == true && d.nsNum > 0){ }}
+<a class="depLink">{{d.nsNum}}</a>
+{{#  } else { }}
+<a class="">{{d.nsNum}}</a>
+{{#  } }}
+</script>
 <!--人员项目统计查询-->
 <script type="text/html" id="projectCountTmp">
 <div class="layui-inline">

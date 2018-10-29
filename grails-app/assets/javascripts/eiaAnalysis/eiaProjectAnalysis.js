@@ -37,17 +37,18 @@ layui.use(['jquery', 'layer', 'table', 'element', 'laydate'], function () {
             defaultToolbar:['filter', 'print', 'exports'],
             cols: [
                 [
-                    {field: 'orgName', width: "30.1%", title: '业务部门', event: 'enterDept', align: "center", rowspan: 2, templet: '#depTp'},
+                    {field: 'orgName', width: "27.1%", title: '业务部门', event: 'enterDept', align: "center", rowspan: 2, templet: '#depTp'},
                     {field: 'projectNum', width: "10%", title: '项目个数', event: 'showProjAccList', align: "center", rowspan: 2, templet: '#projAccTp'},
                     {title: '项目进度', align: "center", colspan: 3},
-                    {title: '项目审批', align: "center", colspan: 3}
+                    {title: '项目审批', align: "center", colspan: 4}
                 ],[
-                    {field: 'projectDoing', width: "10%", title: '进行中', align: "center", event: 'showProjDoingList', templet: '#projDoingTp'},
-                    {field: 'projectUnComp', width: "10%", title: '未归档', align: "center", event: 'showProjUnCompList', templet: '#projUnCompTp'},
-                    {field: 'projectComp', width: "10%", title: '已归档', align: "center", event: 'showProjCompList', templet: '#projCompTp'},
-                    {field: 'ysNum', width: "10%", title: '一审', align: "center", event: 'showYsProList', templet: '#ysProjTp'},
-                    {field: 'esNum', width: "10%", title: '二审', align: "center", event: 'showEsProList', templet: '#esProjTp'},
-                    {field: 'ssNum', width: "10%", title: '三审', align: "center", event: 'showSsProList', templet: '#ssProjTp'}
+                    {field: 'projectDoing', width: "9%", title: '进行中', align: "center", event: 'showProjDoingList', templet: '#projDoingTp'},
+                    {field: 'projectUnComp', width: "9%", title: '未归档', align: "center", event: 'showProjUnCompList', templet: '#projUnCompTp'},
+                    {field: 'projectComp', width: "9%", title: '已归档', align: "center", event: 'showProjCompList', templet: '#projCompTp'},
+                    {field: 'ysNum', width: "9%", title: '一审', align: "center", event: 'showYsProList', templet: '#ysProjTp'},
+                    {field: 'esNum', width: "9%", title: '二审/审核', align: "center", event: 'showEsProList', templet: '#esProjTp'},
+                    {field: 'ssNum', width: "9%", title: '三审/审定', align: "center", event: 'showSsProList', templet: '#ssProjTp'},
+                    {field: 'nsNum', width: "9%", title: '内部审查', align: "center", event: 'showNsProList', templet: '#nsProjTp'}
                 ]
             ],
             done: function (res, curr, count) {
@@ -205,7 +206,29 @@ layui.use(['jquery', 'layer', 'table', 'element', 'laydate'], function () {
                     }
                 });
             }
-        } else if (obj.event == 'showProjDoingList') {
+        }else if (obj.event == 'showNsProList') {
+            if (data.ifStaff == true && data.ssNum > 0) {
+                var pageUrl = '/eia/eiaAnalysis/eiaProjectList?startDate=' + startDate + '&endDate=' + endDate + '&inputUserId=' + inputUserId + '&inputDeptId=' + inputDeptId + '&viewType=nsProject';
+                var index = layer.open({
+                    title: " ",
+                    type: 2,
+                    shade: false,
+                    maxmin: true,
+                    skin: 'larry-green',
+                    area: ['100%', '100%'],
+                    content: pageUrl,
+                    success: function (layero, index) {
+                    },
+                    min: function () {
+                        $(".layui-layer-title").text("内审项目列表");
+                    },
+                    restore: function () {
+                        $(".layui-layer-title").text(" ");
+                    }
+                });
+            }
+        }
+        else if (obj.event == 'showProjDoingList') {
             if (data.ifStaff == true && data.projectDoing > 0) {
                 var pageUrl = '/eia/eiaAnalysis/eiaProjectList?startDate=' + startDate + '&endDate=' + endDate + '&inputUserId=' + inputUserId + '&inputDeptId=' + inputDeptId + '&viewType=projectDoing';
                 var index = layer.open({
