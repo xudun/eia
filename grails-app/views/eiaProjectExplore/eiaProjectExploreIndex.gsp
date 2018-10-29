@@ -59,7 +59,7 @@
 
         <div class="layui-btn-group top-group">
             <a class="layui-btn search_btn pl12" lay-event="getSelect"><i class="larry-icon">&#xe939;</i> 查询</a>
-            <g:if test="${session.staff.funcCode.contains(FuncConstants.EIA_XMGL_NBCS_ADDSELF)}">
+            <g:if test="${session.staff.funcCode.contains(FuncConstants.EIA_XMGL_XMCS_ADDSELF)}">
                 <a class="layui-btn layui-bg-pale pl12" lay-event="projectAdd"><i class="larry-icon">&#xe987;</i> 新增</a>
             </g:if>
         </div>
