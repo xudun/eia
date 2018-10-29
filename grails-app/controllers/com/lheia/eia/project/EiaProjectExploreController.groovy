@@ -103,7 +103,7 @@ class EiaProjectExploreController {
             render([code: HttpMesConstants.CODE_FAIL,msg:HttpMesConstants.MSG_FCONF_NULL] as JSON)
         }else{
             def workFlowCode = eiaWorkFlowProjectExploreService.getWorkFlowCode(session)
-                def eiaWorkFlowBusi = eiaWorkFlowProjectExploreService.startProjectExploreWorkFlow(workFlowCode, GeneConstants.DOMAIN_EIA_PROJECT_EXPLORE, eiaProjectExploreId, WorkFlowConstants.PROJECT_EXPLORE_WORKFLOW_START_NODE,session)
+                def eiaWorkFlowBusi = eiaWorkFlowProjectExploreService.startProjectExploreWorkFlow(workFlowCode, GeneConstants.DOMAIN_EIA_PROJECT_EXPLORE, eiaProjectExploreId, WorkFlowConstants.PROJECT_EXPLORE_WORK_FLOW_START_NODE,session)
                 if(eiaWorkFlowBusi){
                     eiaProjectExplore = eiaProjectExploreService.eiaProjectExploreSub(eiaProjectExploreId)
                     if (eiaProjectExplore && eiaWorkFlowBusi) {
