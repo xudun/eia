@@ -150,16 +150,17 @@ class EiaProjectExploreService {
 
         def fileTypeId = params.long('fileTypeDropCode')    //此fileType为子文件类型Id,根据此Id查询父Id,可从json中获取
         def fileTypeChildDomain = EiaDomainCode.findByDomainAndId(GeneConstants.PROJECT_FILE_TYPE, fileTypeId)
-        def fileTypeChild = fileTypeChildDomain.codeDesc
-        def fileTypeChildCode = fileTypeChildDomain.code
-        def fileTypeCode = fileTypeChildDomain.parentCode
-        def fileTypeDomain = EiaDomainCode.findByDomainAndCode(GeneConstants.PROJECT_FILE_TYPE, fileTypeCode)
-        def fileType = fileTypeDomain.codeDesc
-        eiaProjectExplore.fileTypeChild = fileTypeChild
-        eiaProjectExplore.fileTypeChildCode = fileTypeChildCode
-        eiaProjectExplore.fileTypeCode = fileTypeCode
-        eiaProjectExplore.fileType = fileType
-
+        if(fileTypeChildDomain){
+            def fileTypeChild = fileTypeChildDomain.codeDesc
+            def fileTypeChildCode = fileTypeChildDomain.code
+            def fileTypeCode = fileTypeChildDomain.parentCode
+            def fileTypeDomain = EiaDomainCode.findByDomainAndCode(GeneConstants.PROJECT_FILE_TYPE, fileTypeCode)
+            def fileType = fileTypeDomain.codeDesc
+            eiaProjectExplore.fileTypeChild = fileTypeChild
+            eiaProjectExplore.fileTypeChildCode = fileTypeChildCode
+            eiaProjectExplore.fileTypeCode = fileTypeCode
+            eiaProjectExplore.fileType = fileType
+        }
         eiaProjectExplore.save(flush: true, failOnError: true)
         eiaProjectExplore.exploreNo = "E-"+eiaProjectExplore.id
         eiaProjectExplore.save(flush: true, failOnError: true)

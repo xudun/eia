@@ -144,6 +144,7 @@ layui.use(['jquery', 'layer', 'form', 'element'], function () {
                 }
                 if (key == "fileType") {
                     $("#fileTypeDrop").val(data[key])
+                    $("#fileTypeDropCode").val(data[key])
                 }
 
                 $("#" + key).val(data[key])
