@@ -80,6 +80,7 @@
 .filter-box .filter-ul{
     width: 100%;
     height: auto;
+    margin-top: 4px;
 }
 .filter-box .filter-ul .filter-li{
     width: 100%;

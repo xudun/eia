@@ -1,8 +1,9 @@
-layui.use(['jquery', 'layer', 'table', 'element', 'laydate'], function () {
+layui.use(['jquery', 'layer', 'table', 'element', 'laydate','form'], function () {
     var $ = layui.jquery,
         layer = layui.layer,
         element = layui.element,
         laydate = layui.laydate,
+        form = layui.form,
         table = layui.table;
 
     //高级查询数据
@@ -60,18 +61,16 @@ layui.use(['jquery', 'layer', 'table', 'element', 'laydate'], function () {
     });
 
     /**项目**/
-    var projectData = [
-        {
-            "projectNo": "TM-7777",
-            "projectName": "项目一",
-            "buildArea": "地点一",
-            "fileTypeChild": "文件类型一",
-            "projectMoney": "20",
-            "inputDept": "部门一",
-            "inputUser": "李四",
-            "dutyUser": "王伟"
-        }
-    ];
+    //设置select指定项选中
+    var selectOptionByVal = function ($select, val) {
+            var opt_arr = $('option', $($select));
+            for (var i = 0; i < opt_arr.length; i++) {
+                if ($(opt_arr[i]).val() == val) {
+                    $(opt_arr[i]).prop("selected", true);
+                    break;
+                }
+            }
+        };
     //恢复上次查询数据显示
     var regainProQueryShow = function () {
         var proAdvancedState = $('#proAdvancedState').val();
@@ -106,6 +105,10 @@ layui.use(['jquery', 'layer', 'table', 'element', 'laydate'], function () {
                             selecedSuccess:function(data){}
                         });
                         $("#fileTypeChild").val(proQueryData[name]);
+                        break;
+                    case 'nodesName':
+                        selectOptionByVal($('#nodesName'),proQueryData[name]);
+                        form.render('select');
                         break;
                     default:
                         $('#'+name).val(proQueryData[name]);
@@ -155,6 +158,7 @@ layui.use(['jquery', 'layer', 'table', 'element', 'laydate'], function () {
         proFilterData.seaReviewNo = $('#seaReviewNo').val();
         proFilterData.arcStartDate = $('#arcStartDate').val();
         proFilterData.arcEndDate = $('#arcEndDate').val();
+        proFilterData.nodesName = $('#nodesName').val();
 
         $('.filter-box-pro .filter-ul .filter-li').each(function (index, elem) {
             var curFilter = $(elem).attr('filterName');

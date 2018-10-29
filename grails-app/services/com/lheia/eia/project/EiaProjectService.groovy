@@ -68,8 +68,24 @@ class EiaProjectService {
         def eiaEnvProjectList
         if (seaReviewNo) {
             eiaEnvProjectList = EiaEnvProject.createCriteria().list() {
+                /**
+                 * 查看全部的项目数据
+                 */
+                if (!session?.staff?.funcCode?.contains(FuncConstants.EIA_YWCX_XMCX_VIEWALL)) {
+                    /**
+                     * 查看本部门项目数据
+                     */
+                    if (session?.staff?.funcCode?.contains(FuncConstants.EIA_YWCX_XMCX_VIEWDEPT)) {
+                        like ("inputDeptCode", "%"+ session.staff.orgCode +"%")
+                    }
+                    /**
+                     * 查看本人项目数据
+                     */
+                    else if (session?.staff?.funcCode?.contains(FuncConstants.EIA_YWCX_XMCX_VIEWSELF)) {
+                        eq("inputUserId", Long.valueOf(session.staff.staffId))
+                    }
+                }
                 like("seaReviewNo", "%" + seaReviewNo + "%")
-                eq("inputUserId", Long.valueOf(session.staff.staffId))
                 eq("ifDel", false)
             }
         }
@@ -87,6 +103,45 @@ class EiaProjectService {
                 }
                 eq("nodesCode", WorkFlowConstants.NODE_CODE_XMGD)
                 eq("ifDel", false)
+            }
+        }
+        /** 项目进度 */
+        def nodesName = params.nodesName
+        /** 是否归档 */
+        def ifArc = params.ifArc
+        def workFlowProjectIds = []
+        if (nodesName || ifArc) {
+            def eiaWorkFlowBusiList = EiaWorkFlowBusi.createCriteria().list() {
+                /**
+                 * 查看全部的项目数据
+                 */
+                if (!session?.staff?.funcCode?.contains(FuncConstants.EIA_YWCX_XMCX_VIEWALL)) {
+                    /**
+                     * 查看本部门项目数据
+                     */
+                    if (session?.staff?.funcCode?.contains(FuncConstants.EIA_YWCX_XMCX_VIEWDEPT)) {
+                        like ("inputDeptCode", "%"+ session.staff.orgCode +"%")
+                    }
+                    /**
+                     * 查看本人项目数据
+                     */
+                    else if (session?.staff?.funcCode?.contains(FuncConstants.EIA_YWCX_XMCX_VIEWSELF)) {
+                        eq("inputUserId", Long.valueOf(session.staff.staffId))
+                    }
+                }
+                if (ifArc == "是") {
+                    eq("workFlowState", WorkFlowConstants.WORKFLOW_END)
+                } else if (ifArc == "否") {
+                    ne("workFlowState", WorkFlowConstants.WORKFLOW_END)
+                }
+                if (nodesName) {
+                    eq('nodesName', nodesName)
+                }
+                eq('tableName', 'EiaProject')
+                eq('ifDel', false)
+            }
+            if (eiaWorkFlowBusiList) {
+                workFlowProjectIds = eiaWorkFlowBusiList?.tableNameId
             }
         }
         def eiaProjectList = EiaProject.createCriteria().list(max: limit, offset: page * limit) {
@@ -115,18 +170,6 @@ class EiaProjectService {
             if (projectEndMoney) {
                 le("projectMoney", new BigDecimal(projectEndMoney))
             }
-            /** 是否归档 */
-            def ifArc = params.ifArc
-            if (ifArc) {
-                if (ifArc == "是") {
-                    eq("ifArc", true)
-                } else if (ifArc == "否") {
-                    or {
-                        eq("ifArc", false)
-                        isNull("ifArc")
-                    }
-                }
-            }
             /** 审批文号 */
             if (seaReviewNo) {
                 if (eiaEnvProjectList) {
@@ -140,6 +183,14 @@ class EiaProjectService {
                 'in'("id", planItemList?.eiaProjectId)
                 eq("ifArc", true)
             }
+            /** 项目进度、是否归档 */
+            if (nodesName || ifArc) {
+                if (workFlowProjectIds) {
+                    'in'("id", workFlowProjectIds)
+                } else {
+                    eq("id", Long.valueOf(-1))
+                }
+            }
             if (projectName && !"项目名称、项目编号、项目负责人、录入部门、录入人".equals(projectName)) {
                 or {
                     like("projectName", "%" + projectName + "%")
@@ -149,7 +200,7 @@ class EiaProjectService {
                     like("dutyUser", "%" + projectName + "%")
                 }
             } else {
-                if (params.eiaTaskId || params.eiaContractId || params.eiaClientId || eiaClientName || fileTypeChild || buildArea || projectStartMoney || projectEndMoney || ifArc || seaReviewNo || arcStartDate || arcEndDate) {
+                if (params.eiaTaskId || params.eiaContractId || params.eiaClientId || eiaClientName || fileTypeChild || buildArea || projectStartMoney || projectEndMoney || ifArc || seaReviewNo || arcStartDate || arcEndDate || nodesName) {
                 } else {
                     eq("inputUserId", Long.valueOf(session.staff.staffId))
                 }
