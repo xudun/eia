@@ -70,14 +70,10 @@
                     </div>
                 </div>
 
-                <div class="layui-form-item">
-                    <label class="layui-form-label"><span class="col-f00">*</span>地理位置</label>
-                    <div class="layui-input-block " id="buildArea">
-                    </div>
-                </div>
+
 
                 <div class="layui-form-item display-none" id="ifSetYES">
-                    <label class="layui-form-label"><span class="col-f00">*</span>审批类型</label>
+                    <label class="layui-form-label"><span class="col-f00">*</span>立项审批类型</label>
 
                     <div class="layui-input-block" id="approvalType">
                     </div>
@@ -85,6 +81,12 @@
                 <div class="layui-form-item display-none" id="ifSetNO">
                     <label class="layui-form-label"><span class="col-f00">*</span>立项情况说明</label>
                     <div class="layui-input-block" id="setInfo">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span class="col-f00">*</span>地理位置</label>
+                    <div class="layui-input-block " id="buildArea">
                     </div>
                 </div>
 
