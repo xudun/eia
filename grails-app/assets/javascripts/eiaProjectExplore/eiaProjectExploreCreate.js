@@ -87,6 +87,24 @@ layui.use(['jquery', 'layer', 'form', 'element'], function () {
         }
     });
 
+    /**文件类型***/
+    //下拉树 文件类型
+    $("#fileTypeDrop").dropDownForZ({
+        url: '/eia/eiaProject/getFileTree',
+        width: '99%',
+        height: '350px',
+        disableParent: true,
+        selecedSuccess: function (data) {  //选中回调
+            if (!data.isParent) {
+                var temp = {
+                    id: data.id,
+                    name: data.name
+                };
+                $("#fileType").val(JSON.stringify(temp));
+            }
+        }
+    });
+
     /****
      * 编辑时渲染数据项
      */
@@ -94,16 +112,12 @@ layui.use(['jquery', 'layer', 'form', 'element'], function () {
         $("#eiaProjectExploreId").val(params.eiaProjectExploreId)
         $.post("../eiaProjectExplore/getEiaProjectExploreDataMap", {eiaProjectExploreId: params.eiaProjectExploreId}, function (data) {
             var data = data.data;
-            if(data.buildArea){
-                $("#buildArea").parent().parent().removeClass("display-none")
-            }
+
             /***checkbox渲染***/
             $("input[type=checkbox]").each(function (index,elem) {
                 var key = $(elem).data("domain");
                 var valueNode = $(elem).data("name");
                 if(data[key]){
-                    console.log(data[key])
-                    console.log(valueNode)
                     reqData[key] = data[key].split(",")
                     reqData[key+"Code"] = data[key+"Code"].split(",")
                     elem.checked = (data[key+"Code"].indexOf(valueNode) >= 0)
@@ -128,6 +142,10 @@ layui.use(['jquery', 'layer', 'form', 'element'], function () {
                 if (key == "environmentaType") {
                     $("#environmentaTypeDrop").val(data[key])
                 }
+                if (key == "fileType") {
+                    $("#fileTypeDrop").val(data[key])
+                }
+
                 $("#" + key).val(data[key])
                 if(key == "ifSet")
                 if (data[key] == "YES") {
@@ -167,6 +185,30 @@ layui.use(['jquery', 'layer', 'form', 'element'], function () {
         return false;
     })
 
+    //地图绘制按钮
+    $('.mapDrawBtn').click(function () {
+        var index = layer.open({
+            title: ' ',
+            type: 2,
+            shade: false,
+            maxmin: true,
+            skin: 'larry-green',
+            area: ['100%', '100%'],
+            content: '../eiaProject/eiaMapDraw',
+            success: function (layero, index) {
+                var body = layer.getChildFrame('body', index);
+            },
+            end: function () {
+
+            },
+            min: function () {
+                $(".layui-layer-title").text("地图绘制");
+            },
+            restore: function () {
+                $(".layui-layer-title").text(" ");
+            }
+        });
+    });
 
 });
 

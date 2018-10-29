@@ -78,7 +78,7 @@
                 <a class="layui-btn search_btn pl12" lay-event="highSelect" state="0"><i class="larry-icon">&#xe896;</i> 高级查询</a>
             </g:if>
             <g:if test="${session.staff.funcCode.contains(FuncConstants.EIA_XMGL_JCFA_ADD)}">
-                <a class="layui-btn layui-bg-pale" lay-event="offerAdd"><i class="larry-icon">&#xe876; </i> 新增报价</a>
+                <a class="layui-btn layui-bg-pale addBtn" lay-event="offerAdd"><i class="larry-icon">&#xe876; </i> 新增报价</a>
             </g:if>
             <a class="layui-btn layui-bg-pale" lay-event="planCal"><i class="larry-icon">&#xe876; </i> 检测费用计算器</a>
         </div>

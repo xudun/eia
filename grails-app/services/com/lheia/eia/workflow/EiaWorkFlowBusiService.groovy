@@ -281,6 +281,7 @@ class EiaWorkFlowBusiService {
      * @return
      */
     def getEiaWorkFlowBusiDataList(params, session) {
+        println("params = " + params)
         def staffId = session.staff.staffId
         int page
         int limit
@@ -354,6 +355,12 @@ class EiaWorkFlowBusiService {
             Set functionCode = new HashSet(Arrays.asList(session.staff.funcCode.split(",")))
             if(functionCode.contains(FuncConstants.EIA_HGGL_YZSH_XZJLSH)){
                 busiList = EiaWorkFlowBusi.createCriteria().list(max: limit, offset: page * limit, sort: "lastUpdated", order: "desc") {
+                    if (params.workFlowTitle) {
+                        or{
+                            like("workFlowTitle", "%" + params.workFlowTitle + "%")
+                            like("inputUser", "%" + params.workFlowTitle + "%")
+                        }
+                    }
                     or{
                         functionCode.remove(FuncConstants.EIA_XZGL_YZSH_VIEWALL)
                         and {/**如果为部门审核节点**/
@@ -389,6 +396,12 @@ class EiaWorkFlowBusiService {
             }else{
                 busiList = EiaWorkFlowBusi.createCriteria().list(max: limit, offset: page * limit, sort: "lastUpdated", order: "desc") {
                     and {
+                        if (params.workFlowTitle) {
+                            or{
+                                like("workFlowTitle", "%" + params.workFlowTitle + "%")
+                                like("inputUser", "%" + params.workFlowTitle + "%")
+                            }
+                        }
                         'in'("authCode", functionCode)
                         /**
                          * 查看全部的客户数据

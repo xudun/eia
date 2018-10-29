@@ -3,6 +3,8 @@ layui.use(['jquery', 'layer', 'table'], function () {
         layer = layui.layer,
         table = layui.table;
 
+    var ifAdd = getParamFromUrl(document.location.href, "ifAdd");
+
     //渲染表格
     table.render({
         id: 'eiaProjectList',
@@ -23,7 +25,12 @@ layui.use(['jquery', 'layer', 'table'], function () {
         ]],
         page: true,
         even: true,
-        limit: 10
+        limit: 10,
+        done:function () {
+            if(ifAdd == '1'){
+                $('.addBtn').trigger('click');
+            }
+        }
     });
 
     //监听工具条
@@ -176,7 +183,7 @@ layui.use(['jquery', 'layer', 'table'], function () {
                     area: ['100%', '100%'],
                     content: pageUrl,
                     success: function (layero, index) {
-                        var body = layer.getChildFrame('body', index);
+                        ifAdd = 0;
                     },
                     end: function () {
                         table.reload("eiaProjectList");

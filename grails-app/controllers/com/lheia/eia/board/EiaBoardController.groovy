@@ -5,6 +5,14 @@ import grails.converters.JSON
 
 class EiaBoardController {
     def eiaTaskBoard() {}
+    def eiaWorkPlatForm() {}
+    def eiaConOfferBacklog() {}
+    def eiaLabOfferBacklog() {}
+    def eiaProjectBacklog() {}
+    def eiaCertBacklog() {}
+    def eiaStampBacklog() {}
+    def eiaProjectExpBacklog() {}
+    def eiaWorkFlowBusiDone() {}
     def eiaWorkFlowBusiService
     def eiaBoardService
     /**
@@ -75,5 +83,17 @@ class EiaBoardController {
     def getDeptCountMoney() {
         def data = eiaBoardService.getDeptCount()
         render([code: HttpMesConstants.CODE_OK, count: data] as JSON)
+    }
+
+    /**
+     * 判断当前人员是否有工作台按钮权限
+     */
+    def checkStaffClickBtn() {
+        def result = eiaBoardService.checkStaffClickBtn(params, session)
+        if (result) {
+            render([code: HttpMesConstants.CODE_OK, data: result] as JSON)
+        } else {
+            render([code: HttpMesConstants.CODE_FAIL, msg: HttpMesConstants.MSG_DATA_NULL] as JSON)
+        }
     }
 }

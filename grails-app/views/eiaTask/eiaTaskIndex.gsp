@@ -44,7 +44,7 @@
                 <a class="layui-btn search_btn pl12" lay-event="getSelect"><i class="larry-icon">&#xe939;</i> 查询</a>
             </g:if>
             <g:if test="${session.staff.funcCode.contains(FuncConstants.EIA_RWGL_RWCJ_ADD)}">
-                <a class="layui-btn layui-bg-pale pl12" lay-event="missionAdd"><i class="larry-icon">&#xe987;</i> 新增</a>
+                <a class="layui-btn layui-bg-pale pl12 addBtn" lay-event="missionAdd"><i class="larry-icon">&#xe987;</i> 新增</a>
             </g:if>
         </div>
     </div>

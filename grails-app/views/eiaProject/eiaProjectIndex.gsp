@@ -22,6 +22,9 @@
     <!--列表-->
     <div class="layui-col-lg12 layui-col-md12 layui-col-sm12 layui-col-xs12">
         <table id="eiaProjectList" lay-filter="eiaProjectList"></table>
+        <!--高级查询栏状态：0：关闭；1：打开-->
+        <input type="hidden" id="advancedState" name="advancedState" value="0">
+        <input type="hidden" id="queryData" name="queryData" value="{}">
     </div>
 </div>
 <script type="text/html" id="mlTool">
@@ -55,42 +58,103 @@
 <span>{{d.LAY_TABLE_INDEX + 1}}</span>
 </script>
 <script type="text/html" id="tableTopTmp">
-<div class="table-top">
-    <div class="layui-inline">
-        <div class="layui-input-inline">
-            <input type="text" name="projectName" value="" id="projectName" placeholder="项目名称、项目编号、项目负责人、录入部门、录入人" class="layui-input larry-search-input w400">
-        </div>
-        <div class="layui-btn-group top-group">
-            <a class="layui-btn search_btn pl12" lay-event="getSelect"><i class="larry-icon">&#xe939;</i> 查询</a>
-            <a class="layui-btn search_btn pl12" lay-event="highSelect" state="0"><i class="larry-icon">&#xe939;</i> 高级查询</a>
+<!--查询及添加框-->
+<div class="layui-inline">
+    <div class="layui-input-inline">
+        <input type="text" name="projectName" value="" id="projectName" placeholder="项目名称、项目编号、项目负责人、录入部门、录入人" class="layui-input larry-search-input w300">
+    </div>
+</div>
+<div class="layui-btn-group top-group">
+    <a class="layui-btn search_btn pl12" lay-event="projectSelect"><i class="larry-icon">&#xe939;</i> 查询</a>
+    <a class="layui-btn pl12" lay-event="advancedQuery"><i class="larry-icon">&#xe939;</i> 高级查询</a>
+</div>
+<!--筛选栏-->
+<div class="filter-box mt15" state="0">
+    <div class="filter-form">
+        <div class="layui-row mt15">
+            <div class="layui-col-xs6">
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span class="col-f00"></span>甲方名称</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="eiaClientName" name="eiaClientName" class="layui-input" value="">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span class="col-f00"></span>建设地点</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="buildArea" name="buildArea" class="layui-input" value="">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span class="col-f00"></span>项目金额</label>
+                    <div class="layui-input-block">
+                        <div class="range-box">
+                            <div class="layui-inline rb-input">
+                                <input type="text" id="projectStartMoney" name="projectStartMoney" class="layui-input" value="" placeholder="金额下限">
+                            </div>
+                            <span class="rb-text">—</span>
+                            <div class="layui-inline rb-input">
+                                <input type="text" class="layui-input" id="projectEndMoney" name="projectEndMoney" placeholder="金额上限">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-xs6">
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span class="col-f00"></span>文件类型</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="fileTypeChild" name="fileTypeChild" class="layui-input" readonly value="">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span class="col-f00"></span>审批文号</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="seaReviewNo" name="seaReviewNo" class="layui-input" value="">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span class="col-f00"></span>审批时间</label>
+                    <div class="layui-input-block">
+                        <div class="range-box">
+                            <div class="layui-inline rb-input">
+                                <input type="text" class="layui-input" id="arcStartDate" name="arcStartDate" placeholder="起始时间">
+                            </div>
+                            <span class="rb-text">—</span>
+                            <div class="layui-inline rb-input">
+                                <input type="text" class="layui-input" id="arcEndDate" name="arcEndDate" placeholder="结束时间">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    %{--   <div class="layui-inline">
-           <a class="layui-btn layui-bg-pale pl12" data-type="projectAdd"><i class="larry-icon">&#xe987;</i> 新增</a>
-       </div>--}%
-    <!--高级查询-->
-    <div id="advanced-query" class="display-none">
-        <fieldset class="layui-elem-field layui-field-title site-title">
-            <legend><a name="methodRender">高级查询</a></legend>
-        </fieldset>
-        <form class="layui-form">
-            <div class="layui-inline">
-                <label class="layui-form-label">文件类型</label>
-                <div class="layui-input-inline">
-                    <input type="text" name="fileType" autocomplete="off" id="fileType" class="layui-input">
+    <ul class="filter-ul">
+        <li class="filter-li" filterName="ifArc">
+            <div class="inner-box lf">是否归档</div>
+            <div class="inner-box rg filter-inner ifArcFilter">
+                <div class="filter-item mr57" lay-event="filterItem">
+                    <div class="fi-box">
+                        <span>是</span>
+                        <i class="larry-icon">&#xe830;</i>
+                    </div>
+
+                </div>
+                <div class="filter-item" lay-event="filterItem">
+                    <div class="fi-box">
+                        <span>否</span>
+                        <i class="larry-icon">&#xe830;</i>
+                    </div>
                 </div>
             </div>
-            <div class="layui-inline">
-                <label class="layui-form-label">建设地点</label>
-                <div class="layui-input-inline">
-                    <input type="text" name="buildArea" autocomplete="off" id="buildArea" class="layui-input">
-                </div>
-            </div>
-            <div class="layui-form-item larry-btn-btn">
-                <button class="layui-btn pl12" lay-submit lay-filter="query"><i class="larry-icon">&#xe896;</i> 查询</button>
-                <button type="reset" class="layui-btn layui-btn-primary pl12"><i class="larry-icon">&#xe6d7;</i> 重置</button>
-            </div>
-        </form>
+        </li>
+    </ul>
+    <div class="filter-btn">
+        <div class="layui-btn-group top-group">
+            <a class="layui-btn search_btn pl12" lay-event="projectSelect" data-type="projectSelect"><i class="larry-icon">&#xe939;</i> 查询</a>
+            <a class="layui-btn layui-btn-primary pl12" lay-event="clearQuery" data-type="clearQuery"><i class="larry-icon">&#xe617;</i> 重置</a>
+        </div>
     </div>
 </div>
 </script>

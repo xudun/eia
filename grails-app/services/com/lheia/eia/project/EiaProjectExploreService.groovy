@@ -2,11 +2,18 @@ package com.lheia.eia.project
 
 import com.lheia.eia.common.FuncConstants
 import com.lheia.eia.common.GeneConstants
+import com.lheia.eia.common.HttpMesConstants
+import com.lheia.eia.common.HttpUrlConstants
+import com.lheia.eia.common.WorkFlowConstants
 import com.lheia.eia.config.EiaDomainCode
+import com.lheia.eia.tools.HttpConnectTools
+import com.lheia.eia.tools.JsonHandler
+import com.lheia.eia.workflow.EiaWorkFlowBusiLog
 import grails.gorm.transactions.Transactional
 
 @Transactional
 class EiaProjectExploreService {
+    def eiaProjectService
     /**
      * 查询分页
      */
@@ -30,17 +37,17 @@ class EiaProjectExploreService {
             /**
              * 查看全部的客户数据
              */
-            if (!session?.staff?.funcCode?.contains(FuncConstants.EIA_YWCX_XMCX_VIEWALL)) {
+            if (!session?.staff?.funcCode?.contains(FuncConstants.EIA_XMGL_XMCS_VIEWALL)) {
                 /**
                  * 查看本部门客户数据
                  */
-                if (session?.staff?.funcCode?.contains(FuncConstants.EIA_YWCX_HTCX_VIEWDEPT)) {
+                if (session?.staff?.funcCode?.contains(FuncConstants.EIA_XMGL_XMCS_VIEWDEPT)) {
                     like("inputDeptCode", "%" + session.staff.orgCode + "%")
                 }
                 /**
                  * 查看本人客户数据
                  */
-                else if (session?.staff?.funcCode?.contains(FuncConstants.EIA_YWCX_HTCX_VIEWSELF)) {
+                else if (session?.staff?.funcCode?.contains(FuncConstants.EIA_XMGL_XMCS_VIEWSELF)) {
                     eq("inputUserId", Long.valueOf(session.staff.staffId))
                 }
             }
@@ -78,12 +85,13 @@ class EiaProjectExploreService {
         return EiaProjectExplore.findByIdAndIfDel(eiaProjectExploreId,false)
     }
     /***
-     * 获取内审单数据
+     * 删除内审单数据
      */
     def eiaProjectExploreDel(params){
         Long eiaProjectExploreId = params.long("eiaProjectExploreId")
         def eiaProjectExplore  = EiaProjectExplore.findByIdAndIfDel(eiaProjectExploreId,false)
         eiaProjectExplore.ifDel = true
+        def resMap = JsonHandler.jsonToMap(HttpConnectTools.getResponseJson(HttpUrlConstants.GIS_GEO_PROJECT_EXPLORE_DEL, [eiaProjectExploreId: eiaProjectExploreId]))
         eiaProjectExplore.save(flush: true, failOnError: true)
     }
 
@@ -102,6 +110,15 @@ class EiaProjectExploreService {
                 resMap[it.key] =eiaDomainCode.codeDesc
             }
         }
+        def zlNodeLog = EiaWorkFlowBusiLog.findByTableNameAndTableNameIdAndNodesCodeInList(GeneConstants.DOMAIN_EIA_PROJECT_EXPLORE,eiaProjectExploreId,[WorkFlowConstants.NODE_CODE_ZLSP,WorkFlowConstants.NODE_CODE_FGSFZRSP])
+        if(zlNodeLog){
+            resMap.zlnodeimg = eiaProjectService.getReport(zlNodeLog.updateUserId)
+        }
+
+        def jlNodeLog = EiaWorkFlowBusiLog.findByTableNameAndTableNameIdAndNodesCodeInList(GeneConstants.DOMAIN_EIA_PROJECT_EXPLORE,eiaProjectExploreId,[WorkFlowConstants.NODE_CODE_BMJLSP,WorkFlowConstants.NODE_CODE_FGSDSZSP])
+        if(jlNodeLog){
+            resMap.jlnodeimg = eiaProjectService.getReport(jlNodeLog.updateUserId)
+        }
         return resMap
     }
     /***
@@ -114,6 +131,9 @@ class EiaProjectExploreService {
             eiaProjectExplore = EiaProjectExplore.findByIdAndIfDel(eiaProjectExploreId,false)
         }else{
             eiaProjectExplore = new EiaProjectExplore()
+            eiaProjectExplore.eiaTaskId = 0
+            eiaProjectExplore.eiaProjectId = 0
+            eiaProjectExplore.gisGeoProjectId = 0
             eiaProjectExplore.inputDept = session.staff.orgName
             eiaProjectExplore.inputDeptCode = session.staff.orgCode
             eiaProjectExplore.inputDeptId = Long.parseLong(session.staff.orgId)
@@ -127,6 +147,19 @@ class EiaProjectExploreService {
             eiaProjectExplore.environmentaTypeCode = environment.code
             eiaProjectExplore.environmentaTypeDesc = environment.codeDesc
         }
+
+        def fileTypeId = params.long('fileTypeDropCode')    //此fileType为子文件类型Id,根据此Id查询父Id,可从json中获取
+        def fileTypeChildDomain = EiaDomainCode.findByDomainAndId(GeneConstants.PROJECT_FILE_TYPE, fileTypeId)
+        def fileTypeChild = fileTypeChildDomain.codeDesc
+        def fileTypeChildCode = fileTypeChildDomain.code
+        def fileTypeCode = fileTypeChildDomain.parentCode
+        def fileTypeDomain = EiaDomainCode.findByDomainAndCode(GeneConstants.PROJECT_FILE_TYPE, fileTypeCode)
+        def fileType = fileTypeDomain.codeDesc
+        eiaProjectExplore.fileTypeChild = fileTypeChild
+        eiaProjectExplore.fileTypeChildCode = fileTypeChildCode
+        eiaProjectExplore.fileTypeCode = fileTypeCode
+        eiaProjectExplore.fileType = fileType
+
         eiaProjectExplore.save(flush: true, failOnError: true)
         eiaProjectExplore.exploreNo = "E-"+eiaProjectExplore.id
         eiaProjectExplore.save(flush: true, failOnError: true)

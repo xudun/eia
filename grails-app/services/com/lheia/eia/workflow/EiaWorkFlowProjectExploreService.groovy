@@ -3,8 +3,10 @@ package com.lheia.eia.workflow
 import com.lheia.eia.cert.EiaCert
 import com.lheia.eia.common.GeneConstants
 import com.lheia.eia.common.HttpMesConstants
+import com.lheia.eia.common.HttpUrlConstants
 import com.lheia.eia.common.WorkFlowConstants
 import com.lheia.eia.project.EiaProjectExplore
+import com.lheia.eia.tools.HttpConnectTools
 import com.lheia.eia.tools.JsonHandler
 import grails.gorm.transactions.Transactional
 
@@ -19,9 +21,9 @@ class EiaWorkFlowProjectExploreService {
      */
     def getWorkFlowCode(session){
         String orgCode = session.staff.orgCode
-        def workFlowCode = WorkFlowConstants.PROJECT_EXPLORE_WORKFLOW
+        def workFlowCode = WorkFlowConstants.PROJECT_EXPLORE_WORK_FLOW
         if(orgCode){
-            WorkFlowConstants.PROJECT_EXPLORE_WORKFLOW_MAP.each{
+            WorkFlowConstants.PROJECT_EXPLORE_WORK_FLOW_MAP.each{
                 if(orgCode.contains(it.key)){
                     workFlowCode = it.value
                 }
@@ -92,6 +94,15 @@ class EiaWorkFlowProjectExploreService {
         if(eiaWorkFlowBusi.data.tableName == GeneConstants.DOMAIN_EIA_PROJECT_EXPLORE){
             def eiaProjectExplore = EiaProjectExplore.findByIdAndIfDel(eiaWorkFlowBusi.data.tableNameId,false)
             eiaProjectExplore.ifEnd = true
+            /**内审单**/
+            if(eiaProjectExplore.geoJson){
+                def param = [:]
+                param.putAll(eiaProjectExplore.properties)
+                param.geoJson = eiaProjectExplore.geoJson
+                param.eiaProjectExploreId = eiaProjectExplore.id
+                param.geoName = eiaProjectExplore.buildArea
+                HttpConnectTools.getResponseJson(HttpUrlConstants.GIS_GEO_PROJECT_EXPLORE_SAVE,param)
+            }
             eiaProjectExplore.save(flush: true, failOnError: true)
         }
         return eiaWorkFlowBusi

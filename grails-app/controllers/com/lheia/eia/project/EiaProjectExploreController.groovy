@@ -24,6 +24,11 @@ class EiaProjectExploreController {
      * 打印页
      */
     def eiaProjectExplorePrint(){}
+    /**
+     * 地图显示页
+     * @return
+     */
+    def eiaMapDetail(){}
 
     def eiaProjectExploreQueryPage(){
         def dataMap =  eiaProjectExploreService.eiaProjectExploreQueryPage(params,session)
@@ -94,15 +99,11 @@ class EiaProjectExploreController {
         eiaWorkFlowProjectExploreService.getWorkFlowCode(session)
         long eiaProjectExploreId = Long.valueOf(params.eiaProjectExploreId)
         def eiaProjectExplore = EiaProjectExplore.findByIdAndIfDel(eiaProjectExploreId,false)
-        if(!eiaProjectExplore.gisGeoProjectId){
-            render([code: HttpMesConstants.CODE_FAIL,msg:HttpMesConstants.MSG_GIS_NULL] as JSON)
-            return
-        }
         if(eiaProjectExplore.ifSub){
             render([code: HttpMesConstants.CODE_FAIL,msg:HttpMesConstants.MSG_FCONF_NULL] as JSON)
         }else{
             def workFlowCode = eiaWorkFlowProjectExploreService.getWorkFlowCode(session)
-                def eiaWorkFlowBusi = eiaWorkFlowProjectExploreService.startProjectExploreWorkFlow(workFlowCode, GeneConstants.DOMAIN_EIA_PROJECT_EXPLORE, eiaProjectExploreId, WorkFlowConstants.PROJECT_EXPLORE_WORKFLOW_START_NODE,session)
+                def eiaWorkFlowBusi = eiaWorkFlowProjectExploreService.startProjectExploreWorkFlow(workFlowCode, GeneConstants.DOMAIN_EIA_PROJECT_EXPLORE, eiaProjectExploreId, WorkFlowConstants.PROJECT_EXPLORE_WORK_FLOW_START_NODE,session)
                 if(eiaWorkFlowBusi){
                     eiaProjectExplore = eiaProjectExploreService.eiaProjectExploreSub(eiaProjectExploreId)
                     if (eiaProjectExplore && eiaWorkFlowBusi) {

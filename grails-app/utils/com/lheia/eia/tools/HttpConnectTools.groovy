@@ -42,7 +42,7 @@ class HttpConnectTools {
                  */
                 List<NameValuePair> formParams = new ArrayList<NameValuePair>()
                 params.each { entry ->
-                    formParams.add(new BasicNameValuePair(entry.key, entry.value))
+                    formParams.add(new BasicNameValuePair(entry.key, entry.value.toString()))
                 }
                 /**
                  *  创建请求方法的实例，并指定请求URL。

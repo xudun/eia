@@ -17,6 +17,7 @@ class HttpUrlConstants {
     /** 超时 **/
     public static String LOGIN_FORWARD_JUMP = Holders.getConfig().getProperty('webroots.forwardPath.auth') + "login_forward_jump"
     public static String ACCID_FORWARD_JUMP = Holders.getConfig().getProperty('webroots.forwardPath.auth') + "accid_forward_jump"
+    public static String EIA_FORWARD_JUMP = Holders.getConfig().getProperty('webroots.forwardPath.eia')
     /**
      * httpclient参数设置
      */
@@ -187,6 +188,9 @@ class HttpUrlConstants {
      * 审批公示项目提交获取gis信息
      */
     static String GIS_GEO_PUB_QUERY = Holders.getConfig().getProperty('webroots.contextPath.api')+'gis/gisGeoPubQuery'
+    static String GIS_GEO_PROJECT_EXPLORE_SAVE = Holders.getConfig().getProperty('webroots.contextPath.api')+'gis/gisGeoProjectExploreSave'
+    static String GIS_GEO_PROJECT_EXPLORE_DEL = Holders.getConfig().getProperty('webroots.contextPath.api')+'gis/gisGeoProjectExploreDel'
+
     /**
      * gis绘图跳转路径
      */

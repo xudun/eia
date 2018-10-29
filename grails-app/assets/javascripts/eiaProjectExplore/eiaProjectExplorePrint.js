@@ -32,6 +32,13 @@ layui.use(['jquery', 'form'], function(){
         }
 
         /***其他****/
+        if(data.zlnodeimg){
+            $('#zlnodei').append('<img style="height: 70px;" src="'+data.zlnodeimg+'">');
+        }
+
+        if(data.jlnodeimg){
+            $('#jlnodei').append('<img style="height: 70px;" src="'+data.jlnodeimg+'">');
+        }
     })
 
 

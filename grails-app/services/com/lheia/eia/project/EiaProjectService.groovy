@@ -10,8 +10,6 @@ import com.lheia.eia.common.WorkFlowConstants
 import com.lheia.eia.config.EiaDomainCode
 import com.lheia.eia.config.EiaFileUpload
 import com.lheia.eia.contract.EiaContract
-import com.lheia.eia.finance.EiaIncomeOut
-import com.lheia.eia.finance.EiaInvoice
 import com.lheia.eia.lab.EiaLabOffer
 import com.lheia.eia.task.EiaTask
 import com.lheia.eia.task.EiaTaskAssign
@@ -21,7 +19,7 @@ import com.lheia.eia.workflow.EiaWorkFlowBusi
 import grails.gorm.transactions.Transactional
 import grails.util.Holders
 
-import java.math.RoundingMode
+import java.text.SimpleDateFormat
 
 @Transactional
 class EiaProjectService {
@@ -58,24 +56,88 @@ class EiaProjectService {
      * 获取项目信息
      */
     def eiaProjectQueryPage(params, session) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd")
         int page
         int limit
         if (params.page && params.limit) {
             page = params.int('page') - 1
             limit = params.int('limit')
         }
+        /** 审批文号 */
+        def seaReviewNo = params.seaReviewNo
+        def eiaEnvProjectList
+        if (seaReviewNo) {
+            eiaEnvProjectList = EiaEnvProject.createCriteria().list() {
+                like("seaReviewNo", "%" + seaReviewNo + "%")
+                eq("inputUserId", Long.valueOf(session.staff.staffId))
+                eq("ifDel", false)
+            }
+        }
+        /** 审批时间 */
+        def arcStartDate = params.arcStartDate
+        def arcEndDate = params.arcEndDate
+        def planItemList
+        if (arcStartDate || arcEndDate) {
+            planItemList = EiaProjectPlanItem.createCriteria().list() {
+                if (arcStartDate) {
+                    ge('actEndDate', sdf.parse(arcStartDate))
+                }
+                if (arcEndDate) {
+                    le('actEndDate', sdf.parse(arcEndDate))
+                }
+                eq("nodesCode", WorkFlowConstants.NODE_CODE_XMGD)
+                eq("ifDel", false)
+            }
+        }
         def eiaProjectList = EiaProject.createCriteria().list(max: limit, offset: page * limit) {
             def projectName = params.projectName
-            def fileType = params["key[fileType]"]
-            if (fileType) {
-                like("fileTypeChild", "%" + fileType + "%")
+            /** 客户（甲方）名称 */
+            def eiaClientName = params.eiaClientName
+            if (eiaClientName) {
+                like("eiaClientName", "%" + eiaClientName + "%")
             }
-            def buildArea = params["key[buildArea]"]
+            /** 文件类型 */
+            def fileTypeChild = params.fileTypeChild
+            if (fileTypeChild) {
+                like("fileTypeChild", "%" + fileTypeChild + "%")
+            }
+            /** 建设地点 */
+            def buildArea = params.buildArea
             if (buildArea) {
                 like("buildArea", "%" + buildArea + "%")
             }
+            /** 项目金额 */
+            def projectStartMoney = params.projectStartMoney
+            if (projectStartMoney) {
+                ge("projectMoney", new BigDecimal(projectStartMoney))
+            }
+            def projectEndMoney = params.projectEndMoney
+            if (projectEndMoney) {
+                le("projectMoney", new BigDecimal(projectEndMoney))
+            }
+            /** 是否归档 */
             def ifArc = params.ifArc
             if (ifArc) {
+                if (ifArc == "是") {
+                    eq("ifArc", true)
+                } else if (ifArc == "否") {
+                    or {
+                        eq("ifArc", false)
+                        isNull("ifArc")
+                    }
+                }
+            }
+            /** 审批文号 */
+            if (seaReviewNo) {
+                if (eiaEnvProjectList) {
+                    'in'("id", eiaEnvProjectList?.eiaProjectId)
+                } else {
+                    eq("id", Long.valueOf(-1))
+                }
+            }
+            /** 审批时间 */
+            if (arcStartDate || arcEndDate) {
+                'in'("id", planItemList?.eiaProjectId)
                 eq("ifArc", true)
             }
             if (projectName && !"项目名称、项目编号、项目负责人、录入部门、录入人".equals(projectName)) {
@@ -87,22 +149,10 @@ class EiaProjectService {
                     like("dutyUser", "%" + projectName + "%")
                 }
             } else {
-                if (params.eiaTaskId || params.eiaContractId || params.eiaClientId || fileType || buildArea || ifArc) {
+                if (params.eiaTaskId || params.eiaContractId || params.eiaClientId || eiaClientName || fileTypeChild || buildArea || projectStartMoney || projectEndMoney || ifArc || seaReviewNo || arcStartDate || arcEndDate) {
                 } else {
-                    /** 当页面传值viewType是analysis时，表示由项目统计分析调用该页面和方法，此时人员看到的项目应该是自己已审批过的项目，否则默认看本人项目 */
-                    if (params.viewType != "analysis") {
-                        eq("inputUserId", Long.valueOf(session.staff.staffId))
-                    }
+                    eq("inputUserId", Long.valueOf(session.staff.staffId))
                 }
-            }
-            /** 当页面传值有idStrList时，表示由项目统计分析调用该页面和方法，只能查询该id范围内的项目 */
-            if (params.idStrList) {
-                def idList = []
-                def idStrList = params.idStrList.split(",")toList()
-                idStrList.each {
-                    idList.add(Long.parseLong(it))
-                }
-                'in'("id", idList)
             }
             /**
              * 查看全部的客户数据
@@ -149,6 +199,7 @@ class EiaProjectService {
             map.projectMoney = it.projectMoney
             map.projectName = it.projectName
             map.buildArea = it?.buildArea
+            map.eiaClientName = it?.eiaClientName
             map.gisProjectId = it.gisProjectId
             map.projectNo = it.projectNo
             map.fileTypeChild = it.fileTypeChild
@@ -383,6 +434,12 @@ class EiaProjectService {
             def projectType = eiaProject.projectType
             eiaProject.ifDel = true
             if (eiaProject.save(flush: true, failOnError: true)) {
+                /***恢复内审单**/
+                def eiaProjectExplore = EiaProjectExplore.findByEiaProjectIdAndIfDel(eiaProject.id,false)
+                eiaProjectExplore.eiaProjectId = 0
+                eiaProjectExplore.eiaTaskId = 0
+                eiaProjectExplore.gisGeoProjectId = 0
+                eiaProjectExplore.save(flush: true, failOnError: true)
                 def projectContent
                 if (projectType == '环保咨询') {
                     def eiaEnvProject = EiaEnvProject.findByEiaProjectIdAndIfDel(params.long('eiaProjectId'), false)
@@ -425,7 +482,6 @@ class EiaProjectService {
                             return true
                         } else {
                             return false
-
                         }
                     } else {
                         return false
@@ -725,6 +781,8 @@ class EiaProjectService {
             return GeneConstants.XZ_MONEY_LIST
         } else if (projectType == 'EPC_PF') {
             return GeneConstants.PF_MONEY_LIST
+        } else if (projectType == 'EPC_PW') {
+            return GeneConstants.PW_MONEY_LIST
         } else if (projectType == 'EPC_ST') {
             return GeneConstants.ST_MONEY_LIST
         } else if (projectType == 'EPC_CD') {
@@ -774,6 +832,8 @@ class EiaProjectService {
             dataMap = eiaEnvProjectService.combNeedMap(eiaProject?.properties, GeneConstants.XZ_MONEY_LIST)
         } else if (projectType == 'EPC_PF') {
             dataMap = eiaEnvProjectService.combNeedMap(eiaProject?.properties, GeneConstants.PF_MONEY_LIST)
+        } else if (projectType == 'EPC_PW') {
+            dataMap = eiaEnvProjectService.combNeedMap(eiaProject?.properties, GeneConstants.PW_MONEY_LIST)
         } else if (projectType == 'EPC_ST') {
             dataMap = eiaEnvProjectService.combNeedMap(eiaProject?.properties, GeneConstants.ST_MONEY_LIST)
         } else if (projectType == 'EPC_CD') {

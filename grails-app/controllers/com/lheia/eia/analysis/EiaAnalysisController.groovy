@@ -58,7 +58,7 @@ class EiaAnalysisController {
      * 业务类型统计
      */
     def getBusiTypeCountMoney() {
-        def data = eiaBoardService.getBusiTypeTotalMoney(params)
+        def data = eiaBoardService.getBusiTypeTotalMoney(session,params)
         render([code: HttpMesConstants.CODE_OK, data: data] as JSON)
     }
     /**

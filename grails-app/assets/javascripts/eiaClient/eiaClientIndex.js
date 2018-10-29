@@ -3,6 +3,8 @@ layui.use(['jquery', 'layer', 'table'], function(){
         layer = layui.layer,
         table = layui.table;
 
+    var ifAdd = getParamFromUrl(document.location.href, "ifAdd");
+
     //渲染表格
     table.render({
         id: 'eiaClientList',
@@ -25,7 +27,12 @@ layui.use(['jquery', 'layer', 'table'], function(){
         ]],
         page: true,
         even: true,
-        limit: 10
+        limit: 10,
+        done:function () {
+            if(ifAdd == '1'){
+                $('.addBtn').trigger('click');
+            }
+        }
     });
 
     //监听工具条
@@ -222,45 +229,6 @@ layui.use(['jquery', 'layer', 'table'], function(){
             });
         }
     });
-    //查询、新增按钮
-    $('.larry-btn a.layui-btn').click(function () {
-        var type = $(this).data('type');
-        active[type] ? active[type].call(this) : '';
-    });
-    var active = {
-        getSelect: function () {    //查询
-            var clientName = $("#clientName").val();
-            table.reload('eiaClientList', {
-                where: {
-                    clientName: clientName
-                }
-            });
-        },
-        missionAdd: function () {    //新增
-            pageUrl = '/eia/eiaClient/eiaClientCreate?pageType=0';
-            var index = layer.open({
-                title:' ',
-                type: 2,
-                shade: false,
-                maxmin: true,
-                skin: 'larry-green',
-                area: ['100%', '100%'],
-                content: pageUrl,
-                success:function (layero, index) {
-                    var body = layer.getChildFrame('body', index);
-                },
-                end: function () {
-
-                },
-                min: function () {
-
-                },
-                restore: function () {
-
-                }
-            });
-        }
-    }
 
     //监听头部工具栏事件
     //监听事件
@@ -285,7 +253,7 @@ layui.use(['jquery', 'layer', 'table'], function(){
                     area: ['100%', '100%'],
                     content: pageUrl,
                     success:function (layero, index) {
-                        var body = layer.getChildFrame('body', index);
+                        ifAdd = 0;
                     },
                     end: function () {
 

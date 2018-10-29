@@ -1,65 +1,90 @@
 /**
  * Created by XinXi-001 on 2018/4/16.
  */
-layui.use(['jquery', 'layer', 'form','table'], function () {
+layui.use(['jquery', 'layer', 'form','table', 'laydate'], function () {
     var $ = layui.jquery,
         layer = layui.layer,
         form = layui.form,
+        laydate = layui.laydate,
         table = layui.table;
 
-    var viewType = getParamFromUrl(document.location.href, "viewType");
-    if (!viewType) {
-        viewType = "";
-    }
-    var idStrList = getParamFromUrl(document.location.href, "idStrList");
-    if (!idStrList) {
-        idStrList = "";
-    }
+    var filterData = {};
+
+    //恢复上次查询数据显示
+    var regainQueryShow = function () {
+        var advancedState = $('#advancedState').val();
+        var queryData = JSON.parse($('#queryData').val());
+        if(advancedState == '1'){ //高级查询
+            //打开高级查询面板
+            $('.filter-box').attr('state','1').css('display','block');
+            $('#advancedState').val(1);
+            //赋值
+            for(var name in queryData){
+                switch (name){
+                    case 'ifArc':
+                        var dataVal = queryData[name];
+                        if(dataVal){
+                            $("."+name+"Filter .filter-item:contains('"+dataVal+"')").addClass('active');
+                        }
+                        break;
+                    case 'arcStartDate':
+                    case 'arcEndDate':
+                        laydate.render({
+                            elem: '#'+name,
+                            value: queryData[name]
+                        });
+                        break;
+                    case 'fileTypeChild':
+                        //下拉树 合同类型
+                        $("#fileTypeChild").dropDownForZ({
+                            url:'/eia/eiaDomainCode/getTree?domain=' + "PROJECT_FILE_TYPE",
+                            width:'99%',
+                            height:'350px',
+                            disableParent: true,
+                            selecedSuccess:function(data){}
+                        });
+                        $("#fileTypeChild").val(queryData[name]);
+                        break;
+                    default:
+                        $('#'+name).val(queryData[name]);
+                        break;
+
+                }
+            }
+
+        }else{//普通查询
+            $('#projectName').val(queryData.projectName);
+        }
+    };
 
     //渲染表格
     table.render({
         id: 'eiaProjectList',
         elem: '#eiaProjectList',
-        url: '/eia/eiaProject/getEiaProjectDataList?viewType=' + viewType + "&idStrList=" + idStrList,
+        url: '/eia/eiaProject/getEiaProjectDataList',
         toolbar: '#tableTopTmp',
         defaultToolbar:['filter', 'print', 'exports'],
         cols: [[
             {fixed: 'left', title: '序号', width: '6%', align: "center", templet: "#indexTable"},
-            {field: 'projectNo', width: '15%', title: '项目编号', align: "center"},
+            {field: 'projectNo', width: '12%', title: '项目编号', align: "center"},
             {field: 'projectName', width: '30%', title: '项目名称', align: "center"},
-            {field: 'buildArea', width: '30%', title: '建设地点', align: "center"},
-            {field: 'fileTypeChild', width: '15%', title: '文件类型', align: "center"},
-            {field: 'projectMoney', width: '15%', title: '项目价格', align: "center"},
-            {field: 'inputDept', width: '15%', title: '录入部门', align: "center"},
-            {field: 'inputUser', width: '10%', title: '录入人', align: "center"},
-            {field: 'dutyUser', width: '10%', title: '项目负责人', align: "center"},
+            {field: 'buildArea', width: '20%', title: '建设地点', align: "center"},
+            {field: 'eiaClientName', width: '20%', title: '客户名称', align: "center"},
+            {field: 'fileTypeChild', width: '12%', title: '文件类型', align: "center"},
+            {field: 'projectMoney', width: '8%', title: '项目金额', align: "center"},
+            {field: 'inputDept', width: '12%', title: '录入部门', align: "center"},
+            {field: 'inputUser', width: '8%', title: '录入人', align: "center"},
+            {field: 'dutyUser', width: '8%', title: '项目负责人', align: "center"},
             {fixed: 'right', title: '操作', width: '20%', align: "center", toolbar: '#mlTool', align: "center"}
         ]],
         page: true,
         even: true,
-        limit: 10
+        limit: 10,
+        done: function () {
+            regainQueryShow();
+        }
     });
-    //高级查询
-    form.on('submit(query)', function () {
-        table.reload("eiaProjectList",{
-            where : {
-                key : eiaProjectKey()
-            }, page: {
-                curr: 1
-            }
-        });
-        return false;
-    });
-    //高级查询数据项
-    function eiaProjectKey() {
-        var fileType = $("#fileType").val();
-        var buildArea = $("#buildArea").val();
-        var key = {
-            fileType: fileType,
-            buildArea: buildArea,
-        };
-        return key;
-    }
+
     //监听工具条
     table.on('tool(eiaProjectList)', function (obj) {
         var data = obj.data;
@@ -291,67 +316,90 @@ layui.use(['jquery', 'layer', 'form','table'], function () {
        }
     });
 
-    //查询、新增按钮
-    $('.larry-btn a.layui-btn').click(function () {
-        var type = $(this).data('type');
-        active[type] ? active[type].call(this) : '';
-    });
-    var active = {
-        projectAdd: function () {    //新增
-            pageUrl = '/eia/eiaProject/eiaProjectCreate?pageType=0';
-            var index = layer.open({
-                title: ' ',
-                type: 2,
-                shade: false,
-                maxmin: true,
-                skin: 'larry-green',
-                area: ['100%', '100%'],
-                content: pageUrl,
-                success: function (layero, index) {
-                    var body = layer.getChildFrame('body', index);
-                },
-                end: function () {
-                    table.reload("eiaProjectList");
-                    $("#eiaProjectId").val("");
-                    $("#eiaTaskId").val("");
-                    $("#eiaLabOfferId").val("");
-                },
-                min: function () {
+    //获取查询数据以及暂存查询数据
+    var getQueryData = function () {
+        filterData.projectName = $('#projectName').val();
+        filterData.eiaClientName = $('#eiaClientName').val();
+        filterData.buildArea = $('#buildArea').val();
+        filterData.projectStartMoney = $('#projectStartMoney').val();
+        filterData.projectEndMoney = $('#projectEndMoney').val();
+        filterData.fileTypeChild = $('#fileTypeChild').val();
+        filterData.seaReviewNo = $('#seaReviewNo').val();
+        filterData.arcStartDate = $('#arcStartDate').val();
+        filterData.arcEndDate = $('#arcEndDate').val();
 
-                },
-                restore: function () {
+        $('.filter-ul .filter-li').each(function (index, elem) {
+            var curFilter = $(elem).attr('filterName');
+            var curVal = $(elem).find('.filter-item.active span').text();
+            filterData[curFilter] = curVal;
 
-                }
-            });
-        }
-    }
+        });
+        var advancedState = $('.filter-box').attr('state');
+        $('#queryData').val(JSON.stringify(filterData));
+        $('#advancedState').val(advancedState);
 
-    //监听头部工具栏事件
-    //监听事件
+        console.log(filterData);
+
+    };
+    //监听合同表格头部工具栏事件
     table.on('toolbar(eiaProjectList)', function(obj){
+
         switch(obj.event){
-            case 'getSelect':
-                var projectName = $("#projectName").val();
-                table.reload("eiaProjectList", {
-                    where: {
-                        projectName: projectName
-                    }
+            case 'projectSelect': //查询
+                getQueryData();
+
+                table.reload('eiaProjectList', {
+                    where: filterData
                 });
                 break;
-            case 'highSelect':
-                var curState = $(this).attr('state');
-                switch (curState){
-                    case '0':
-                        $(this).attr('state','1');
-                        queryOpen();
+            case 'advancedQuery': //高级查询
+                var curSate = $('.filter-box').attr('state');
+                switch (curSate){
+                    case '0': //打开
+                        $('.filter-box').attr('state','1').css('display','block');
+                        $('#advancedState').val(1);
+                        //日期初始化
+                        laydate.render({
+                            elem: '#arcStartDate'
+                        });
+
+                        laydate.render({
+                            elem: '#arcEndDate'
+                        });
+                        //下拉树 合同类型
+                        $("#fileTypeChild").dropDownForZ({
+                            url:'/eia/eiaDomainCode/getTree?domain=' + "PROJECT_FILE_TYPE",
+                            width:'99%',
+                            height:'350px',
+                            disableParent: true,
+                            selecedSuccess:function(data){}
+                        });
                         break;
-                    case '1':
-                        $(this).attr('state','0');
-                        queryClose();
+                    case '1': //关闭
+                        $('.filter-box').attr('state','0').css('display','none');
+                        $('.filter-box input').val('');
+                        $('.filter-ul .filter-item').removeClass('active');
+                        getQueryData();
                         break;
                 }
                 break;
-        }
+            case 'filterItem': //筛选项
+                if($(this).hasClass('active')){
+                    $(this).removeClass('active');
+                }else{
+                    $(this).addClass('active').siblings().removeClass('active');
+                }
+                getQueryData();
+                table.reload('eiaProjectList', {
+                    where: filterData
+                });
+                break;
+            case 'clearQuery':
+                $('#projectName,.filter-box input').val('');
+                $('.filter-ul .filter-item').removeClass('active');
+                getQueryData();
+                break;
+        };
     });
 });
 function queryOpen() {

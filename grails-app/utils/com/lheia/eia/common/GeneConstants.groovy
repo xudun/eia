@@ -206,7 +206,7 @@ class GeneConstants {
     /**
      * 文件类型第二级
      */
-    static List<String> ENVLIST = ["EPC_HP", "EPC_HY", "EPC_HB", "EPC_YS", "EPC_YA", "EPC_JL", "EPC_GH", "EPC_HH", "EPC_SH", "EPC_XZ", "EPC_PF", "EPC_CD", "EPC_ST", "EPC_QT"]
+    static List<String> ENVLIST = ["EPC_HP", "EPC_HY", "EPC_HB", "EPC_YS", "EPC_YA", "EPC_JL", "EPC_GH", "EPC_HH", "EPC_SH", "EPC_XZ", "EPC_PF", "EPC_CD", "EPC_ST", "EPC_QT","EPC_PW"]
     static List<String> ESELIST = ["ESE_LZ", "ESE_QT"]
     static List<String> GREENLIST = ["GREEN_LZ", "GREEN_LQ", "GREEN_SC", "GREEN_ZR", "GREEN_TH", "GREEN_FP", "GREEN_QT"]
     /**
@@ -227,6 +227,7 @@ class GeneConstants {
     static List<String> SHPROPLIST = []
     static List<String> XZPROPLIST = ["industryType", "environmentaType", "productionEngineer", "parkPlanning", "seaFileName", "seaReviewOrg", "seaReviewNo", "contentScale"]
     static List<String> PFPROPLIST = ["contentScale"]
+    static List<String> PWPROPLIST = []
     static List<String> STPROPLIST = []
     static List<String> CDPROPLIST = ["projectMemo"]
     static List<String> ESELZPROPLIST = ["industryType", "contentScale"]
@@ -246,6 +247,7 @@ class GeneConstants {
     static List<String> SHPROPLOGLIST = []
     static List<String> XZPROPLOGLIST = ["industryTypeEd", "environmentaTypeEd", "productionEngineerEd", "parkPlanningEd", "seaFileNameEd", "seaReviewOrgEd", "seaReviewNoEd", "contentScaleEd"]
     static List<String> PFPROPLOGLIST = ["contentScaleEd"]
+    static List<String> PWPROPLOGLIST = ["contentScaleEd"]
     static List<String> STPROPLOGLIST = []
     static List<String> CDPROPLOGLIST = ["projectMemoEd"]
     static List<String> ESELZPROPLOGLIST = ["industryTypeEd", "contentScaleEd"]
@@ -265,6 +267,7 @@ class GeneConstants {
     static List<String> SH_MONEY_LIST = ["projectMoney"]     //没有子项只有项目金额
     static List<String> XZ_MONEY_LIST = ["projectComfee", "environmentalFee", "expertFee", "otherFee"]
     static List<String> PF_MONEY_LIST = ["projectComfee", "expertFee", "otherFee"]
+    static List<String> PW_MONEY_LIST = ["projectComfee", "expertFee", "otherFee"]
     static List<String> ST_MONEY_LIST = ["projectComfee", "environmentalFee", "expertFee", "otherFee"]
     static List<String> CD_MONEY_LIST = ["projectComfee", "detectFee", "expertFee", "otherFee"]
     /**——————节能评估和绿金需要的字段都一样（项目）——————**/
@@ -286,6 +289,7 @@ class GeneConstants {
     static List<String> PRO_LOG_SH_MONEY_LIST = ["projectMoneyEd"]     //没有子项只有项目金额
     static List<String> PRO_LOG_XZ_MONEY_LIST = ["projectComfeeEd", "environmentalFeeEd", "expertFeeEd", "otherFeeEd"]
     static List<String> PRO_LOG_PF_MONEY_LIST = ["projectComfeeEd", "expertFeeEd", "otherFeeEd"]
+    static List<String> PRO_LOG_PW_MONEY_LIST = ["projectComfeeEd", "expertFeeEd", "otherFeeEd"]
     static List<String> PRO_LOG_ST_MONEY_LIST = ["projectComfeeEd", "environmentalFeeEd", "expertFeeEd", "otherFeeEd"]
     static List<String> PRO_LOG_CD_MONEY_LIST = ["projectComfeeEd", "detectFee", "expertFeeEd", "otherFeeEd"]
     /**——————节能评估和绿金需要的字段都一样（项目变更）——————**/

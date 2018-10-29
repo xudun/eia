@@ -113,7 +113,7 @@ class EiaEnvProjectService {
         def eiaProjectId = params.long('eiaProjectId')
         def resMap = [:]
         def eiaEnvProject = EiaEnvProject.findByEiaProjectIdAndIfDel(eiaProjectId, false)
-        def eiaProject = EiaProject.findByIdAndIfDel(eiaProjectId,false)
+        def eiaProject = EiaProject.findByIdAndIfDel(eiaProjectId, false)
         if (eiaEnvProject) {
             if (eiaEnvProject.exploreDate) {
                 resMap.exploreDate = eiaEnvProject.exploreDate.format('yyyy-MM-dd')
@@ -130,10 +130,10 @@ class EiaEnvProjectService {
      * 现场勘察信息保存
      */
     def exploreInfoSave(params) {
-        def eiaProject = EiaProject.findByIdAndIfDel(params.long('eiaProjectId'),false)
+        def eiaProject = EiaProject.findByIdAndIfDel(params.long('eiaProjectId'), false)
         eiaProject.dutyUser = params.dutyUser
         eiaProject.dutyUserId = params.long('dutyUserId')
-        if(params.buildArea){
+        if (params.buildArea) {
             eiaProject.buildArea = params.buildArea
         }
         eiaProject.save(flush: true, failOnError: true)
@@ -217,6 +217,8 @@ class EiaEnvProjectService {
             dataMap = this.combNeedMap(eiaEnv?.properties, GeneConstants.XZPROPLIST)
         } else if (fileTypeCode == "EPC_PF") {
             dataMap = this.combNeedMap(eiaEnv?.properties, GeneConstants.PFPROPLIST)
+        } else if (fileTypeCode == "EPC_PW") {
+            dataMap = this.combNeedMap(eiaEnv?.properties, GeneConstants.PWPROPLIST)
         } else if (fileTypeCode == "EPC_CD") {
             dataMap = this.combNeedMap(eiaEnv?.properties, GeneConstants.CDPROPLIST)
         } else if (fileTypeCode == "EPC_ST") {

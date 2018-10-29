@@ -24,16 +24,36 @@ class WorkFlowConstants {
     /***
      * 内审流程
      */
-    static String PROJECT_EXPLORE_WORKFLOW            = "PROJECT_EXPLORE_WORKFLOW"
-    static Map    PROJECT_EXPLORE_WORKFLOW_MAP        = ["HBFGS": PROJECT_EXPLORE_WORKFLOW_HBFGS, "HNFGS": PROJECT_EXPLORE_WORKFLOW_HNFGS, "SDFGS": PROJECT_EXPLORE_WORKFLOW_SDFGS,"YNFGS":PROJECT_EXPLORE_WORKFLOW_YNFGS]
-    static String PROJECT_EXPLORE_WORKFLOW_HBFGS      = "PROJECT_EXPLORE_WORKFLOW_HBFGS"
-    static String PROJECT_EXPLORE_WORKFLOW_HNFGS      = "PROJECT_EXPLORE_WORKFLOW_HNFGS"
-    static String PROJECT_EXPLORE_WORKFLOW_SDFGS      = "PROJECT_EXPLORE_WORKFLOW_SDFGS"
-    static String PROJECT_EXPLORE_WORKFLOW_YNFGS      = "PROJECT_EXPLORE_WORKFLOW_YNFGS"
+    static String PROJECT_EXPLORE_WORK_FLOW            = "PROJECT_EXPLORE_WORK_FLOW"
+    static Map    PROJECT_EXPLORE_WORK_FLOW_MAP        = ["HBFGS": PROJECT_EXPLORE_WORK_FLOW_HBFGS, "HNFGS": PROJECT_EXPLORE_WORK_FLOW_HNFGS, "SDFGS": PROJECT_EXPLORE_WORK_FLOW_SDFGS,"YNFGS":PROJECT_EXPLORE_WORK_FLOW_YNFGS]
+    static String PROJECT_EXPLORE_WORK_FLOW_HBFGS      = "PROJECT_EXPLORE_WORK_FLOW_HBFGS"
+    static String PROJECT_EXPLORE_WORK_FLOW_HNFGS      = "PROJECT_EXPLORE_WORK_FLOW_HNFGS"
+    static String PROJECT_EXPLORE_WORK_FLOW_SDFGS      = "PROJECT_EXPLORE_WORK_FLOW_SDFGS"
+    static String PROJECT_EXPLORE_WORK_FLOW_YNFGS      = "PROJECT_EXPLORE_WORK_FLOW_YNFGS"
+    /***
+     * 内审节点:助理审批
+     */
+    static String NODE_CODE_ZLSP      = "ZLSP"
+    static String NODE_NAME_ZLSP      = "助理审批"
+    /***
+     * 内审节点:部门经理审批
+     */
+    static String NODE_CODE_BMJLSP      = "BMJLSP"
+    static String NODE_NAME_BMJLSP      = "部门经理审批"
+    /***
+     * 内审节点:分公司负责人审批
+     */
+    static String NODE_CODE_FGSFZRSP      = "FGSFZRSP"
+    static String NODE_NAME_FGSFZRSP      = "分公司负责人审批"
+    /***
+     * 内审节点:分公司董事长审批
+     */
+    static String NODE_CODE_FGSDSZSP      = "FGSDSZSP"
+    static String NODE_NAME_FGSDSZSP      = "分公司董事长审批"
     /**
      * 内审流程开始节点
      */
-    static String PROJECT_EXPLORE_WORKFLOW_START_NODE = "CJNSD"
+    static String PROJECT_EXPLORE_WORK_FLOW_START_NODE = "CJNSD"
     /**
      * 总经理审批合同工作流
      */

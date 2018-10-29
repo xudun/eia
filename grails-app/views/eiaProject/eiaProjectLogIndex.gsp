@@ -37,7 +37,7 @@
         <a class="layui-btn search_btn pl12" lay-event="getSelect"><i class="larry-icon">&#xe939;</i> 查询</a>
         <a class="layui-btn search_btn pl12" lay-event="highSelect" state="0"><i class="larry-icon">&#xe939;</i> 高级查询</a>
         <g:if test="${session.staff.funcCode.contains(FuncConstants.EIA_XMGL_XMBG_ADD)}">
-            <a class="layui-btn layui-bg-pale pl12" lay-event="logAdd"><i class="larry-icon">&#xe987;</i> 新增变更</a>
+            <a class="layui-btn layui-bg-pale pl12 addBtn" lay-event="logAdd"><i class="larry-icon">&#xe987;</i> 新增变更</a>
         </g:if>
     </div>
     <!--高级查询-->

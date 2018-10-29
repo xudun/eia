@@ -17,8 +17,8 @@
     </style>
 </head>
 
-<body class="pb68">
-<div id="print" class="layui-fluid larry-wrapper pt15">
+<body>
+<div id="print" class="layui-fluid larry-wrapper pt15 pb68">
     <div class="layer-title">
         <fieldset class="layui-elem-field layui-field-title site-title">
             <legend id="title">
@@ -108,11 +108,15 @@
         </tr>
 
         <tr>
-            <td width="10%" rowspan="1" class="tag">资质类别</td>
-            <td width="17%">环境影响评价行业类别</td>
-            <td width="28%" id="environmentaType"></td>
+            <td width="10%" rowspan="2" class="tag">资质类别</td>
+            <td width="17%">文件类型</td>
+            <td width="28%" id="fileType"></td>
             <td width="17%">地下水评价等级</td>
             <td width="28%" id="groundWater"></td>
+        </tr>
+        <tr>
+            <td width="17%">环境影响评价行业类别</td>
+            <td width="73%" colspan="4" id="environmentaType"></td>
         </tr>
         <tr>
             <td width="10%" rowspan="1" class="tag">其他</td>
@@ -122,9 +126,9 @@
         <tr>
             <td width="10%" rowspan="1" class="tag">签字</td>
             <td width="17%">助理</td>
-            <td width="28%" id="1"></td>
+            <td width="28%" id="zlnodei"></td>
             <td width="17%">部门经理</td>
-            <td width="28%" id="2"></td>
+            <td width="28%" id="jlnodei"></td>
         </tr>
     </table>
 

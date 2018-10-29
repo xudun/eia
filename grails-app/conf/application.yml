@@ -100,7 +100,7 @@ dataSource:
     pooled: true
     jmxExport: true
     driverClassName: com.mysql.jdbc.Driver
-    username: root
+    username: lh_eia_eia
     password: root
     #username: root
     #password: root
@@ -165,6 +165,7 @@ webroots:
     forwardPath:
         auth: http://lheia.lhcis.com/auth/
         gis: http://lheia.lhcis.com/gis/
+        eia: http://lheia.lhcis.com/eia/
     #HttpClient设置请求参数周期
     httpClientParams:
         #响应超时时间，超过此时间不再读取响应

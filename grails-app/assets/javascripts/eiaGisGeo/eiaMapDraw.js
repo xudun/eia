@@ -71,15 +71,13 @@ layui.use(['form', 'layer','table','element'], function () {
                 parent.$("#coordEndNorth").val("")
                 parent.$("#coordEast").val(geoJSON.toGeoJSON()[0].geometry.coordinates[0])
                 parent.$("#coordNorth").val(geoJSON.toGeoJSON()[0].geometry.coordinates[1])
-                var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+                parent.$("#geoJson").val(JSON.stringify(geoJSON.toGeoJSON()[0].geometry))
                 regeocoder(coor2LLObj(geoJSON.toGeoJSON()[0].geometry.coordinates))
-                parent.layer.close(index);
             });
         },
         line: function () {
             drawEvent("LineString", function () {
             }, function (geoJSON) {
-                console.log(geoJSON.toGeoJSON()[0].geometry.coordinates[0])
                 var coordArr = geoJSON.toGeoJSON()[0].geometry.coordinates
                 parent.$("#coordEast").val("")
                 parent.$("#coordNorth").val("")
@@ -87,9 +85,25 @@ layui.use(['form', 'layer','table','element'], function () {
                 parent.$("#coordEndEast").val(coordArr[coordArr.length-1][0])
                 parent.$("#coordStartNorth").val(coordArr[0][1])
                 parent.$("#coordEndNorth").val(coordArr[coordArr.length-1][1])
-                var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+                console.log(JSON.stringify(geoJSON.toGeoJSON()[0]))
+                parent.$("#geoJson").val(JSON.stringify(geoJSON.toGeoJSON()[0].geometry))
                 regeocoder(coor2LLObj(geoJSON.toGeoJSON()[0].geometry.coordinates[0]))
-                parent.layer.close(index);
+            });
+        },
+        polygon: function () {
+            drawEvent("Polygon" , function () {
+            }, function (geoJSON) {
+                var coordArr = geoJSON.toGeoJSON()[0].geometry.coordinates
+                lnglatXY = centerPointByGeo(geoJSONTOGeo(geoJSON.toGeoJSON()[0].geometry)); //已知点坐标
+                parent.$("#coordStartEast").val("")
+                parent.$("#coordEndEast").val("")
+                parent.$("#coordStartNorth").val("")
+                parent.$("#coordEndNorth").val("")
+                parent.$("#coordEast").val(lLObj2Coor(lnglatXY)[0])
+                parent.$("#coordNorth").val(lLObj2Coor(lnglatXY)[1])
+                parent.$("#geoJson").val(JSON.stringify(geoJSON.toGeoJSON()[0].geometry))
+                regeocoder(lnglatXY)
+
             });
         },
         //退出全屏
@@ -117,9 +131,11 @@ layui.use(['form', 'layer','table','element'], function () {
         geocoder.getAddress(lnglatXY, function (status, result) {
             if (status === 'complete' && result.info === 'OK') {
                 if (result.regeocode) {
-                    if(!parent.$("#buildArea").val()){
-                        parent.$("#buildArea").val(result.regeocode.formattedAddress);
-                    }
+                    //  if(!parent.$("#buildArea").val()){
+                    parent.$("#buildArea").val(result.regeocode.formattedAddress);
+                    var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+                    parent.layer.close(index);
+                    //    }
                 }
             }
         });

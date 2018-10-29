@@ -1,0 +1,53 @@
+.proCreateExpExp.layui-form .layui-form-label{width: 155px;}
+.proCreateExpExpExp .layui-input-block{margin-left: 185px;}
+
+.proCreateExp .proMonBlock{
+    position: relative;
+}
+.proCreateExp .proMonBlock .layui-input-block{
+    margin-right: 60px;
+}
+.proCreateExp .proMonBlock .action-block{
+    width: 60px;
+    position: absolute;
+    top:0;
+    right: 0;
+    line-height: 38px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+}
+.proCreateExp .proMonBlock .action-block .inner-box{
+    flex: 0 0 45%;
+    text-align: center;
+}
+.proCreateExp .proMonBlock .action-block .unit{
+    font-size: 14px;
+    color: #666;
+}
+.proCreateExp .proMonBlock .action-block .action-box{
+    line-height: 40px;
+}
+.proCreateExp .proMonBlock .action-block .action-box .fillMoneyBtn{
+    font-size: 24px;
+    color: #666;
+    cursor: pointer;
+    display: none;
+}
+.proCreateExp .proMonBlock .action-block .action-box .fillMoneyBtn:hover{
+    color: #5FB878;
+}
+.proCreateExp .proMonBlock .action-block .action-box .mapDrawBtn{
+    font-size: 24px;
+    color: #666;
+    cursor: pointer;
+}
+.proCreateExp .proMonBlock .action-block .action-box .mapDrawBtn:hover{
+    color: #5FB878;
+}
+.proCreateExp .proMonBlock .action-block .action-box .show-tips{
+    font-size: 18px;
+    cursor: pointer;
+    position: relative;
+    top:-2px;
+}

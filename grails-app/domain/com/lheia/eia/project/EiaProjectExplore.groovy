@@ -55,10 +55,6 @@ class EiaProjectExplore {
      */
     String hasWaterWhere
     /**
-     * 有无环境容量(有、无、不确定)
-     */
-    String hasEnvironmentCap
-    /**
      * 有无总量(有、无、不确定)
      */
     String hasTotal
@@ -158,7 +154,42 @@ class EiaProjectExplore {
      * gis项目id
      */
     Long gisGeoProjectId
+    /**
+     * 任务id
+     */
+    Long eiaTaskId
+    /**
+     * 项目id
+     */
+    Long eiaProjectId
+    /**
+     * 空间对象
+     */
+    String geoJson
+    /**
+     * 文件父类型名称
+     */
+    String fileType
+    /**
+     * 文件父类型编码
+     */
+    String fileTypeCode
+    /**
+     * 文件子类型名称
+     */
+    String fileTypeChild
+    /**
+     * 文件子类型编码
+     */
+    String fileTypeChildCode
+    static mapping = {
+        geoJson column: "geo_json", sqlType: "TEXT"
+    }
     static constraints = {
+        fileType nullable: true
+        fileTypeCode nullable: true
+        fileTypeChild nullable: true
+        fileTypeChildCode nullable: true
         projectName nullable:true
         ifEnd nullable:true
         buildProp nullable:true
@@ -171,7 +202,6 @@ class EiaProjectExplore {
         existProblem nullable:true
         existProblemCode nullable:true
         hasWaterWhere nullable:true
-        hasEnvironmentCap nullable:true
         hasTotal nullable:true
         industrialDir nullable:true
         foreignDir nullable:true
@@ -198,5 +228,12 @@ class EiaProjectExplore {
         otherSenseInfo nullable:true
         ifSub nullable:true
         gisGeoProjectId nullable:true
+        eiaProjectId nullable:true
+        eiaTaskId nullable:true
+        geoJson nullable:true
+        fileType nullable:true
+        fileTypeCode nullable:true
+        fileTypeChild nullable:true
+        fileTypeChildCode nullable:true
     }
 }
