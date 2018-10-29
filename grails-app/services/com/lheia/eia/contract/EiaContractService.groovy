@@ -794,6 +794,8 @@ class EiaContractService {
                         return GeneConstants.CON_JN_MONEY_LIST
                     } else if (contractTypeCode == "ESE_QJ") {
                         return GeneConstants.CON_QJ_MONEY_LIST
+                    }else if (contractTypeCode == "EPC_SJ") {
+                        return GeneConstants.CON_SJ_MONEY_LIST
                     }
                 }
               /*  else if (parentCode == "ESE") {
@@ -881,14 +883,22 @@ class EiaContractService {
                     dataMap = this.combNeedMap(properties, GeneConstants.CON_CD_MONEY_LIST)
                 } else if (contractTypeCode == "EPC_ST") {
                     dataMap = this.combNeedMap(properties, GeneConstants.CON_ST_MONEY_LIST)
+                } else if (contractTypeCode == "ESE_JN") {
+                    dataMap = this.combNeedMap(properties, GeneConstants.CON_JN_MONEY_LIST)
+                } else if (contractTypeCode == "ESE_QJ") {
+                    dataMap = this.combNeedMap(properties, GeneConstants.CON_QJ_MONEY_LIST)
+                }else if (contractTypeCode == "EPC_SJ") {
+                    dataMap = this.combNeedMap(properties, GeneConstants.CON_SJ_MONEY_LIST)
                 }
-            } else if (parentCode == "ESE") {
+            }
+         /*   else if (parentCode == "ESE") {
                 if (contractTypeCode == "ESE_JN") {
                     dataMap = this.combNeedMap(properties, GeneConstants.CON_JN_MONEY_LIST)
                 } else if (contractTypeCode == "ESE_QJ") {
                     dataMap = this.combNeedMap(properties, GeneConstants.CON_QJ_MONEY_LIST)
                 }
-            } else if (parentCode == "GREEN") {
+            } */
+            else if (parentCode == "GREEN") {
                 if (contractTypeCode == "GREEN_LZ") {
                     dataMap = this.combNeedMap(properties, GeneConstants.CON_LZ_MONEY_LIST)
                 } else if (contractTypeCode == "GREEN_LQ") {
