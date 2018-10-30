@@ -701,8 +701,10 @@ class EiaProjectService {
         StringBuilder stringBuilder = new StringBuilder()
         if (eiaProjectPlanItemList && eiaProjectPlanItemList.size() > 0) {
             def endTime
+            /**不需要添加到踏勘记录的节点**/
+            def noRecordNodeList = [WorkFlowConstants.NODE_CODE_YSBZ,WorkFlowConstants.NODE_CODE_ESBZ,WorkFlowConstants.NODE_CODE_SSBZ,WorkFlowConstants.NODE_CODE_BPBSB,WorkFlowConstants.NODE_CODE_XMGD]
             eiaProjectPlanItemList.each {
-                if (!WorkFlowConstants.NODE_CODE_YSBZ.equals(it.nodesCode) && !WorkFlowConstants.NODE_CODE_ESBZ.equals(it.nodesCode) && !WorkFlowConstants.NODE_CODE_SSBZ.equals(it.nodesCode)) {
+                if (!noRecordNodeList.contains(it.nodesCode) ) {
                     if (WorkFlowConstants.NODE_CODE_ES.equals(it.nodesCode)) {
                         if (it.nodeUserName) {
                             resMap.projectApproval2 = it.nodeUserName
@@ -743,6 +745,7 @@ class EiaProjectService {
                         stringBuilder.append("(暂无)")
                     }
                     stringBuilder.append(")</br>")
+
                 }
             }
 
