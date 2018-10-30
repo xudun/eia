@@ -298,7 +298,9 @@ class EiaLabOfferController {
      */
     def getLabClientContactList() {
         def param = [:]
-        param.contactInfo = params.contactInfo
+        if (params.contactInfo) {
+            param.contactInfo = params.contactInfo
+        }
         param.labClientId = params.clientId
         param.page = params.page
         param.limit = params.limit

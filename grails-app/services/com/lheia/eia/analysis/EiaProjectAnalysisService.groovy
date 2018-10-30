@@ -82,7 +82,7 @@ class EiaProjectAnalysisService {
             eiaProjectIds = workFlowBusiList.tableNameId
         }
         /** 统计一审、二审、三审的项目 */
-        else if (params.viewType == 'ysProject' || params.viewType == 'esProject' || params.viewType == 'ssProject') {
+        else if (params.viewType == 'ysProject' || params.viewType == 'esProject' || params.viewType == 'ssProject'||params.viewType == 'nsProject') {
             def planItemList = EiaProjectPlanItem.createCriteria().list() {
                 if (startDate) {
                     ge("dateCreated", startDate)
@@ -100,8 +100,16 @@ class EiaProjectAnalysisService {
                 }
                 /** 查询已审批的三审项目 */
                 else if (params.viewType == 'ssProject') {
-                    eq("nodesCode", WorkFlowConstants.NODE_CODE_SS)
+                    or{
+                        eq("nodesName", WorkFlowConstants.NODE_NAME_SS)
+                        eq("nodesName", WorkFlowConstants.NODE_NAME_SD)
+                    }
                 }
+                /** 查询已审批的内审项目 */
+                else if (params.viewType == 'nsProject') {
+                    eq("nodesName", WorkFlowConstants.NODE_NAME_NBSC)
+                }
+
                 eq("nodeDeptId", Long.parseLong(params.inputDeptId))
                 eq("nodeUserId", Long.parseLong(params.inputUserId))
                 eq("ifDel", false)
@@ -308,12 +316,17 @@ class EiaProjectAnalysisService {
                 map.esNum = 0
                 /** 三审数量 */
                 map.ssNum = 0
+                /** 内审数量**/
+                map.nsNum = 0
                 /** 一审项目id */
                 map.ysIdList = []
                 /** 二审项目id */
                 map.esIdList = []
                 /** 三审项目id */
                 map.ssIdList = []
+                /** 内审项目id */
+                map.nsIdList = []
+
                 resList << map
             }
         }
@@ -489,7 +502,10 @@ class EiaProjectAnalysisService {
             if (endDate) {
                 le("dateCreated", endDate)
             }
-            eq("nodesCode", WorkFlowConstants.NODE_CODE_SS)
+            or{
+                eq("nodesName", WorkFlowConstants.NODE_NAME_SD)
+                eq("nodesName", WorkFlowConstants.NODE_NAME_SS)
+            }
             eq("ifDel", false)
             projections {
                 count()
@@ -502,6 +518,32 @@ class EiaProjectAnalysisService {
                     /** 统计三审的项目的数量和id */
                     if (item[1] && it.orgBusiName.contains(item[1].toString())) {
                         it.ssNum += item[0]
+                    }
+                }
+            }
+        }
+
+        /** 从工作方案查看内审节点审批人是自己的项目 */
+        def nsPlanItemList = EiaProjectPlanItem.createCriteria().list() {
+            if (startDate) {
+                ge("dateCreated", startDate)
+            }
+            if (endDate) {
+                le("dateCreated", endDate)
+            }
+            eq("nodesName", WorkFlowConstants.NODE_NAME_NBSC)
+            eq("ifDel", false)
+            projections {
+                count()
+                groupProperty('nodeDeptId')
+            }
+        }
+        if (nsPlanItemList) {
+            orgList.each { it ->
+                nsPlanItemList.each { item ->
+                    /** 统计三审的项目的数量和id */
+                    if (item[1] && it.orgBusiName.contains(item[1].toString())) {
+                        it.nsNum += item[0]
                     }
                 }
             }
@@ -715,13 +757,18 @@ class EiaProjectAnalysisService {
                 le("dateCreated", endDate)
             }
             eq("nodeDeptId", Long.parseLong(parentOrgId.toString()))
-            eq("nodesCode", WorkFlowConstants.NODE_CODE_SS)
+            /**三审和审定放在一起**/
+            or {
+                eq("nodesName", WorkFlowConstants.NODE_NAME_SS)
+                eq("nodesName", WorkFlowConstants.NODE_NAME_SD)
+            }
             eq("ifDel", false)
             projections {
                 count()
                 groupProperty('nodeUserId')
             }
         }
+
         if (ssPlanItemList) {
             orgList.each { it ->
                 ssPlanItemList.each { item ->
@@ -732,6 +779,37 @@ class EiaProjectAnalysisService {
                         }
                     } else {
                         it.ssNum += item[0]
+                    }
+                }
+            }
+        }
+        /** 从工作方案查看三审节点审批人是自己的项目 */
+        def nsPlanItemList = EiaProjectPlanItem.createCriteria().list() {
+            if (startDate) {
+                ge("dateCreated", startDate)
+            }
+            if (endDate) {
+                le("dateCreated", endDate)
+            }
+            eq("nodeDeptId", Long.parseLong(parentOrgId.toString()))
+            /**内部审查**/
+            eq("nodesName", WorkFlowConstants.NODE_NAME_NBSC)
+            eq("ifDel", false)
+            projections {
+                count()
+                groupProperty('nodeUserId')
+            }
+        }
+        if (nsPlanItemList) {
+            orgList.each { it ->
+                nsPlanItemList.each { item ->
+                    /** 统计内审的项目的数量和id */
+                    if (it.ifStaff) {
+                        if (item[1] == it.id) {
+                            it.nsNum += item[0]
+                        }
+                    } else {
+                        it.nsNum += item[0]
                     }
                 }
             }

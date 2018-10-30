@@ -12,10 +12,12 @@ layui.use(['jquery', 'layer', 'table'], function(){
         cols: [[
             {fixed: 'left', type: 'numbers', title: '序号', width: '6%', align: "center"},
             {field:'taskNo',width:'15%', title: '任务单号',align: "center"},
-            {field:'taskName',width:'25%', title: '任务名称',align: "center"},
+            {field:'taskName',width:'20%', title: '任务名称',align: "center"},
             {field:'busiType',width:'20%', title: '业务类型',align: "center"},
-            {field:'taskLeaderDept',width:'15%', title: '负责部门',align: "center"},
+            {field:'inputDept',width:'15%', title: '录入部门',align: "center"},
+            {field:'inputUser',width:'10%', title: '录入人',align: "center"},
             {field:'taskState',width:'10%', title: '任务状态',align: "center"},
+            {field:'taskRole',width:'15%', title: '任务角色',align: "center"},
             {fixed: 'right', title: '操作',width:'10%',align: "center", toolbar: '#mlTool',align: "center"}
         ]],
         page: true,
