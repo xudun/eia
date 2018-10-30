@@ -14,7 +14,7 @@
     <asset:stylesheet src="/eiaProject/eiaProjectExploreEdit.css"/>
 </head>
 
-<body class="pb68">
+<body>
 <div class="layer-title">
     <fieldset class="layui-elem-field layui-field-title site-title">
         <legend id="title">
@@ -23,7 +23,7 @@
     </fieldset>
 </div>
 
-<div class="layui-fluid larry-wrapper pt0">
+<div class="layui-fluid larry-wrapper pt0 pb68">
     <form class="layui-form proCreate">
 
         <blockquote class="layui-elem-quote larry-btn fixed-footer">
@@ -132,10 +132,10 @@
             现场图片
             <div class="layui-inline pl12">
                 <div class="layui-btn-group top-group display-none">
-                    <button class="layui-btn saveBtn display-none" type="button" id="selectFile"><i class="layui-icon">&#xe615;</i> 选择文件
-                    </button>
-                    <button class="layui-btn saveBtn display-none" type="button" id="uploadStart"><i class="layui-icon">&#xe67c;</i> 开始上传
-                    </button>
+                    <a class="layui-btn saveBtn display-none" id="selectFile"><i class="layui-icon">&#xe615;</i> 选择文件
+                    </a>
+                    <a class="layui-btn saveBtn display-none" id="uploadStart"><i class="layui-icon">&#xe67c;</i> 开始上传
+                    </a>
                 </div>
                 <div class="layui-btn-group top-group">
                     <a class="layui-btn layui-bg-red noticeTag"><i class="larry-icon">&#xe740;</i> 填写现场踏勘基本信息后即可上传文件</a>
