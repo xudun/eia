@@ -63,7 +63,7 @@
                 <div class="layui-form-item has-tag">
                     <label class="layui-form-label"><span class="col-f00">* </span>开票单位名称</label>
                     <div class="layui-input-block">
-                        <input type="text" id="clientName" name="clientName" class="layui-input readonly" value="${eiaInvoice?.clientName}"  lay-verify="required" readonly >
+                        <input type="text" id="clientName" name="clientName" class="layui-input readonly" value="${eiaInvoice?.clientAccountName}"  lay-verify="required" readonly >
                     </div>
                     <div class="tag-right"><i class="larry-icon selectUserBtn">&#xe85b;</i></div>
                 </div>
