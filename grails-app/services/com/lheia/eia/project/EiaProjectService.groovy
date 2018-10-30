@@ -642,7 +642,7 @@ class EiaProjectService {
             eq("ifDel", false)
         }
         if (eiaTaskList) {
-            eiaProjectList = EiaProject.findAllByEiaTaskIdInListAndIfDel(eiaTaskList?.id, false)
+            eiaProjectList = EiaProject.findAllByEiaTaskIdInListAndIfDel(eiaTaskList?.id, false, [sort: "id", order: "desc"])
         }
         return eiaProjectList
     }
