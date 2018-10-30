@@ -637,7 +637,7 @@ class GeneConstants {
      */
     static List<String> MATCH_EXPORT_FILE_TYPE_CODE_LIST = ["EPC_HP_YBHPBG", "EPC_HP_TSHPBG", "EPC_HY_QGFZHXL", "EPC_HY_HGSHYYL", "EPC_HY_YJJDL", "EPC_HY_JCHDL", "EPC_HY_NLSLL", "EPC_HY_CJL", "EPC_HY_JTYSL", "EPC_HY_SHQYL",
                                                             "EPC_HY_HYGCL", "EPC_HY_SBDJGDTXL", "EPC_HY_HGYL", "EPC_HB_HJYXBCFX", "EPC_YS_JGHJBHYSJC", "EPC_YS_JGHJBHYSDC", "EPC_XZ_XZPG", "EPC_ST_STLZBG", "EPC_YA_YJYAWJ",
-                                                            "EPC_PF_DBPF", "EPC_QT_QT", "ESE_QT_QT", "GREEN_QT_QT", "ESE_LZ_NPBG", "ESE_LZ_QJSCSH"]
+                                                            "EPC_PF_DBPF", "EPC_QT_QT", "ESE_QT_QT", "GREEN_QT_QT", "ESE_LZ_NPBG", "ESE_LZ_QJSCSH", "EPC_GH_GHHPPZSM", "EPC_GH_GHHPBGS", "EPC_GH_HJYXGZPJ"]
     /**
      * 环评报告表封皮
      */
@@ -658,6 +658,10 @@ class GeneConstants {
      * 竣工环境保护验收调查封皮
      */
     static List<String> EXPORT_PROVE_FILE_TYPE_CODE_YS_DC = ["EPC_YS_JGHJBHYSDC"]
+    /**
+     * 规划环评封皮模板
+     */
+    static List<String> EXPORT_PROVE_FILE_TYPE_CODE_GH_LIST = ["EPC_GH_GHHPPZSM", "EPC_GH_GHHPBGS", "EPC_GH_HJYXGZPJ"]
     /**
      * 现状评估报告封皮模板
      */
