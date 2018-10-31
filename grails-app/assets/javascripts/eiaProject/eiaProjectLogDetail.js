@@ -58,6 +58,7 @@ layui.use(['jquery', 'form', 'element'], function(){
             }
             if (result.data.fileTypeChild.trim() != result.data.fileTypeChildEd.trim()) {
                 $("#fileTypeChild").text(result.data.fileTypeChildEd).css("color", "red");
+                $("#fileTypehidden").val(result.data.fileTypeChildCodeEd)
                 $("#fileTypeChildShow").removeClass("display-none");
                 $("#fileTypeChildShow").on("mouseenter",function(){
                     layer.tips("修改前内容: " +(result.data.fileTypeChild== null?"":result.data.fileTypeChild ) + "</br>" + "修改人: " + result.data.logInputUser + "</br>" + "修改日期: " + result.logInputDate, '#fileTypeChildShow', {
@@ -68,6 +69,7 @@ layui.use(['jquery', 'form', 'element'], function(){
                 });
             } else {
                 $("#fileTypeChild").text(result.data.fileTypeChildEd);
+                $("#fileTypehidden").val(result.data.fileTypeChildCodeEd)
             }
             if (result.data.projectMoney != result.data.projectMoneyEd) {
                 $("#projectMoney").text(dotFour(result.data.projectMoneyEd)).css("color", "red");
@@ -197,12 +199,42 @@ layui.use(['jquery', 'form', 'element'], function(){
         dataType: "json",
         async: true,
         success: function (data) {
-            console.log(222);
-            console.log(data);
             $speInpContainers.empty();
             var con_index = 0;
             for(var name in data.data){
                 inputs[name].show.call(this,data.data[name], $speInpContainers.eq(con_index++%2));
+            }
+
+
+            //产品功能处理
+            $.ajax({
+                url: "/eia/eiaProjectLog/getEneOrEnvOrGreenLogDataMap?eiaProjectLogId=" + eiaProjectLogId,
+                type: "POST",
+                data: {},
+                dataType: "json",
+                async: true,
+                success: function (result) {
+                    if (result.data.productFunction != result.data.productFunctionEd) {
+                        $("#productionEngineerEd", $('#productFunctionEd')).css("color", "red");
+                        document.getElementById("productFunctionEd").setAttribute("style","color:red;");
+                        $("#productFunctionShow", $('#productFunctionEd')).css("color", "black");
+                        $("#productFunctionShow", $('#productFunctionEd')).removeClass("display-none");
+                        $("#productFunctionShow", $('#productFunctionEd')).on("mouseenter", function () {
+                            layer.tips("修改前内容: " + (result.data.productFunction == null ? "" : result.data.productFunction ) + "</br>" + "修改人: " + result.data.logInputUser + "</br>" + "修改日期: " + result.logInputDate, '#productFunctionShow', {
+                                area: ['auto', 'auto'],
+                                tips: [1, '#30b5ff'],
+                                time: 2000
+                            });
+                        });
+                    }
+                }
+            });
+
+            //根据下拉树选中的code更改#productFunction的label文字
+            var curParentCode = $('#fileTypehidden').val();
+            if(curParentCode.indexOf('EPC_GH')!==-1){
+                console.log($('#productFunctionEd'));
+                $('#productFunctionEd').closest('.layui-form-item').find('.label-txt').text('功能定位');
             }
             form.render('select');
         }

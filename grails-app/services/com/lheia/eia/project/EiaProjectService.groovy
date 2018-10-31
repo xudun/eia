@@ -34,7 +34,7 @@ class EiaProjectService {
         def fileTypeId = EiaDomainCode.findByDomainAndCode(GeneConstants.PROJECT_FILE_TYPE, eiaProject.fileTypeChildCode)?.id
         fileTypeMap.id = fileTypeId
         fileTypeMap.name = eiaProject?.fileTypeChild
-
+        fileTypeMap.code = eiaProject?.fileTypeChildCode
         eiaProjectMap.remove('fileType')
         eiaProjectMap.put('fileType', fileTypeMap)
         def eiaTask = EiaTask.findByIfDelAndId(false, eiaProject?.eiaTaskId)

@@ -26,6 +26,7 @@ layui.use(['jquery', 'form', 'element','table'], function(){
             $('#buildArea').text(data.data.buildArea);
             $('#competentDept').text(data.data.competentDept);
             $('#fileType').text(data.data.fileType.name);
+            $('#fileTypehidden').val(JSON.stringify(data.data.fileType));
             $('#dutyUser').text(data.data.dutyUser);
             $('#taskName').text(data.data.taskName);
             $('#taskNo').text(data.data.taskNo);
@@ -47,6 +48,13 @@ layui.use(['jquery', 'form', 'element','table'], function(){
                     $('#taskName').text(data.data.taskName);
                     $('#taskLeaderDept').text(data.data.taskLeaderDept);
                     $('#busiType').text(data.data.busiType);
+
+
+                    //根据下拉树选中的code更改#productFunction的label文字
+                    var curParentCode = JSON.parse($('#fileTypehidden').val()).code;
+                    if(curParentCode.indexOf('EPC_GH')!==-1){
+                        $('#productFunction').closest('.layui-form-item').find('.label-txt').text('功能定位');
+                    }
                 }
             });
             table.render({
@@ -96,8 +104,6 @@ layui.use(['jquery', 'form', 'element','table'], function(){
         async: true,
         success: function (res) {
             var data = res.data
-            console.log("data");
-            console.log(data);
             $dynMoneyContainers.empty();
             var con_index = 0;
             for(var name in data){

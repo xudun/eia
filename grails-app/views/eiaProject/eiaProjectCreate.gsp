@@ -13,8 +13,8 @@
     <asset:stylesheet src="/eiaProject/eiaProjectCreate.css"/>
 </head>
 
-<body class="pb68">
-<div class="layui-fluid larry-wrapper pt0">
+<body>
+<div class="layui-fluid larry-wrapper pt0 pb68">
     <div class="layer-title">
         <fieldset class="layui-elem-field layui-field-title site-title">
             <legend id="title">
