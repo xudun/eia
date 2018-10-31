@@ -54,7 +54,7 @@ layui.use(['jquery', 'layer', 'form', 'laydate', 'table'], function () {
         }
     });*/
 
-    //监听公司名称选中
+  /*  //监听公司名称选中
     form.on('select(stampCompany)', function (data) {
         $('#stampCompany').val(data.value)
         if (data.value.indexOf('分公司') > 0) {
@@ -70,7 +70,7 @@ layui.use(['jquery', 'layer', 'form', 'laydate', 'table'], function () {
         }
         $('.eiaStampBox input').attr('checked', false);
         form.render('checkbox');
-    });
+    });*/
 
     $.ajax({
         url: "/eia/eiaStamp/getStampCompList",
@@ -94,11 +94,11 @@ layui.use(['jquery', 'layer', 'form', 'laydate', 'table'], function () {
                     if (result.data) {
                         if (result.data.stampCompany) {
                             $("#stampCompany").find("option[value = " + result.data.stampCompany + "]").attr("selected", "selected");
-                            if (result.data.stampCompany.indexOf('分公司') > 0) {
+                         /*   if (result.data.stampCompany.indexOf('分公司') > 0) {
                                 $("input:checkbox[name=stampType][value='合同章']").removeAttr("disabled", true);
                             } else {
                                 $("input:checkbox[name=stampType][value='合同章']").attr("disabled", true);
-                            }
+                            }*/
                         }
                         /* if (result.data.stampCompany == '联合泰泽') {
                              $("input:radio[name=stampCompany][value='联合泰泽']").attr("checked", true);
