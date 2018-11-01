@@ -39,7 +39,7 @@
             </td>
         </tr>
         <tr>
-            <td width="15%">开户行户名</td>
+            <td width="15%">开户行</td>
             <td width="35%">
                 ${eiaInvoice?.bankName}
             </td>

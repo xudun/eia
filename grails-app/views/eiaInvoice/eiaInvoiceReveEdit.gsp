@@ -74,7 +74,7 @@
                     </div>
                 </div>
                 <div class="layui-form-item verify-item">
-                    <label class="layui-form-label"><span class="col-f00">* </span>开户行户名</label>
+                    <label class="layui-form-label"><span class="col-f00">* </span>开户行</label>
                     <div class="layui-input-block">
                         <input type="text" id="bankName" name="bankName" class="layui-input readonly" lay-verify="required" value="${eiaInvoice?.bankName}" readonly>
                     </div>
