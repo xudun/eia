@@ -90,7 +90,6 @@
                                 <fieldset role="1" class="layui-elem-field eb-group active">
                                     <legend><span class="col-f00"></span>主持编制人</legend>
                                     <div class="layui-field-box">
-
                                     </div>
                                     <input type="hidden" id="taskRoleToast" name="taskRoleToast" value="">
                                 </fieldset>
