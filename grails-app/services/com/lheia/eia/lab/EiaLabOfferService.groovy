@@ -297,7 +297,8 @@ class EiaLabOfferService {
         if (eiaLabOffer.save(flush: true, failOnError: true)) {
             def eiaLabOfferList = EiaLabOfferPlan.findAllByEiaLabOfferIdAndIfDel(eiaLabOffer.id, false)
             if (eiaLabOfferList) {
-                eiaLabOfferUpdateSampleNum(eiaLabOffer.id, eiaLabOffer.sampleNum, eiaLabOffer.sampleFee)
+                /** 若只更新基本信息，该方法暂时无用 */
+//                eiaLabOfferUpdateSampleNum(eiaLabOffer.id, eiaLabOffer.sampleNum, eiaLabOffer.sampleFee)
                 /**
                  * 由宇相检测改为委托检测方时,将检测计划的检测标准、检测费用、折扣清空
                  */
