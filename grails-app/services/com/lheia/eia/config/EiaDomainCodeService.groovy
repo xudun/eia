@@ -87,7 +87,12 @@ class EiaDomainCodeService {
         def domainCodeList = EiaDomainCode.createCriteria().list(max: limit, offset: page * limit) {
             def codeDesc = params["key[codeDesc]"]
             if (codeDesc && !"编码名称".equals(codeDesc)) {
-                like("codeDesc","%"+ codeDesc +"%")
+                or {
+                    like("code","%"+ codeDesc +"%")
+                    like("codeDesc","%"+ codeDesc +"%")
+                    like("domainDesc","%"+ codeDesc +"%")
+                    like("domain","%"+ codeDesc +"%")
+                }
             }
             order("displayOrder", "asc")
         }
