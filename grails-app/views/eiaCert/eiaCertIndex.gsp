@@ -73,11 +73,10 @@
 
 <script type="text/html" id="tableTopTmp">
 <!--查询及添加框-->
-<blockquote class="layui-elem-quote larry-btn">
+<div class="table-top">
     <div class="layui-inline">
         <div class="layui-input-inline">
-            <input type="text" name="projectName" value="" id="projectName" placeholder="项目名称、项目编号、申请部门、申请人"
-                   class="layui-input larry-search-input">
+            <input type="text" name="projectName" value="" id="projectName" placeholder="项目名称、项目编号、申请部门、申请人" class="layui-input larry-search-input w300">
         </div>
     </div>
 
@@ -88,7 +87,7 @@
         </g:if>
 
     </div>
-</blockquote>
+</div>
 
 </script>
 </body>

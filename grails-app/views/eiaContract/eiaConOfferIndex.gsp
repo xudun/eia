@@ -236,7 +236,7 @@
 
 <script type="text/html" id="tableTopTmp2">
 <!--查询及添加框-->
-<blockquote class="layui-elem-quote larry-btn">
+<div class="table-top">
     <g:if test="${session.staff.funcCode.contains(FuncConstants.EIA_HGGL_HTCX_QUERY)}">
         <div class="layui-inline">
             <div class="layui-input-inline">
@@ -245,12 +245,12 @@
         </div>
     </g:if>
     <div class="layui-btn-group top-group">
-        <a class="layui-btn search_btn pl12 " lay-event="offerSelect" data-type="offerSelect" ><i class="larry-icon">&#xe939;</i> 查询</a>
+        <a class="layui-btn search_btn pl12 " lay-event="offerSelect"><i class="larry-icon">&#xe939;</i> 查询</a>
         <g:if test="${session.staff.funcCode.contains(FuncConstants.EIA_HGGL_HTCJ_ADDSELF)}">
-            <a class="layui-btn layui-bg-pale pl12 offerAddBtn" lay-event="offerAdd" data-type="offerAdd"><i class="larry-icon">&#xe987;</i> 新增</a>
+            <a class="layui-btn layui-bg-pale pl12 offerAddBtn" lay-event="offerAdd"><i class="larry-icon">&#xe987;</i> 新增</a>
         </g:if>
     </div>
-</blockquote>
+</div>
 </script>
 </body>
 </html>
