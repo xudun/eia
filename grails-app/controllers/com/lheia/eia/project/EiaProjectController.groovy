@@ -352,15 +352,15 @@ class EiaProjectController {
      * 根据taskId获取相应的文件类型树
      */
     def getFileTree() {
-        def fileTypeList = EiaDomainCode.findAllByDomain(GeneConstants.PROJECT_FILE_TYPE)
+        def fileTypeList = EiaDomainCode.findAllByDomainAndCodeDescInList(GeneConstants.PROJECT_FILE_TYPE, ["环保咨询","绿色金融"])
         def codes = eiaDomainCodeService.getCodes(GeneConstants.PROJECT_FILE_TYPE)
         def codeList = []
-        /*  fileTypeList.each { it ->
-              codes.each { code ->
-                  if (code.code.indexOf(it.code) != -1)
-                      codeList << code
-              }
-          }*/
+//          fileTypeList.each { it ->
+//              codes.each { code ->
+//                  if (code.code.indexOf(it.code) != -1)
+//                      codeList << code
+//              }
+//          }
         codeList.addAll(fileTypeList)
         def seclevelList = EiaDomainCode.findAllByDomainAndParentCodeInListAndCodeLevel('PROJECT_FILE_TYPE', fileTypeList.code, 2)
         codeList.addAll(seclevelList)
@@ -549,6 +549,7 @@ class EiaProjectController {
         def planItem
         def workFlowNode
         def modiContent
+        def accept
         if (reportType == WorkFlowConstants.NODE_CODE_YS) {
             /** 一审审批内容 */
             if (eiaProjectPlan) {
@@ -560,8 +561,9 @@ class EiaProjectController {
             if (!modiContent) {
                 modiContent = EiaProjectPlanItem.findByEiaProjectPlanIdAndIfDelAndNodesCode(eiaProjectPlan.id, false, WorkFlowConstants.NODE_CODE_YS)?.modiContent
             }
+            accept = EiaProjectPlanItem.findByEiaProjectPlanIdAndIfDelAndNodesCode(eiaProjectPlan.id, false, WorkFlowConstants.NODE_CODE_YSXGH)?.opinion
         } else if (reportType == WorkFlowConstants.NODE_CODE_ES) {
-            /** 三审审批内容 */
+            /** 二审审批内容 */
             if (eiaProjectPlan) {
                 planItem = EiaProjectPlanItem.findByEiaProjectPlanIdAndIfDelAndNodesCode(eiaProjectPlan.id, false, WorkFlowConstants.NODE_CODE_ES)
                 workFlowNode = EiaWorkFlowBusiLog.findByTableNameAndTableNameIdAndNodesCode(
@@ -571,6 +573,7 @@ class EiaProjectController {
             if (!modiContent) {
                 modiContent = EiaProjectPlanItem.findByEiaProjectPlanIdAndIfDelAndNodesCode(eiaProjectPlan.id, false, WorkFlowConstants.NODE_CODE_ES)?.modiContent
             }
+            accept = EiaProjectPlanItem.findByEiaProjectPlanIdAndIfDelAndNodesCode(eiaProjectPlan.id, false, WorkFlowConstants.NODE_CODE_ESXGH)?.opinion
         } else if (reportType == WorkFlowConstants.NODE_CODE_SS) {
             /** 三审审批内容 */
             if (eiaProjectPlan) {
@@ -582,6 +585,7 @@ class EiaProjectController {
             if (!modiContent) {
                 modiContent = EiaProjectPlanItem.findByEiaProjectPlanIdAndIfDelAndNodesCode(eiaProjectPlan.id, false, WorkFlowConstants.NODE_CODE_SS)?.modiContent
             }
+            accept = EiaProjectPlanItem.findByEiaProjectPlanIdAndIfDelAndNodesCode(eiaProjectPlan.id, false, WorkFlowConstants.NODE_CODE_SSXGH)?.opinion
         }
         def busiLog
         def workFlowBusi = EiaWorkFlowBusi.findByWorkFlowStateNotEqualAndTableNameAndTableNameId(WorkFlowConstants.WORKFLOW_HALT, GeneConstants.DOMAIN_EIA_PROJECT, eiaProjectId)

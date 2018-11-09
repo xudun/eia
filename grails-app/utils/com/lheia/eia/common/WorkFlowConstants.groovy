@@ -119,6 +119,21 @@ class WorkFlowConstants {
     static String NODE_NAME_YSBZ = "一审编制"
     static String NODE_CODE_YSBZ = "YSBZ"
     /**
+     * 节点：一审修改后
+     */
+    static String NODE_NAME_YSXGH = "一审修改后"
+    static String NODE_CODE_YSXGH = "YSXGH"
+    /**
+     * 节点：二审修改后
+     */
+    static String NODE_NAME_ESXGH = "二审修改后"
+    static String NODE_CODE_ESXGH = "ESXGH"
+    /**
+     * 节点：三审修改后
+     */
+    static String NODE_NAME_SSXGH = "三审修改后"
+    static String NODE_CODE_SSXGH = "SSXGH"
+    /**
      * 节点：二审
      */
     static String NODE_NAME_ES = "二审"
