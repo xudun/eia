@@ -6,12 +6,13 @@ layui.use(['layer', 'form', 'table'], function () {
      * 渲染联系人列表
      */
     var wtClientId = parent.$('#wtClientId').val();
-    var eiaClientId = parent.$('#eiaClientId').val();
+    var sjClientId = parent.$('#sjClientId').val();
+    var type = getParamFromUrl(document.location.href,"type");
     var pageUrl;
-    if (wtClientId) {
+    if (type != "sjClientSelect") {
         pageUrl =  '../eiaLabOffer/getLabClientContactList?clientId=' + wtClientId;
     } else {
-        pageUrl = '../eiaClient/getEiaClientContactsDataList?eiaClientId=' + eiaClientId;
+        pageUrl = '../eiaClient/getEiaClientContactsDataList?eiaClientId=' + sjClientId;
     }
     table.render({
         id: 'eiaLabContactList',
@@ -35,12 +36,12 @@ layui.use(['layer', 'form', 'table'], function () {
      */
     table.on('tool(eiaLabContactList)', function (obj) {
         var data = obj.data;
-        if (wtClientId) {
+        if (type != "sjClientSelect") {
             parent.$("#wtClientContact").val(data.contactName);
             parent.$("#wtClientPhone").val(data.contactPhone);
         } else {
-            parent.$("#contactPerson").val(data.contactName);
-            parent.$("#contactPersonMobil").val(data.contactPhone);
+            parent.$("#sjClientContact").val(data.contactName);
+            parent.$("#sjClientPhone").val(data.contactPhone);
         }
         var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
         parent.layer.close(index); //再执行关闭

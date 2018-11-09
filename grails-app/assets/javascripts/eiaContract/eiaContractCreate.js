@@ -73,12 +73,26 @@ layui.use(['jquery', 'layer', 'form', 'laydate'], function () {
     //重置按钮显隐
     pageType == 0 ? "" : $('.resetBtn').hide();
 
-
     //编辑时回显数据
     if (pageType == 1) {
         //金额可填写
         $('.fillMoneyBtn').css("display", 'block');
         $('.show-tips').css("display", 'none');
+        var eiaClinetId = $("#eiaClientId").val();
+        if (eiaClinetId) {
+            $('.selectContactBtn').css("display", 'block');
+        } else {
+            $('.selectContactBtn').css("display", 'none');
+        }
+        var ownerClinetId = $("#ownerClientId").val();
+        if (ownerClinetId) {
+            $('.selectOwnerContactBtn').css("display", 'block');
+        } else {
+            $('.selectOwnerContactBtn').css("display", 'none');
+        }
+    } else {
+        $('.selectContactBtn').css("display", 'none');
+        $('.selectOwnerContactBtn').css("display", 'none');
     }
 
     var eiaContractId = $('#contractId').val();
@@ -250,7 +264,38 @@ layui.use(['jquery', 'layer', 'form', 'laydate'], function () {
             area: ['100%', '100%'],
             content: '/eia/eiaClient/eiaClientSelect?clientType=client',
             success: function (layero, index) {
-                var body = layer.getChildFrame('body', index);
+
+            },
+            end: function () {
+                var eiaClinetId = $("#eiaClientId").val();
+                if (eiaClinetId) {
+                    $('.selectContactBtn').css("display", 'block');
+                } else {
+                    $('.selectContactBtn').css("display", 'none');
+                }
+            },
+            min: function () {
+
+            },
+            restore: function () {
+
+            }
+        });
+    });
+    //选择客户联系人
+    $('.selectContactBtn').click(function () {
+        var eiaClinetId = $("#eiaClientId").val();
+        var pageUrl = '/eia/eiaClient/eiaContactSelect?eiaClientId='+ eiaClinetId +'&clientType=client';
+        var index = layer.open({
+            title: ' ',
+            type: 2,
+            shade: false,
+            maxmin: true,
+            skin: 'larry-green',
+            area: ['100%', '100%'],
+            content: pageUrl,
+            success: function (layero, index) {
+
             },
             end: function () {
 
@@ -274,7 +319,38 @@ layui.use(['jquery', 'layer', 'form', 'laydate'], function () {
             area: ['100%', '100%'],
             content: '/eia/eiaClient/eiaClientSelect?clientType=ownerClient',
             success: function (layero, index) {
-                var body = layer.getChildFrame('body', index);
+
+            },
+            end: function () {
+                var ownerClientId = $("#ownerClientId").val();
+                if (ownerClientId) {
+                    $('.selectOwnerContactBtn').css("display", 'block');
+                } else {
+                    $('.selectOwnerContactBtn').css("display", 'none');
+                }
+            },
+            min: function () {
+
+            },
+            restore: function () {
+
+            }
+        });
+    });
+    //选择甲方客户联系人
+    $('.selectOwnerContactBtn').click(function () {
+        var ownerClientId = $("#ownerClientId").val();
+        var pageUrl = '/eia/eiaClient/eiaContactSelect?eiaClientId='+ ownerClientId +'&clientType=ownerClient';
+        var index = layer.open({
+            title: ' ',
+            type: 2,
+            shade: false,
+            maxmin: true,
+            skin: 'larry-green',
+            area: ['100%', '100%'],
+            content: pageUrl,
+            success: function (layero, index) {
+
             },
             end: function () {
 
@@ -432,6 +508,8 @@ layui.use(['jquery', 'layer', 'form', 'laydate'], function () {
         $('#contractType').val("");
         //隐藏项目金额点击按钮
         $('.fillMoneyBtn').css("display", 'none');
+        $('.selectContactBtn').css("display", 'none');
+        $('.selectOwnerContactBtn').css("display", 'none');
         $('.show-tips').css("display", 'block');
     });
 

@@ -16,10 +16,11 @@ layui.use(['jquery', 'layer', 'table'], function () {
             cols: [
                 [
                     {fixed: 'left', title: '序号', width: '6%', align: "center", templet: "#indexTable"},
-                    {field: 'workFlowTitle', width: '25%', title: '审批标题', align: "center"},
-                    {field: 'workFlowName', width: '25%', title: '流程名称', align: "center"},
-                    {field: 'nodesName', width: '15%', title: '当前节点名称', align: "center"},
-                    {field: 'inputUser', width: '15%', title: '创建人', align: "center"},
+                    {field: 'workFlowTitle', width: '25.3%', title: '审批标题', align: "center"},
+                    {field: 'workFlowName', width: '12%', title: '流程名称', align: "center"},
+                    {field: 'nodesName', width: '10%', title: '当前节点名称', align: "center"},
+                    {field: 'inputDept', width: '13%', title: '创建部门', align: "center"},
+                    {field: 'inputUser', width: '10%', title: '创建人', align: "center"},
                     {field: 'dateCreated', width: '14%', title: '创建日期', align: "center"},
                     {fixed: 'right', title: '操作', width: '10%', align: "center", toolbar: '#eiaWorkFlowListTool', align: "center"}
                 ]

@@ -13,8 +13,8 @@ layui.use(['jquery', 'layer', 'table'], function(){
         toolbar: '#tableTopTmp',
         defaultToolbar:['filter', 'print', 'exports'],
         cols: [[
-            {fixed: 'left', title: '序号',width:'7%',align: "center",templet: "#indexTable"},
-            {field:'clientName',width:'30%', title: '客户名称',edit: 'text',align: "center"},
+            {fixed: 'left', title: '序号',width:'6%',align: "center",templet: "#indexTable"},
+            {field:'clientName',width:'28.3%', title: '客户名称',edit: 'text',align: "center"},
             {field:'clientAddress',width:'20%', title: '客户地址',edit: 'text',align: "center"},
             {field:'clientPostCode',width:'12%', title: '邮政编码',edit: 'text',align: "center"},
             {field:'clientCorporate',width:'12%', title: '法人代表',edit: 'text',align: "center"},
@@ -41,43 +41,30 @@ layui.use(['jquery', 'layer', 'table'], function(){
             layer.msg('法人代表不能为空，请点击单元格修改或在客户查询中修改!', {icon: 2, time: 3000, shade: 0.1}, function () {
             });
             return
-        }else{
+        }else {
             parent.$('#clientId').val(data.id);
             if (obj.event === 'eiaSelectContact') {    //选择联系人
-                pageUrl = '/eia/eiaClient/eiaContactSelect?eiaClientId='+data.id+'&clientType='+clientType;
-                var index = layer.open({
-                    title:' ',
-                    type: 2,
-                    shade: false,
-                    maxmin: true,
-                    skin: 'larry-green',
-                    area: ['100%', '100%'],
-                    content: pageUrl,
-                    success:function (layero, index) {
-                        var body = layer.getChildFrame('body', index);
-                        body.find('#eiaClientId').val(data.id);
-                        $('#eiaClientNameSelected').val(data.clientName);
-                        $('#clientAddressSelected').val(data.clientAddress);
-                        $('#eiaClientId').val(data.id);
-                    },
-                    end: function () {
-                        // table.reload('clientList');
-                        // $('#eiaClientId').val("");
-                        //关闭层
-                        var curIndex = parent.layer.getFrameIndex(window.name);
-                        console.log('选择客户层'+curIndex);
-                        parent.layer.close(curIndex);
-                    },
-                    min: function () {
-                        $(".layui-layer-title").text("选择联系人");
-                    },
-                    restore: function () {
-                        $(".layui-layer-title").text(" ");
-                    }
-                });
+                if (clientType == "client") {
+                    parent.$("#eiaClientId").val(data.id);
+                    parent.$("#eiaClientName").val(data.clientName);
+                    parent.$("#clientAddress").val(data.clientAddress);
+                    parent.$("#contactName").val(data.contactName);
+                    parent.$("#contactPhone").val(data.contactPhone);
+                    //关闭层
+                    var curIndex = parent.layer.getFrameIndex(window.name);
+                    parent.layer.close(curIndex);
+                } else if (clientType == "ownerClient") {
+                    parent.$("#ownerClientId").val(data.id);
+                    parent.$("#ownerClientName").val(data.clientName);
+                    parent.$("#ownerClientAddress").val(data.clientAddress);
+                    parent.$("#ownerContactName").val(data.contactName);
+                    parent.$("#ownerContactPhone").val(data.contactPhone);
+                    //关闭层
+                    var curIndex = parent.layer.getFrameIndex(window.name);
+                    parent.layer.close(curIndex);
+                }
             }
         }
-
     });
     layui.use('table', function(){
         var table = layui.table;

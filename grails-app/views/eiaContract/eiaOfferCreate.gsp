@@ -91,10 +91,13 @@
                     </div>
                     <div class="tag-right"><i class="larry-icon selectUserBtn">&#xe85b;</i></div>
                 </div>
-                <div class="layui-form-item">
+                <div class="layui-form-item has-tag">
                     <label class="layui-form-label"><span class="col-f00">* </span>联系人</label>
                     <div class="layui-input-block">
                         <input type="text" id="contactName" name="contactName" class="layui-input readonly" lay-verify="required" value="" readonly>
+                    </div>
+                    <div class="tag-right">
+                        <i class="larry-icon selectContactBtn">&#xe85b;</i>
                     </div>
                 </div>
                 <div class="layui-form-item has-tag">
@@ -104,10 +107,13 @@
                     </div>
                     <div class="tag-right"><i class="larry-icon selectOwnerBtn">&#xe85b;</i></div>
                 </div>
-                <div class="layui-form-item">
+                <div class="layui-form-item has-tag">
                     <label class="layui-form-label">甲方联系人</label>
                     <div class="layui-input-block">
                         <input type="text" id="ownerContactName" name="ownerContactName" class="layui-input readonly">
+                    </div>
+                    <div class="tag-right">
+                        <i class="larry-icon selectOwnerContactBtn">&#xe85b;</i>
                     </div>
                 </div>
             </div>

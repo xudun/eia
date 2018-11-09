@@ -89,15 +89,17 @@ layui.use(['layer', 'form', 'table'], function () {
                 success: function (names) {
                     var projectName = $('#projectName');
                     projectName.append('<option value="">请选择项目名称</option>');
-                    for (var i = 0; i < names.data.length; i++) {
-                        if (result.data) {
-                            if (result.data.projectName == names.data[i].projectName) {
-                                projectName.append('<option value="' + names.data[i].id + '" selected>' + names.data[i].projectName + '</option>')
+                    if (names.data) {
+                        for (var i = 0; i < names.data.length; i++) {
+                            if (result.data) {
+                                if (result.data.projectName == names.data[i].projectName) {
+                                    projectName.append('<option value="' + names.data[i].id + '" selected>' + names.data[i].projectName + '</option>')
+                                } else {
+                                    projectName.append('<option value="' + names.data[i].id + '">' + names.data[i].projectName + '</option>')
+                                }
                             } else {
                                 projectName.append('<option value="' + names.data[i].id + '">' + names.data[i].projectName + '</option>')
                             }
-                        } else {
-                            projectName.append('<option value="' + names.data[i].id + '">' + names.data[i].projectName + '</option>')
                         }
                     }
                     form.render('select', 'projectName');
@@ -173,7 +175,7 @@ layui.use(['layer', 'form', 'table'], function () {
                 $('.quitBtn').removeClass("display-none");
                 $('.fileAddBtn').removeClass("display-none");
                 $('.noticeTag').addClass("display-none");
-
+                $('#selectSjContactBtn').removeClass("display-none");
             } else {
                 $('#addTitle').tmpl().appendTo('#title');
                 $("#ifYxTest").attr("checked", "checked");
@@ -181,7 +183,7 @@ layui.use(['layer', 'form', 'table'], function () {
                 $("#projectAddr").removeAttr("lay-verify", "required");
                 $("#testCompany").removeAttr("lay-verify", "required");
                 $('.noticeTag').removeClass("display-none");
-
+                $('#selectSjContactBtn').addClass("display-none");
             }
             form.render();
             $("#wtClientId").val(result.wtClientId);
@@ -310,7 +312,7 @@ layui.use(['layer', 'form', 'table'], function () {
     $("#wtContactSelect").click(function () {
         var pageUrl = "../eiaLabOffer/eiaLabContactList";
         var winWidth = document.documentElement.clientWidth;
-        var area = ['85%', '80%'];
+        var area = ['90%', '90%'];
         if (winWidth < 1300) {
             area = ['100%', '100%'];
         }
@@ -336,9 +338,9 @@ layui.use(['layer', 'form', 'table'], function () {
      * 选择受检单位名称
      */
     $("#sjClientSelect").click(function () {
-        var pageUrl = "../eiaLabOffer/eiaLabOfferClientSelect";
+        var pageUrl = "../eiaLabOffer/eiaLabOfferClientSelect?type=sjClientSelect";
         var winWidth = document.documentElement.clientWidth;
-        var area = ['85%', '80%'];
+        var area = ['90%', '90%'];
         if (winWidth < 1300) {
             area = ['100%', '100%'];
         }
@@ -352,6 +354,12 @@ layui.use(['layer', 'form', 'table'], function () {
             area: area,
             content: pageUrl,
             end: function () {
+                var sjClientId = $("#sjClientId").val();
+                if (sjClientId) {
+                    $('#selectSjContactBtn').removeClass("display-none");
+                } else {
+                    $('#selectSjContactBtn').addClass("display-none");
+                }
                 $("#type").val("");
             },
             min: function () {
@@ -361,7 +369,34 @@ layui.use(['layer', 'form', 'table'], function () {
                 $(".layui-layer-title").text(" ");
             }
         });
-    })
+    });
+    /**
+     * 选择受检客户联系人
+     */
+    $('#selectSjContactBtn').click(function () {
+        var pageUrl = '/eia/eiaLabOffer/eiaLabContactList?type=sjClientSelect';
+        var index = layer.open({
+            title: ' ',
+            type: 2,
+            //shade: false,
+            maxmin: true,
+            skin: 'larry-green',
+            area: ['90%', '90%'],
+            content: pageUrl,
+            success: function (layero, index) {
+
+            },
+            end: function () {
+
+            },
+            min: function () {
+
+            },
+            restore: function () {
+
+            }
+        });
+    });
     /**
      * 选择其他费用
      */

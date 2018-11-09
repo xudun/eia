@@ -29,7 +29,7 @@
 
 <script type="text/html" id="clientTool">
 <div class="layui-btn-group pt0">
-    <a class="layui-btn layui-btn-normal layui-btn-sm" lay-event="eiaSelectContact" title="选择联系人"><i class="larry-icon">&#xe88f;</i></a>
+    <a class="layui-btn layui-btn-normal layui-btn-sm" lay-event="eiaSelectContact" title="选择联系人"><i class="larry-icon">&#xe8bc;</i></a>
 </div>
 </script>
 <script type="text/html" id="indexTable">
