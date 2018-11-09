@@ -261,7 +261,7 @@ var inputs = {
         create: function (val, container) {
             var this_val = val ? val : "";
             var str = "<div class='layui-form-item'>" +
-                "<label class='layui-form-label'><span class='col-f00'>* </span>产品功能</label>" +
+                "<label class='layui-form-label'><span class='col-f00'>* </span><span class='label-txt'>产品功能</span></label>" +
                 "<div class='layui-input-block'>" +
                 "<input type='text' id='productFunctionEd' name='productFunctionEd' class='layui-input' lay-verify='required' value='" + this_val + "' placeholder='（1-5个关键词逗号间隔）'>" +
                 "</div>" +
@@ -271,40 +271,20 @@ var inputs = {
         },
         show: function (val, container) {
             var this_val = val ? val : "";
-            $.ajax({
-                url: "/eia/eiaProjectLog/getEneOrEnvOrGreenLogDataMap?eiaProjectLogId=" + eiaProjectLogId,
-                type: "POST",
-                data: {},
-                dataType: "json",
-                async: true,
-                success: function (result) {
-                    var str = "<div class='layui-form-item'>" +
-                        "<label class='layui-form-label'><span class='col-f00'></span>产品功能</label>" +
-                        "<div class='layui-input-block check-block' id='productFunctionEd'>" + this_val + " &nbsp;<i class='larry-icon font20 cursor-pointer display-none' id='productFunctionShow'>&#xe740;</i></div>" +
-                        "</div>";
-                    var $str = $(str).clone();
-                    if (result.data.productFunction != result.data.productFunctionEd) {
-                        $("#productFunctionEd", $str).css("color", "red");
-                        $("#productFunctionShow", $str).css("color", "black");
-                        $("#productFunctionShow", $str).removeClass("display-none");
-                        $("#productFunctionShow", $str).on("mouseenter", function () {
-                            layer.tips("修改前内容: " + (result.data.productFunction == null ? "" : result.data.productFunction ) + "</br>" + "修改人: " + result.data.logInputUser + "</br>" + "修改日期: " + result.logInputDate, '#productFunctionShow', {
-                                area: ['auto', 'auto'],
-                                tips: [1, '#30b5ff'],
-                                time: 2000
-                            });
-                        });
-                    }
-                    $(container).append($str);
-                }
-            });
+            var str = "<div class='layui-form-item'>" +
+                "<label class='layui-form-label'><span class='col-f00'></span><span class='label-txt'>产品功能</span></label>" +
+                "<div class='layui-input-block check-block' name='productFunctionEd'  id='productFunctionEd'>" + this_val + " &nbsp;<i class='larry-icon font20 cursor-pointer display-none' id='productFunctionShow'>&#xe740;</i></div>" +
+                "</div>";
+            var $str = $(str).clone();
+            $(container).append($str);
         }
+
     },
     productFunction: {  //产品功能
         create: function (val, container) {
             var this_val = val ? val : "";
             var str = "<div class='layui-form-item'>" +
-                "<label class='layui-form-label'><span class='col-f00'>* </span>产品功能</label>" +
+                "<label class='layui-form-label'><span class='col-f00'>* </span><span class='label-txt'>产品功能</span></label>" +
                 "<div class='layui-input-block'>" +
                 "<input type='text' id='productFunction' name='productFunction' class='layui-input' lay-verify='required' value='" + this_val + "' placeholder='（1-5个关键词逗号间隔）'>" +
                 "<i class='larry-icon font20 cursor-pointer display-none' id='productFunctionShow'>&#xe740;</i>" +
@@ -316,7 +296,7 @@ var inputs = {
         show: function (val, container) {
             var this_val = val ? val : "";
             var str = "<div class='layui-form-item'>" +
-                "<label class='layui-form-label'><span class='col-f00'></span>产品功能</label>" +
+                "<label class='layui-form-label'><span class='col-f00'></span><span class='label-txt'>产品功能</span></label>" +
                 "<div class='layui-input-block check-block' id='productFunction'>" + this_val + "</div>" +
                 "</div>";
             var $str = $(str).clone();

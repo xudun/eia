@@ -14,7 +14,7 @@ layui.use(['jquery', 'layer', 'table'], function(){
             {fixed: 'left', title: '序号',width:'7%',align: "center",templet: "#indexTable"},
             {field:'clientName',width:'30%', title: '开票单位名称',align: "center"},
             {field:'taxRegCode',width:'15%', title: '税务登记代码',align: "center"},
-            {field:'bankName',width:'15%', title: '开户行户名',align: "center"},
+            {field:'bankName',width:'15%', title: '开户行',align: "center"},
             {field:'bankAccount',width:'15%', title: '开户行账号',align: "center"},
             {field:'addrTel',width:'15%', title: '地址及电话',align: "center"},
             {fixed: 'right', title: '操作',width:'10%',align: "center", toolbar: '#clientTool',align: "center"}

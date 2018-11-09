@@ -129,7 +129,8 @@ layui.use(['jquery', 'layer', 'form', 'element'], function () {
                 if (!data.isParent) {
                     var temp = {
                         id: data.id,
-                        name: data.name
+                        name: data.name,
+                        code: data.code
                     };
                     $("#fileType").val(JSON.stringify(temp));
 
@@ -151,6 +152,11 @@ layui.use(['jquery', 'layer', 'form', 'element'], function () {
                                 for (var i = 0; i < data.data.length; i++) {
                                     inputs[data.data[i]].create.call(this, "", $speInpContainers.eq(con_index++ % 2));
                                 }
+                            }
+                            //根据下拉树选中的code更改#productFunction的label文字
+                            var curParentCode = JSON.parse($('#fileType').val()).code;
+                            if(curParentCode.indexOf('EPC_GH')!==-1){
+                                $('#productFunction').closest('.layui-form-item').find('.label-txt').text('功能定位');
                             }
                             form.render('select');
                             form.render('radio');
@@ -373,6 +379,13 @@ layui.use(['jquery', 'layer', 'form', 'element'], function () {
                                     }
                                     getParkEnvCod.call();
                                     getBuildProp.call();
+
+                                    //根据下拉树选中的code更改#productFunction的label文字
+                                    var curParentCode = JSON.parse($('#fileType').val()).code;
+                                    if(curParentCode.indexOf('EPC_GH')!==-1){
+                                        $('#productFunction').closest('.layui-form-item').find('.label-txt').text('功能定位');
+                                    }
+
                                     form.render('select');
                                     form.render('radio');
                                 }
@@ -382,6 +395,12 @@ layui.use(['jquery', 'layer', 'form', 'element'], function () {
                             var con_index = 0;
                             for (var name in result.data) {
                                 inputs[name].create.call(this, result.data[name], $speInpContainers.eq(con_index++ % 2));
+                            }
+
+                            //根据下拉树选中的code更改#productFunction的label文字
+                            var curParentCode = JSON.parse($('#fileType').val()).code;
+                            if(curParentCode.indexOf('EPC_GH')!==-1){
+                                $('#productFunction').closest('.layui-form-item').find('.label-txt').text('功能定位');
                             }
 
                             //回显国民经济行业类型

@@ -189,7 +189,7 @@ var inputs = {
         create: function (val, container) {
             var this_val = val ? val : "";
             var str = "<div class='layui-form-item'>" +
-                "<label class='layui-form-label'><span class='col-f00'>* </span>产品功能</label>" +
+                "<label class='layui-form-label'><span class='col-f00'>* </span><span class='label-txt'>产品功能</span></label>" +
                 "<div class='layui-input-block'>" +
                 "<input type='text' id='productFunction' name='productFunction' class='layui-input' lay-verify='required' value='" + this_val + "' placeholder='（1-5个关键词逗号间隔）'>" +
                 "</div>" +
@@ -200,7 +200,7 @@ var inputs = {
         show: function (val, container) {
             var this_val = val ? val : "";
             var str = "<div class='layui-form-item'>" +
-                "<label class='layui-form-label'><span class='col-f00'></span>产品功能</label>" +
+                "<label class='layui-form-label'><span class='col-f00'></span><span class='label-txt'>产品功能</span></label>" +
                 "<div class='layui-input-block check-block' id='productFunction'>" + this_val + "</div>" +
                 "</div>";
             var $str = $(str).clone();

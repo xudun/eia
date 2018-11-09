@@ -55,7 +55,6 @@ layui.use(['jquery', 'form', 'element', 'laydate', "upload"], function () {
                     type: "post",
                     async: true,
                     success: function (res) {
-                        console.log(res)
                         var data = res.data
                         if (data.length > 0) {
                             var uploaded = $("#uploaded")
@@ -152,17 +151,19 @@ layui.use(['jquery', 'form', 'element', 'laydate', "upload"], function () {
     var files
 
     var uploadListIns = upload.render({
-        elem: '#selectFile'
-        , url: '../eiaEnvProject/uploadExploreImage'
-        , multiple: true
-        , data: {
+        elem: '#selectFile',
+        url: '../eiaEnvProject/uploadExploreImage',
+        multiple: true,
+        data: {
             'eiaEnvProjectId': function () {
                 return $('#eiaEnvProjectId').val()
             }
-        }
-        , auto: false
-        , bindAction: '#uploadStart'
-        , choose: function (obj) {
+        },
+        auto: false,
+        bindAction: '#uploadStart',
+        accept: 'images',
+        exts: 'jpg|png|jpeg',
+        choose: function (obj) {
             //alert($('#eiaEnvProjectId').val())
             files = this.files = obj.pushFile();
             obj.preview(function (index, file, result) {
@@ -178,10 +179,10 @@ layui.use(['jquery', 'form', 'element', 'laydate', "upload"], function () {
                 });
             });
             $("#uploadStart").removeClass("display-none")
-        }
-        , done: function (res) {
+        },
+        done: function (res) {
             window.location.reload();
-        }
+        },
     });
 });
 

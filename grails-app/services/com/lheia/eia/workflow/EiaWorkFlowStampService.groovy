@@ -64,7 +64,9 @@ class EiaWorkFlowStampService {
         busiFirstLog.eiaWorkFlowBusiId = eiaWorkFlowBusi.id
         busiFirstLog.opinion = '无'
         busiFirstLog.approvalDate = new Date()
-        busiFirstLog.inputUserSign = session.staff.staffSignImage
+        if(session.staff.staffSignImage!='无'){
+            busiFirstLog.inputUserSign = GeneConstants.AUTH_FILE_URL_PATH +session.staff.staffSignImage
+        }
         busiFirstLog.updateUser = session.staff.staffName
         busiFirstLog.updateUserId = Long.parseLong(session.staff.staffId)
         busiFirstLog.processCode = 'BMSH_SUBMIT'

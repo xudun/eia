@@ -86,6 +86,9 @@ class ExportProjectService {
             } else if((GeneConstants.EXPORT_PROVE_FILE_TYPE_CODE_YS_DC).indexOf(fileTypeCode) != -1){
                 exportType = "EPC_YS_DC_P.ftl"
                 exportTypeDoc = "eiaReportDc.doc"
+            }else if((GeneConstants.EXPORT_PROVE_FILE_TYPE_CODE_GH_LIST).indexOf(fileTypeCode) != -1){
+                exportType = "EPC_GH_P.ftl"
+                exportTypeDoc = "eiaReportGh.doc"
             }else if((GeneConstants.EXPORT_PROVE_FILE_TYPE_CODE_XZ_LIST).indexOf(fileTypeCode) != -1){
                 exportType = "EPC_XZ_P.ftl"
                 exportTypeDoc = "eiaReportXz.doc"
@@ -178,6 +181,15 @@ class ExportProjectService {
                     yearMonth = DateTransTools.getUpperDate(yearMonth)
                 }
             }
+            def client = EiaClient.findById(eiaProject?.eiaClientId)
+            for (Field clientField : client.getClass().getDeclaredFields()) {
+                clientField.setAccessible(true)
+                if (!clientField.get(client)) {
+                    map.put(clientField.getName(), "")
+                } else {
+                    map.put(clientField.getName(), clientField.get(client))
+                }
+            }
             def eiaContract
             def clientName = " "
             def contractTrust = EiaDomainCode.findByCodeAndDomain(GeneConstants.CHIDAO_NAME, GeneConstants.TRUSTEE_CLIENT)?.codeDesc
@@ -223,15 +235,6 @@ class ExportProjectService {
                 }
             }else {
                 map.put("certType", "")
-            }
-            def client = EiaClient.findById(eiaProject?.eiaClientId)
-            for (Field clientField : client.getClass().getDeclaredFields()) {
-                clientField.setAccessible(true)
-                if (!clientField.get(client)) {
-                    map.put(clientField.getName(), "")
-                } else {
-                    map.put(clientField.getName(), clientField.get(client))
-                }
             }
             def contact = EiaClientContacts.findByEiaClientIdAndIfDel(eiaProject?.eiaClientId, false)
             if (contact) {

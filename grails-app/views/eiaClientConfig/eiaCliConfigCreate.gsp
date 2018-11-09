@@ -59,7 +59,7 @@
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">开户行户名</label>
+                    <label class="layui-form-label">开户行</label>
                     <div class="layui-input-block">
                         <input type="text" id="bankName" name="bankName" class="layui-input"  value="">
                     </div>

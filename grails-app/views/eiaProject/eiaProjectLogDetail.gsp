@@ -57,6 +57,7 @@
                     <div class="layui-input-block check-block">
                         <span id="fileTypeChild"></span>&nbsp;
                         <i class="larry-icon font20 cursor-pointer display-none" id="fileTypeChildShow">&#xe740;</i>
+                        <input type="hidden" id="fileTypehidden" name="fileTypehidden" lay-verify="required" value="">
                     </div>
                 </div>
                 <div class="layui-form-item proMonBlock">
