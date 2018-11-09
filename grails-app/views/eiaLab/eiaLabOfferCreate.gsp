@@ -62,7 +62,8 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label"><span class="col-f00">* </span>现场联系人</label>
                     <div class="layui-input-block">
-                        <input type="text" name="sjClientContact" id="sjClientContact" class="layui-input readonly" lay-verify="required" readonly>
+                        <input type="text" name="sjClientContact" id="sjClientContact" class="layui-input input-search-button readonly" lay-verify="required" readonly>
+                        <i class="larry-icon font20 cursor-pointer display-none" id="selectSjContactBtn">&#xe85b;</i>
                     </div>
                 </div>
                 <div class="layui-form-item">

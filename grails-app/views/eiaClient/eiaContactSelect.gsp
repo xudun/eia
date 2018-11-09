@@ -27,8 +27,8 @@
 
 <script type="text/html" id="clientTool">
     <div class="layui-btn-group">
+        <a class="layui-btn layui-btn-normal layui-btn-sm" lay-event="eiaAddContact" title="选择"><i class="larry-icon">&#xe8bc;</i></a>
         <a class="layui-btn layui-btn-normal layui-btn-sm" lay-event="eiaDelContact" title="删除"><i class="larry-icon">&#xe8d0;</i></a>
-        <a class="layui-btn layui-btn-normal layui-btn-sm" lay-event="eiaAddContact" title="选择"><i class="larry-icon">&#xe88f;</i></a>
     </div>
 </script>
 <script type="text/html" id="indexTable">

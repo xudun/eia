@@ -3,7 +3,7 @@ layui.use(['layer', 'form', 'table'], function () {
         layer = layui.layer,
         table = layui.table;
 
-    var type = parent.$("#type").val();
+    var type = getParamFromUrl(document.location.href,"type");
     $(function () {
         var eiaClientId = $("#eiaClientId").val();
         if (type == "sjClientSelect") {
@@ -18,8 +18,8 @@ layui.use(['layer', 'form', 'table'], function () {
                 defaultToolbar:['filter', 'print', 'exports'],
                 cols: [
                     [
-                        {field: 'clientNameCn', title: '企业名称', width: '50%', align: 'center'},
-                        {field: 'clientAddrCn', title: '地址', width: '50%', align: 'center'},
+                        {field: 'clientNameCn', title: '企业名称', width: '47%', align: 'center'},
+                        {field: 'clientAddrCn', title: '地址', width: '47%', align: 'center'},
                         {fixed: 'right', title: '操作', width: 90, align: 'center', toolbar: '#sjClientListBar'}
                     ]
                 ],
@@ -36,39 +36,14 @@ layui.use(['layer', 'form', 'table'], function () {
         var data = obj.data;
         $('#eiaClientId').val(data.id);
         if (obj.event === 'sjSelected') {
-            var pageUrl = "../eiaLabOffer/eiaLabContactList";
-            var sjLayer = layer.open({
-                title: " ",
-                type: 2,
-                //shade: false,
-                maxmin: true,
-                skin: 'larry-green',
-                area: ['100%', '100%'],
-                content: pageUrl,
-                success: function (layero, index) {
-                    var body = layer.getChildFrame('body', index);
-                    body.find('#eiaClientId').val(data.id);
-                },
-                end: function (layero, index) {
-                    //var body = layer.getChildFrame('body', index);
-                    //body.find('#type').val("clientEnt");
-                    parent.$("#sjClientName").val(data.clientNameCn);
-                    parent.$("#sjClientAddr").val(data.clientAddrCn);
-                    parent.$("#sjClientId").val(data.id);
-                    parent.$("#sjClientSource").val("LAB");
-                    parent.$("#sjClientContact").val($("#contactPerson").val());
-                    parent.$("#sjClientPhone").val($("#contactPersonMobil").val());
-                    var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
-                    //alert(index+"==1");
-                    parent.layer.close(index); //再执行关闭
-                },
-                min: function () {
-                    $(".layui-layer-title").text("选择联系人信息");
-                },
-                restore: function () {
-                    $(".layui-layer-title").text(" ");
-                }
-            });
+            parent.$("#sjClientId").val(data.id);
+            parent.$("#sjClientName").val(data.clientName);
+            parent.$("#sjClientAddr").val(data.clientAddress);
+            parent.$("#sjClientContact").val(data.contactName);
+            parent.$("#sjClientPhone").val(data.contactPhone);
+            //关闭层
+            var curIndex = parent.layer.getFrameIndex(window.name);
+            parent.layer.close(curIndex);
         }
     });
 

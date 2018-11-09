@@ -14,10 +14,10 @@ layui.use(['jquery', 'table'], function(){
         defaultToolbar:['filter', 'print', 'exports'],
         cols: [[
             {fixed: 'left', title: '序号',width:'6%',align: "center",templet: "#indexTable"},
-            {field:'contactName',width:'25%', title: '联系人名称', edit: 'text',align: "center"},
-            {field:'contactPosition',width:'25%',  edit: 'text',title: '职务',align: "center"},
-            {field:'contactPhone',width:'25%', title: '联系电话',edit: 'text', align: "center"},
-            {field:'contactEmail',width:'25%', title: '电子邮件',edit: 'text', align: "center"},
+            {field:'contactName',width:'24.1%', title: '联系人名称', edit: 'text',align: "center"},
+            {field:'contactPosition',width:'20%',  edit: 'text',title: '职务',align: "center"},
+            {field:'contactPhone',width:'20%', title: '联系电话',edit: 'text', align: "center"},
+            {field:'contactEmail',width:'20%', title: '电子邮件',edit: 'text', align: "center"},
             {fixed: 'right', title: '操作',width:'10%',align: "center", toolbar: '#clientTool',align: "center"}
         ]],
         page: true,
@@ -28,67 +28,53 @@ layui.use(['jquery', 'table'], function(){
     //监听工具条
     table.on('tool(contactList)', function (obj) {
         var data = obj.data;
-        if (clientType == 'client') {
-            if (obj.event === 'eiaAddContact') {    //选择联系人
-                //父父层赋值
-                if(!data.contactName){
-                    layer.msg('联系人名称不能为空，请点击单元格修改或在客户查询中修改', {icon: 2, time: 3000, shade: 0.1}, function () {
-                    });
-                    return
-                }else if(!data.contactPhone){
-                    layer.msg('联系电话不能为空，请点击单元格修改或在客户查询中修改', {icon: 2, time: 2000, shade: 0.1}, function () {
-                    });
-                    return
-                }else if(!data.contactPosition){
-                    layer.msg('职务不能为空，请点击单元格修改或在客户查询中修改', {icon: 2, time: 2000, shade: 0.1}, function () {
-                    });
-                    return
-                }else if(!data.contactEmail){
-                    layer.msg('电子邮件不能为空，请点击单元格修改或在客户查询中修改', {icon: 2, time: 2000, shade: 0.1}, function () {
-                    });
-                    return
-                }
-                parent.parent.$("#contactName").val(data.contactName);
-                parent.parent.$("#eiaClientId").val(eiaClientId);
-                parent.parent.$("#contactPhone").val(data.contactPhone);
-                parent.parent.$("#eiaClientName").val(parent.$("#eiaClientNameSelected").val());
-                parent.parent.$("#clientAddress").val(parent.$("#clientAddressSelected").val());
-                //关闭层
-                var curIndex = parent.layer.getFrameIndex(window.name);
-                console.log('选择联系人层' + curIndex);
-                parent.layer.close(curIndex);
-            }else if(obj.event === 'eiaDelContact'){
-                layer.confirm('确定要删除该信息吗?', {icon: 3}, function (index) {
-                    $.ajax({
-                        url:"/eia/eiaClient/eiaClientContactsDel?clientContactsId="+data.id,
-                        type:"POST",
-                        data:{},
-                        dataType: "json",
-                        success: function (data) {
-                            layer.msg('删除成功！', {icon: 1, time: 1500,shade: 0.1}, function () {
-                                obj.del();
-                            });
-                        }
-                    });
-                },function (index) {
-                    //取消
+        if (obj.event === 'eiaAddContact') {    //选择联系人
+            //父父层赋值
+            if(!data.contactName){
+                layer.msg('联系人名称不能为空，请点击单元格修改或在客户查询中修改', {icon: 2, time: 3000, shade: 0.1}, function () {
                 });
+                return
+            }else if(!data.contactPhone){
+                layer.msg('联系电话不能为空，请点击单元格修改或在客户查询中修改', {icon: 2, time: 2000, shade: 0.1}, function () {
+                });
+                return
+            }else if(!data.contactPosition){
+                layer.msg('职务不能为空，请点击单元格修改或在客户查询中修改', {icon: 2, time: 2000, shade: 0.1}, function () {
+                });
+                return
+            }else if(!data.contactEmail){
+                layer.msg('电子邮件不能为空，请点击单元格修改或在客户查询中修改', {icon: 2, time: 2000, shade: 0.1}, function () {
+                });
+                return
             }
-        } else if (clientType == 'ownerClient') {
-            if (obj.event === 'eiaAddContact') {    //选择甲方联系人
-                //父父层赋值
-                parent.parent.$("#ownerClientId").val(eiaClientId);
-                parent.parent.$("#ownerContactName").val(data.contactName);
-                parent.parent.$("#ownerContactPhone").val(data.contactPhone);
-                parent.parent.$("#ownerClientName").val(parent.$("#eiaClientNameSelected").val());
-                parent.parent.$("#ownerClientAddress").val(parent.$("#clientAddressSelected").val());
-                //关闭层
-                var curIndex = parent.layer.getFrameIndex(window.name);
-                console.log('选择联系人层' + curIndex);
-                parent.layer.close(curIndex);
-
+            if (clientType == 'client') {
+                parent.$("#contactName").val(data.contactName);
+                parent.$("#contactPhone").val(data.contactPhone);
+            } else if (clientType == "ownerClient") {
+                parent.$("#ownerContactName").val(data.contactName);
+                parent.$("#ownerContactPhone").val(data.contactPhone);
             }
+            //关闭层
+            var curIndex = parent.layer.getFrameIndex(window.name);
+            parent.layer.close(curIndex);
+        }else if(obj.event === 'eiaDelContact'){
+            layer.confirm('确定要删除该信息吗?', {icon: 3}, function (index) {
+                $.ajax({
+                    url:"/eia/eiaClient/eiaClientContactsDel?clientContactsId="+data.id,
+                    type:"POST",
+                    data:{},
+                    dataType: "json",
+                    success: function (data) {
+                        layer.msg('删除成功！', {icon: 1, time: 1500,shade: 0.1}, function () {
+                            obj.del();
+                        });
+                    }
+                });
+            },function (index) {
+                //取消
+            });
         }
+
         $.ajax({
             url:"/eia/eiaClient/clientContactDel?clientContactId="+data.id,
             type:"POST",
