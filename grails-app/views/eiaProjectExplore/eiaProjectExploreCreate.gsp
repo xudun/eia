@@ -188,7 +188,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label"><span class="col-f00">*</span>外商投资指导目录</label>
                     <div class="layui-input-block">
-                        <select name="foreignDir" id="foreignDir" lay-filter="foreignDir" lay-verify="required"
+                        <select name="foreignDir"  id="foreignDir" lay-filter="foreignDir" lay-verify="required"
                                 lay-search>
                             <option value="">请选择</option>
                         </select>
