@@ -104,6 +104,17 @@ layui.use(['jquery', 'layer', 'form', 'laydate'], function(){
                 $("#preSurvCertFee").val(data.data.preSurvCertFee);
                 $("#certServeFee").val(data.data.certServeFee);
 
+                if (data.data.eiaClientId) {
+                    $('.selectContactBtn').css("display", 'block');
+                } else {
+                    $('.selectContactBtn').css("display", 'none');
+                }
+                if (data.data.ownerClientId) {
+                    $('.selectOwnerContactBtn').css("display", 'block');
+                } else {
+                    $('.selectOwnerContactBtn').css("display", 'none');
+                }
+
                 selectOptionByVal($contractUse, data.data.contractUse);
                 selectOptionByVal($taskId, data.data.taskId);
                 selectOptionByVal($province, data.data.province);
@@ -213,15 +224,46 @@ layui.use(['jquery', 'layer', 'form', 'laydate'], function(){
     //选择客户
     $('.selectUserBtn').click(function () {
         var index = layer.open({
-            title:' ',
+            title: ' ',
             type: 2,
             shade: false,
             maxmin: true,
             skin: 'larry-green',
             area: ['100%', '100%'],
             content: '/eia/eiaClient/eiaClientSelect?clientType=client',
-            success:function (layero, index) {
-                var body = layer.getChildFrame('body', index);
+            success: function (layero, index) {
+
+            },
+            end: function () {
+                var eiaClinetId = $("#eiaClientId").val();
+                if (eiaClinetId) {
+                    $('.selectContactBtn').css("display", 'block');
+                } else {
+                    $('.selectContactBtn').css("display", 'none');
+                }
+            },
+            min: function () {
+
+            },
+            restore: function () {
+
+            }
+        });
+    });
+    //选择客户联系人
+    $('.selectContactBtn').click(function () {
+        var eiaClinetId = $("#eiaClientId").val();
+        var pageUrl = '/eia/eiaClient/eiaContactSelect?eiaClientId='+ eiaClinetId +'&clientType=client';
+        var index = layer.open({
+            title: ' ',
+            type: 2,
+            shade: false,
+            maxmin: true,
+            skin: 'larry-green',
+            area: ['100%', '100%'],
+            content: pageUrl,
+            success: function (layero, index) {
+
             },
             end: function () {
 
@@ -237,15 +279,46 @@ layui.use(['jquery', 'layer', 'form', 'laydate'], function(){
     //选择甲方客户
     $('.selectOwnerBtn').click(function () {
         var index = layer.open({
-            title:' ',
+            title: ' ',
             type: 2,
             shade: false,
             maxmin: true,
             skin: 'larry-green',
             area: ['100%', '100%'],
             content: '/eia/eiaClient/eiaClientSelect?clientType=ownerClient',
-            success:function (layero, index) {
-                var body = layer.getChildFrame('body', index);
+            success: function (layero, index) {
+
+            },
+            end: function () {
+                var ownerClientId = $("#ownerClientId").val();
+                if (ownerClientId) {
+                    $('.selectOwnerContactBtn').css("display", 'block');
+                } else {
+                    $('.selectOwnerContactBtn').css("display", 'none');
+                }
+            },
+            min: function () {
+
+            },
+            restore: function () {
+
+            }
+        });
+    });
+    //选择甲方客户联系人
+    $('.selectOwnerContactBtn').click(function () {
+        var ownerClientId = $("#ownerClientId").val();
+        var pageUrl = '/eia/eiaClient/eiaContactSelect?eiaClientId='+ ownerClientId +'&clientType=ownerClient';
+        var index = layer.open({
+            title: ' ',
+            type: 2,
+            shade: false,
+            maxmin: true,
+            skin: 'larry-green',
+            area: ['100%', '100%'],
+            content: pageUrl,
+            success: function (layero, index) {
+
             },
             end: function () {
 

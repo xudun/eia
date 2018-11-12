@@ -125,7 +125,7 @@ class EiaWorkFlowProjectService {
             /**
              * 更新下一个节点的审批人和相关工作人员
              */
-            def eiaPlanItemNext = EiaProjectPlanItem.findByEiaProjectPlanIdAndNodesCode(eiaProjectPlanId, nodesCode)
+            def eiaPlanItemNext = EiaProjectPlanItem.findByEiaProjectPlanIdAndNodesCodeAndIfDel(eiaProjectPlanId, nodesCode,false)
             if (eiaPlanItemNext) {
                 eiaPlanItemNext.eiaProjectId = tableNameId
                 if (params.nodeUserName && params.nodeUserId) {
@@ -156,6 +156,8 @@ class EiaWorkFlowProjectService {
                     eiaPlanItemLast.save(flush:true,failOnError:true)
                 }
                 eiaPlanItemNext.save(flush: true, failOnError: true)
+            }else{
+                return false
             }
             /**————————更新项目表的ifCert——————————**/
             if (nodesCode == WorkFlowConstants.NODE_CODE_SSBZ || nodesCode == WorkFlowConstants.NODE_CODE_BGZJ) {

@@ -56,6 +56,12 @@ class EiaClientService {
             map.inputDept = it.inputDept
             map.inputUser = it.inputUser
             map.inputUserId = it.inputUserId
+            /** 找客户的联系人，该联系人的信息必须是填写完全的 */
+            def clientContact = EiaClientContacts.findByEiaClientIdAndIfDelAndContactNameIsNotNullAndContactPhoneIsNotNullAndContactPositionIsNotNullAndContactEmailIsNotNull(it.id, false, [sort: "id", order: "desc"])
+            if (clientContact) {
+                map.contactName = clientContact?.contactName
+                map.contactPhone = clientContact?.contactPhone
+            }
             def offerCount = EiaOffer.countByEiaClientIdAndIfDelAndOfferState(it.id,false,GeneConstants.CONTRACT_STATE_NOT_SIGNED)
             map.offerCount = offerCount
             def contractCount = EiaContract.countByEiaClientIdAndIfDel(it.id, false)
