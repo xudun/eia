@@ -147,7 +147,7 @@ class EiaWorkFlowBusiService {
                     }
                     if(eiaWorkFlowBusi.tableName == GeneConstants.DOMAIN_EIA_PROJECT_EXPLORE){
                         //节点url增加参数eiaLabOfferId
-                        nodeTab.nodesUrl = url+ "eiaProjectExploreId=" + Long.valueOf(params.tableNameId) + "&tableName=" + eiaWorkFlowBusi.tableName + "&tableNameId=" + eiaWorkFlowBusi.tableNameId + "&pageType=edit"
+                        nodeTab.nodesUrl = url+ "eiaProjectExploreId=" + Long.valueOf(params.tableNameId) + "&tableName=" + eiaWorkFlowBusi.tableName + "&tableNameId=" + eiaWorkFlowBusi.tableNameId + "&pageType=flow"
                     }
                     if(nodeTab.isEmpty()){
                     }else {

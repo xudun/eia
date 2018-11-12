@@ -108,7 +108,7 @@ layui.use(['jquery', 'layer', 'form', 'element'], function () {
     /****
      * 编辑时渲染数据项
      */
-    if (params.pageType == "edit") {
+    if (params.pageType == "edit" || params.pageType == "flow" ) {
         $("#eiaProjectExploreId").val(params.eiaProjectExploreId)
         $.post("../eiaProjectExplore/getEiaProjectExploreDataMap", {eiaProjectExploreId: params.eiaProjectExploreId}, function (data) {
             var data = data.data;
@@ -122,7 +122,6 @@ layui.use(['jquery', 'layer', 'form', 'element'], function () {
                     reqData[key+"Code"] = data[key+"Code"].split(",")
                     elem.checked = (data[key+"Code"].indexOf(valueNode) >= 0)
                 }
-
                 /***其他input框显示隐藏***/
                 if(valueNode == "QT"){
                     var eleId = key + valueNode
@@ -163,8 +162,21 @@ layui.use(['jquery', 'layer', 'form', 'element'], function () {
                 form.render('select')
             }
             form.render('select')
+            if(params.pageType == "flow"){
+                var $foreignDir= $("#foreignDir")
+                var $industrialDir = $("#industrialDir")
+                $foreignDir.parent().append('<input type="text" id="foreignDir1" name="foreignDir" class="layui-input readonly" value="'+$("#foreignDir option:selected").text()+'" readOnly>' )
+                $industrialDir.parent().append('<input type="text" id="industrialDir1" name="industrialDir" class="layui-input readonly" value="'+$("#industrialDir option:selected").text()+'" readOnly>')
+                console.log($foreignDir);
+                $foreignDir.next().remove();
+                $foreignDir.remove();
+                $industrialDir.next().remove();
+                $industrialDir.remove();
+                form.render('select')
+            }
         })
     }
+
 
 
     form.on('submit(save)', function (data) {

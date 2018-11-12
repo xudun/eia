@@ -19,7 +19,7 @@ class EiaWorkFlowProjectExploreService {
     /***
      * 根据用户部门编码获取工作流编码
      */
-    def getWorkFlowCode(session){
+    def getWorkFlowCode(session,EiaProjectExplore eiaProjectExplore){
         String orgCode = session.staff.orgCode
         def workFlowCode = WorkFlowConstants.PROJECT_EXPLORE_WORK_FLOW
         if(orgCode){
@@ -28,6 +28,10 @@ class EiaWorkFlowProjectExploreService {
                     workFlowCode = it.value
                 }
             }
+        }
+        /****如果产业政策含有限制类则，使用总经理审批流程***/
+        if("XZL".equals(eiaProjectExplore.industrialDir) ||  "XZL".equals(eiaProjectExplore.foreignDir)){
+            workFlowCode = workFlowCode+"_ZJL"
         }
         return workFlowCode
     }

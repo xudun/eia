@@ -167,34 +167,6 @@ layui.use(['jquery', 'layer', 'form','table'], function () {
            });
 
         }
-        else if(obj.event==='changeWorkFlow'){
-           pageUrl = '/eia/eiaProject/changeWorkFlow?eiaProjectId='+eiaProjectId;
-           var index = layer.open({
-               title: ' ',
-               type: 2,
-               shade: false,
-               maxmin: true,
-               skin: 'larry-green',
-               area: ['50%', '50%'],
-               content: pageUrl,
-               success: function (data) {
-               },
-               end: function () {
-                   table.reload('eiaProjectList');
-                   $('#eiaProjectId').val("");
-                   $('#tableNameId').val("");
-                   $('#eiaTaskId').val("");
-                   $('#eiaLabOfferId').val("");
-                   $('#proPlanId').val("");
-               },
-               min: function () {
-
-               },
-               restore: function () {
-
-               }
-           });
-       }
        else if (obj.event === 'projectExploreSub') {
            layer.confirm('确定要提交该内审单吗?', {icon: 3}, function (index) {
                var eiaCertId = data.id;
