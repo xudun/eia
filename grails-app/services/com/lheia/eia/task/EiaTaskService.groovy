@@ -425,4 +425,16 @@ class EiaTaskService {
         }
 
     }
+
+    /**
+     *  获取任务列表
+     */
+    def getTaskList(session) {
+        EiaTask.withTransaction {
+            String staffId = Long.valueOf(session.staff.staffId)
+            String staffName = session.staff.staffName
+            def taskList = EiaTask.findAllByTaskAssignUserLikeAndIfDel('%' + staffName + '_' + staffId + '%', false)
+            return taskList
+        }
+    }
 }
