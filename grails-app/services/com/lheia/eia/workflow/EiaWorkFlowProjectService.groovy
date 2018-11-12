@@ -156,8 +156,6 @@ class EiaWorkFlowProjectService {
                     eiaPlanItemLast.save(flush:true,failOnError:true)
                 }
                 eiaPlanItemNext.save(flush: true, failOnError: true)
-            }else{
-                return false
             }
             /**————————更新项目表的ifCert——————————**/
             if (nodesCode == WorkFlowConstants.NODE_CODE_SSBZ || nodesCode == WorkFlowConstants.NODE_CODE_BGZJ) {
